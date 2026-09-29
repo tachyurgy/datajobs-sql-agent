@@ -1,0 +1,63 @@
+# Few-shot pool for ablations c and d. Disjoint from gold.toml: no question here is a paraphrase of a gold
+# question (tests/test_gold.py checks that no example shares more than half its content words with any gold
+# question). Retrieval picks the 3 nearest examples by BM25 over the question text.
+
+[[example]]
+question = "How many open remote-US data engineer listings mention Spark?"
+sql = "SELECT count(DISTINCT s.posting_key) AS listings FROM posting_skills s JOIN fct_posting f USING (posting_key) WHERE s.skill = 'spark' AND f.family = 'data_engineer' AND f.is_open AND f.remote_us AND f.is_canonical_listing"
+
+[[example]]
+question = "What is the 75th percentile pay midpoint for data engineers?"
+sql = "SELECT p75 FROM mart_comp_by_family WHERE family = 'data_engineer' AND seniority IS NULL"
+
+[[example]]
+question = "Which companies have open remote-US product analyst listings?"
+sql = "SELECT DISTINCT d.company_name FROM fct_posting f JOIN dim_company d USING (company_key) WHERE f.family = 'product_analyst' AND f.is_open AND f.remote_us AND f.is_canonical_listing"
+
+[[example]]
+question = "How many postings does the ATS mark as hybrid?"
+sql = "SELECT count(*) AS postings FROM fct_posting WHERE lower(workplace) = 'hybrid'"
+
+[[example]]
+question = "Average posted pay midpoint of staff+ open remote-US listings, by family"
+sql = "SELECT family, avg(comp_mid_usd) AS avg_pay FROM fct_posting WHERE seniority = 'staff+' AND is_open AND remote_us AND is_canonical_listing GROUP BY family"
+
+[[example]]
+question = "How many of the current remote-US listings were first published in 2025?"
+sql = "SELECT count(*) AS listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing AND year(published_at) = 2025"
+
+[[example]]
+question = "What share of doorway data analyst listings mention Tableau?"
+sql = "SELECT share FROM mart_skill_demand WHERE family = 'data_analyst' AND scope = 'doorway' AND skill = 'tableau'"
+
+[[example]]
+question = "Break down open remote-US data scientist listings by lowest degree named"
+sql = "SELECT degree_level, count(*) AS listings FROM fct_posting WHERE family = 'data_scientist' AND is_open AND remote_us AND is_canonical_listing GROUP BY degree_level"
+
+[[example]]
+question = "For each ATS platform, what share of open remote-US listings post a pay range?"
+sql = "SELECT platform, count(comp_mid_usd) * 1.0 / count(*) AS share_with_pay FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing GROUP BY platform"
+
+[[example]]
+question = "Top 5 Greenhouse companies by open remote-US ML engineer listings"
+sql = "SELECT d.company_name, count(*) AS listings FROM fct_posting f JOIN dim_company d USING (company_key) WHERE d.platform = 'greenhouse' AND f.family = 'ml_engineer' AND f.is_open AND f.remote_us AND f.is_canonical_listing GROUP BY d.company_name ORDER BY listings DESC LIMIT 5"
+
+[[example]]
+question = "Average number of taxonomy skills mentioned per open remote-US listing, by family"
+sql = "SELECT family, avg(n_skills) AS avg_skills FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing GROUP BY family"
+
+[[example]]
+question = "Weekly count of open remote-US listings published during September 2026"
+sql = "SELECT date_trunc('week', published_at)::DATE AS week, count(*) AS listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing AND published_at::DATE BETWEEN DATE '2026-09-01' AND DATE '2026-09-30' GROUP BY week ORDER BY week"
+
+[[example]]
+question = "Rank data scientist employers by their open remote-US listings, keeping ties together"
+sql = "SELECT d.company_name, count(*) AS listings, dense_rank() OVER (ORDER BY count(*) DESC) AS rnk FROM fct_posting f JOIN dim_company d USING (company_key) WHERE f.family = 'data_scientist' AND f.is_open AND f.remote_us AND f.is_canonical_listing GROUP BY d.company_name ORDER BY rnk"
+
+[[example]]
+question = "What was Airbnb's revenue last year?"
+sql = "-- refuse: the warehouse has no company financials"
+
+[[example]]
+question = "Which skills belong to the experimentation and statistics cluster?"
+sql = "SELECT skill FROM dim_skill WHERE cluster = 'experimentation_stats'"

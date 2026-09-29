@@ -353,6 +353,7 @@ FROM dim_company d LEFT JOIN fct_posting f
   ON f.company_key = d.company_key AND f.is_open AND f.remote_us AND f.is_canonical_listing
 WHERE d.postings_on_board_latest > 1000
 GROUP BY d.company_name"""
+alt_sql = ["SELECT company_name, remote_us_postings_open FROM dim_company WHERE postings_on_board_latest > 1000"]
 note = "LEFT JOIN so that large boards with zero remote data listings still appear with 0. An inner join drops them and is scored wrong."
 
 [[q]]
