@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT DISTINCT T1.company_name FROM dim_company AS T1 INNER JOIN fct_posting AS T2 ON T1.company_key = T2.company_key WHERE T2.equity_mentioned = TRUE",
+ "refuse": true,
+ "reason": "The table fct_posting does not have a column named equity_mentioned. There is no other table that contains information about equity or stock options.",
+ "raw": "{\"sql\": \"SELECT DISTINCT T1.company_name FROM dim_company AS T1 INNER JOIN fct_posting AS T2 ON T1.company_key = T2.company_key WHERE T2.equity_mentioned = TRUE\", \"refuse\": true, \"reason\": \"The table fct_posting does not have a column named equity_mentioned. There is no other table that contains information about equity or stock options.\"}",
+ "prompt_tokens": 2532,
+ "output_tokens": 93,
+ "thinking_tokens": 0,
+ "latency_ms": 734.7432500100695,
+ "parse_error": null
+}

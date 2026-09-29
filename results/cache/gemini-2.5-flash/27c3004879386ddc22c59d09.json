@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family_label FROM mart_comp_by_family WHERE seniority = 'remote_us' ORDER BY p50 DESC LIMIT 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT family_label FROM mart_comp_by_family WHERE seniority = 'remote_us' ORDER BY p50 DESC LIMIT 1\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 1020,
+ "output_tokens": 44,
+ "thinking_tokens": 0,
+ "latency_ms": 699.821415997576,
+ "parse_error": null
+}

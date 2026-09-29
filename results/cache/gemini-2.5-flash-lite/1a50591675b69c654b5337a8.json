@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The question asks about offer acceptance rates, but the available tables do not contain information about job offer acceptances. The schema focuses on job postings, skills, company information, and pay ranges, not the outcome of the hiring process after a posting is closed.",
+ "raw": "{\"sql\": \"\", \"refuse\": true, \"reason\": \"The question asks about offer acceptance rates, but the available tables do not contain information about job offer acceptances. The schema focuses on job postings, skills, company information, and pay ranges, not the outcome of the hiring process after a posting is closed.\"}",
+ "prompt_tokens": 2164,
+ "output_tokens": 66,
+ "thinking_tokens": 0,
+ "latency_ms": 710.25729199755,
+ "parse_error": null
+}

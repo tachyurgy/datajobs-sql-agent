@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT SUM(CASE WHEN f.is_doorway THEN 1 ELSE 0 END) * 100.0 / COUNT(f.posting_key) FROM fct_posting f WHERE f.is_open AND f.remote_us AND f.is_canonical_listing",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT SUM(CASE WHEN f.is_doorway THEN 1 ELSE 0 END) * 100.0 / COUNT(f.posting_key) FROM fct_posting f WHERE f.is_open AND f.remote_us AND f.is_canonical_listing\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2447,
+ "output_tokens": 76,
+ "thinking_tokens": 0,
+ "latency_ms": 648.8617080030963,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT\n  CASE WHEN python.share > sql.share THEN 'Python' ELSE 'SQL' END AS more_in_demand\nFROM (\n  SELECT\n    share\n  FROM mart_skill_demand\n  WHERE\n    skill = 'python'\n) AS python\nCROSS JOIN (\n  SELECT\n    share\n  FROM mart_skill_demand\n  WHERE\n    skill = 'sql'\n) AS sql;",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT\\n  CASE WHEN python.share > sql.share THEN 'Python' ELSE 'SQL' END AS more_in_demand\\nFROM (\\n  SELECT\\n    share\\n  FROM mart_skill_demand\\n  WHERE\\n    skill = 'python'\\n) AS python\\nCROSS JOIN (\\n  SELECT\\n    share\\n  FROM mart_skill_demand\\n  WHERE\\n    skill = 'sql'\\n) AS sql;\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2786,
+ "output_tokens": 116,
+ "thinking_tokens": 0,
+ "latency_ms": 823.046459001489,
+ "parse_error": null
+}

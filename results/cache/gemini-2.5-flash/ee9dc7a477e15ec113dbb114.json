@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT COUNT(DISTINCT posting_key) AS jobs_mentioning_dbt FROM posting_skills WHERE skill = 'dbt'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT COUNT(DISTINCT posting_key) AS jobs_mentioning_dbt FROM posting_skills WHERE skill = 'dbt'\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 1012,
+ "output_tokens": 42,
+ "thinking_tokens": 0,
+ "latency_ms": 3266.806291998364,
+ "parse_error": null
+}

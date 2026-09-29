@@ -15,6 +15,7 @@ FN_ASSETS = ROOT / "web" / "shared" / "assets.json"
 def assets() -> dict:
     return {
         "system": prompt.SYSTEM,
+        "answerability": prompt.ANSWERABILITY,
         "stopwords": sorted(prompt.STOPWORDS),
         "synonyms": prompt.SYNONYMS,
         "top_k_columns": prompt.TOP_K_COLUMNS,

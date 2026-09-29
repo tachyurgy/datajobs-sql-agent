@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(*) AS open_remote_us_listings FROM fct_posting WHERE is_open = true AND remote_us = true",
+ "refuse": false,
+ "reason": "The query counts the number of records in the fct_posting table where the listing is currently open and is remote within the US.",
+ "raw": "```json\n{\"sql\": \"SELECT count(*) AS open_remote_us_listings FROM fct_posting WHERE is_open = true AND remote_us = true\", \"refuse\": false, \"reason\": \"The query counts the number of records in the fct_posting table where the listing is currently open and is remote within the US.\"}\n```",
+ "prompt_tokens": 1019,
+ "output_tokens": 76,
+ "thinking_tokens": 977,
+ "latency_ms": 31545.222125016153,
+ "parse_error": null
+}

@@ -9,6 +9,9 @@ Ablations (cumulative):
   b  + table descriptions, dictionary notes, and the top-k retrieved column docs with sample values
   c  + top-3 retrieved few-shot examples (from a pool disjoint from the gold set)
   d  = c + up to 2 self-correction retries on an error or an empty result (see agent.py)
+  e  = d + an answerability rule in the system prompt (ANSWERABILITY). Added after run 1 showed refusal was
+       the weakest skill; the rule was written from the schema and checked only against gold/dev.toml, a
+       separate 16-question dev set, never against the gold questions.
 """
 from __future__ import annotations
 
@@ -62,6 +65,17 @@ Rules:
 - If the question cannot be answered from these tables (the data does not exist, or it asks to change data), set "refuse": true, "sql": "" and explain in "reason".
 - Return only the columns needed to answer, with readable aliases. Add ORDER BY and LIMIT only when the question asks for a ranking or a top N.
 - Do not round numbers unless asked."""
+
+ANSWERABILITY = """
+Answerability (check this before writing SQL):
+- The warehouse records job postings (title, role family, seniority, location and remote flags, publish and crawl dates, posted pay range, years-of-experience and degree asks, skill mentions from a fixed taxonomy) and the company job boards they came from. Nothing else.
+- It does not record applicants, interviews, hires or offers; people or demographics; company facts such as size, revenue, funding, ratings or benefits; the posting description text; or anything before the first crawl.
+- If answering needs a concept that no listed column holds, refuse. Do not stand in an unrelated column for it, and do not search titles or URLs for the missing concept.
+- Refuse any request to change, add or delete data."""
+
+
+def system_prompt(ablation: str) -> str:
+    return SYSTEM + ANSWERABILITY if ablation == "e" else SYSTEM
 
 
 def tokenize(text: str) -> list[str]:
@@ -193,10 +207,10 @@ def build_prompt(question: str, ablation: str, attempts: list[dict] | None = Non
     d = load_dictionary()
     q = expand(question)
     parts = ["### Schema", schema_block(d, ablation != "a")]
-    if ablation in ("b", "c", "d"):
+    if ablation in ("b", "c", "d", "e"):
         parts += ["", "### Notes"] + [f"- {n}" for n in d["notes"]]
         parts += ["", "### Relevant columns"] + [f"- {line}" for line in retrieve_columns(q)]
-    if ablation in ("c", "d"):
+    if ablation in ("c", "d", "e"):
         ex = load_fewshots()
         top = _example_index().top(tokenize(question), TOP_K_EXAMPLES)
         if top:

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family_label, median(comp_mid_usd) AS median_pay FROM fct_posting WHERE is_open = true AND remote_us = true GROUP BY family_label ORDER BY median_pay DESC LIMIT 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT family_label, median(comp_mid_usd) AS median_pay FROM fct_posting WHERE is_open = true AND remote_us = true GROUP BY family_label ORDER BY median_pay DESC LIMIT 1\", \"refuse\": false, \"reason\": \"\"}\n```",
+ "prompt_tokens": 1021,
+ "output_tokens": 68,
+ "thinking_tokens": 624,
+ "latency_ms": 133116.8567080167,
+ "parse_error": null
+}

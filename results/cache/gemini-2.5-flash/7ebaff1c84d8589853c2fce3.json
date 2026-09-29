@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(DISTINCT f.posting_key) AS listings FROM fct_posting f JOIN posting_skills ps_python ON f.posting_key = ps_python.posting_key AND ps_python.skill = 'python' JOIN posting_skills ps_sql ON f.posting_key = ps_sql.posting_key AND ps_sql.skill = 'sql' WHERE f.is_open AND f.remote_us AND f.is_canonical_listing",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT count(DISTINCT f.posting_key) AS listings FROM fct_posting f JOIN posting_skills ps_python ON f.posting_key = ps_python.posting_key AND ps_python.skill = 'python' JOIN posting_skills ps_sql ON f.posting_key = ps_sql.posting_key AND ps_sql.skill = 'sql' WHERE f.is_open AND f.remote_us AND f.is_canonical_listing\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2455,
+ "output_tokens": 116,
+ "thinking_tokens": 0,
+ "latency_ms": 1028.136250009993,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT DISTINCT T1.company_name FROM dim_company AS T1 INNER JOIN fct_posting AS T2 ON T1.company_key = T2.company_key WHERE T2.equity_offered = TRUE",
+ "refuse": true,
+ "reason": "The table schema does not contain information about equity or stock options offered with data roles.",
+ "raw": "{\"sql\": \"SELECT DISTINCT T1.company_name FROM dim_company AS T1 INNER JOIN fct_posting AS T2 ON T1.company_key = T2.company_key WHERE T2.equity_offered = TRUE\", \"refuse\": true, \"reason\": \"The table schema does not contain information about equity or stock options offered with data roles.\"}",
+ "prompt_tokens": 2695,
+ "output_tokens": 81,
+ "thinking_tokens": 0,
+ "latency_ms": 644.7087909909897,
+ "parse_error": null
+}

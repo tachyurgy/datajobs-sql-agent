@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT avg(yoe_ask) AS avg_yoe_asked FROM fct_posting WHERE family = 'ai_engineer' AND is_open AND remote_us AND is_canonical_listing AND yoe_ask IS NOT NULL",
+ "refuse": false,
+ "reason": "The request can be answered using the fct_posting table by filtering for open, remote-US, canonical AI engineer listings that have a non-null yoe_ask value.",
+ "raw": "```json\n{\"sql\": \"SELECT avg(yoe_ask) AS avg_yoe_asked FROM fct_posting WHERE family = 'ai_engineer' AND is_open AND remote_us AND is_canonical_listing AND yoe_ask IS NOT NULL\", \"refuse\": false, \"reason\": \"The request can be answered using the fct_posting table by filtering for open, remote-US, canonical AI engineer listings that have a non-null yoe_ask value.\"}\n```",
+ "prompt_tokens": 2541,
+ "output_tokens": 108,
+ "thinking_tokens": 355,
+ "latency_ms": 14261.131208011648,
+ "parse_error": null
+}

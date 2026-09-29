@@ -62,3 +62,20 @@ def test_nulls():
 def test_empty_results():
     assert m(["v"], [], ["v"], [])
     assert not m(["v"], [(1,)], ["v"], [])
+
+
+def test_greedy_tolerance_cannot_steal_exact_partner():
+    # regression: with a 1e-3 relative tolerance, 2021 used to "match" 2022 and the greedy pass then failed
+    gold = [(2025, 51), (2023, 5), (2021, 4), (2024, 12), (2022, 1)]
+    pred = [(2021, 4), (2022, 1), (2023, 5), (2024, 12), (2025, 51)]
+    assert m(["yr", "n"], gold, ["y", "n"], pred)
+
+
+def test_integers_compare_exactly():
+    assert not m(["n"], [(2021,)], ["n"], [(2022,)])
+    assert not m(["n"], [(5755,)], ["n"], [(5754,)])
+
+
+def test_timestamp_answers_a_date_question():
+    assert m(["d"], [(dt.date(2021, 1, 23),)], ["ts"], [(dt.datetime(2021, 1, 23, 4, 35, 25),)])
+    assert not m(["d"], [(dt.date(2021, 1, 23),)], ["ts"], [(dt.datetime(2021, 1, 24, 4, 35, 25),)])

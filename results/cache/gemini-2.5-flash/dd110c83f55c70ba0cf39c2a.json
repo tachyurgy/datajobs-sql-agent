@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT SUM(open_listings) AS open_remote_us_listings FROM mart_daily_market WHERE remote_us = TRUE AND crawl_date BETWEEN '2026-07-01' AND '2026-09-30'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT SUM(open_listings) AS open_remote_us_listings FROM mart_daily_market WHERE remote_us = TRUE AND crawl_date BETWEEN '2026-07-01' AND '2026-09-30'\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 1025,
+ "output_tokens": 71,
+ "thinking_tokens": 0,
+ "latency_ms": 847.210083011305,
+ "parse_error": null
+}

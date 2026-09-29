@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The database does not contain information about job offers or their acceptance rates. It only tracks job postings.",
+ "raw": "{\"sql\": \"\", \"refuse\": true, \"reason\": \"The database does not contain information about job offers or their acceptance rates. It only tracks job postings.\"}",
+ "prompt_tokens": 2326,
+ "output_tokens": 35,
+ "thinking_tokens": 0,
+ "latency_ms": 512.4572500062641,
+ "parse_error": null
+}

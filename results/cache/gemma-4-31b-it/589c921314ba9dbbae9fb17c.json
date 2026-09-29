@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family_label FROM mart_comp_by_family WHERE seniority IS NULL AND family IS NOT NULL ORDER BY p50 DESC LIMIT 1",
+ "refuse": false,
+ "reason": "The mart_comp_by_family table provides pre-calculated median pay (p50) for role families. Filtering for seniority IS NULL and family IS NOT NULL retrieves the aggregate median for each family across all seniority levels.",
+ "raw": "```json\n{\"sql\": \"SELECT family_label FROM mart_comp_by_family WHERE seniority IS NULL AND family IS NOT NULL ORDER BY p50 DESC LIMIT 1\", \"refuse\": false, \"reason\": \"The mart_comp_by_family table provides pre-calculated median pay (p50) for role families. Filtering for seniority IS NULL and family IS NOT NULL retrieves the aggregate median for each family across all seniority levels.\"}\n```",
+ "prompt_tokens": 2105,
+ "output_tokens": 97,
+ "thinking_tokens": 1859,
+ "latency_ms": 56806.70187500073,
+ "parse_error": null
+}

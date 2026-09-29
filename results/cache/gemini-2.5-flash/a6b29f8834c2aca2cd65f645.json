@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(DISTINCT listing_key) AS open_remote_us_listings FROM fct_posting WHERE is_open = true AND remote_us = true AND is_canonical_listing = true AND published_at >= '2026-07-01' AND published_at < '2026-10-01'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT count(DISTINCT listing_key) AS open_remote_us_listings FROM fct_posting WHERE is_open = true AND remote_us = true AND is_canonical_listing = true AND published_at >= '2026-07-01' AND published_at < '2026-10-01'\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2157,
+ "output_tokens": 90,
+ "thinking_tokens": 0,
+ "latency_ms": 900.1070829981472,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT SUM(open_listings) FROM mart_daily_market WHERE family = 'AI' OR family_label = 'AI'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT SUM(open_listings) FROM mart_daily_market WHERE family = 'AI' OR family_label = 'AI'\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 1012,
+ "output_tokens": 50,
+ "thinking_tokens": 0,
+ "latency_ms": 589.6454169997014,
+ "parse_error": null
+}

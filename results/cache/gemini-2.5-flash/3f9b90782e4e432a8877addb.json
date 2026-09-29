@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT strftime(published_at, '%Y-%m') AS month, COUNT(DISTINCT listing_key) AS open_remote_us_listings FROM fct_posting WHERE remote_us = TRUE AND is_open = TRUE AND strftime(published_at, '%Y') = '2026' GROUP BY month ORDER BY month",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT strftime(published_at, '%Y-%m') AS month, COUNT(DISTINCT listing_key) AS open_remote_us_listings FROM fct_posting WHERE remote_us = TRUE AND is_open = TRUE AND strftime(published_at, '%Y') = '2026' GROUP BY month ORDER BY month\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 1024,
+ "output_tokens": 88,
+ "thinking_tokens": 0,
+ "latency_ms": 1020.7645409973338,
+ "parse_error": null
+}

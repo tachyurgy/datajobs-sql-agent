@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(*) AS postings_count FROM fct_posting f JOIN dim_company d ON f.company_key = d.company_key WHERE d.platform = 'lever'",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT count(*) AS postings_count FROM fct_posting f JOIN dim_company d ON f.company_key = d.company_key WHERE d.platform = 'lever'\", \"refuse\": false, \"reason\": \"\"}\n```",
+ "prompt_tokens": 2470,
+ "output_tokens": 57,
+ "thinking_tokens": 1005,
+ "latency_ms": 31783.808209002018,
+ "parse_error": null
+}

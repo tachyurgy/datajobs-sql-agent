@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(*) AS postings FROM fct_posting WHERE lower(workplace) = 'hybrid'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT count(*) AS postings FROM fct_posting WHERE lower(workplace) = 'hybrid'\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2104,
+ "output_tokens": 34,
+ "thinking_tokens": 0,
+ "latency_ms": 546.080083004199,
+ "parse_error": null
+}

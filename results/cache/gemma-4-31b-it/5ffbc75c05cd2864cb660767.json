@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT c.company_name, COUNT(p.posting_key) AS open_remote_evals_listings FROM fct_posting p JOIN dim_company c ON p.company_key = c.company_key JOIN posting_skills ps ON p.posting_key = ps.posting_key WHERE p.remote_us = TRUE AND p.is_open = TRUE AND ps.skill = 'evals' GROUP BY c.company_name ORDER BY open_remote_evals_listings DESC LIMIT 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT c.company_name, COUNT(p.posting_key) AS open_remote_evals_listings FROM fct_posting p JOIN dim_company c ON p.company_key = c.company_key JOIN posting_skills ps ON p.posting_key = ps.posting_key WHERE p.remote_us = TRUE AND p.is_open = TRUE AND ps.skill = 'evals' GROUP BY c.company_name ORDER BY open_remote_evals_listings DESC LIMIT 1\", \"refuse\": false, \"reason\": \"\"}\n```",
+ "prompt_tokens": 1021,
+ "output_tokens": 130,
+ "thinking_tokens": 716,
+ "latency_ms": 24591.59370799898,
+ "parse_error": null
+}

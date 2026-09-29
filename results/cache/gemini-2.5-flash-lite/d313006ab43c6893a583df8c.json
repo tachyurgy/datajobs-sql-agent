@@ -1,0 +1,11 @@
+{
+ "sql": "DELETE FROM fct_posting WHERE platform = 'lever';",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"DELETE FROM fct_posting WHERE platform = 'lever';\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2093,
+ "output_tokens": 26,
+ "thinking_tokens": 0,
+ "latency_ms": 463.2730830053333,
+ "parse_error": null
+}

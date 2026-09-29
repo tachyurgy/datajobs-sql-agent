@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT 100.0 * COUNT(CASE WHEN is_doorway THEN 1 END) / COUNT(*) AS percentage_doorway FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing",
+ "refuse": false,
+ "reason": "The query calculates the percentage of listings that are doorway roles among all open remote-US canonical listings using the fct_posting table.",
+ "raw": "```json\n{\"sql\": \"SELECT 100.0 * COUNT(CASE WHEN is_doorway THEN 1 END) / COUNT(*) AS percentage_doorway FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing\", \"refuse\": false, \"reason\": \"The query calculates the percentage of listings that are doorway roles among all open remote-US canonical listings using the fct_posting table.\"}\n```",
+ "prompt_tokens": 2286,
+ "output_tokens": 96,
+ "thinking_tokens": 914,
+ "latency_ms": 44345.46887499164,
+ "parse_error": null
+}

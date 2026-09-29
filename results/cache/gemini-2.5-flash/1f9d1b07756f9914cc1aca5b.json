@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT t1.family, t1.family_label, t1.company_name, t1.comp_mid_usd FROM mart_doorway_roles AS t1 WHERE t1.remote_us IS TRUE AND t1.is_open IS TRUE ORDER BY t1.comp_mid_usd DESC",
+ "refuse": true,
+ "reason": "The mart_doorway_roles table does not contain an 'is_open' column. The fct_posting table has 'is_open' but not 'company_name'. Therefore, I cannot filter for open listings and also retrieve the company name along with the pay midpoint for remote-US roles.",
+ "raw": "{\"sql\": \"SELECT t1.family, t1.family_label, t1.company_name, t1.comp_mid_usd FROM mart_doorway_roles AS t1 WHERE t1.remote_us IS TRUE AND t1.is_open IS TRUE ORDER BY t1.comp_mid_usd DESC\", \"refuse\": true, \"reason\": \"The mart_doorway_roles table does not contain an 'is_open' column. The fct_posting table has 'is_open' but not 'company_name'. Therefore, I cannot filter for open listings and also retrieve the company name along with the pay midpoint for remote-US roles.\"}",
+ "prompt_tokens": 1029,
+ "output_tokens": 146,
+ "thinking_tokens": 0,
+ "latency_ms": 1640.8000829978846,
+ "parse_error": null
+}

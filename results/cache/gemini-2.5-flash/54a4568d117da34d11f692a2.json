@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT title, company_name, published_at FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing ORDER BY published_at ASC LIMIT 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT title, company_name, published_at FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing ORDER BY published_at ASC LIMIT 1\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2193,
+ "output_tokens": 53,
+ "thinking_tokens": 0,
+ "latency_ms": 817.5789999950211,
+ "parse_error": null
+}

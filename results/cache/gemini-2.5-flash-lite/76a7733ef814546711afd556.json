@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(*) AS listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing AND url LIKE '%visa%'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT count(*) AS listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing AND url LIKE '%visa%'\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2287,
+ "output_tokens": 45,
+ "thinking_tokens": 0,
+ "latency_ms": 726.1445419862866,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(DISTINCT posting_key) AS listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing AND published_at < (CURRENT_DATE - INTERVAL '1 year')",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT count(DISTINCT posting_key) AS listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing AND published_at < (CURRENT_DATE - INTERVAL '1 year')\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2349,
+ "output_tokens": 59,
+ "thinking_tokens": 0,
+ "latency_ms": 739.3072500126436,
+ "parse_error": null
+}

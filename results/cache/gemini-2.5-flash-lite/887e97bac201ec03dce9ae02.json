@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The database does not contain information about the number of applicants for each posting. The available tables track job postings, company details, skills, salary information, and crawl coverage, but not application counts.",
+ "raw": "{\"sql\": \"\", \"refuse\": true, \"reason\": \"The database does not contain information about the number of applicants for each posting. The available tables track job postings, company details, skills, salary information, and crawl coverage, but not application counts.\"}",
+ "prompt_tokens": 1013,
+ "output_tokens": 54,
+ "thinking_tokens": 0,
+ "latency_ms": 605.2436669997405,
+ "parse_error": null
+}

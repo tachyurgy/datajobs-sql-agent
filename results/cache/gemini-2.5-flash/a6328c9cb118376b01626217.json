@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT CAST(SUM(CASE WHEN comp_mid_usd IS NOT NULL THEN 1 ELSE 0 END) AS DOUBLE) / COUNT(*) AS pay_disclosure_rate FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT CAST(SUM(CASE WHEN comp_mid_usd IS NOT NULL THEN 1 ELSE 0 END) AS DOUBLE) / COUNT(*) AS pay_disclosure_rate FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2149,
+ "output_tokens": 69,
+ "thinking_tokens": 0,
+ "latency_ms": 885.4217500193045,
+ "parse_error": null
+}

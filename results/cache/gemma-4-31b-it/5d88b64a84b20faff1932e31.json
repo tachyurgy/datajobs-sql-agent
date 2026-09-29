@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT share FROM mart_skill_demand WHERE family = 'data_analyst' AND skill = 'SQL' AND scope = 'all'",
+ "refuse": false,
+ "reason": "The mart_skill_demand table specifically tracks the share of open remote-US listings per family mentioning each skill.",
+ "raw": "```json\n{\"sql\": \"SELECT share FROM mart_skill_demand WHERE family = 'data_analyst' AND skill = 'SQL' AND scope = 'all'\", \"refuse\": false, \"reason\": \"The mart_skill_demand table specifically tracks the share of open remote-US listings per family mentioning each skill.\"}\n```",
+ "prompt_tokens": 2189,
+ "output_tokens": 72,
+ "thinking_tokens": 508,
+ "latency_ms": 17462.3769170139,
+ "parse_error": null
+}

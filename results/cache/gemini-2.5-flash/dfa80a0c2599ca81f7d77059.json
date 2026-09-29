@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family, company_name, comp_mid_usd FROM fct_posting AS fp JOIN dim_company AS dc ON fp.company_key = dc.company_key WHERE is_open AND remote_us AND is_canonical_listing QUALIFY ROW_NUMBER() OVER (PARTITION BY family ORDER BY comp_mid_usd DESC) = 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT family, company_name, comp_mid_usd FROM fct_posting AS fp JOIN dim_company AS dc ON fp.company_key = dc.company_key WHERE is_open AND remote_us AND is_canonical_listing QUALIFY ROW_NUMBER() OVER (PARTITION BY family ORDER BY comp_mid_usd DESC) = 1\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2282,
+ "output_tokens": 90,
+ "thinking_tokens": 0,
+ "latency_ms": 1084.6690420003142,
+ "parse_error": null
+}

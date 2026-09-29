@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(*) AS open_remote_us_listings FROM fct_posting WHERE is_open = true AND remote_us = true AND is_canonical_listing = true",
+ "refuse": false,
+ "reason": "The question asks for the count of open remote-US data listings, which can be determined by filtering fct_posting using the default market filters provided in the notes.",
+ "raw": "```json\n{\"sql\": \"SELECT count(*) AS open_remote_us_listings FROM fct_posting WHERE is_open = true AND remote_us = true AND is_canonical_listing = true\", \"refuse\": false, \"reason\": \"The question asks for the count of open remote-US data listings, which can be determined by filtering fct_posting using the default market filters provided in the notes.\"}\n```",
+ "prompt_tokens": 2078,
+ "output_tokens": 91,
+ "thinking_tokens": 432,
+ "latency_ms": 15833.071042026859,
+ "parse_error": null
+}

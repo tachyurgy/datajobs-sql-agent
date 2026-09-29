@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(*) AS remote_jobs FROM fct_posting WHERE remote_us",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT count(*) AS remote_jobs FROM fct_posting WHERE remote_us\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2630,
+ "output_tokens": 31,
+ "thinking_tokens": 0,
+ "latency_ms": 4524.676083005033,
+ "parse_error": null
+}

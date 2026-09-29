@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT ps.cluster_label, COUNT(DISTINCT fp.posting_key) AS listing_count FROM fct_posting fp JOIN posting_skills ps ON fp.posting_key = ps.posting_key WHERE fp.is_open = TRUE AND fp.remote_us = TRUE AND fp.is_canonical_listing = TRUE GROUP BY ps.cluster_label",
+ "refuse": false,
+ "reason": "The query joins the postings fact table with the skills bridge table, filters for open remote-US canonical listings, and counts distinct postings per skill cluster.",
+ "raw": "```json\n{\"sql\": \"SELECT ps.cluster_label, COUNT(DISTINCT fp.posting_key) AS listing_count FROM fct_posting fp JOIN posting_skills ps ON fp.posting_key = ps.posting_key WHERE fp.is_open = TRUE AND fp.remote_us = TRUE AND fp.is_canonical_listing = TRUE GROUP BY ps.cluster_label\", \"refuse\": false, \"reason\": \"The query joins the postings fact table with the skills bridge table, filters for open remote-US canonical listings, and counts distinct postings per skill cluster.\"}\n```",
+ "prompt_tokens": 2234,
+ "output_tokens": 128,
+ "thinking_tokens": 705,
+ "latency_ms": 25386.185209004907,
+ "parse_error": null
+}

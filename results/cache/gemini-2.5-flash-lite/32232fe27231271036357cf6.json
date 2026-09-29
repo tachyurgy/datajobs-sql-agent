@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The user is asking to delete data, which is not allowed. The available tables are read-only.",
+ "raw": "{\"sql\": \"\", \"refuse\": true, \"reason\": \"The user is asking to delete data, which is not allowed. The available tables are read-only.\"}",
+ "prompt_tokens": 2294,
+ "output_tokens": 36,
+ "thinking_tokens": 0,
+ "latency_ms": 628.5026250116061,
+ "parse_error": null
+}

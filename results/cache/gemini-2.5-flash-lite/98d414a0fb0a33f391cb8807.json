@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT\n  CASE WHEN T1.listings_mentioning > T2.listings_mentioning THEN 'Python' ELSE 'SQL' END AS more_in_demand\nFROM mart_skill_demand AS T1\nINNER JOIN mart_skill_demand AS T2 ON T1.family = T2.family\nWHERE\n  T1.skill = 'Python' AND T2.skill = 'SQL' AND T1.scope = 'all' AND T2.scope = 'all'\nORDER BY\n  T1.listings_mentioning DESC,\n  T2.listings_mentioning DESC\nLIMIT 1;",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT\\n  CASE WHEN T1.listings_mentioning > T2.listings_mentioning THEN 'Python' ELSE 'SQL' END AS more_in_demand\\nFROM mart_skill_demand AS T1\\nINNER JOIN mart_skill_demand AS T2 ON T1.family = T2.family\\nWHERE\\n  T1.skill = 'Python' AND T2.skill = 'SQL' AND T1.scope = 'all' AND T2.scope = 'all'\\nORDER BY\\n  T1.listings_mentioning DESC,\\n  T2.listings_mentioning DESC\\nLIMIT 1;\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 1013,
+ "output_tokens": 164,
+ "thinking_tokens": 0,
+ "latency_ms": 942.59795799735,
+ "parse_error": null
+}

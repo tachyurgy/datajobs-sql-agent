@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The available tables do not contain company ratings. The question asks to rank companies by Glassdoor rating, but there is no column or table that provides this information.",
+ "raw": "{\"sql\": \"\", \"refuse\": true, \"reason\": \"The available tables do not contain company ratings. The question asks to rank companies by Glassdoor rating, but there is no column or table that provides this information.\"}",
+ "prompt_tokens": 2562,
+ "output_tokens": 47,
+ "thinking_tokens": 0,
+ "latency_ms": 787.458125007106,
+ "parse_error": null
+}

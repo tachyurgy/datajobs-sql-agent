@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family, COUNT(*) AS open_remote_us_listings, CAST(COUNT(*) AS REAL) / (SELECT COUNT(*) FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing) AS share FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing GROUP BY family ORDER BY open_remote_us_listings DESC",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT family, COUNT(*) AS open_remote_us_listings, CAST(COUNT(*) AS REAL) / (SELECT COUNT(*) FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing) AS share FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing GROUP BY family ORDER BY open_remote_us_listings DESC\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2495,
+ "output_tokens": 95,
+ "thinking_tokens": 0,
+ "latency_ms": 668.521082989173,
+ "parse_error": null
+}

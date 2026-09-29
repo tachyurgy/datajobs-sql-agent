@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(*) AS listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing AND published_at::DATE BETWEEN DATE '2026-09-29' - INTERVAL '29 day' AND DATE '2026-09-29'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT count(*) AS listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing AND published_at::DATE BETWEEN DATE '2026-09-29' - INTERVAL '29 day' AND DATE '2026-09-29'\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2374,
+ "output_tokens": 79,
+ "thinking_tokens": 0,
+ "latency_ms": 808.2287499855738,
+ "parse_error": null
+}

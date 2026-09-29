@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The available tables do not contain information about gender or hiring outcomes. The schema only covers job postings, skills, and company job boards.",
+ "raw": "{\"sql\": \"\", \"refuse\": true, \"reason\": \"The available tables do not contain information about gender or hiring outcomes. The schema only covers job postings, skills, and company job boards.\"}",
+ "prompt_tokens": 2625,
+ "output_tokens": 42,
+ "thinking_tokens": 0,
+ "latency_ms": 693.0203330121003,
+ "parse_error": null
+}

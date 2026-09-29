@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT CAST(SUM(CASE WHEN is_doorway THEN 1 ELSE 0 END) AS DOUBLE) * 100 / COUNT(*) FROM fct_posting WHERE is_open AND remote_us",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT CAST(SUM(CASE WHEN is_doorway THEN 1 ELSE 0 END) AS DOUBLE) * 100 / COUNT(*) FROM fct_posting WHERE is_open AND remote_us\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 1017,
+ "output_tokens": 58,
+ "thinking_tokens": 0,
+ "latency_ms": 1006.4302919781767,
+ "parse_error": null
+}

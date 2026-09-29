@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT DISTINCT url FROM fct_posting WHERE remote_us = true AND is_canonical_listing = true AND url LIKE '%visa%'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT DISTINCT url FROM fct_posting WHERE remote_us = true AND is_canonical_listing = true AND url LIKE '%visa%'\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2090,
+ "output_tokens": 43,
+ "thinking_tokens": 0,
+ "latency_ms": 593.5882499907166,
+ "parse_error": null
+}

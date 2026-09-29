@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT ps.skill, COUNT(fct.posting_key) AS listing_count FROM fct_posting fct JOIN posting_skills ps ON fct.posting_key = ps.posting_key WHERE fct.is_open = true AND fct.remote_us = true GROUP BY ps.skill ORDER BY listing_count DESC LIMIT 10",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT ps.skill, COUNT(fct.posting_key) AS listing_count FROM fct_posting fct JOIN posting_skills ps ON fct.posting_key = ps.posting_key WHERE fct.is_open = true AND fct.remote_us = true GROUP BY ps.skill ORDER BY listing_count DESC LIMIT 10\", \"refuse\": false, \"reason\": \"\"}\n```",
+ "prompt_tokens": 1031,
+ "output_tokens": 96,
+ "thinking_tokens": 196,
+ "latency_ms": 10263.844917004462,
+ "parse_error": null
+}

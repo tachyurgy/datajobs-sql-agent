@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT p50 FROM mart_comp_by_family WHERE family = 'ml_engineer' AND seniority IS NULL",
+ "refuse": false,
+ "reason": "The mart_comp_by_family table provides pre-calculated median (p50) pay midpoints for each family.",
+ "raw": "```json\n{\"sql\": \"SELECT p50 FROM mart_comp_by_family WHERE family = 'ml_engineer' AND seniority IS NULL\", \"refuse\": false, \"reason\": \"The mart_comp_by_family table provides pre-calculated median (p50) pay midpoints for each family.\"}\n```",
+ "prompt_tokens": 2548,
+ "output_tokens": 71,
+ "thinking_tokens": 268,
+ "latency_ms": 10401.292791997548,
+ "parse_error": null
+}

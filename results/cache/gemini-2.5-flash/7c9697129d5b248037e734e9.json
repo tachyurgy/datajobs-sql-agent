@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(DISTINCT d.company_name) AS companies FROM fct_posting f JOIN dim_company d USING (company_key) WHERE f.is_open AND f.remote_us AND f.is_canonical_listing",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT count(DISTINCT d.company_name) AS companies FROM fct_posting f JOIN dim_company d USING (company_key) WHERE f.is_open AND f.remote_us AND f.is_canonical_listing\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2312,
+ "output_tokens": 65,
+ "thinking_tokens": 0,
+ "latency_ms": 1009.2292089830153,
+ "parse_error": null
+}

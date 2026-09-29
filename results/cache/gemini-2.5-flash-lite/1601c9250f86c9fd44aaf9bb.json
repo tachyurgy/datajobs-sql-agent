@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT COUNT(posting_key) FROM fct_posting WHERE is_open = TRUE AND seniority = 'entry'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT COUNT(posting_key) FROM fct_posting WHERE is_open = TRUE AND seniority = 'entry'\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 2215,
+ "output_tokens": 47,
+ "thinking_tokens": 0,
+ "latency_ms": 588.2504170003813,
+ "parse_error": null
+}

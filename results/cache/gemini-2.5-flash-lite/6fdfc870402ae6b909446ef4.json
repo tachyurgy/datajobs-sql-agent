@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT date_trunc('month', published_at)::DATE AS month, count(*) AS listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing AND published_at::DATE BETWEEN DATE '2026-01-01' AND DATE '2026-12-31' GROUP BY month ORDER BY month",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT date_trunc('month', published_at)::DATE AS month, count(*) AS listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing AND published_at::DATE BETWEEN DATE '2026-01-01' AND DATE '2026-12-31' GROUP BY month ORDER BY month\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2581,
+ "output_tokens": 94,
+ "thinking_tokens": 0,
+ "latency_ms": 665.3902500111144,
+ "parse_error": null
+}

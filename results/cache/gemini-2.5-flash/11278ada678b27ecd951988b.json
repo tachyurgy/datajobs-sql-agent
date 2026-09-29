@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT t2.cluster_label, COUNT(DISTINCT t1.posting_key) AS num_open_remote_us_listings FROM fct_posting AS t1 INNER JOIN posting_skills AS t2 ON t1.posting_key = t2.posting_key WHERE t1.is_open = TRUE AND t1.remote_us = TRUE GROUP BY t2.cluster_label",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT t2.cluster_label, COUNT(DISTINCT t1.posting_key) AS num_open_remote_us_listings FROM fct_posting AS t1 INNER JOIN posting_skills AS t2 ON t1.posting_key = t2.posting_key WHERE t1.is_open = TRUE AND t1.remote_us = TRUE GROUP BY t2.cluster_label\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 1026,
+ "output_tokens": 100,
+ "thinking_tokens": 0,
+ "latency_ms": 980.3604999906383,
+ "parse_error": null
+}

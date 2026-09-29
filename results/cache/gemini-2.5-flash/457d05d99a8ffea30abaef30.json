@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT company_name FROM dim_company WHERE platform = 'ashby' AND remote_us_postings_open > 5",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT company_name FROM dim_company WHERE platform = 'ashby' AND remote_us_postings_open > 5\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2070,
+ "output_tokens": 42,
+ "thinking_tokens": 0,
+ "latency_ms": 938.048665993847,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT fct_posting.title, fct_posting.url FROM fct_posting JOIN dim_company ON fct_posting.company_key = dim_company.company_key WHERE dim_company.company_name = 'Reddit' AND fct_posting.family = 'ai_engineer' AND fct_posting.is_open = true AND fct_posting.remote_us = true AND fct_posting.is_canonical_listing = true",
+ "refuse": false,
+ "reason": "The query joins the postings and company tables to filter for Reddit's open, remote-US, canonical AI engineer listings.",
+ "raw": "```json\n{\"sql\": \"SELECT fct_posting.title, fct_posting.url FROM fct_posting JOIN dim_company ON fct_posting.company_key = dim_company.company_key WHERE dim_company.company_name = 'Reddit' AND fct_posting.family = 'ai_engineer' AND fct_posting.is_open = true AND fct_posting.remote_us = true AND fct_posting.is_canonical_listing = true\", \"refuse\": false, \"reason\": \"The query joins the postings and company tables to filter for Reddit's open, remote-US, canonical AI engineer listings.\"}\n```",
+ "prompt_tokens": 2135,
+ "output_tokens": 146,
+ "thinking_tokens": 278,
+ "latency_ms": 12982.804416998988,
+ "parse_error": null
+}

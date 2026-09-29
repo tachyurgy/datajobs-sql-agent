@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The available tables do not contain information about visa sponsorship.",
+ "raw": "{\"sql\": \"\", \"refuse\": true, \"reason\": \"The available tables do not contain information about visa sponsorship.\"}",
+ "prompt_tokens": 2449,
+ "output_tokens": 26,
+ "thinking_tokens": 0,
+ "latency_ms": 601.4732919866219,
+ "parse_error": null
+}

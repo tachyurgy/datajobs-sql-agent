@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT d.company_name, d.company_rating FROM dim_company d ORDER BY d.company_rating DESC",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT d.company_name, d.company_rating FROM dim_company d ORDER BY d.company_rating DESC\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2402,
+ "output_tokens": 40,
+ "thinking_tokens": 0,
+ "latency_ms": 550.3785839828197,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(comp_mid_usd) * 1.0 / count(*) AS share_with_pay FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT count(comp_mid_usd) * 1.0 / count(*) AS share_with_pay FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2373,
+ "output_tokens": 57,
+ "thinking_tokens": 0,
+ "latency_ms": 860.996667004656,
+ "parse_error": null
+}

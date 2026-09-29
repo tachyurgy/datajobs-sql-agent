@@ -1,0 +1,11 @@
+{
+ "sql": "WITH family_listings AS (SELECT family, count(*) AS listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing GROUP BY family), total_listings AS (SELECT sum(listings) AS total FROM family_listings) SELECT f.family, f.listings, (f.listings * 1.0 / t.total) AS share_of_total, dense_rank() OVER (ORDER BY f.listings DESC) AS rnk FROM family_listings f, total_listings t ORDER BY rnk",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"WITH family_listings AS (SELECT family, count(*) AS listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing GROUP BY family), total_listings AS (SELECT sum(listings) AS total FROM family_listings) SELECT f.family, f.listings, (f.listings * 1.0 / t.total) AS share_of_total, dense_rank() OVER (ORDER BY f.listings DESC) AS rnk FROM family_listings f, total_listings t ORDER BY rnk\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2333,
+ "output_tokens": 128,
+ "thinking_tokens": 0,
+ "latency_ms": 1205.6319169932976,
+ "parse_error": null
+}

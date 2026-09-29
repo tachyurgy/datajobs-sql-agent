@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The available tables do not contain information about venture funding raised by companies. The schema includes details about job postings, skills, and company crawl information, but not financial funding data.",
+ "raw": "{\"sql\": \"\", \"refuse\": true, \"reason\": \"The available tables do not contain information about venture funding raised by companies. The schema includes details about job postings, skills, and company crawl information, but not financial funding data.\"}",
+ "prompt_tokens": 2121,
+ "output_tokens": 50,
+ "thinking_tokens": 0,
+ "latency_ms": 628.1087920069695,
+ "parse_error": null
+}

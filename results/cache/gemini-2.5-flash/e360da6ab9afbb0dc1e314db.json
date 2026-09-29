@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT company_name, remote_us_postings_open FROM dim_company WHERE remote_us_postings_open > 0 ORDER BY remote_us_postings_open DESC LIMIT 3",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT company_name, remote_us_postings_open FROM dim_company WHERE remote_us_postings_open > 0 ORDER BY remote_us_postings_open DESC LIMIT 3\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2145,
+ "output_tokens": 58,
+ "thinking_tokens": 0,
+ "latency_ms": 843.8766670005862,
+ "parse_error": null
+}

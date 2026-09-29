@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(*) AS phd_listings_count FROM fct_posting WHERE is_open = true AND remote_us = true AND is_canonical_listing = true AND degree_level = 'phd'",
+ "refuse": false,
+ "reason": "The query counts open, remote-US, canonical listings where the lowest degree requirement is a PhD using the fct_posting table.",
+ "raw": "```json\n{\"sql\": \"SELECT count(*) AS phd_listings_count FROM fct_posting WHERE is_open = true AND remote_us = true AND is_canonical_listing = true AND degree_level = 'phd'\", \"refuse\": false, \"reason\": \"The query counts open, remote-US, canonical listings where the lowest degree requirement is a PhD using the fct_posting table.\"}\n```",
+ "prompt_tokens": 2116,
+ "output_tokens": 90,
+ "thinking_tokens": 340,
+ "latency_ms": 74254.75312498747,
+ "parse_error": null
+}

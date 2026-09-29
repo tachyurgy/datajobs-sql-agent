@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT postings_scanned FROM mart_crawl_coverage ORDER BY crawl_date DESC LIMIT 1",
+ "refuse": false,
+ "reason": "The mart_crawl_coverage table contains the total number of postings scanned for each crawl date.",
+ "raw": "```json\n{\"sql\": \"SELECT postings_scanned FROM mart_crawl_coverage ORDER BY crawl_date DESC LIMIT 1\", \"refuse\": false, \"reason\": \"The mart_crawl_coverage table contains the total number of postings scanned for each crawl date.\"}\n```",
+ "prompt_tokens": 2105,
+ "output_tokens": 60,
+ "thinking_tokens": 236,
+ "latency_ms": 9474.373000004562,
+ "parse_error": null
+}

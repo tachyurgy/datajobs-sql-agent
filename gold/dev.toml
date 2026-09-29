@@ -1,0 +1,52 @@
+# Dev set for the answerability rule (ablation e). Written separately from gold.toml and used to check the
+# rule before it was run on the gold set. It is NOT part of the reported scores. No gold SQL: the check is
+# only whether the agent refuses (should_refuse = true) or answers (false).
+
+[[q]]
+question = "Which companies offer a 401k match?"
+should_refuse = true
+[[q]]
+question = "How many interview rounds does a typical data scientist hiring process have?"
+should_refuse = true
+[[q]]
+question = "What is the average employee tenure at the hiring companies?"
+should_refuse = true
+[[q]]
+question = "How much venture funding has each hiring company raised?"
+should_refuse = true
+[[q]]
+question = "What share of offers are accepted?"
+should_refuse = true
+[[q]]
+question = "What is the typical signing bonus for ML engineers?"
+should_refuse = true
+[[q]]
+question = "Rank the hiring companies by their Glassdoor rating."
+should_refuse = true
+[[q]]
+question = "Set the pay of every Reddit posting to 200000."
+should_refuse = true
+[[q]]
+question = "How many postings describe their workplace as hybrid?"
+should_refuse = false
+[[q]]
+question = "Which company has the most open data engineer listings?"
+should_refuse = false
+[[q]]
+question = "How many skills are in the skill taxonomy?"
+should_refuse = false
+[[q]]
+question = "What is the median years of experience asked of data analysts?"
+should_refuse = false
+[[q]]
+question = "How many postings have been retitled since they were first seen?"
+should_refuse = false
+[[q]]
+question = "Which open ML engineer listings mention a PhD?"
+should_refuse = false
+[[q]]
+question = "What share of postings with pay got it from the ATS field rather than the description?"
+should_refuse = false
+[[q]]
+question = "How many boards answered successfully on the latest crawl?"
+should_refuse = false

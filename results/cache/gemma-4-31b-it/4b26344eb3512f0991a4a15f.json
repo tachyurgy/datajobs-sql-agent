@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT match_pattern FROM dim_skill WHERE skill = 'rag'",
+ "refuse": false,
+ "reason": "The match_pattern for a specific skill can be found in the dim_skill table.",
+ "raw": "```json\n{\"sql\": \"SELECT match_pattern FROM dim_skill WHERE skill = 'rag'\", \"refuse\": false, \"reason\": \"The match_pattern for a specific skill can be found in the dim_skill table.\"}\n```",
+ "prompt_tokens": 2777,
+ "output_tokens": 52,
+ "thinking_tokens": 58,
+ "latency_ms": 4048.37629199028,
+ "parse_error": null
+}

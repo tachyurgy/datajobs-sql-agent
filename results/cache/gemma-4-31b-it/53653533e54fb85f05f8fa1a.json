@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(*) AS listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing",
+ "refuse": false,
+ "reason": "The query counts the number of open, remote-US canonical listings from the fct_posting table.",
+ "raw": "```json\n{\"sql\": \"SELECT count(*) AS listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing\", \"refuse\": false, \"reason\": \"The query counts the number of open, remote-US canonical listings from the fct_posting table.\"}\n```",
+ "prompt_tokens": 2495,
+ "output_tokens": 66,
+ "thinking_tokens": 172,
+ "latency_ms": 117651.63516698522,
+ "parse_error": null
+}

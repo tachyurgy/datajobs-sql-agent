@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT\n  CASE\n    WHEN EXTRACT(DOW FROM published_at) = 0 THEN 'Sunday'\n    WHEN EXTRACT(DOW FROM published_at) = 1 THEN 'Monday'\n    WHEN EXTRACT(DOW FROM published_at) = 2 THEN 'Tuesday'\n    WHEN EXTRACT(DOW FROM published_at) = 3 THEN 'Wednesday'\n    WHEN EXTRACT(DOW FROM published_at) = 4 THEN 'Thursday'\n    WHEN EXTRACT(DOW FROM published_at) = 5 THEN 'Friday'\n    WHEN EXTRACT(DOW FROM published_at) = 6 THEN 'Saturday'\n  END AS day_of_week,\n  COUNT(*) AS num_listings\nFROM\n  fct_posting\nWHERE\n  remote_us = TRUE AND is_open = TRUE\nGROUP BY\n  day_of_week\nORDER BY\n  num_listings DESC\nLIMIT 1;",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT\\n  CASE\\n    WHEN EXTRACT(DOW FROM published_at) = 0 THEN 'Sunday'\\n    WHEN EXTRACT(DOW FROM published_at) = 1 THEN 'Monday'\\n    WHEN EXTRACT(DOW FROM published_at) = 2 THEN 'Tuesday'\\n    WHEN EXTRACT(DOW FROM published_at) = 3 THEN 'Wednesday'\\n    WHEN EXTRACT(DOW FROM published_at) = 4 THEN 'Thursday'\\n    WHEN EXTRACT(DOW FROM published_at) = 5 THEN 'Friday'\\n    WHEN EXTRACT(DOW FROM published_at) = 6 THEN 'Saturday'\\n  END AS day_of_week,\\n  COUNT(*) AS num_listings\\nFROM\\n  fct_posting\\nWHERE\\n  remote_us = TRUE AND is_open = TRUE\\nGROUP BY\\n  day_of_week\\nORDER BY\\n  num_listings DESC\\nLIMIT 1;\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 1021,
+ "output_tokens": 243,
+ "thinking_tokens": 0,
+ "latency_ms": 1009.5354999939445,
+ "parse_error": null
+}

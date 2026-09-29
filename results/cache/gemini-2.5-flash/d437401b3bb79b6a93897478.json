@@ -1,0 +1,11 @@
+{
+ "sql": "WITH rag_postings AS (SELECT DISTINCT posting_key FROM posting_skills WHERE skill = 'RAG'), all_remote_us_postings AS (SELECT fp.posting_key, fp.comp_mid_usd FROM fct_posting AS fp WHERE fp.is_open AND fp.remote_us) SELECT 'Mentions RAG' AS category, MEDIAN(arp.comp_mid_usd) AS median_comp_mid_usd FROM all_remote_us_postings AS arp JOIN rag_postings AS rp ON arp.posting_key = rp.posting_key WHERE arp.comp_mid_usd IS NOT NULL UNION ALL SELECT 'Does Not Mention RAG' AS category, MEDIAN(arp.comp_mid_usd) AS median_comp_mid_usd FROM all_remote_us_postings AS arp LEFT JOIN rag_postings AS rp ON arp.posting_key = rp.posting_key WHERE rp.posting_key IS NULL AND arp.comp_mid_usd IS NOT NULL",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"WITH rag_postings AS (SELECT DISTINCT posting_key FROM posting_skills WHERE skill = 'RAG'), all_remote_us_postings AS (SELECT fp.posting_key, fp.comp_mid_usd FROM fct_posting AS fp WHERE fp.is_open AND fp.remote_us) SELECT 'Mentions RAG' AS category, MEDIAN(arp.comp_mid_usd) AS median_comp_mid_usd FROM all_remote_us_postings AS arp JOIN rag_postings AS rp ON arp.posting_key = rp.posting_key WHERE arp.comp_mid_usd IS NOT NULL UNION ALL SELECT 'Does Not Mention RAG' AS category, MEDIAN(arp.comp_mid_usd) AS median_comp_mid_usd FROM all_remote_us_postings AS arp LEFT JOIN rag_postings AS rp ON arp.posting_key = rp.posting_key WHERE rp.posting_key IS NULL AND arp.comp_mid_usd IS NOT NULL\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 1027,
+ "output_tokens": 234,
+ "thinking_tokens": 0,
+ "latency_ms": 1537.6052080246154,
+ "parse_error": null
+}

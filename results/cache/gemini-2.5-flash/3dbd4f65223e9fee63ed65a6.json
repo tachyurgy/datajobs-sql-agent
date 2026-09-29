@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family, family_label, MEDIAN(age_days_at_last_seen) AS median_age_days FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE GROUP BY family, family_label",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT family, family_label, MEDIAN(age_days_at_last_seen) AS median_age_days FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE GROUP BY family, family_label\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 1023,
+ "output_tokens": 65,
+ "thinking_tokens": 0,
+ "latency_ms": 802.0595829875674,
+ "parse_error": null
+}

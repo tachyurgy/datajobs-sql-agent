@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(DISTINCT s.posting_key) FROM posting_skills s JOIN fct_posting f ON s.posting_key = f.posting_key WHERE f.family = 'ml_engineer' AND f.is_open AND f.remote_us AND f.is_canonical_listing AND f.degree_level = 'phd'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT count(DISTINCT s.posting_key) FROM posting_skills s JOIN fct_posting f ON s.posting_key = f.posting_key WHERE f.family = 'ml_engineer' AND f.is_open AND f.remote_us AND f.is_canonical_listing AND f.degree_level = 'phd'\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 2542,
+ "output_tokens": 98,
+ "thinking_tokens": 0,
+ "latency_ms": 743.603750015609,
+ "parse_error": null
+}

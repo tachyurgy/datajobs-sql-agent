@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT T1.company_name FROM dim_company AS T1 INNER JOIN fct_posting AS T2 ON T1.company_key = T2.company_key INNER JOIN posting_skills AS T3 ON T2.posting_key = T3.posting_key WHERE T2.is_open = TRUE AND T2.remote_us = TRUE AND T3.skill = 'evals' GROUP BY T1.company_name ORDER BY count(T2.listing_key) DESC LIMIT 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT T1.company_name FROM dim_company AS T1 INNER JOIN fct_posting AS T2 ON T1.company_key = T2.company_key INNER JOIN posting_skills AS T3 ON T2.posting_key = T3.posting_key WHERE T2.is_open = TRUE AND T2.remote_us = TRUE AND T3.skill = 'evals' GROUP BY T1.company_name ORDER BY count(T2.listing_key) DESC LIMIT 1\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 1020,
+ "output_tokens": 125,
+ "thinking_tokens": 0,
+ "latency_ms": 923.0234590067994,
+ "parse_error": null
+}

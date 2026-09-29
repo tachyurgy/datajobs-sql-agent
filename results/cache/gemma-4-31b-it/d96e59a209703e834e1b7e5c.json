@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT board_url FROM dim_company WHERE company_name = 'Reddit'",
+ "refuse": false,
+ "reason": "The query retrieves the job board URL for the company named 'Reddit' from the dim_company table.",
+ "raw": "```json\n{\"sql\": \"SELECT board_url FROM dim_company WHERE company_name = 'Reddit'\", \"refuse\": false, \"reason\": \"The query retrieves the job board URL for the company named 'Reddit' from the dim_company table.\"}\n```",
+ "prompt_tokens": 2405,
+ "output_tokens": 57,
+ "thinking_tokens": 94,
+ "latency_ms": 5033.64591600257,
+ "parse_error": null
+}

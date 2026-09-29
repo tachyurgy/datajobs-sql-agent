@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT AVG(CASE WHEN EXISTS (SELECT 1 FROM posting_skills ps WHERE ps.posting_key = f.posting_key AND ps.skill = 'SQL') THEN 1.0 ELSE 0.0 END) AS sql_share FROM fct_posting f WHERE f.is_open = true AND f.remote_us = true AND f.family_label = 'Data Analyst'",
+ "refuse": false,
+ "reason": "The query calculates the share of open, remote-US data analyst listings that have a corresponding entry for 'SQL' in the posting_skills table.",
+ "raw": "```json\n{\"sql\": \"SELECT AVG(CASE WHEN EXISTS (SELECT 1 FROM posting_skills ps WHERE ps.posting_key = f.posting_key AND ps.skill = 'SQL') THEN 1.0 ELSE 0.0 END) AS sql_share FROM fct_posting f WHERE f.is_open = true AND f.remote_us = true AND f.family_label = 'Data Analyst'\", \"refuse\": false, \"reason\": \"The query calculates the share of open, remote-US data analyst listings that have a corresponding entry for 'SQL' in the posting_skills table.\"}\n```",
+ "prompt_tokens": 1019,
+ "output_tokens": 134,
+ "thinking_tokens": 1318,
+ "latency_ms": 43392.722833988955,
+ "parse_error": null
+}

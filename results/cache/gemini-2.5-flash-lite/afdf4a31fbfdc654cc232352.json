@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT SUM(open_listings) FROM mart_daily_market WHERE seniority = 'entry_level'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n\"sql\": \"SELECT SUM(open_listings) FROM mart_daily_market WHERE seniority = 'entry_level'\",\n\"refuse\": false,\n\"reason\": \"\"\n}",
+ "prompt_tokens": 1014,
+ "output_tokens": 41,
+ "thinking_tokens": 0,
+ "latency_ms": 545.9045000025071,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT COUNT(DISTINCT posting_key) AS listings_non_usd FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing AND comp_currency_original != 'USD'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT COUNT(DISTINCT posting_key) AS listings_non_usd FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing AND comp_currency_original != 'USD'\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2187,
+ "output_tokens": 58,
+ "thinking_tokens": 0,
+ "latency_ms": 798.2777500001248,
+ "parse_error": null
+}

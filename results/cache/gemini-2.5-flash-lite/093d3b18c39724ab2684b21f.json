@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT company_name, SUM(dim_company.remote_us_postings_open) AS total_remote_postings FROM dim_company GROUP BY company_name ORDER BY total_remote_postings DESC LIMIT 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT company_name, SUM(dim_company.remote_us_postings_open) AS total_remote_postings FROM dim_company GROUP BY company_name ORDER BY total_remote_postings DESC LIMIT 1\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2206,
+ "output_tokens": 63,
+ "thinking_tokens": 0,
+ "latency_ms": 583.3015840034932,
+ "parse_error": null
+}

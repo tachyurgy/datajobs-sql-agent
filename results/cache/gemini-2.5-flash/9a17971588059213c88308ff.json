@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT company_name, COUNT(DISTINCT posting_key) AS num_remote_data_postings FROM fct_posting AS fp JOIN dim_company AS dc ON fp.company_key = dc.company_key WHERE fp.remote_us = TRUE AND fp.family_label = 'Data' GROUP BY company_name ORDER BY num_remote_data_postings DESC LIMIT 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT company_name, COUNT(DISTINCT posting_key) AS num_remote_data_postings FROM fct_posting AS fp JOIN dim_company AS dc ON fp.company_key = dc.company_key WHERE fp.remote_us = TRUE AND fp.family_label = 'Data' GROUP BY company_name ORDER BY num_remote_data_postings DESC LIMIT 1\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 1014,
+ "output_tokens": 99,
+ "thinking_tokens": 0,
+ "latency_ms": 962.3519580054563,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(DISTINCT f.posting_key) AS listings FROM fct_posting f JOIN posting_skills s1 ON f.posting_key = s1.posting_key JOIN posting_skills s2 ON f.posting_key = s2.posting_key WHERE f.is_open AND f.remote_us AND f.is_canonical_listing AND s1.skill = 'python' AND s2.skill = 'sql'",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT count(DISTINCT f.posting_key) AS listings FROM fct_posting f JOIN posting_skills s1 ON f.posting_key = s1.posting_key JOIN posting_skills s2 ON f.posting_key = s2.posting_key WHERE f.is_open AND f.remote_us AND f.is_canonical_listing AND s1.skill = 'python' AND s2.skill = 'sql'\", \"refuse\": false, \"reason\": null}\n```",
+ "prompt_tokens": 2456,
+ "output_tokens": 114,
+ "thinking_tokens": 784,
+ "latency_ms": 26984.266499988735,
+ "parse_error": null
+}

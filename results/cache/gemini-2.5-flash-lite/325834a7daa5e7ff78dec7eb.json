@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT T1.family, T1.comp_mid_usd, T2.company_name FROM fct_posting AS T1 INNER JOIN dim_company AS T2 ON T1.company_key = T2.company_key WHERE T1.is_open AND T1.remote_us AND T1.is_canonical_listing ORDER BY T1.comp_mid_usd DESC",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT T1.family, T1.comp_mid_usd, T2.company_name FROM fct_posting AS T1 INNER JOIN dim_company AS T2 ON T1.company_key = T2.company_key WHERE T1.is_open AND T1.remote_us AND T1.is_canonical_listing ORDER BY T1.comp_mid_usd DESC\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 2444,
+ "output_tokens": 109,
+ "thinking_tokens": 0,
+ "latency_ms": 848.1835829734337,
+ "parse_error": null
+}

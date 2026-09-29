@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT open_listings FROM mart_daily_market WHERE crawl_date = '2026-09-29' AND remote_us = true AND family IS NULL AND seniority IS NULL",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT open_listings FROM mart_daily_market WHERE crawl_date = '2026-09-29' AND remote_us = true AND family IS NULL AND seniority IS NULL\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2332,
+ "output_tokens": 56,
+ "thinking_tokens": 0,
+ "latency_ms": 880.4573329980485,
+ "parse_error": null
+}

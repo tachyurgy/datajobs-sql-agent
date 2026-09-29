@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT AVG(d.successful_crawls) FROM dim_company d",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT AVG(d.successful_crawls) FROM dim_company d\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2361,
+ "output_tokens": 31,
+ "thinking_tokens": 0,
+ "latency_ms": 553.2207920041401,
+ "parse_error": null
+}

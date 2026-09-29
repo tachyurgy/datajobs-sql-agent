@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT d.company_name FROM fct_posting f JOIN posting_skills ps ON f.posting_key = ps.posting_key JOIN dim_company d ON f.company_key = d.company_key WHERE f.is_open AND f.remote_us AND f.is_canonical_listing AND ps.skill = 'evals' GROUP BY d.company_name ORDER BY count(DISTINCT f.posting_key) DESC LIMIT 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT d.company_name FROM fct_posting f JOIN posting_skills ps ON f.posting_key = ps.posting_key JOIN dim_company d ON f.company_key = d.company_key WHERE f.is_open AND f.remote_us AND f.is_canonical_listing AND ps.skill = 'evals' GROUP BY d.company_name ORDER BY count(DISTINCT f.posting_key) DESC LIMIT 1\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2422,
+ "output_tokens": 113,
+ "thinking_tokens": 0,
+ "latency_ms": 695.7739589852281,
+ "parse_error": null
+}

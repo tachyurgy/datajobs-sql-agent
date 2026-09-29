@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(DISTINCT posting_key) AS entry_level_open_jobs FROM fct_posting WHERE seniority = 'entry' AND is_open",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT count(DISTINCT posting_key) AS entry_level_open_jobs FROM fct_posting WHERE seniority = 'entry' AND is_open\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2440,
+ "output_tokens": 47,
+ "thinking_tokens": 0,
+ "latency_ms": 19715.979000000516,
+ "parse_error": null
+}

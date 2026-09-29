@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT AVG(yoe_ask) AS average_yoe_ask FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND family = 'ai_engineer' AND yoe_ask IS NOT NULL",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT AVG(yoe_ask) AS average_yoe_ask FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND family = 'ai_engineer' AND yoe_ask IS NOT NULL\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2169,
+ "output_tokens": 63,
+ "thinking_tokens": 0,
+ "latency_ms": 832.8218749957159,
+ "parse_error": null
+}

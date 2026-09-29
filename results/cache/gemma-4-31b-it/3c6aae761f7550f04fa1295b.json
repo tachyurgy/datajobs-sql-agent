@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT ps.cluster, COUNT(DISTINCT fp.listing_key) AS open_remote_us_listings FROM fct_posting fp JOIN posting_skills ps ON fp.posting_key = ps.posting_key WHERE fp.is_open = true AND fp.remote_us = true GROUP BY ps.cluster",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT ps.cluster, COUNT(DISTINCT fp.listing_key) AS open_remote_us_listings FROM fct_posting fp JOIN posting_skills ps ON fp.posting_key = ps.posting_key WHERE fp.is_open = true AND fp.remote_us = true GROUP BY ps.cluster\", \"refuse\": false, \"reason\": null}\n```",
+ "prompt_tokens": 1027,
+ "output_tokens": 88,
+ "thinking_tokens": 965,
+ "latency_ms": 30327.95804197667,
+ "parse_error": null
+}

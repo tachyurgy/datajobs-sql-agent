@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT seniority, count(*) AS listings FROM fct_posting WHERE family = 'data_engineer' AND is_open AND remote_us AND is_canonical_listing GROUP BY seniority",
+ "refuse": false,
+ "reason": "The query counts open remote-US canonical listings for data engineers, grouped by seniority level.",
+ "raw": "```json\n{\"sql\": \"SELECT seniority, count(*) AS listings FROM fct_posting WHERE family = 'data_engineer' AND is_open AND remote_us AND is_canonical_listing GROUP BY seniority\", \"refuse\": false, \"reason\": \"The query counts open remote-US canonical listings for data engineers, grouped by seniority level.\"}\n```",
+ "prompt_tokens": 2417,
+ "output_tokens": 76,
+ "thinking_tokens": 191,
+ "latency_ms": 83844.82479197322,
+ "parse_error": null
+}

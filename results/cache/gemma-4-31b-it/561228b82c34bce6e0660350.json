@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(*) AS total_job_boards FROM dim_company",
+ "refuse": false,
+ "reason": "The dim_company table contains one row per company job board crawled.",
+ "raw": "```json\n{\"sql\": \"SELECT count(*) AS total_job_boards FROM dim_company\", \"refuse\": false, \"reason\": \"The dim_company table contains one row per company job board crawled.\"}\n```",
+ "prompt_tokens": 2372,
+ "output_tokens": 48,
+ "thinking_tokens": 73,
+ "latency_ms": 4246.387374994811,
+ "parse_error": null
+}

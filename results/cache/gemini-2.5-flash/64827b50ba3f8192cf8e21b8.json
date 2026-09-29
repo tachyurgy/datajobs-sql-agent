@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT strftime(published_at, '%Y-%m') AS month, count(*) AS listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing AND strftime(published_at, '%Y') = '2026' GROUP BY month ORDER BY month",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT strftime(published_at, '%Y-%m') AS month, count(*) AS listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing AND strftime(published_at, '%Y') = '2026' GROUP BY month ORDER BY month\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2419,
+ "output_tokens": 78,
+ "thinking_tokens": 0,
+ "latency_ms": 973.0954169936012,
+ "parse_error": null
+}

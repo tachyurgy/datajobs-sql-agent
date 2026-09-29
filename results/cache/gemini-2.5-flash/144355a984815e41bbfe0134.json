@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT T1.title, T2.company_name, T1.published_at FROM fct_posting AS T1 INNER JOIN dim_company AS T2 ON T1.company_key = T2.company_key WHERE T1.is_open = TRUE AND T1.remote_us = TRUE ORDER BY T1.published_at ASC LIMIT 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT T1.title, T2.company_name, T1.published_at FROM fct_posting AS T1 INNER JOIN dim_company AS T2 ON T1.company_key = T2.company_key WHERE T1.is_open = TRUE AND T1.remote_us = TRUE ORDER BY T1.published_at ASC LIMIT 1\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 1027,
+ "output_tokens": 94,
+ "thinking_tokens": 0,
+ "latency_ms": 922.1337089838926,
+ "parse_error": null
+}

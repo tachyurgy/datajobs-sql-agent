@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT 100.0 * count(CASE WHEN is_doorway THEN 1 END) / count(*) AS percentage_doorway FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT 100.0 * count(CASE WHEN is_doorway THEN 1 END) / count(*) AS percentage_doorway FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing\", \"refuse\": false, \"reason\": \"\"}\n```",
+ "prompt_tokens": 2448,
+ "output_tokens": 68,
+ "thinking_tokens": 1055,
+ "latency_ms": 54689.76204202045,
+ "parse_error": null
+}

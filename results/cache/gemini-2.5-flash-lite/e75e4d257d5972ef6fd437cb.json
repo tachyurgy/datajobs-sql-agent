@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT d.company_name, count(*) AS listings FROM fct_posting f JOIN dim_company d USING (company_key) WHERE f.family = 'ml_engineer' AND f.is_open AND f.remote_us AND f.is_canonical_listing GROUP BY d.company_name ORDER BY listings DESC",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT d.company_name, count(*) AS listings FROM fct_posting f JOIN dim_company d USING (company_key) WHERE f.family = 'ml_engineer' AND f.is_open AND f.remote_us AND f.is_canonical_listing GROUP BY d.company_name ORDER BY listings DESC\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2548,
+ "output_tokens": 84,
+ "thinking_tokens": 0,
+ "latency_ms": 692.9677499865647,
+ "parse_error": null
+}

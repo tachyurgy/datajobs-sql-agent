@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT DISTINCT url FROM fct_posting WHERE remote_reason LIKE '%visa%'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT DISTINCT url FROM fct_posting WHERE remote_reason LIKE '%visa%'\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 1013,
+ "output_tokens": 40,
+ "thinking_tokens": 0,
+ "latency_ms": 575.8914170146454,
+ "parse_error": null
+}

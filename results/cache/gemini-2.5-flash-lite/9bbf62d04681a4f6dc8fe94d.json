@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The available tables do not contain information about employee tenure at companies. The schema focuses on job postings and skills, not company HR data.",
+ "raw": "{\"sql\": \"\", \"refuse\": true, \"reason\": \"The available tables do not contain information about employee tenure at companies. The schema focuses on job postings and skills, not company HR data.\"}",
+ "prompt_tokens": 2523,
+ "output_tokens": 42,
+ "thinking_tokens": 0,
+ "latency_ms": 713.2753749901894,
+ "parse_error": null
+}

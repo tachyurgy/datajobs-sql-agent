@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT c.company_name, COUNT(DISTINCT fp.posting_key) AS open_remote_postings FROM fct_posting fp JOIN dim_company c ON fp.company_key = c.company_key WHERE fp.is_open AND fp.remote_us AND fp.family IN ('ai_engineer', 'analytics_engineer', 'data_analyst', 'data_engineer', 'data_scientist', 'ml_engineer', 'product_analyst') GROUP BY c.company_name ORDER BY open_remote_postings DESC LIMIT 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT c.company_name, COUNT(DISTINCT fp.posting_key) AS open_remote_postings FROM fct_posting fp JOIN dim_company c ON fp.company_key = c.company_key WHERE fp.is_open AND fp.remote_us AND fp.family IN ('ai_engineer', 'analytics_engineer', 'data_analyst', 'data_engineer', 'data_scientist', 'ml_engineer', 'product_analyst') GROUP BY c.company_name ORDER BY open_remote_postings DESC LIMIT 1\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2368,
+ "output_tokens": 135,
+ "thinking_tokens": 0,
+ "latency_ms": 925.6985829852056,
+ "parse_error": null
+}

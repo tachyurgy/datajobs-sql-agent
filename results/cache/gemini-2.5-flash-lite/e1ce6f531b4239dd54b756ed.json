@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The database schema does not contain information about the number of interview rounds for a hiring process.",
+ "raw": "{\"sql\": \"\", \"refuse\": true, \"reason\": \"The database schema does not contain information about the number of interview rounds for a hiring process.\"}",
+ "prompt_tokens": 2350,
+ "output_tokens": 33,
+ "thinking_tokens": 0,
+ "latency_ms": 512.5886670139153,
+ "parse_error": null
+}

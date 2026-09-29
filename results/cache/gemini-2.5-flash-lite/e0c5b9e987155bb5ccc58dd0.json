@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT T2.company_name, SUM(T1.open_listings) AS total_open_listings FROM mart_daily_market AS T1 INNER JOIN dim_company AS T2 ON T1.family = T2.family WHERE T1.remote_us = TRUE GROUP BY T2.company_name ORDER BY total_open_listings DESC LIMIT 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT T2.company_name, SUM(T1.open_listings) AS total_open_listings FROM mart_daily_market AS T1 INNER JOIN dim_company AS T2 ON T1.family = T2.family WHERE T1.remote_us = TRUE GROUP BY T2.company_name ORDER BY total_open_listings DESC LIMIT 1\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2027,
+ "output_tokens": 93,
+ "thinking_tokens": 0,
+ "latency_ms": 734.2818749893922,
+ "parse_error": null
+}

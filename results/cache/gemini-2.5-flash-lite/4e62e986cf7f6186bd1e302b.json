@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The question asks to modify data, which is not allowed. The available tables are read-only and do not support UPDATE operations.",
+ "raw": "{\"sql\": \"\", \"refuse\": true, \"reason\": \"The question asks to modify data, which is not allowed. The available tables are read-only and do not support UPDATE operations.\"}",
+ "prompt_tokens": 2319,
+ "output_tokens": 41,
+ "thinking_tokens": 0,
+ "latency_ms": 582.5414580176584,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT d.company_name, d.company_rating FROM dim_company d ORDER BY d.company_rating DESC",
+ "refuse": true,
+ "reason": "The table dim_company does not have a column named company_rating. The available columns are: company_key, platform, board_token, company_name, board_url, first_crawled, last_crawled_ok, successful_crawls, postings_on_board_latest, data_postings_ever, data_postings_open, remote_us_postings_open.",
+ "raw": "{\"sql\": \"SELECT d.company_name, d.company_rating FROM dim_company d ORDER BY d.company_rating DESC\", \"refuse\": true, \"reason\": \"The table dim_company does not have a column named company_rating. The available columns are: company_key, platform, board_token, company_name, board_url, first_crawled, last_crawled_ok, successful_crawls, postings_on_board_latest, data_postings_ever, data_postings_open, remote_us_postings_open.\"}",
+ "prompt_tokens": 2482,
+ "output_tokens": 130,
+ "thinking_tokens": 0,
+ "latency_ms": 716.9069160008803,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT strftime(published_at, '%w') AS day_of_week, count(DISTINCT listing_key) AS num_listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing GROUP BY day_of_week ORDER BY num_listings DESC LIMIT 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT strftime(published_at, '%w') AS day_of_week, count(DISTINCT listing_key) AS num_listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing GROUP BY day_of_week ORDER BY num_listings DESC LIMIT 1\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2087,
+ "output_tokens": 80,
+ "thinking_tokens": 0,
+ "latency_ms": 1014.1059170127846,
+ "parse_error": null
+}

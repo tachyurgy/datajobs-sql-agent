@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family_label, count(DISTINCT listing_key) AS open_remote_us_listings FROM fct_posting WHERE is_open = true AND remote_us = true GROUP BY family_label",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT family_label, count(DISTINCT listing_key) AS open_remote_us_listings FROM fct_posting WHERE is_open = true AND remote_us = true GROUP BY family_label\", \"refuse\": false, \"reason\": \"\"}\n```",
+ "prompt_tokens": 1017,
+ "output_tokens": 63,
+ "thinking_tokens": 321,
+ "latency_ms": 11410.483457992086,
+ "parse_error": null
+}

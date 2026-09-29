@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT\n              c.company_name\n            FROM\n              fct_posting AS p\n            JOIN\n              dim_company AS c\n            ON\n              p.company_key = c.company_key\n            WHERE\n              p.family = 'Data Science'\n              AND p.remote_us = TRUE\n            GROUP BY\n              c.company_name\n            ORDER BY\n              count(*) DESC\n            LIMIT 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT\\n              c.company_name\\n            FROM\\n              fct_posting AS p\\n            JOIN\\n              dim_company AS c\\n            ON\\n              p.company_key = c.company_key\\n            WHERE\\n              p.family = 'Data Science'\\n              AND p.remote_us = TRUE\\n            GROUP BY\\n              c.company_name\\n            ORDER BY\\n              count(*) DESC\\n            LIMIT 1\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 1014,
+ "output_tokens": 131,
+ "thinking_tokens": 0,
+ "latency_ms": 761.1599169904366,
+ "parse_error": null
+}

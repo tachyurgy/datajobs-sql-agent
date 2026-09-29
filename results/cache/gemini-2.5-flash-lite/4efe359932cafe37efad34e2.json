@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT CASE WHEN SUM(CASE WHEN ps.skill = 'rag' THEN 1 ELSE 0 END) > 0 THEN 'Mentions RAG' ELSE 'Does not mention RAG' END AS rag_mention_status, AVG(f.comp_mid_usd) AS median_pay_midpoint FROM fct_posting AS f LEFT JOIN posting_skills AS ps ON f.posting_key = ps.posting_key WHERE f.is_open AND f.remote_us AND f.is_canonical_listing GROUP BY rag_mention_status",
+ "refuse": false,
+ "reason": "The original query had a GROUP BY clause that contained an aggregate function, which is not allowed. The corrected query removes the aggregate from the GROUP BY clause. It calculates the average pay midpoint for postings that mention 'rag' and those that do not, filtering for open, remote-US, and canonical listings.",
+ "raw": "{\n  \"sql\": \"SELECT CASE WHEN SUM(CASE WHEN ps.skill = 'rag' THEN 1 ELSE 0 END) > 0 THEN 'Mentions RAG' ELSE 'Does not mention RAG' END AS rag_mention_status, AVG(f.comp_mid_usd) AS median_pay_midpoint FROM fct_posting AS f LEFT JOIN posting_skills AS ps ON f.posting_key = ps.posting_key WHERE f.is_open AND f.remote_us AND f.is_canonical_listing GROUP BY rag_mention_status\",\n  \"refuse\": false,\n  \"reason\": \"The original query had a GROUP BY clause that contained an aggregate function, which is not allowed. The corrected query removes the aggregate from the GROUP BY clause. It calculates the average pay midpoint for postings that mention 'rag' and those that do not, filtering for open, remote-US, and canonical listings.\"\n}",
+ "prompt_tokens": 2634,
+ "output_tokens": 204,
+ "thinking_tokens": 0,
+ "latency_ms": 1072.8893339983188,
+ "parse_error": null
+}

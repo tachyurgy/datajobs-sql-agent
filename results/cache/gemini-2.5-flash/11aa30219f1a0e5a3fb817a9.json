@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(DISTINCT posting_key) AS open_remote_us_listings_over_a_year FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND first_seen < (CURRENT_DATE - INTERVAL '1 year')",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT count(DISTINCT posting_key) AS open_remote_us_listings_over_a_year FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND first_seen < (CURRENT_DATE - INTERVAL '1 year')\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 1021,
+ "output_tokens": 69,
+ "thinking_tokens": 0,
+ "latency_ms": 907.7146659838036,
+ "parse_error": null
+}

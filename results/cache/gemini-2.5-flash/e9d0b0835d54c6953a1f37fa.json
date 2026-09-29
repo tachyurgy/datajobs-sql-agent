@@ -1,0 +1,11 @@
+{
+ "sql": "WITH overall_median AS (SELECT percentile_cont(0.5) WITHIN GROUP (ORDER BY comp_mid_usd) AS overall_median_pay FROM fct_posting WHERE is_open AND remote_us AND comp_mid_usd IS NOT NULL) SELECT seniority, percentile_cont(0.5) WITHIN GROUP (ORDER BY comp_mid_usd) AS median_pay_remote_us, (percentile_cont(0.5) WITHIN GROUP (ORDER BY comp_mid_usd) - (SELECT overall_median_pay FROM overall_median)) AS diff_from_overall_median FROM fct_posting WHERE is_open AND remote_us AND comp_mid_usd IS NOT NULL GROUP BY seniority ORDER BY seniority",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"WITH overall_median AS (SELECT percentile_cont(0.5) WITHIN GROUP (ORDER BY comp_mid_usd) AS overall_median_pay FROM fct_posting WHERE is_open AND remote_us AND comp_mid_usd IS NOT NULL) SELECT seniority, percentile_cont(0.5) WITHIN GROUP (ORDER BY comp_mid_usd) AS median_pay_remote_us, (percentile_cont(0.5) WITHIN GROUP (ORDER BY comp_mid_usd) - (SELECT overall_median_pay FROM overall_median)) AS diff_from_overall_median FROM fct_posting WHERE is_open AND remote_us AND comp_mid_usd IS NOT NULL GROUP BY seniority ORDER BY seniority\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 1033,
+ "output_tokens": 171,
+ "thinking_tokens": 0,
+ "latency_ms": 1336.1315420188475,
+ "parse_error": null
+}

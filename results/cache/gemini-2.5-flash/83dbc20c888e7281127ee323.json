@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(DISTINCT posting_key) FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND phd_mentioned = TRUE AND masters_mentioned = FALSE AND bachelors_mentioned = FALSE",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT count(DISTINCT posting_key) FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND phd_mentioned = TRUE AND masters_mentioned = FALSE AND bachelors_mentioned = FALSE\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 1021,
+ "output_tokens": 60,
+ "thinking_tokens": 0,
+ "latency_ms": 843.5899579781108,
+ "parse_error": null
+}

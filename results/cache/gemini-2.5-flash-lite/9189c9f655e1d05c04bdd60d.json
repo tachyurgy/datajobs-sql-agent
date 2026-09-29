@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT AVG(T2.data_postings_open) FROM fct_posting AS T1 INNER JOIN dim_company AS T2 ON T1.company_key = T2.company_key WHERE T1.is_open = TRUE GROUP BY T2.company_name",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT AVG(T2.data_postings_open) FROM fct_posting AS T1 INNER JOIN dim_company AS T2 ON T1.company_key = T2.company_key WHERE T1.is_open = TRUE GROUP BY T2.company_name\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2123,
+ "output_tokens": 75,
+ "thinking_tokens": 0,
+ "latency_ms": 737.1891250077169,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT platform, count(*) AS postings_count FROM fct_posting GROUP BY platform",
+ "refuse": false,
+ "reason": "The query counts the number of postings for each ATS platform using the platform column in the fct_posting table.",
+ "raw": "```json\n{\"sql\": \"SELECT platform, count(*) AS postings_count FROM fct_posting GROUP BY platform\", \"refuse\": false, \"reason\": \"The query counts the number of postings for each ATS platform using the platform column in the fct_posting table.\"}\n```",
+ "prompt_tokens": 2528,
+ "output_tokens": 60,
+ "thinking_tokens": 108,
+ "latency_ms": 5763.913292001234,
+ "parse_error": null
+}

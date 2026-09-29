@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(*) AS postings FROM fct_posting f JOIN dim_company d USING (company_key) WHERE d.platform = 'lever'",
+ "refuse": false,
+ "reason": "The query counts all data-role postings in fct_posting that are associated with companies using the 'lever' platform.",
+ "raw": "```json\n{\"sql\": \"SELECT count(*) AS postings FROM fct_posting f JOIN dim_company d USING (company_key) WHERE d.platform = 'lever'\", \"refuse\": false, \"reason\": \"The query counts all data-role postings in fct_posting that are associated with companies using the 'lever' platform.\"}\n```",
+ "prompt_tokens": 2308,
+ "output_tokens": 75,
+ "thinking_tokens": 179,
+ "latency_ms": 8023.715000017546,
+ "parse_error": null
+}

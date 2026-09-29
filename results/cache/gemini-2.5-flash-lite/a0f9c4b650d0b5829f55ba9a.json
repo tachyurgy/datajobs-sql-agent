@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT DISTINCT T1.company_name FROM dim_company AS T1 INNER JOIN fct_posting AS T2 ON T1.company_key = T2.company_key WHERE T2.comp_currency_original LIKE '%equity%' OR T2.comp_currency_original LIKE '%stock%'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT DISTINCT T1.company_name FROM dim_company AS T1 INNER JOIN fct_posting AS T2 ON T1.company_key = T2.company_key WHERE T2.comp_currency_original LIKE '%equity%' OR T2.comp_currency_original LIKE '%stock%'\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2209,
+ "output_tokens": 79,
+ "thinking_tokens": 0,
+ "latency_ms": 604.2406250198837,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family_label, COUNT(*) AS listing_count FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND is_canonical_listing = TRUE GROUP BY family_label",
+ "refuse": false,
+ "reason": "The query filters for open, remote-US, canonical listings and groups them by the role family label to provide the requested breakdown.",
+ "raw": "```json\n{\"sql\": \"SELECT family_label, COUNT(*) AS listing_count FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND is_canonical_listing = TRUE GROUP BY family_label\", \"refuse\": false, \"reason\": \"The query filters for open, remote-US, canonical listings and groups them by the role family label to provide the requested breakdown.\"}\n```",
+ "prompt_tokens": 2071,
+ "output_tokens": 88,
+ "thinking_tokens": 612,
+ "latency_ms": 20124.535707989708,
+ "parse_error": null
+}

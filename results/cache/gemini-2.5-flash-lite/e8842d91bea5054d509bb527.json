@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(DISTINCT s.posting_key) FROM posting_skills s JOIN fct_posting f ON s.posting_key = f.posting_key WHERE s.skill = 'dbt' AND f.is_open AND f.remote_us AND f.is_canonical_listing AND f.posting_key IN (SELECT posting_key FROM posting_skills WHERE skill = 'snowflake')",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT count(DISTINCT s.posting_key) FROM posting_skills s JOIN fct_posting f ON s.posting_key = f.posting_key WHERE s.skill = 'dbt' AND f.is_open AND f.remote_us AND f.is_canonical_listing AND f.posting_key IN (SELECT posting_key FROM posting_skills WHERE skill = 'snowflake')\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2799,
+ "output_tokens": 99,
+ "thinking_tokens": 0,
+ "latency_ms": 662.9955419921316,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT CAST(SUM(CASE WHEN comp_min_usd IS NOT NULL OR comp_max_usd IS NOT NULL THEN 1 ELSE 0 END) AS DOUBLE) / COUNT(*) FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT CAST(SUM(CASE WHEN comp_min_usd IS NOT NULL OR comp_max_usd IS NOT NULL THEN 1 ELSE 0 END) AS DOUBLE) / COUNT(*) FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 1019,
+ "output_tokens": 70,
+ "thinking_tokens": 0,
+ "latency_ms": 838.0543749954086,
+ "parse_error": null
+}

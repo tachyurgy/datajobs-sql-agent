@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The available tables do not contain information about the gender of hired individuals. The schema focuses on job postings, skills, and company data, not demographic information of applicants or hires.",
+ "raw": "{\"sql\": \"\", \"refuse\": true, \"reason\": \"The available tables do not contain information about the gender of hired individuals. The schema focuses on job postings, skills, and company data, not demographic information of applicants or hires.\"}",
+ "prompt_tokens": 2463,
+ "output_tokens": 50,
+ "thinking_tokens": 0,
+ "latency_ms": 644.2922500136774,
+ "parse_error": null
+}

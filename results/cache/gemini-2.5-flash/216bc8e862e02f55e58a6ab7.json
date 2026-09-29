@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family_label, p50 AS median_pay_usd FROM mart_comp_by_family WHERE family = 'data_scientist' AND seniority IS NULL",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT family_label, p50 AS median_pay_usd FROM mart_comp_by_family WHERE family = 'data_scientist' AND seniority IS NULL\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2158,
+ "output_tokens": 49,
+ "thinking_tokens": 0,
+ "latency_ms": 776.2337499880232,
+ "parse_error": null
+}

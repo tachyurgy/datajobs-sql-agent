@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(DISTINCT posting_key) AS ai_job_count FROM fct_posting WHERE family = 'ai_engineer' AND is_open = TRUE AND remote_us = TRUE AND is_canonical_listing = TRUE",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT count(DISTINCT posting_key) AS ai_job_count FROM fct_posting WHERE family = 'ai_engineer' AND is_open = TRUE AND remote_us = TRUE AND is_canonical_listing = TRUE\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2223,
+ "output_tokens": 63,
+ "thinking_tokens": 0,
+ "latency_ms": 802.3588749929331,
+ "parse_error": null
+}

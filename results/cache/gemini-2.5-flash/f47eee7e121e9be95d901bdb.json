@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT f.title, f.url FROM fct_posting f JOIN dim_company d USING (company_key) WHERE d.company_name = 'Reddit' AND f.family = 'ai_engineer' AND f.is_open AND f.remote_us AND f.is_canonical_listing",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT f.title, f.url FROM fct_posting f JOIN dim_company d USING (company_key) WHERE d.company_name = 'Reddit' AND f.family = 'ai_engineer' AND f.is_open AND f.remote_us AND f.is_canonical_listing\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2347,
+ "output_tokens": 80,
+ "thinking_tokens": 0,
+ "latency_ms": 870.0751669821329,
+ "parse_error": null
+}

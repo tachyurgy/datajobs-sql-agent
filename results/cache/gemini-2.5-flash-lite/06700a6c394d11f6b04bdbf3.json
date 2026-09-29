@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(DISTINCT posting_key) FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT count(DISTINCT posting_key) FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2494,
+ "output_tokens": 43,
+ "thinking_tokens": 0,
+ "latency_ms": 645.2318750089034,
+ "parse_error": null
+}

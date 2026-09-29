@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT COUNT(DISTINCT T1.posting_key) FROM fct_posting AS T1 INNER JOIN posting_skills AS T2 ON T1.posting_key = T2.posting_key WHERE T2.skill = 'dbt' AND T1.is_open = TRUE AND T1.remote_us = TRUE AND T1.is_canonical_listing = TRUE",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT COUNT(DISTINCT T1.posting_key) FROM fct_posting AS T1 INNER JOIN posting_skills AS T2 ON T1.posting_key = T2.posting_key WHERE T2.skill = 'dbt' AND T1.is_open = TRUE AND T1.remote_us = TRUE AND T1.is_canonical_listing = TRUE\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2831,
+ "output_tokens": 96,
+ "thinking_tokens": 0,
+ "latency_ms": 848.4759169805329,
+ "parse_error": null
+}

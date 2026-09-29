@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT AVG(fct_posting.yoe_ask) FROM fct_posting WHERE fct_posting.family = 'ai_engineer' AND fct_posting.is_open AND fct_posting.remote_us AND fct_posting.is_canonical_listing AND fct_posting.yoe_ask IS NOT NULL",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT AVG(fct_posting.yoe_ask) FROM fct_posting WHERE fct_posting.family = 'ai_engineer' AND fct_posting.is_open AND fct_posting.remote_us AND fct_posting.is_canonical_listing AND fct_posting.yoe_ask IS NOT NULL\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 2540,
+ "output_tokens": 97,
+ "thinking_tokens": 0,
+ "latency_ms": 675.7177910185419,
+ "parse_error": null
+}

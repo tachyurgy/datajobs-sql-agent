@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT\n  DATE_TRUNC('month', crawl_date) AS month,\n  SUM(open_listings) AS total_open_listings\nFROM mart_daily_market\nWHERE\n  family = 'ai_engineer' AND crawl_date >= '2026-06-01'\nGROUP BY\n  month\nORDER BY\n  month",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT\\n  DATE_TRUNC('month', crawl_date) AS month,\\n  SUM(open_listings) AS total_open_listings\\nFROM mart_daily_market\\nWHERE\\n  family = 'ai_engineer' AND crawl_date >= '2026-06-01'\\nGROUP BY\\n  month\\nORDER BY\\n  month\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 2209,
+ "output_tokens": 109,
+ "thinking_tokens": 0,
+ "latency_ms": 767.9327090154402,
+ "parse_error": null
+}

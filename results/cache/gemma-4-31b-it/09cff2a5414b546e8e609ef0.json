@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT CAST(COUNT(comp_mid_usd) AS DOUBLE) / COUNT(*) AS pay_disclosure_fraction FROM fct_posting WHERE is_open = true AND remote_us = true AND is_canonical_listing = true",
+ "refuse": false,
+ "reason": "The query calculates the fraction of open, remote-US, canonical listings that have a non-null pay midpoint, following the default market filters.",
+ "raw": "```json\n{\"sql\": \"SELECT CAST(COUNT(comp_mid_usd) AS DOUBLE) / COUNT(*) AS pay_disclosure_fraction FROM fct_posting WHERE is_open = true AND remote_us = true AND is_canonical_listing = true\", \"refuse\": false, \"reason\": \"The query calculates the fraction of open, remote-US, canonical listings that have a non-null pay midpoint, following the default market filters.\"}\n```",
+ "prompt_tokens": 2150,
+ "output_tokens": 98,
+ "thinking_tokens": 1658,
+ "latency_ms": 52125.22283301223,
+ "parse_error": null
+}

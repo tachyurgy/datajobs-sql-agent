@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT CASE WHEN ps.posting_key IS NOT NULL THEN 'Mentions RAG' ELSE 'Does not mention RAG' END AS rag_mention, median(f.comp_mid_usd) AS median_pay_midpoint FROM fct_posting f LEFT JOIN (SELECT DISTINCT posting_key FROM posting_skills WHERE skill = 'RAG') ps ON f.posting_key = ps.posting_key WHERE f.is_open = TRUE AND f.remote_us = TRUE AND f.is_canonical_listing = TRUE GROUP BY 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT CASE WHEN ps.posting_key IS NOT NULL THEN 'Mentions RAG' ELSE 'Does not mention RAG' END AS rag_mention, median(f.comp_mid_usd) AS median_pay_midpoint FROM fct_posting f LEFT JOIN (SELECT DISTINCT posting_key FROM posting_skills WHERE skill = 'RAG') ps ON f.posting_key = ps.posting_key WHERE f.is_open = TRUE AND f.remote_us = TRUE AND f.is_canonical_listing = TRUE GROUP BY 1\", \"refuse\": false, \"reason\": \"\"}\n```",
+ "prompt_tokens": 2112,
+ "output_tokens": 137,
+ "thinking_tokens": 932,
+ "latency_ms": 32253.959875000874,
+ "parse_error": null
+}

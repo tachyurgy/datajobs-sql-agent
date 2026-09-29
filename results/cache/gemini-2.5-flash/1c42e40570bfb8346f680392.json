@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT CAST(SUM(open_doorway_listings) AS DOUBLE) * 100 / SUM(open_listings) FROM mart_daily_market WHERE remote_us = TRUE",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT CAST(SUM(open_doorway_listings) AS DOUBLE) * 100 / SUM(open_listings) FROM mart_daily_market WHERE remote_us = TRUE\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2285,
+ "output_tokens": 54,
+ "thinking_tokens": 0,
+ "latency_ms": 773.2060840062331,
+ "parse_error": null
+}

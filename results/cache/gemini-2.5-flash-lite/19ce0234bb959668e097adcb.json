@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The schema does not contain any information about company ratings. I can only use the provided tables and columns.",
+ "raw": "{\"sql\": \"\", \"refuse\": true, \"reason\": \"The schema does not contain any information about company ratings. I can only use the provided tables and columns.\"}",
+ "prompt_tokens": 2564,
+ "output_tokens": 36,
+ "thinking_tokens": 0,
+ "latency_ms": 598.4750839998014,
+ "parse_error": null
+}

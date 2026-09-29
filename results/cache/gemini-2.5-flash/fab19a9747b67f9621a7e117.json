@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT COUNT(DISTINCT posting_key) AS listings_published_last_30_days FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing AND published_at >= '2026-09-29'::DATE - INTERVAL '30 day'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT COUNT(DISTINCT posting_key) AS listings_published_last_30_days FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing AND published_at >= '2026-09-29'::DATE - INTERVAL '30 day'\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2122,
+ "output_tokens": 79,
+ "thinking_tokens": 0,
+ "latency_ms": 937.8874170070048,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT min(comp_mid_usd) AS lowest_pay, max(comp_mid_usd) AS highest_pay FROM fct_posting WHERE family = 'data_analyst' AND is_open AND remote_us AND is_canonical_listing",
+ "refuse": false,
+ "reason": "The request asks for the minimum and maximum pay midpoints for open remote-US data analyst listings, which can be answered using the fct_posting table with the specified filters.",
+ "raw": "```json\n{\"sql\": \"SELECT min(comp_mid_usd) AS lowest_pay, max(comp_mid_usd) AS highest_pay FROM fct_posting WHERE family = 'data_analyst' AND is_open AND remote_us AND is_canonical_listing\", \"refuse\": false, \"reason\": \"The request asks for the minimum and maximum pay midpoints for open remote-US data analyst listings, which can be answered using the fct_posting table with the specified filters.\"}\n```",
+ "prompt_tokens": 2526,
+ "output_tokens": 110,
+ "thinking_tokens": 170,
+ "latency_ms": 8994.79362499551,
+ "parse_error": null
+}

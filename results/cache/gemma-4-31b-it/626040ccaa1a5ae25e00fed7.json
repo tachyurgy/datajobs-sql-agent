@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(DISTINCT company_key) AS company_count FROM fct_posting WHERE is_open = true AND remote_us = true",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT count(DISTINCT company_key) AS company_count FROM fct_posting WHERE is_open = true AND remote_us = true\", \"refuse\": false, \"reason\": \"\"}\n```",
+ "prompt_tokens": 1021,
+ "output_tokens": 50,
+ "thinking_tokens": 924,
+ "latency_ms": 28682.647250010632,
+ "parse_error": null
+}

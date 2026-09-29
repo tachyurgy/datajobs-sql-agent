@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT\n  CASE\n    WHEN EXISTS (\n      SELECT\n        1\n      FROM\n        posting_skills AS ps\n      WHERE\n        ps.posting_key = fp.posting_key AND ps.skill = 'RAG'\n    ) THEN 'Mentions RAG'\n    ELSE 'Does not mention RAG'\n  END AS rag_mention_status,\n  median(fp.comp_mid_usd) AS median_pay_midpoint_usd\nFROM\n  fct_posting AS fp\nWHERE\n  fp.is_open\n  AND fp.remote_us\n  AND fp.is_canonical_listing\n  AND fp.comp_mid_usd IS NOT NULL\nGROUP BY\n  rag_mention_status;",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT\\n  CASE\\n    WHEN EXISTS (\\n      SELECT\\n        1\\n      FROM\\n        posting_skills AS ps\\n      WHERE\\n        ps.posting_key = fp.posting_key AND ps.skill = 'RAG'\\n    ) THEN 'Mentions RAG'\\n    ELSE 'Does not mention RAG'\\n  END AS rag_mention_status,\\n  median(fp.comp_mid_usd) AS median_pay_midpoint_usd\\nFROM\\n  fct_posting AS fp\\nWHERE\\n  fp.is_open\\n  AND fp.remote_us\\n  AND fp.is_canonical_listing\\n  AND fp.comp_mid_usd IS NOT NULL\\nGROUP BY\\n  rag_mention_status;\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2111,
+ "output_tokens": 192,
+ "thinking_tokens": 0,
+ "latency_ms": 1310.0286250119098,
+ "parse_error": null
+}

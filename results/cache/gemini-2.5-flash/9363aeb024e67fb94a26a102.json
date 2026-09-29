@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT SUM(open_listings) AS open_remote_us_listings FROM mart_daily_market WHERE remote_us = TRUE AND crawl_date >= (SELECT MAX(crawl_date) FROM mart_daily_market) - INTERVAL '29 day' AND crawl_date <= (SELECT MAX(crawl_date) FROM mart_daily_market)",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT SUM(open_listings) AS open_remote_us_listings FROM mart_daily_market WHERE remote_us = TRUE AND crawl_date >= (SELECT MAX(crawl_date) FROM mart_daily_market) - INTERVAL '29 day' AND crawl_date <= (SELECT MAX(crawl_date) FROM mart_daily_market)\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 1028,
+ "output_tokens": 88,
+ "thinking_tokens": 0,
+ "latency_ms": 966.3091670081485,
+ "parse_error": null
+}

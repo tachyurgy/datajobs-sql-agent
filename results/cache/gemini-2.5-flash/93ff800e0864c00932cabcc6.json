@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT SUM(remote_us_postings_open) AS open_remote_us_data_listings FROM dim_company",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT SUM(remote_us_postings_open) AS open_remote_us_data_listings FROM dim_company\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 1018,
+ "output_tokens": 41,
+ "thinking_tokens": 0,
+ "latency_ms": 720.4795829893555,
+ "parse_error": null
+}

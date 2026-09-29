@@ -5,6 +5,7 @@ passed as the `key` query parameter, never logged.
 """
 from __future__ import annotations
 
+import http.client
 import json
 import os
 import re
@@ -44,7 +45,7 @@ def model_config(model: str) -> dict:
             "thinking_off": model.startswith("gemini-2.5-flash") and "lite" not in model}
 
 
-def request_body(model: str, user_text: str) -> dict:
+def request_body(model: str, user_text: str, system: str = SYSTEM) -> dict:
     cfg = model_config(model)
     gen: dict = {"temperature": 0, "maxOutputTokens": 2048}
     if cfg["json_mode"]:
@@ -54,10 +55,10 @@ def request_body(model: str, user_text: str) -> dict:
         gen["thinkingConfig"] = {"thinkingBudget": 0}
     body: dict = {"generationConfig": gen}
     if cfg["system_instruction"]:
-        body["systemInstruction"] = {"parts": [{"text": SYSTEM}]}
+        body["systemInstruction"] = {"parts": [{"text": system}]}
         body["contents"] = [{"role": "user", "parts": [{"text": user_text}]}]
     else:
-        body["contents"] = [{"role": "user", "parts": [{"text": SYSTEM + "\n\n" + user_text}]}]
+        body["contents"] = [{"role": "user", "parts": [{"text": system + "\n\n" + user_text}]}]
     return body
 
 
@@ -83,9 +84,9 @@ class RateLimited(Exception):
     pass
 
 
-def generate(model: str, user_text: str, *, key: str | None = None, max_wait_s: float = 600) -> LLMReply:
+def generate(model: str, user_text: str, *, system: str = SYSTEM, key: str | None = None, max_wait_s: float = 600) -> LLMReply:
     key = key or os.environ["GEMINI_API_KEY"]
-    data = json.dumps(request_body(model, user_text)).encode()
+    data = json.dumps(request_body(model, user_text, system)).encode()
     waited, delay = 0.0, 5.0
     while True:
         req = urllib.request.Request(API.format(model=model) + "?key=" + key, data=data,
@@ -107,7 +108,7 @@ def generate(model: str, user_text: str, *, key: str | None = None, max_wait_s: 
                 delay = min(delay * 2, 60)
                 continue
             raise RuntimeError(f"{model} HTTP {e.code}: {body[:300]}") from None
-        except (urllib.error.URLError, TimeoutError) as e:
+        except (urllib.error.URLError, TimeoutError, http.client.HTTPException, ConnectionError) as e:
             if waited < max_wait_s:
                 time.sleep(delay)
                 waited += delay

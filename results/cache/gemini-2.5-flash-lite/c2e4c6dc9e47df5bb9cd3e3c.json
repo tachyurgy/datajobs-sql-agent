@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT median_yoe_ask FROM mart_degree_requirements WHERE family = 'data_analyst'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT median_yoe_ask FROM mart_degree_requirements WHERE family = 'data_analyst'\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2258,
+ "output_tokens": 36,
+ "thinking_tokens": 0,
+ "latency_ms": 528.4792080055922,
+ "parse_error": null
+}

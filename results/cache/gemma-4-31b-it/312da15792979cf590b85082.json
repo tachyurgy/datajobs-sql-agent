@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT boards_failed FROM mart_crawl_coverage ORDER BY crawl_date DESC LIMIT 1",
+ "refuse": false,
+ "reason": "The query retrieves the number of failed boards from the most recent crawl date in the mart_crawl_coverage table.",
+ "raw": "```json\n{\"sql\": \"SELECT boards_failed FROM mart_crawl_coverage ORDER BY crawl_date DESC LIMIT 1\", \"refuse\": false, \"reason\": \"The query retrieves the number of failed boards from the most recent crawl date in the mart_crawl_coverage table.\"}\n```",
+ "prompt_tokens": 1018,
+ "output_tokens": 63,
+ "thinking_tokens": 139,
+ "latency_ms": 6555.688624997856,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT CASE WHEN ps.skill IS NOT NULL THEN 'Mentions RAG' ELSE 'Does not mention RAG' END AS rag_status, median(f.comp_mid_usd) AS median_pay_midpoint FROM fct_posting f LEFT JOIN posting_skills ps ON f.posting_key = ps.posting_key AND ps.skill = 'RAG' WHERE f.is_open = true AND f.remote_us = true GROUP BY 1",
+ "refuse": false,
+ "reason": "The query joins the postings table with the skills table to identify those mentioning 'RAG', filters for open remote-US listings, and calculates the median of the pay midpoint for both groups.",
+ "raw": "```json\n{\"sql\": \"SELECT CASE WHEN ps.skill IS NOT NULL THEN 'Mentions RAG' ELSE 'Does not mention RAG' END AS rag_status, median(f.comp_mid_usd) AS median_pay_midpoint FROM fct_posting f LEFT JOIN posting_skills ps ON f.posting_key = ps.posting_key AND ps.skill = 'RAG' WHERE f.is_open = true AND f.remote_us = true GROUP BY 1\", \"refuse\": false, \"reason\": \"The query joins the postings table with the skills table to identify those mentioning 'RAG', filters for open remote-US listings, and calculates the median of the pay midpoint for both groups.\"}\n```",
+ "prompt_tokens": 1028,
+ "output_tokens": 159,
+ "thinking_tokens": 968,
+ "latency_ms": 108325.29100001557,
+ "parse_error": null
+}

@@ -16,6 +16,8 @@ import json
 import random
 import re
 import statistics
+import threading
+from concurrent.futures import ThreadPoolExecutor
 import time
 from dataclasses import asdict
 
@@ -27,12 +29,13 @@ from .gold import GoldItem, alt_results, load
 from .llm import LLMReply, RateLimited, generate
 from .prompt import build_prompt
 
-ABLATIONS = ["a", "b", "c", "d"]
+ABLATIONS = ["a", "b", "c", "d", "e"]
 ABLATION_LABELS = {
     "a": "Zero-shot, full schema",
     "b": "+ retrieved column docs and sample values",
     "c": "+ retrieved few-shot examples",
     "d": "+ self-correction (max 2 retries)",
+    "e": "+ answerability rule (tuned on a separate dev set)",
 }
 MIN_INTERVAL_S = {"gemini-2.5-flash-lite": 4.5, "gemini-2.5-flash": 6.5, "gemma-4-31b-it": 2.5}
 CACHE = RESULTS / "cache"
@@ -44,22 +47,29 @@ class CachedLLM:
         self.offline = offline
         self.calls = 0
         self.hits = 0
-        self._last: dict[str, float] = {}
+        self._next: dict[str, float] = {}
+        self._lock = threading.Lock()
 
-    def __call__(self, model: str, prompt: str) -> LLMReply:
-        h = hashlib.sha256(f"{model}\n{prompt}".encode()).hexdigest()[:24]
+    def __call__(self, model: str, prompt: str, system: str | None = None) -> LLMReply:
+        # replies under the default system prompt keep their original cache key
+        key = f"{model}\n{prompt}" if system is None else f"{model}\n{system}\n{prompt}"
+        h = hashlib.sha256(key.encode()).hexdigest()[:24]
         path = CACHE / model / f"{h}.json"
         if path.exists():
-            self.hits += 1
+            with self._lock:
+                self.hits += 1
             return LLMReply(**json.loads(path.read_text()))
         if self.offline:
             raise LookupError(f"cache miss for {model} ({h}) in offline mode")
-        gap = MIN_INTERVAL_S.get(model, 5.0) - (time.monotonic() - self._last.get(model, 0))
-        if gap > 0:
-            time.sleep(gap)
-        reply = generate(model, prompt)
-        self._last[model] = time.monotonic()
-        self.calls += 1
+        with self._lock:  # reserve a start slot so concurrent workers still respect the per-model pace
+            now = time.monotonic()
+            start = max(now, self._next.get(model, 0.0))
+            self._next[model] = start + MIN_INTERVAL_S.get(model, 5.0)
+        if start > now:
+            time.sleep(start - now)
+        reply = generate(model, prompt) if system is None else generate(model, prompt, system=system)
+        with self._lock:
+            self.calls += 1
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(json.dumps(asdict(reply), indent=1) + "\n")
         return reply
@@ -190,7 +200,8 @@ def summarise(rows: list[dict]) -> dict:
     }
 
 
-def run_eval(models: list[str], offline: bool = False, only: list[str] | None = None, out_path=None) -> dict:
+def run_eval(models: list[str], offline: bool = False, only: list[str] | None = None, out_path=None,
+             workers: int = 1) -> dict:
     out_path = out_path or RESULTS / "eval.json"
     con = connect()
     items = [i for i in load() if not only or i.id in only]
@@ -204,29 +215,40 @@ def run_eval(models: list[str], offline: bool = False, only: list[str] | None = 
     prior = out_path
     if prior.exists() and not only:
         out["models"] = json.loads(prior.read_text()).get("models", {})
+    local = threading.local()
+
+    def eval_item(model: str, it: GoldItem) -> dict[str, dict]:
+        if not hasattr(local, "con"):
+            local.con = connect()
+        c = local.con
+        rows, first_c = {}, None
+        for ab in ABLATIONS:
+            if ab == "d":
+                tr = ask(c, it.question, ablation="d", model=model, llm=llm, first_reply=first_c)
+            else:
+                tr = ask(c, it.question, ablation=ab, model=model, llm=llm)
+                if ab == "c":
+                    first_c = llm(model, build_prompt(it.question, "c", []))
+            row = score(it, tr, gold_cache, c)
+            row["error_class"] = classify(row, it)
+            rows[ab] = row
+        print(f"{model} {it.id} " + " ".join(f"{a}:{'Y' if rows[a]['correct'] else '.'}" for a in ABLATIONS)
+              + f"  (calls {llm.calls}, cache hits {llm.hits})", flush=True)
+        return rows
+
     for model in models:
-        per_ab: dict[str, list[dict]] = {a: [] for a in ABLATIONS}
-        status = "complete"
-        try:
-            for it in items:
-                first_c = None
-                for ab in ABLATIONS:
-                    if ab == "d":
-                        tr = ask(con, it.question, ablation="d", model=model, llm=llm, first_reply=first_c)
-                    else:
-                        tr = ask(con, it.question, ablation=ab, model=model, llm=llm)
-                        if ab == "c":
-                            first_c = llm(model, build_prompt(it.question, "c", []))
-                    row = score(it, tr, gold_cache, con)
-                    row["error_class"] = classify(row, it)
-                    per_ab[ab].append(row)
-                print(f"{model} {it.id} " + " ".join(f"{a}:{'Y' if per_ab[a][-1]['correct'] else '.'}" for a in ABLATIONS)
-                      + f"  (calls {llm.calls}, cache hits {llm.hits})", flush=True)
-        except (RateLimited, LookupError) as e:
-            status = f"partial: {e}"
+        status, done, failed = "complete", {}, []
+        with ThreadPoolExecutor(max_workers=workers) as pool:
+            futs = {it.id: pool.submit(eval_item, model, it) for it in items}
+            for qid, f in futs.items():
+                try:
+                    done[qid] = f.result()
+                except (RateLimited, LookupError, RuntimeError) as e:
+                    failed.append(f"{qid}: {e}")
+        if failed:
+            status = f"partial: {len(failed)} questions missing ({failed[0]})"
             print(status, flush=True)
-            n = min(len(v) for v in per_ab.values())
-            per_ab = {a: v[:n] for a, v in per_ab.items()}
+        per_ab = {a: [done[it.id][a] for it in items if it.id in done] for a in ABLATIONS}
         if not per_ab["a"]:
             continue
         summ = {a: summarise(v) for a, v in per_ab.items()}
@@ -249,10 +271,11 @@ def main() -> None:
     ap.add_argument("--models", nargs="+", default=["gemini-2.5-flash-lite", "gemma-4-31b-it"])
     ap.add_argument("--offline", action="store_true")
     ap.add_argument("--only", nargs="*")
+    ap.add_argument("--workers", type=int, default=1, help="questions evaluated concurrently (pace is still per model)")
     ap.add_argument("--out", help="results file (default results/eval.json); the report merges results/eval*.json")
     a = ap.parse_args()
     from pathlib import Path
-    out = run_eval(a.models, a.offline, a.only, Path(a.out) if a.out else None)
+    out = run_eval(a.models, a.offline, a.only, Path(a.out) if a.out else None, a.workers)
     if a.offline:
         committed = {}
         for f in sorted(RESULTS.glob("eval*.json")):

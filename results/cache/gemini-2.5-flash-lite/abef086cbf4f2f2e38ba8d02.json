@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT d.company_name FROM dim_company d JOIN fct_posting f ON d.company_key = f.company_key WHERE d.platform = 'ashby' AND f.is_open AND f.remote_us AND f.is_canonical_listing GROUP BY d.company_name HAVING count(f.posting_key) > 5",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT d.company_name FROM dim_company d JOIN fct_posting f ON d.company_key = f.company_key WHERE d.platform = 'ashby' AND f.is_open AND f.remote_us AND f.is_canonical_listing GROUP BY d.company_name HAVING count(f.posting_key) > 5\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2493,
+ "output_tokens": 92,
+ "thinking_tokens": 0,
+ "latency_ms": 644.385165971471,
+ "parse_error": null
+}

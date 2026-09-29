@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT COUNT(DISTINCT fp.listing_key) FROM fct_posting AS fp JOIN mart_comp_by_family AS mcbf ON fp.family = mcbf.family AND fp.seniority = mcbf.seniority WHERE fp.is_open AND fp.remote_us AND fp.comp_mid_usd > (1.5 * mcbf.p50)",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT COUNT(DISTINCT fp.listing_key) FROM fct_posting AS fp JOIN mart_comp_by_family AS mcbf ON fp.family = mcbf.family AND fp.seniority = mcbf.seniority WHERE fp.is_open AND fp.remote_us AND fp.comp_mid_usd > (1.5 * mcbf.p50)\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 1029,
+ "output_tokens": 96,
+ "thinking_tokens": 0,
+ "latency_ms": 1028.7997919949703,
+ "parse_error": null
+}

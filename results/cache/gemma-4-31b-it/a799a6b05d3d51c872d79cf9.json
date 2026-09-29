@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT median(comp_mid_usd) AS median_pay_midpoint FROM fct_posting WHERE family_label = 'Machine Learning Engineer'",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT median(comp_mid_usd) AS median_pay_midpoint FROM fct_posting WHERE family_label = 'Machine Learning Engineer'\", \"refuse\": false, \"reason\": \"\"}\n```",
+ "prompt_tokens": 1017,
+ "output_tokens": 50,
+ "thinking_tokens": 1477,
+ "latency_ms": 45222.18529100064,
+ "parse_error": null
+}

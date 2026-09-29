@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT CASE WHEN SUM(CASE WHEN ps.skill = 'rag' THEN 1 ELSE 0 END) > 0 THEN 'Mentions RAG' ELSE 'Does not mention RAG' END AS rag_mention_status, AVG(f.comp_mid_usd) AS median_pay_midpoint FROM fct_posting AS f LEFT JOIN posting_skills AS ps ON f.posting_key = ps.posting_key WHERE f.is_open AND f.remote_us AND f.is_canonical_listing GROUP BY rag_mention_status",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT CASE WHEN SUM(CASE WHEN ps.skill = 'rag' THEN 1 ELSE 0 END) > 0 THEN 'Mentions RAG' ELSE 'Does not mention RAG' END AS rag_mention_status, AVG(f.comp_mid_usd) AS median_pay_midpoint FROM fct_posting AS f LEFT JOIN posting_skills AS ps ON f.posting_key = ps.posting_key WHERE f.is_open AND f.remote_us AND f.is_canonical_listing GROUP BY rag_mention_status\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2789,
+ "output_tokens": 133,
+ "thinking_tokens": 0,
+ "latency_ms": 731.6652920271736,
+ "parse_error": null
+}

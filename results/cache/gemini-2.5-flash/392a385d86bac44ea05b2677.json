@@ -1,0 +1,11 @@
+{
+ "sql": "WITH overall_median AS (SELECT percentile_cont(0.5) WITHIN GROUP (ORDER BY comp_mid_usd) AS median_pay FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing) SELECT seniority, percentile_cont(0.5) WITHIN GROUP (ORDER BY comp_mid_usd) AS median_pay, percentile_cont(0.5) WITHIN GROUP (ORDER BY comp_mid_usd) - (SELECT median_pay FROM overall_median) AS diff_from_overall_median FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing GROUP BY seniority ORDER BY median_pay DESC",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"WITH overall_median AS (SELECT percentile_cont(0.5) WITHIN GROUP (ORDER BY comp_mid_usd) AS median_pay FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing) SELECT seniority, percentile_cont(0.5) WITHIN GROUP (ORDER BY comp_mid_usd) AS median_pay, percentile_cont(0.5) WITHIN GROUP (ORDER BY comp_mid_usd) - (SELECT median_pay FROM overall_median) AS diff_from_overall_median FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing GROUP BY seniority ORDER BY median_pay DESC\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2322,
+ "output_tokens": 158,
+ "thinking_tokens": 0,
+ "latency_ms": 1276.9282080116682,
+ "parse_error": null
+}

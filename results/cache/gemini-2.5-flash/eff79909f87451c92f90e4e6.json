@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family_label, open_listings, SUM(open_listings) OVER (ORDER BY open_listings DESC) AS running_total FROM mart_daily_market WHERE remote_us = TRUE ORDER BY open_listings DESC",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT family_label, open_listings, SUM(open_listings) OVER (ORDER BY open_listings DESC) AS running_total FROM mart_daily_market WHERE remote_us = TRUE ORDER BY open_listings DESC\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 1024,
+ "output_tokens": 61,
+ "thinking_tokens": 0,
+ "latency_ms": 834.4809999980498,
+ "parse_error": null
+}

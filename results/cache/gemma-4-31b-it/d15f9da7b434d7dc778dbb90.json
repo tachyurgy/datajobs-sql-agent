@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT f.title, f.url FROM fct_posting f JOIN dim_company c ON f.company_key = c.company_key WHERE c.company_name = 'Reddit' AND f.is_open = true AND f.remote_us = true AND f.title ILIKE '%AI engineer%'",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT f.title, f.url FROM fct_posting f JOIN dim_company c ON f.company_key = c.company_key WHERE c.company_name = 'Reddit' AND f.is_open = true AND f.remote_us = true AND f.title ILIKE '%AI engineer%'\", \"refuse\": false, \"reason\": \"\"}\n```",
+ "prompt_tokens": 1023,
+ "output_tokens": 88,
+ "thinking_tokens": 713,
+ "latency_ms": 24060.907834005775,
+ "parse_error": null
+}

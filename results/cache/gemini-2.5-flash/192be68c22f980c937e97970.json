@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family_label, open_listings, CAST(open_listings AS DOUBLE) / SUM(open_listings) OVER () AS share_of_total FROM mart_daily_market WHERE remote_us = TRUE ORDER BY open_listings DESC",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT family_label, open_listings, CAST(open_listings AS DOUBLE) / SUM(open_listings) OVER () AS share_of_total FROM mart_daily_market WHERE remote_us = TRUE ORDER BY open_listings DESC\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 1027,
+ "output_tokens": 65,
+ "thinking_tokens": 0,
+ "latency_ms": 865.5912499816623,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(DISTINCT posting_key) FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND comp_currency_original != 'USD'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT count(DISTINCT posting_key) FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND comp_currency_original != 'USD'\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 1024,
+ "output_tokens": 50,
+ "thinking_tokens": 0,
+ "latency_ms": 756.300667009782,
+ "parse_error": null
+}

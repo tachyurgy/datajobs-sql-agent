@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(posting_key) FROM fct_posting WHERE family = 'ai_engineer'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT count(posting_key) FROM fct_posting WHERE family = 'ai_engineer'\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2385,
+ "output_tokens": 34,
+ "thinking_tokens": 0,
+ "latency_ms": 521.8948340043426,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family, SUM(CASE WHEN comp_mid_usd IS NOT NULL THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS pay_disclosure_rate FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing GROUP BY family",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT family, SUM(CASE WHEN comp_mid_usd IS NOT NULL THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS pay_disclosure_rate FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing GROUP BY family\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2453,
+ "output_tokens": 74,
+ "thinking_tokens": 0,
+ "latency_ms": 720.6160420028027,
+ "parse_error": null
+}

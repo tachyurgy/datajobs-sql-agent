@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT d.company_name, count(*) AS open_roles FROM fct_posting f JOIN dim_company d USING (company_key) WHERE f.family = 'ml_engineer' AND f.is_open GROUP BY d.company_name ORDER BY open_roles DESC",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT d.company_name, count(*) AS open_roles FROM fct_posting f JOIN dim_company d USING (company_key) WHERE f.family = 'ml_engineer' AND f.is_open GROUP BY d.company_name ORDER BY open_roles DESC\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2534,
+ "output_tokens": 74,
+ "thinking_tokens": 0,
+ "latency_ms": 1816.5577499894425,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "I cannot answer this question. The tables do not contain information about job applicants or application counts.",
+ "raw": "{\"sql\": \"\", \"refuse\": true, \"reason\": \"I cannot answer this question. The tables do not contain information about job applicants or application counts.\"}",
+ "prompt_tokens": 1013,
+ "output_tokens": 34,
+ "thinking_tokens": 0,
+ "latency_ms": 838.5942500026431,
+ "parse_error": null
+}

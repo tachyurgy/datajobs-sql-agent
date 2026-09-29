@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The database does not contain information about the gender of hired people.",
+ "raw": "{\n\"sql\": \"\",\n\"refuse\": true,\n\"reason\": \"The database does not contain information about the gender of hired people.\"\n}",
+ "prompt_tokens": 1017,
+ "output_tokens": 33,
+ "thinking_tokens": 0,
+ "latency_ms": 529.9975829839241,
+ "parse_error": null
+}

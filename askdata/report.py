@@ -53,7 +53,7 @@ def live_model() -> str:
 
 def chart_svg(res: dict) -> str:
     models = list(res["models"])
-    abl = ["a", "b", "c", "d"]
+    abl = ABL
     W, H, left, top, bottom = 720, 300, 44, 16, 52
     gw = (W - left - 10) / len(abl)
     bw = min(34, (gw - 24) / max(1, len(models)))
@@ -83,7 +83,11 @@ def chart_svg(res: dict) -> str:
 
 
 def short_label(a: str) -> str:
-    return {"a": "schema only", "b": "+ column docs", "c": "+ few-shot", "d": "+ self-correct"}[a]
+    return {"a": "schema only", "b": "+ column docs", "c": "+ few-shot", "d": "+ self-correct", "e": "+ refusal rule"}[a]
+
+
+ABL = ["a", "b", "c", "d", "e"]
+LIVE_ABLATION = "e"
 
 
 def build() -> dict:
@@ -93,14 +97,14 @@ def build() -> dict:
     models = list(res["models"])
     ab_labels = res["ablations"]
     head = res["models"].get(live) or res["models"][models[0]]
-    hs = head["summary"]["d"]
+    hs = head["summary"][LIVE_ABLATION]
 
     rows_html, md = [], []
     md.append("| Model | Ablation | Overall (60) | 95% CI | Exec. acc. (53 answerable) | strict | Refusal (7) | False refusals | Mean retries | Median latency | Prompt tokens |")
     md.append("|---|---|---|---|---|---|---|---|---|---|---|")
     for m in models:
         mm = res["models"][m]
-        for a in ["a", "b", "c", "d"]:
+        for a in ABL:
             s = mm["summary"][a]
             rows_html.append(
                 f"<tr><td>{e(MODEL_LABEL.get(m, m))}</td><td><strong>{a}</strong> {e(ab_labels[a])}</td>"
@@ -117,7 +121,7 @@ def build() -> dict:
 
     delta_html, delta_md = [], ["| Model | Step | Change in overall accuracy | 95% CI |", "|---|---|---|---|"]
     for m in models:
-        for a in ["b", "c", "d"]:
+        for a in ABL[1:]:
             d, lo, hi = res["models"][m]["summary"][a]["delta_vs_prev_overall"]
             prev = chr(ord(a) - 1)
             sig = "" if lo <= 0 <= hi else " *"
@@ -128,7 +132,7 @@ def build() -> dict:
     cat_head = "".join(f"<th class=num>{e(c)}</th>" for c in CAT_ORDER)
     cat_rows = []
     for m in models:
-        for a in ["a", "d"]:
+        for a in ["a", LIVE_ABLATION]:
             bc = res["models"][m]["summary"][a]["by_category"]
             cat_rows.append(f"<tr><td>{e(MODEL_LABEL.get(m, m))}, {a}</td>" + "".join(
                 f"<td class=num>{pct(bc[c]['accuracy'])} <span class=meta>({round(bc[c]['accuracy'] * bc[c]['n'])}/{bc[c]['n']})</span></td>"
@@ -137,7 +141,7 @@ def build() -> dict:
     # taxonomy (ablation d), with examples from each model's rows
     classes: dict[str, dict[str, int]] = {}
     for m in models:
-        for k, v in res["models"][m]["summary"]["d"]["error_taxonomy"].items():
+        for k, v in res["models"][m]["summary"][LIVE_ABLATION]["error_taxonomy"].items():
             classes.setdefault(k, {})[m] = v
     tax_rows = "".join(f"<tr><td>{e(k)}</td>" + "".join(f"<td class=num>{v.get(m, 0)}</td>" for m in models) + "</tr>"
                        for k, v in sorted(classes.items(), key=lambda kv: -sum(kv[1].values())))
@@ -145,7 +149,7 @@ def build() -> dict:
     for k in sorted(classes, key=lambda k: -sum(classes[k].values())):
         shown = 0
         for m in models:
-            for r in res["models"][m]["rows"]["d"]:
+            for r in res["models"][m]["rows"][LIVE_ABLATION]:
                 if r.get("error_class") == k and shown < 2:
                     g = gold[r["id"]]
                     examples.append(
@@ -163,12 +167,12 @@ def build() -> dict:
     for gid, g in gold.items():
         cells = ""
         for m in models:
-            for a in ["a", "b", "c", "d"]:
+            for a in ABL:
                 r = next((x for x in res["models"][m]["rows"][a] if x["id"] == gid), None)
                 cells += ("<td></td>" if r is None else
                           f"<td class=num><span class='pill {'y' if r['correct'] else 'n'}' title='{e(r['verdict'])}'>{'yes' if r['correct'] else 'no'}</span></td>")
         q_rows.append(f"<tr><td>{e(gid)}</td><td style='white-space:normal;min-width:260px'>{e(g.question)}</td><td>{e(g.category)}</td>{cells}</tr>")
-    q_head = "".join(f"<th class=num>{e(MODEL_LABEL.get(m, m).split(' (')[0])} {a}</th>" for m in models for a in "abcd")
+    q_head = "".join(f"<th class=num>{e(MODEL_LABEL.get(m, m).split(' (')[0])} {a}</th>" for m in models for a in ABL)
 
     g_summary = json.loads((RESULTS / "gold_results.json").read_text())
     statuses = "; ".join(f"{MODEL_LABEL.get(m, m)}: {res['models'][m]['status']} ({res['models'][m]['n_questions']} questions)" for m in models)
@@ -191,7 +195,7 @@ def build() -> dict:
 <h1>How accurate is this?</h1>
 <p class="lede">askdata is scored on a gold set of {g_summary['n_items']} questions ({g_summary['n_answerable']} answerable, {g_summary['n_items'] - g_summary['n_answerable']} that should be refused)
 with hand-written, cross-checked gold SQL. A question counts as correct when the generated query's result matches the gold result, or when an unanswerable question is refused.
-The live site runs <strong>{e(MODEL_LABEL.get(live, live))}</strong> with the full pipeline (ablation d).</p>
+The live site runs <strong>{e(MODEL_LABEL.get(live, live))}</strong> with the full pipeline (ablation {LIVE_ABLATION}).</p>
 
 <div class="kpis">
  <div class="card kpi"><div class="v">{pct(hs['overall_accuracy'])}</div><div class="l">overall accuracy, live configuration<br>95% CI {ci(hs['overall_accuracy_ci95'])}</div></div>
@@ -202,7 +206,7 @@ The live site runs <strong>{e(MODEL_LABEL.get(live, live))}</strong> with the fu
 
 <h2>Accuracy by ablation</h2>
 <p class="prose">Each step adds one thing to the one before: <strong>a</strong> {e(ab_labels['a'])}; <strong>b</strong> {e(ab_labels['b'])};
-<strong>c</strong> {e(ab_labels['c'])}; <strong>d</strong> {e(ab_labels['d'])}. Bars are overall accuracy over all {res['n_questions']} questions; whiskers are 95% bootstrap intervals over questions.</p>
+<strong>c</strong> {e(ab_labels['c'])}; <strong>d</strong> {e(ab_labels['d'])}; <strong>e</strong> {e(ab_labels['e'])}. Bars are overall accuracy over all {res['n_questions']} questions; whiskers are 95% bootstrap intervals over questions.</p>
 <div class="card chart">{chart_svg(res)}</div>
 
 <div class="card wide" style="margin-top:16px"><table>
@@ -218,7 +222,7 @@ The live site runs <strong>{e(MODEL_LABEL.get(live, live))}</strong> with the fu
 <div class="card wide"><table><thead><tr><th>Model, ablation</th>{cat_head}</tr></thead><tbody>{''.join(cat_rows)}</tbody></table></div>
 
 <h2>What goes wrong</h2>
-<p class="prose">Failures at ablation d, classified by a rule-based tagger (first matching rule wins: refusal errors, execution errors, empty results, missing the documented default filter, wrong tables or join type, date logic, a gold filter literal missing, wrong row count, otherwise wrong calculation). The tagger is a heuristic; the examples below are the evidence.</p>
+<p class="prose">Failures at ablation {LIVE_ABLATION}, classified by a rule-based tagger (first matching rule wins: refusal errors, execution errors, empty results, missing the documented default filter, wrong tables or join type, date logic, a gold filter literal missing, wrong row count, otherwise wrong calculation). The tagger is a heuristic; the examples below are the evidence.</p>
 <div class="card wide"><table><thead><tr><th>Error class</th>{''.join(f'<th class=num>{e(MODEL_LABEL.get(m, m))}</th>' for m in models)}</tr></thead><tbody>{tax_rows}</tbody></table></div>
 <h3>Examples</h3>
 {''.join(examples)}
@@ -230,7 +234,7 @@ The live site runs <strong>{e(MODEL_LABEL.get(live, live))}</strong> with the fu
 <li><strong>Gold set.</strong> {g_summary['n_items']} questions in seven types (lookup, aggregation, join, window, date, ambiguous phrasing, unanswerable). Every gold query is executed by <code>make gold-check</code>; {g_summary['n_with_check_sql']} also carry an independently written second query (through a different table or construct) that must return the same result, and {g_summary['n_with_expect']} pin a hand-verified value so a data refresh cannot silently move the target. Ties at ranking cut-offs were checked and avoided.</li>
 <li><strong>A finding from verifying the gold set.</strong> The warehouse carries two definitions of "open remote-US listings": the documented default filter (<code>is_open AND remote_us AND is_canonical_listing</code>, 969 listings at 441 companies) and the counters in <code>mart_daily_market</code>/<code>dim_company</code> (1,016 remote listing keys, 448 companies), because the canonical flag picks one posting per listing across all locations. Gold follows the documented filter; for five questions the mart definition is accepted as an alternative and reported separately ("strict" excludes it).</li>
 <li><strong>Scoring.</strong> Result sets are compared as multisets; column names and order are ignored and extra columns are allowed; row order is enforced only for ranking questions (and ties may come back in any order); numbers match within 0.1% or when the prediction is the gold value rounded to its own decimals; a fraction and the same value as a percent match. Unanswerable questions are correct only if the agent refuses. A write request is blocked by the read-only guard regardless, but only a refusal scores.</li>
-<li><strong>Ablations.</strong> Temperature 0 throughout. Ablation d uses the same prompt as c, so it reuses c's first reply and adds up to two retries when a query errors or returns no rows, feeding the error back.</li>
+<li><strong>Ablations.</strong> Temperature 0 throughout. Ablation d uses the same prompt as c, so it reuses c's first reply and adds up to two retries when a query errors or returns no rows, feeding the error back. Ablation e adds an answerability rule to the system prompt. It was added after the first run showed refusal was the weakest skill, written from the schema, and checked on a separate 16-question dev set (13/16 correct refusal decisions without it, 15/16 with it for Flash-Lite), never on the gold questions.</li>
 <li><strong>Statistics.</strong> 95% intervals are percentile bootstraps over questions (2,000 resamples); step-to-step changes use a paired bootstrap on the same questions.</li>
 <li><strong>Cost.</strong> Free-tier Gemini API only, rate-limited and cached by prompt hash, so the whole eval re-scores offline from the committed replies with <code>make eval-offline</code>.</li>
 <li><strong>Parity.</strong> The browser app builds its prompts with a JavaScript port of the Python code the eval uses; a test asserts byte-identical prompts for all {g_summary['n_items']} questions and identical guard verdicts.</li>
@@ -238,7 +242,8 @@ The live site runs <strong>{e(MODEL_LABEL.get(live, live))}</strong> with the fu
 <h3>Limitations</h3>
 <ul>
 <li>{g_summary['n_items']} questions is small: intervals are wide and a single question moves a score by {100 / res['n_questions']:.1f} points.</li>
-<li>The gold SQL, the data-dictionary notes, the retrieval synonyms and the few-shot pool were all written by the same author. Few-shot examples never answer a gold question (tested), but several are template siblings of one (same shape, different entity), which flatters ablation c.</li>
+<li>The gold SQL, the data-dictionary notes, the retrieval synonyms, the few-shot pool and the answerability rule were all written by the same author. Few-shot examples never answer a gold question (tested), but several are template siblings of one (same shape, different entity), which flatters ablation c. The answerability rule was written after seeing run-1 failures, so treat e as optimistic.</li>
+<li>The scorer was corrected after inspecting run 1 (an order-dependent tolerance bug, and a timestamp answering a which-date question); every model was re-scored from the reply cache and no reply changed.</li>
 <li>One domain, one warehouse snapshot, English questions only. The "ambiguous" questions encode one reading (the documented default filter); a reasonable analyst could disagree on some.</li>
 <li>Execution accuracy can credit a wrong query that happens to return the right numbers, and it does not grade the one-sentence answer the site writes on top of the result.</li>
 </ul></div>

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT T2.skill, COUNT(DISTINCT T1.posting_key) AS listings_mentioning FROM fct_posting AS T1 INNER JOIN posting_skills AS T2 ON T1.posting_key = T2.posting_key WHERE T1.is_open = TRUE AND T1.remote_us = TRUE GROUP BY T2.skill ORDER BY listings_mentioning DESC LIMIT 10",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT T2.skill, COUNT(DISTINCT T1.posting_key) AS listings_mentioning FROM fct_posting AS T1 INNER JOIN posting_skills AS T2 ON T1.posting_key = T2.posting_key WHERE T1.is_open = TRUE AND T1.remote_us = TRUE GROUP BY T2.skill ORDER BY listings_mentioning DESC LIMIT 10\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 1030,
+ "output_tokens": 102,
+ "thinking_tokens": 0,
+ "latency_ms": 919.8689580080099,
+ "parse_error": null
+}

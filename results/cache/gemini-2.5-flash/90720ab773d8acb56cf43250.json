@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT SUM(open_listings) AS listings_with_phd_requirement FROM mart_daily_market WHERE remote_us = TRUE AND family IN (SELECT family FROM mart_degree_requirements WHERE share_phd > 0)",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT SUM(open_listings) AS listings_with_phd_requirement FROM mart_daily_market WHERE remote_us = TRUE AND family IN (SELECT family FROM mart_degree_requirements WHERE share_phd > 0)\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2115,
+ "output_tokens": 63,
+ "thinking_tokens": 0,
+ "latency_ms": 937.8091670223512,
+ "parse_error": null
+}

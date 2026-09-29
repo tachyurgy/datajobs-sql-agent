@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The database does not contain information about interview rounds or hiring processes. It only tracks job postings and their attributes.",
+ "raw": "{\"sql\": \"\", \"refuse\": true, \"reason\": \"The database does not contain information about interview rounds or hiring processes. It only tracks job postings and their attributes.\"}",
+ "prompt_tokens": 2512,
+ "output_tokens": 37,
+ "thinking_tokens": 0,
+ "latency_ms": 521.869666990824,
+ "parse_error": null
+}

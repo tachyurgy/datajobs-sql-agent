@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT AVG(d.data_postings_open) FROM dim_company d WHERE d.data_postings_open > 0",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT AVG(d.data_postings_open) FROM dim_company d WHERE d.data_postings_open > 0\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2362,
+ "output_tokens": 44,
+ "thinking_tokens": 0,
+ "latency_ms": 680.6328330130782,
+ "parse_error": null
+}

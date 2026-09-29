@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT EXTRACT(YEAR FROM published_at) AS publication_year, COUNT(DISTINCT posting_key) AS open_remote_us_listings FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND is_canonical_listing = TRUE AND EXTRACT(YEAR FROM published_at) < 2026 GROUP BY publication_year ORDER BY publication_year",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT EXTRACT(YEAR FROM published_at) AS publication_year, COUNT(DISTINCT posting_key) AS open_remote_us_listings FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND is_canonical_listing = TRUE AND EXTRACT(YEAR FROM published_at) < 2026 GROUP BY publication_year ORDER BY publication_year\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2204,
+ "output_tokens": 97,
+ "thinking_tokens": 0,
+ "latency_ms": 1117.830834002234,
+ "parse_error": null
+}

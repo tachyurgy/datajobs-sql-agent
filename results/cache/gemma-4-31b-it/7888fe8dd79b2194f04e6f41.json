@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT s.skill, count(*) AS mention_count FROM posting_skills s JOIN fct_posting f ON s.posting_key = f.posting_key WHERE f.is_open AND f.remote_us AND f.is_canonical_listing GROUP BY s.skill ORDER BY mention_count DESC LIMIT 10",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT s.skill, count(*) AS mention_count FROM posting_skills s JOIN fct_posting f ON s.posting_key = f.posting_key WHERE f.is_open AND f.remote_us AND f.is_canonical_listing GROUP BY s.skill ORDER BY mention_count DESC LIMIT 10\", \"refuse\": false, \"reason\": \"\"}\n```",
+ "prompt_tokens": 2335,
+ "output_tokens": 89,
+ "thinking_tokens": 1096,
+ "latency_ms": 60694.360499997856,
+ "parse_error": null
+}

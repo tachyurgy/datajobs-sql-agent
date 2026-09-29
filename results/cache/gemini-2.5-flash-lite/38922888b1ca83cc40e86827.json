@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(DISTINCT company_key) FROM dim_company",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT count(DISTINCT company_key) FROM dim_company\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2371,
+ "output_tokens": 28,
+ "thinking_tokens": 0,
+ "latency_ms": 579.1620840027463,
+ "parse_error": null
+}

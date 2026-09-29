@@ -1,6 +1,7 @@
 """Build web/public/data/examples.json: cached answers for the example chips (and the fallback when the
-live quota is used up). Runs the full agent (ablation d) through the eval's reply cache, then the same
-answer prompt the Pages Function uses. Every example is hand-checked; see README."""
+live quota is used up). Runs the full agent (ablation e, what the site runs) through the eval's reply cache, then the same
+answer prompt the Pages Function uses. Every kept example was checked by hand against an independently written query (see
+the 2026-09-29 RELEASES entry); examples whose SQL or summary was wrong were dropped, not edited."""
 import json
 import sys
 
@@ -13,12 +14,11 @@ from askdata.llm import answer_prompt, generate_text
 
 MODEL = sys.argv[1] if len(sys.argv) > 1 else "gemini-2.5-flash-lite"
 QUESTIONS = [
-    "Which skills show up most in AI engineer listings?",
+    "What do AI engineers make?",
     "What is the median pay for senior data engineers?",
-    "Which companies have the most open ML engineer roles?",
+    "Which companies have the most open remote-US ML engineer listings?",
     "How many doorway roles are open for data analysts?",
-    "What share of listings disclose pay, by role family?",
-    "How many listings mention both dbt and Snowflake?",
+    "How many open remote-US listings mention both dbt and Snowflake?",
     "Which ATS platform hosts the most remote data listings?",
     "How many applicants does the average posting get?",
 ]
@@ -31,7 +31,7 @@ def main():
     answers = json.loads(cache.read_text()) if cache.exists() else {}
     out = []
     for q in QUESTIONS:
-        tr = ask(con, q, ablation="d", model=MODEL, llm=llm)
+        tr = ask(con, q, ablation="e", model=MODEL, llm=llm)
         attempts = [{"sql": a.sql, "error": a.error} for a in tr.attempts]
         if tr.refused:
             ans = f"I can't answer that from this warehouse. {tr.refuse_reason}".strip()

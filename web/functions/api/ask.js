@@ -7,7 +7,9 @@
 // Limits: per-IP daily calls, a global daily cap (both in KV), and Gemini's own quota. Any of them
 // returns 429 { limited: true } and the page falls back to cached example answers.
 import A from "../../shared/assets.json";
-import { buildPrompt, parseReply } from "../../public/js/core.mjs";
+import { buildPrompt, parseReply, systemPrompt } from "../../public/js/core.mjs";
+
+const ABLATION = "e"; // the full pipeline measured on /accuracy
 
 const PER_IP_DAILY = 40;
 const GLOBAL_DAILY = 300;
@@ -101,8 +103,8 @@ export async function onRequestPost({ request, env }) {
   const gen = { temperature: 0, maxOutputTokens: 2048, responseMimeType: "application/json", responseSchema: RESPONSE_SCHEMA };
   if (thinkingOff(model)) gen.thinkingConfig = { thinkingBudget: 0 };
   const g = await gemini(env, {
-    systemInstruction: { parts: [{ text: A.system }] },
-    contents: [{ role: "user", parts: [{ text: buildPrompt(question, "d", attempts, A) }] }],
+    systemInstruction: { parts: [{ text: systemPrompt(ABLATION, A) }] },
+    contents: [{ role: "user", parts: [{ text: buildPrompt(question, ABLATION, attempts, A) }] }],
     generationConfig: gen,
   });
   if (g.limited) return limited("The model's free quota is used up for now.");

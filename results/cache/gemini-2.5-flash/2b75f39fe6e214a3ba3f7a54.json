@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT s.skill, count(DISTINCT s.posting_key) AS listings_mentioning FROM posting_skills s JOIN fct_posting f USING (posting_key) WHERE f.is_open AND f.remote_us AND f.is_canonical_listing GROUP BY s.skill ORDER BY listings_mentioning DESC LIMIT 10",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT s.skill, count(DISTINCT s.posting_key) AS listings_mentioning FROM posting_skills s JOIN fct_posting f USING (posting_key) WHERE f.is_open AND f.remote_us AND f.is_canonical_listing GROUP BY s.skill ORDER BY listings_mentioning DESC LIMIT 10\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2334,
+ "output_tokens": 88,
+ "thinking_tokens": 0,
+ "latency_ms": 921.1519589880481,
+ "parse_error": null
+}

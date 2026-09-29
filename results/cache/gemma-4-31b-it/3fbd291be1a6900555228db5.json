@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(DISTINCT company_key) AS company_count FROM fct_posting WHERE is_open = true AND remote_us = true AND is_canonical_listing = true",
+ "refuse": false,
+ "reason": "The query counts distinct company keys from the fct_posting table, applying the default filters for open, remote-US, and canonical listings to identify companies with at least one such listing.",
+ "raw": "```json\n{\"sql\": \"SELECT count(DISTINCT company_key) AS company_count FROM fct_posting WHERE is_open = true AND remote_us = true AND is_canonical_listing = true\", \"refuse\": false, \"reason\": \"The query counts distinct company keys from the fct_posting table, applying the default filters for open, remote-US, and canonical listings to identify companies with at least one such listing.\"}\n```",
+ "prompt_tokens": 2052,
+ "output_tokens": 97,
+ "thinking_tokens": 1576,
+ "latency_ms": 49157.67304200563,
+ "parse_error": null
+}

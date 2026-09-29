@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT AVG(yoe_ask) AS avg_yoe_asked FROM fct_posting WHERE is_open = true AND remote_us = true AND is_canonical_listing = true AND family = 'ai_engineer' AND yoe_ask IS NOT NULL",
+ "refuse": false,
+ "reason": "The query calculates the average years of experience (yoe_ask) for open, remote-US, canonical AI engineer listings that have a specified experience requirement.",
+ "raw": "```json\n{\"sql\": \"SELECT AVG(yoe_ask) AS avg_yoe_asked FROM fct_posting WHERE is_open = true AND remote_us = true AND is_canonical_listing = true AND family = 'ai_engineer' AND yoe_ask IS NOT NULL\", \"refuse\": false, \"reason\": \"The query calculates the average years of experience (yoe_ask) for open, remote-US, canonical AI engineer listings that have a specified experience requirement.\"}\n```",
+ "prompt_tokens": 2170,
+ "output_tokens": 108,
+ "thinking_tokens": 610,
+ "latency_ms": 20764.94308299152,
+ "parse_error": null
+}

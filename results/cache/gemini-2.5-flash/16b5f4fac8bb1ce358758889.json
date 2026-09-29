@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT seniority, open_listings FROM mart_daily_market WHERE family_label = 'Data Engineer' AND remote_us = TRUE",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT seniority, open_listings FROM mart_daily_market WHERE family_label = 'Data Engineer' AND remote_us = TRUE\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 1023,
+ "output_tokens": 42,
+ "thinking_tokens": 0,
+ "latency_ms": 818.5687499935739,
+ "parse_error": null
+}

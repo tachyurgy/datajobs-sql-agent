@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT AVG(d.postings_on_board_latest) FROM dim_company d JOIN fct_posting f ON d.company_key = f.company_key WHERE f.is_open",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT AVG(d.postings_on_board_latest) FROM dim_company d JOIN fct_posting f ON d.company_key = f.company_key WHERE f.is_open\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2524,
+ "output_tokens": 58,
+ "thinking_tokens": 0,
+ "latency_ms": 623.4779160004109,
+ "parse_error": null
+}

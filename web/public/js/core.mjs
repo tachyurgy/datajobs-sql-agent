@@ -115,11 +115,11 @@ export function schemaBlock(A, withDescriptions) {
 export function buildPrompt(question, ablation, attempts, A) {
   const q = expand(question, A);
   let parts = ["### Schema", schemaBlock(A, ablation !== "a")];
-  if (["b", "c", "d"].includes(ablation)) {
+  if (["b", "c", "d", "e"].includes(ablation)) {
     parts.push("", "### Notes", ...A.dictionary.notes.map((n) => `- ${n}`));
     parts.push("", "### Relevant columns", ...retrieveColumns(q, A).map((l) => `- ${l}`));
   }
-  if (["c", "d"].includes(ablation)) {
+  if (["c", "d", "e"].includes(ablation)) {
     const top = indexes(A).ex.top(tokenize(question, A), A.top_k_examples);
     if (top.length) {
       parts.push("", "### Examples");
@@ -132,6 +132,10 @@ export function buildPrompt(question, ablation, attempts, A) {
   });
   parts.push("", "### Question", question.trim());
   return parts.join("\n");
+}
+
+export function systemPrompt(ablation, A) {
+  return ablation === "e" ? A.system + A.answerability : A.system;
 }
 
 export function parseReply(text) {

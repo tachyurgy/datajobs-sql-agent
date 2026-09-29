@@ -1,0 +1,11 @@
+{
+ "sql": "WITH postings_with_rag AS (SELECT DISTINCT posting_key FROM posting_skills WHERE skill = 'rag'), postings_all AS (SELECT posting_key, comp_mid_usd FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing) SELECT 'mentions RAG' AS category, median(p.comp_mid_usd) AS median_pay FROM postings_all p JOIN postings_with_rag r ON p.posting_key = r.posting_key WHERE p.comp_mid_usd IS NOT NULL UNION ALL SELECT 'does not mention RAG' AS category, median(p.comp_mid_usd) AS median_pay FROM postings_all p LEFT JOIN postings_with_rag r ON p.posting_key = r.posting_key WHERE r.posting_key IS NULL AND p.comp_mid_usd IS NOT NULL",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"WITH postings_with_rag AS (SELECT DISTINCT posting_key FROM posting_skills WHERE skill = 'rag'), postings_all AS (SELECT posting_key, comp_mid_usd FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing) SELECT 'mentions RAG' AS category, median(p.comp_mid_usd) AS median_pay FROM postings_all p JOIN postings_with_rag r ON p.posting_key = r.posting_key WHERE p.comp_mid_usd IS NOT NULL UNION ALL SELECT 'does not mention RAG' AS category, median(p.comp_mid_usd) AS median_pay FROM postings_all p LEFT JOIN postings_with_rag r ON p.posting_key = r.posting_key WHERE r.posting_key IS NULL AND p.comp_mid_usd IS NOT NULL\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2308,
+ "output_tokens": 203,
+ "thinking_tokens": 0,
+ "latency_ms": 1442.5779999874067,
+ "parse_error": null
+}

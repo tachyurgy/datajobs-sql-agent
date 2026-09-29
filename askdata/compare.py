@@ -9,7 +9,9 @@ Rules (documented in the README and on the results page):
   * Numbers match within a relative tolerance of 1e-3 (absolute 1e-6), or when the prediction equals
     the gold value rounded to the prediction's own number of decimals (>= 1). A column that holds the
     same fractions expressed as percentages (x100) also matches.
-  * Dates and timestamps at midnight compare as dates; strings compare trimmed and case-insensitively.
+  * Dates and timestamps at midnight compare as dates; a timestamp also matches a gold date on the same day.
+    Strings compare trimmed and case-insensitively. Integers compare exactly (no tolerance).
+  * Matching claims exact-equality pairs first, then tolerant ones, so the result is order-independent.
   * Row counts must be equal; an empty gold result only matches an empty prediction.
 """
 from __future__ import annotations
@@ -55,6 +57,8 @@ def _decimals(x: float) -> int:
 
 
 def num_eq(pred: float, gold: float) -> bool:
+    if pred.is_integer() and gold.is_integer():
+        return pred == gold  # counts, years, ids: no tolerance (2021 must not match 2022)
     if math.isclose(pred, gold, rel_tol=REL_TOL, abs_tol=ABS_TOL):
         return True
     d = _decimals(pred)
@@ -72,7 +76,33 @@ def val_eq(pred: Any, gold: Any, scale: float = 1.0) -> bool:
             return num_eq(float(pred), float(gold) * scale)
         except (TypeError, ValueError):
             return False
+    if isinstance(pred, str) and isinstance(gold, str) and len(gold) == 10 and gold[4] == "-" and gold[7] == "-":
+        return pred == gold or pred.startswith(gold + " ")  # a timestamp on the gold date answers "which date"
     return pred == gold
+
+
+def _match_all(gold: list, pred: list, eq) -> bool:
+    """Multiset match. Exact-equality pairs are claimed first so a tolerant comparison can never steal
+    a value that has an exact partner (greedy tolerant matching is order-dependent otherwise)."""
+    if len(pred) != len(gold):
+        return False
+    used = [False] * len(pred)
+    rest = []
+    for g in gold:
+        for i, p in enumerate(pred):
+            if not used[i] and p == g:
+                used[i] = True
+                break
+        else:
+            rest.append(g)
+    for g in rest:
+        for i, p in enumerate(pred):
+            if not used[i] and eq(p, g):
+                used[i] = True
+                break
+        else:
+            return False
+    return True
 
 
 def _col(rows: list[tuple], j: int) -> list[Any]:
@@ -91,31 +121,13 @@ def _column_candidates(gold_col: list, pred_col: list) -> list[float]:
 
 
 def _multiset_eq(pred: list, gold: list, scale: float) -> bool:
-    if len(pred) != len(gold):
-        return False
-    used = [False] * len(pred)
-    for g in gold:
-        for i, p in enumerate(pred):
-            if not used[i] and val_eq(p, g, scale):
-                used[i] = True
-                break
-        else:
-            return False
-    return True
+    return _match_all(gold, pred, lambda p, g: val_eq(p, g, scale))
 
 
 def _rows_match(gold: list[tuple], pred: list[tuple], mapping: list[tuple[int, float]]) -> bool:
-    used = [False] * len(pred)
-    for g in gold:
-        for i, p in enumerate(pred):
-            if used[i]:
-                continue
-            if all(val_eq(p[pj], g[gj], sc) for gj, (pj, sc) in enumerate(mapping)):
-                used[i] = True
-                break
-        else:
-            return False
-    return True
+    proj = [tuple(p[pj] for pj, _ in mapping) for p in pred]
+    scales = [sc for _, sc in mapping]
+    return _match_all(gold, proj, lambda p, g: all(val_eq(x, y, sc) for x, y, sc in zip(p, g, scales)))
 
 
 def results_match(gold_cols: list[str], gold_rows: list[tuple], pred_cols: list[str], pred_rows: list[tuple],

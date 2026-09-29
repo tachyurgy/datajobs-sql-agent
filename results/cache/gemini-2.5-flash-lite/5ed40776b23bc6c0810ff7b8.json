@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT SUM(CASE WHEN comp_source = 'ats' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS share_from_ats FROM fct_posting WHERE comp_mid_usd IS NOT NULL",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT SUM(CASE WHEN comp_source = 'ats' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS share_from_ats FROM fct_posting WHERE comp_mid_usd IS NOT NULL\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2266,
+ "output_tokens": 63,
+ "thinking_tokens": 0,
+ "latency_ms": 716.0893749969546,
+ "parse_error": null
+}

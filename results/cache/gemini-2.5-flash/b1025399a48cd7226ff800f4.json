@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT seniority, COUNT(DISTINCT posting_key) AS open_remote_us_listings FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND is_canonical_listing = TRUE AND family = 'data_engineer' GROUP BY seniority ORDER BY open_remote_us_listings DESC",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT seniority, COUNT(DISTINCT posting_key) AS open_remote_us_listings FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND is_canonical_listing = TRUE AND family = 'data_engineer' GROUP BY seniority ORDER BY open_remote_us_listings DESC\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2183,
+ "output_tokens": 80,
+ "thinking_tokens": 0,
+ "latency_ms": 964.7785830020439,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT DISTINCT T1.company_name FROM dim_company AS T1 INNER JOIN fct_posting AS T2 ON T1.company_key = T2.company_key WHERE T2.equity_mentioned = TRUE",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT DISTINCT T1.company_name FROM dim_company AS T1 INNER JOIN fct_posting AS T2 ON T1.company_key = T2.company_key WHERE T2.equity_mentioned = TRUE\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2636,
+ "output_tokens": 62,
+ "thinking_tokens": 0,
+ "latency_ms": 579.5756250154227,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT share FROM mart_skill_demand WHERE family = 'data_analyst' AND scope = 'all' AND skill = 'sql'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT share FROM mart_skill_demand WHERE family = 'data_analyst' AND scope = 'all' AND skill = 'sql'\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2557,
+ "output_tokens": 43,
+ "thinking_tokens": 0,
+ "latency_ms": 668.6012080172077,
+ "parse_error": null
+}

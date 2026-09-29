@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(*) AS retitled_postings FROM posting_versions_scd2 WHERE change_kind = 'retitled'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT count(*) AS retitled_postings FROM posting_versions_scd2 WHERE change_kind = 'retitled'\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2468,
+ "output_tokens": 40,
+ "thinking_tokens": 0,
+ "latency_ms": 775.4231670114677,
+ "parse_error": null
+}

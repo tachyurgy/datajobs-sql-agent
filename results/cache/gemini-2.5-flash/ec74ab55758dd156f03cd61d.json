@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT SUM(open_listings) AS ai_job_count FROM mart_daily_market WHERE family_label = 'Artificial Intelligence'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT SUM(open_listings) AS ai_job_count FROM mart_daily_market WHERE family_label = 'Artificial Intelligence'\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 1012,
+ "output_tokens": 42,
+ "thinking_tokens": 0,
+ "latency_ms": 965.5370410182513,
+ "parse_error": null
+}

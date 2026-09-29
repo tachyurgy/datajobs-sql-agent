@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT\n  dc.company_name,\n  COUNT(DISTINCT fp.posting_key) AS num_open_remote_us_listings\nFROM fct_posting AS fp\nJOIN dim_company AS dc\n  ON fp.company_key = dc.company_key\nJOIN posting_skills AS ps\n  ON fp.posting_key = ps.posting_key\nWHERE\n  fp.is_open = TRUE AND fp.remote_us = TRUE AND fp.is_canonical_listing = TRUE AND ps.skill = 'evals'\nGROUP BY\n  dc.company_name\nORDER BY\n  num_open_remote_us_listings DESC\nLIMIT 1;",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT\\n  dc.company_name,\\n  COUNT(DISTINCT fp.posting_key) AS num_open_remote_us_listings\\nFROM fct_posting AS fp\\nJOIN dim_company AS dc\\n  ON fp.company_key = dc.company_key\\nJOIN posting_skills AS ps\\n  ON fp.posting_key = ps.posting_key\\nWHERE\\n  fp.is_open = TRUE AND fp.remote_us = TRUE AND fp.is_canonical_listing = TRUE AND ps.skill = 'evals'\\nGROUP BY\\n  dc.company_name\\nORDER BY\\n  num_open_remote_us_listings DESC\\nLIMIT 1;\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2053,
+ "output_tokens": 175,
+ "thinking_tokens": 0,
+ "latency_ms": 1518.5030829743482,
+ "parse_error": null
+}

@@ -7,7 +7,7 @@ from typing import Callable
 
 from .db import QueryResult, run
 from .llm import LLMReply, generate
-from .prompt import build_prompt
+from .prompt import SYSTEM, build_prompt, system_prompt
 
 MAX_RETRIES = 2
 
@@ -63,17 +63,24 @@ def problem_with(res: QueryResult) -> str | None:
 
 
 def ask(con, question: str, *, ablation: str = "d", model: str = "gemini-2.5-flash-lite",
-        llm: Callable[[str, str], LLMReply] | None = None, first_reply: LLMReply | None = None) -> Trace:
+        llm: Callable[..., LLMReply] | None = None, first_reply: LLMReply | None = None) -> Trace:
     """Run the agent. `first_reply` lets the eval reuse ablation c's first call for ablation d
     (identical prompt at temperature 0), so d only spends quota on its retries."""
-    llm = llm or (lambda m, text: generate(m, text))
+    llm = llm or (lambda m, text, system=SYSTEM: generate(m, text, system=system))
+    system = system_prompt(ablation)
     tr = Trace(question, ablation, model)
     t0 = time.perf_counter()
     history: list[dict] = []
-    max_attempts = 1 + (MAX_RETRIES if ablation == "d" else 0)
+    max_attempts = 1 + (MAX_RETRIES if ablation in ("d", "e") else 0)
     for n in range(max_attempts):
-        prompt_ablation = "c" if ablation == "d" else ablation
-        reply = first_reply if (n == 0 and first_reply is not None) else llm(model, build_prompt(question, prompt_ablation, history))
+        prompt_ablation = "c" if ablation in ("d", "e") else ablation
+        user = build_prompt(question, prompt_ablation, history)
+        if first_reply is not None and n == 0:
+            reply = first_reply
+        elif system == SYSTEM:
+            reply = llm(model, user)
+        else:
+            reply = llm(model, user, system=system)
         if reply.refuse and not reply.sql:
             tr.refused, tr.refuse_reason = True, reply.reason
             tr.attempts.append(Attempt("", None, 0, reply.prompt_tokens, reply.output_tokens,

@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The user is asking to delete data, which is not allowed. The available tables and columns do not support deletion operations.",
+ "raw": "{\"sql\": \"\", \"refuse\": true, \"reason\": \"The user is asking to delete data, which is not allowed. The available tables and columns do not support deletion operations.\"}",
+ "prompt_tokens": 2132,
+ "output_tokens": 39,
+ "thinking_tokens": 0,
+ "latency_ms": 566.3139999960549,
+ "parse_error": null
+}

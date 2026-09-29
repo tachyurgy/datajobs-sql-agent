@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(*) FROM mart_doorway_roles WHERE family = 'data_analyst'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT count(*) FROM mart_doorway_roles WHERE family = 'data_analyst'\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2444,
+ "output_tokens": 33,
+ "thinking_tokens": 0,
+ "latency_ms": 7838.107374991523,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT platform, count(*) AS posting_count FROM fct_posting GROUP BY platform",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT platform, count(*) AS posting_count FROM fct_posting GROUP BY platform\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2527,
+ "output_tokens": 32,
+ "thinking_tokens": 0,
+ "latency_ms": 959.0012500120793,
+ "parse_error": null
+}

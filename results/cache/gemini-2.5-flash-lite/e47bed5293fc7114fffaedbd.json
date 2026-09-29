@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family_label, p10, p25, p50, p75, p90 FROM mart_comp_by_family WHERE family = 'data_scientist'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT family_label, p10, p25, p50, p75, p90 FROM mart_comp_by_family WHERE family = 'data_scientist'\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 2158,
+ "output_tokens": 63,
+ "thinking_tokens": 0,
+ "latency_ms": 628.13854200067,
+ "parse_error": null
+}

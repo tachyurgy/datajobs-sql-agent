@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(*) FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing AND comp_currency_original != 'USD'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT count(*) FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing AND comp_currency_original != 'USD'\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 2573,
+ "output_tokens": 55,
+ "thinking_tokens": 0,
+ "latency_ms": 625.8139580022544,
+ "parse_error": null
+}

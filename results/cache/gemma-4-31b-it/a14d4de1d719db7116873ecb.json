@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT company_name, remote_us_postings_open AS open_remote_us_listings FROM dim_company ORDER BY open_remote_us_listings DESC LIMIT 3",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT company_name, remote_us_postings_open AS open_remote_us_listings FROM dim_company ORDER BY open_remote_us_listings DESC LIMIT 3\", \"refuse\": false, \"reason\": \"\"}\n```",
+ "prompt_tokens": 1026,
+ "output_tokens": 58,
+ "thinking_tokens": 861,
+ "latency_ms": 27410.321707982803,
+ "parse_error": null
+}

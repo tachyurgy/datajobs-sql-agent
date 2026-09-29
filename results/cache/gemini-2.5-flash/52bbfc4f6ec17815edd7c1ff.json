@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family_label, CAST(SUM(CASE WHEN seniority IN ('senior', 'staff+', 'manager+') THEN 1 ELSE 0 END) AS DOUBLE) * 100 / COUNT(*) AS percentage_senior_or_above FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND comp_mid_usd IS NOT NULL GROUP BY family_label",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT family_label, CAST(SUM(CASE WHEN seniority IN ('senior', 'staff+', 'manager+') THEN 1 ELSE 0 END) AS DOUBLE) * 100 / COUNT(*) AS percentage_senior_or_above FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND comp_mid_usd IS NOT NULL GROUP BY family_label\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 1036,
+ "output_tokens": 95,
+ "thinking_tokens": 0,
+ "latency_ms": 838.3802080061287,
+ "parse_error": null
+}

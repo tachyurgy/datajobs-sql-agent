@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT\n  fct_posting.title,\n  fct_posting.url\nFROM fct_posting\nJOIN dim_company\n  ON fct_posting.company_key = dim_company.company_key\nWHERE\n  fct_posting.is_open = TRUE AND fct_posting.remote_us = TRUE AND fct_posting.family = 'ai_engineer' AND dim_company.company_name = 'Reddit'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT\\n  fct_posting.title,\\n  fct_posting.url\\nFROM fct_posting\\nJOIN dim_company\\n  ON fct_posting.company_key = dim_company.company_key\\nWHERE\\n  fct_posting.is_open = TRUE AND fct_posting.remote_us = TRUE AND fct_posting.family = 'ai_engineer' AND dim_company.company_name = 'Reddit'\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2134,
+ "output_tokens": 118,
+ "thinking_tokens": 0,
+ "latency_ms": 1290.2914579899516,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT CAST(COUNT(CASE WHEN comp_mid_usd IS NOT NULL THEN 1 ELSE NULL END) AS REAL) / COUNT(*) FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT CAST(COUNT(CASE WHEN comp_mid_usd IS NOT NULL THEN 1 ELSE NULL END) AS REAL) / COUNT(*) FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2535,
+ "output_tokens": 62,
+ "thinking_tokens": 0,
+ "latency_ms": 553.4505410178099,
+ "parse_error": null
+}

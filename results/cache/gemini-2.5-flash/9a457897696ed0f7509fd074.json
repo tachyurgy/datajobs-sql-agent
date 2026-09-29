@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT COUNT(DISTINCT company_name) FROM dim_company WHERE remote_us_postings_open >= 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT COUNT(DISTINCT company_name) FROM dim_company WHERE remote_us_postings_open >= 1\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2051,
+ "output_tokens": 40,
+ "thinking_tokens": 0,
+ "latency_ms": 764.0651670226362,
+ "parse_error": null
+}

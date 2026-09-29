@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(skill) FROM dim_skill",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT count(skill) FROM dim_skill\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2833,
+ "output_tokens": 24,
+ "thinking_tokens": 0,
+ "latency_ms": 493.551708990708,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT 100.0 * AVG(is_doorway::INT) AS percentage_doorway_roles FROM fct_posting WHERE is_open = true AND remote_us = true",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT 100.0 * AVG(is_doorway::INT) AS percentage_doorway_roles FROM fct_posting WHERE is_open = true AND remote_us = true\", \"refuse\": false, \"reason\": \"\"}\n```",
+ "prompt_tokens": 1018,
+ "output_tokens": 60,
+ "thinking_tokens": 777,
+ "latency_ms": 25720.33487498993,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family, count(*) AS open_remote_us_listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing GROUP BY family",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT family, count(*) AS open_remote_us_listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing GROUP BY family\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2415,
+ "output_tokens": 50,
+ "thinking_tokens": 0,
+ "latency_ms": 1191.4708749973215,
+ "parse_error": null
+}

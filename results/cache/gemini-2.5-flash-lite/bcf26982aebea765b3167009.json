@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT seniority, count(*) AS listings FROM fct_posting WHERE family = 'data_engineer' AND is_open AND remote_us AND is_canonical_listing GROUP BY seniority",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT seniority, count(*) AS listings FROM fct_posting WHERE family = 'data_engineer' AND is_open AND remote_us AND is_canonical_listing GROUP BY seniority\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2578,
+ "output_tokens": 52,
+ "thinking_tokens": 0,
+ "latency_ms": 655.4466669913381,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family, count(*) AS listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing GROUP BY family",
+ "refuse": false,
+ "reason": "The query counts open remote-US canonical listings grouped by role family.",
+ "raw": "```json\n{\"sql\": \"SELECT family, count(*) AS listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing GROUP BY family\", \"refuse\": false, \"reason\": \"The query counts open remote-US canonical listings grouped by role family.\"}\n```",
+ "prompt_tokens": 2254,
+ "output_tokens": 64,
+ "thinking_tokens": 203,
+ "latency_ms": 8187.675583991222,
+ "parse_error": null
+}

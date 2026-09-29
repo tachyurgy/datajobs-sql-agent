@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT\n  CASE\n    WHEN\n      CAST(strftime('%w', published_at) AS INTEGER) = 0 THEN 'Sunday'\n    WHEN\n      CAST(strftime('%w', published_at) AS INTEGER) = 1 THEN 'Monday'\n    WHEN\n      CAST(strftime('%w', published_at) AS INTEGER) = 2 THEN 'Tuesday'\n    WHEN\n      CAST(strftime('%w', published_at) AS INTEGER) = 3 THEN 'Wednesday'\n    WHEN\n      CAST(strftime('%w', published_at) AS INTEGER) = 4 THEN 'Thursday'\n    WHEN\n      CAST(strftime('%w', published_at) AS INTEGER) = 5 THEN 'Friday'\n    WHEN\n      CAST(strftime('%w', published_at) AS INTEGER) = 6 THEN 'Saturday'\n  END AS day_of_week,\n  COUNT(*) AS num_listings\nFROM\n  fct_posting\nWHERE\n  remote_us = TRUE AND is_open = TRUE AND is_canonical_listing = TRUE\nGROUP BY\n  day_of_week\nORDER BY\n  num_listings DESC\nLIMIT 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT\\n  CASE\\n    WHEN\\n      CAST(strftime('%w', published_at) AS INTEGER) = 0 THEN 'Sunday'\\n    WHEN\\n      CAST(strftime('%w', published_at) AS INTEGER) = 1 THEN 'Monday'\\n    WHEN\\n      CAST(strftime('%w', published_at) AS INTEGER) = 2 THEN 'Tuesday'\\n    WHEN\\n      CAST(strftime('%w', published_at) AS INTEGER) = 3 THEN 'Wednesday'\\n    WHEN\\n      CAST(strftime('%w', published_at) AS INTEGER) = 4 THEN 'Thursday'\\n    WHEN\\n      CAST(strftime('%w', published_at) AS INTEGER) = 5 THEN 'Friday'\\n    WHEN\\n      CAST(strftime('%w', published_at) AS INTEGER) = 6 THEN 'Saturday'\\n  END AS day_of_week,\\n  COUNT(*) AS num_listings\\nFROM\\n  fct_posting\\nWHERE\\n  remote_us = TRUE AND is_open = TRUE AND is_canonical_listing = TRUE\\nGROUP BY\\n  day_of_week\\nORDER BY\\n  num_listings DESC\\nLIMIT 1\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2087,
+ "output_tokens": 284,
+ "thinking_tokens": 0,
+ "latency_ms": 1161.7189999960829,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "WITH family_listings AS (SELECT family, SUM(open_listings) AS listings_count FROM mart_daily_market WHERE crawl_date = '2026-09-29' AND remote_us = TRUE GROUP BY family), total_listings AS (SELECT SUM(open_listings) AS total_count FROM mart_daily_market WHERE crawl_date = '2026-09-29' AND remote_us = TRUE) SELECT fl.family, fl.listings_count, (fl.listings_count * 1.0 / tl.total_count) AS share_of_total FROM family_listings AS fl CROSS JOIN total_listings AS tl ORDER BY fl.listings_count DESC",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"WITH family_listings AS (SELECT family, SUM(open_listings) AS listings_count FROM mart_daily_market WHERE crawl_date = '2026-09-29' AND remote_us = TRUE GROUP BY family), total_listings AS (SELECT SUM(open_listings) AS total_count FROM mart_daily_market WHERE crawl_date = '2026-09-29' AND remote_us = TRUE) SELECT fl.family, fl.listings_count, (fl.listings_count * 1.0 / tl.total_count) AS share_of_total FROM family_listings AS fl CROSS JOIN total_listings AS tl ORDER BY fl.listings_count DESC\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2104,
+ "output_tokens": 169,
+ "thinking_tokens": 0,
+ "latency_ms": 1356.4524999819696,
+ "parse_error": null
+}

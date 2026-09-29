@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(*) AS open_remote_phd_listings FROM fct_posting WHERE is_open = true AND remote_us = true AND degree_level = 'PhD'",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT count(*) AS open_remote_phd_listings FROM fct_posting WHERE is_open = true AND remote_us = true AND degree_level = 'PhD'\", \"refuse\": false, \"reason\": \"\"}\n```",
+ "prompt_tokens": 1022,
+ "output_tokens": 56,
+ "thinking_tokens": 364,
+ "latency_ms": 33494.65283297468,
+ "parse_error": null
+}

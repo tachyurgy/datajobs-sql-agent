@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT ps.skill, COUNT(fp.posting_key) AS mention_count FROM fct_posting fp JOIN posting_skills ps ON fp.posting_key = ps.posting_key WHERE fp.is_open = true AND fp.remote_us = true AND fp.is_canonical_listing = true GROUP BY ps.skill ORDER BY mention_count DESC LIMIT 10",
+ "refuse": false,
+ "reason": "The query joins the central fact table with the skills bridge table, applying the standard market filters for open, remote-US, and canonical listings, then aggregates the count of listings per skill.",
+ "raw": "```json\n{\"sql\": \"SELECT ps.skill, COUNT(fp.posting_key) AS mention_count FROM fct_posting fp JOIN posting_skills ps ON fp.posting_key = ps.posting_key WHERE fp.is_open = true AND fp.remote_us = true AND fp.is_canonical_listing = true GROUP BY ps.skill ORDER BY mention_count DESC LIMIT 10\", \"refuse\": false, \"reason\": \"The query joins the central fact table with the skills bridge table, applying the standard market filters for open, remote-US, and canonical listings, then aggregates the count of listings per skill.\"}\n```",
+ "prompt_tokens": 2159,
+ "output_tokens": 140,
+ "thinking_tokens": 1291,
+ "latency_ms": 42166.98149999138,
+ "parse_error": null
+}

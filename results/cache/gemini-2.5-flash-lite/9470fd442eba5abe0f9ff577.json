@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT d.company_name, count(*) AS listings FROM fct_posting f JOIN dim_company d USING (company_key) WHERE f.family = 'data_engineer' AND f.is_open AND f.is_canonical_listing GROUP BY d.company_name ORDER BY listings DESC LIMIT 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT d.company_name, count(*) AS listings FROM fct_posting f JOIN dim_company d USING (company_key) WHERE f.family = 'data_engineer' AND f.is_open AND f.is_canonical_listing GROUP BY d.company_name ORDER BY listings DESC LIMIT 1\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2332,
+ "output_tokens": 81,
+ "thinking_tokens": 0,
+ "latency_ms": 662.151750002522,
+ "parse_error": null
+}

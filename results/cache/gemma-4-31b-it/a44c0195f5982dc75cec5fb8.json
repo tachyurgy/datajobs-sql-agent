@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT CAST(COUNT(comp_min_usd) AS DOUBLE) / COUNT(*) AS pay_disclosure_fraction FROM fct_posting WHERE is_open = true AND remote_us = true",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT CAST(COUNT(comp_min_usd) AS DOUBLE) / COUNT(*) AS pay_disclosure_fraction FROM fct_posting WHERE is_open = true AND remote_us = true\", \"refuse\": false, \"reason\": \"\"}\n```",
+ "prompt_tokens": 1020,
+ "output_tokens": 60,
+ "thinking_tokens": 984,
+ "latency_ms": 30720.616167003755,
+ "parse_error": null
+}

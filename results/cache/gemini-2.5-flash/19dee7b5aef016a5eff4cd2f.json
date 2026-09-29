@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT T1.company_name, T2.remote_us_postings_open FROM dim_company AS T1 INNER JOIN dim_company AS T2 ON T1.company_key = T2.company_key WHERE T1.data_postings_ever > 1000",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT T1.company_name, T2.remote_us_postings_open FROM dim_company AS T1 INNER JOIN dim_company AS T2 ON T1.company_key = T2.company_key WHERE T1.data_postings_ever > 1000\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 1036,
+ "output_tokens": 79,
+ "thinking_tokens": 0,
+ "latency_ms": 983.8829159853049,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT\n  t2.skill,\n  COUNT(DISTINCT t1.posting_key) AS listings_mentioning\nFROM fct_posting AS t1\nINNER JOIN posting_skills AS t2\n  ON t1.posting_key = t2.posting_key\nWHERE\n  t1.is_open = TRUE AND t1.remote_us = TRUE AND t1.is_canonical_listing = TRUE\nGROUP BY\n  t2.skill\nORDER BY\n  listings_mentioning DESC\nLIMIT 10;",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT\\n  t2.skill,\\n  COUNT(DISTINCT t1.posting_key) AS listings_mentioning\\nFROM fct_posting AS t1\\nINNER JOIN posting_skills AS t2\\n  ON t1.posting_key = t2.posting_key\\nWHERE\\n  t1.is_open = TRUE AND t1.remote_us = TRUE AND t1.is_canonical_listing = TRUE\\nGROUP BY\\n  t2.skill\\nORDER BY\\n  listings_mentioning DESC\\nLIMIT 10;\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2158,
+ "output_tokens": 142,
+ "thinking_tokens": 0,
+ "latency_ms": 1212.348375003785,
+ "parse_error": null
+}

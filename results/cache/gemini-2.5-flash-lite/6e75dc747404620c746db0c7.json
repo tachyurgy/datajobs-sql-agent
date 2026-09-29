@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT COUNT(posting_key) FROM fct_posting WHERE remote_us = TRUE AND is_open = TRUE AND published_at >= '2026-07-01 00:00:00+00' AND published_at < '2026-10-01 00:00:00+00'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT COUNT(posting_key) FROM fct_posting WHERE remote_us = TRUE AND is_open = TRUE AND published_at >= '2026-07-01 00:00:00+00' AND published_at < '2026-10-01 00:00:00+00'\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2157,
+ "output_tokens": 96,
+ "thinking_tokens": 0,
+ "latency_ms": 817.4152080027852,
+ "parse_error": null
+}

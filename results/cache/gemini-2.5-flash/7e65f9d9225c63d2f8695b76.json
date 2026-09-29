@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT T1.skill, T1.listings_mentioning FROM mart_skill_demand AS T1 WHERE T1.skill IN ('python', 'sql') ORDER BY T1.listings_mentioning DESC",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT T1.skill, T1.listings_mentioning FROM mart_skill_demand AS T1 WHERE T1.skill IN ('python', 'sql') ORDER BY T1.listings_mentioning DESC\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 1013,
+ "output_tokens": 59,
+ "thinking_tokens": 0,
+ "latency_ms": 1805.7461669959594,
+ "parse_error": null
+}

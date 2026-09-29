@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT share FROM mart_skill_demand WHERE family = 'ml_engineer' AND cluster = 'llm_genai' AND scope = 'all'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT share FROM mart_skill_demand WHERE family = 'ml_engineer' AND cluster = 'llm_genai' AND scope = 'all'\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2380,
+ "output_tokens": 46,
+ "thinking_tokens": 0,
+ "latency_ms": 1315.2523750031833,
+ "parse_error": null
+}

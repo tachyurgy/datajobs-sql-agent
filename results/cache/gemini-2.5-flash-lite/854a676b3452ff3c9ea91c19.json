@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The available tables do not contain information about 401k matches or any company benefits.",
+ "raw": "{\"sql\": \"\", \"refuse\": true, \"reason\": \"The available tables do not contain information about 401k matches or any company benefits.\"}",
+ "prompt_tokens": 2507,
+ "output_tokens": 34,
+ "thinking_tokens": 0,
+ "latency_ms": 538.7864579970483,
+ "parse_error": null
+}

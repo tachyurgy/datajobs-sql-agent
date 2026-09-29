@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(*) FROM fct_posting f LEFT JOIN mart_comp_by_family m ON f.family = m.family WHERE f.is_open AND f.remote_us AND f.is_canonical_listing AND f.comp_mid_usd > m.p50 * 1.5",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT count(*) FROM fct_posting f LEFT JOIN mart_comp_by_family m ON f.family = m.family WHERE f.is_open AND f.remote_us AND f.is_canonical_listing AND f.comp_mid_usd > m.p50 * 1.5\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2459,
+ "output_tokens": 81,
+ "thinking_tokens": 0,
+ "latency_ms": 724.3031249963678,
+ "parse_error": null
+}

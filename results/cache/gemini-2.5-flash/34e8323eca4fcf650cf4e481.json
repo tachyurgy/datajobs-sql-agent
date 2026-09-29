@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT d.company_name, count(*) AS listings FROM fct_posting f JOIN dim_company d USING (company_key) WHERE d.platform = 'ashby' AND f.is_open AND f.remote_us AND f.is_canonical_listing GROUP BY d.company_name HAVING count(*) > 5 ORDER BY listings DESC",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT d.company_name, count(*) AS listings FROM fct_posting f JOIN dim_company d USING (company_key) WHERE d.platform = 'ashby' AND f.is_open AND f.remote_us AND f.is_canonical_listing GROUP BY d.company_name HAVING count(*) > 5 ORDER BY listings DESC\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2331,
+ "output_tokens": 89,
+ "thinking_tokens": 0,
+ "latency_ms": 1026.6055839892942,
+ "parse_error": null
+}

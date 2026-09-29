@@ -1,0 +1,11 @@
+{
+ "sql": "WITH RankedFamilies AS (SELECT family, COUNT(posting_key) AS open_remote_us_listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing GROUP BY family) SELECT family, open_remote_us_listings, SUM(open_remote_us_listings) OVER (ORDER BY open_remote_us_listings DESC) AS running_total FROM RankedFamilies ORDER BY open_remote_us_listings DESC",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"WITH RankedFamilies AS (SELECT family, COUNT(posting_key) AS open_remote_us_listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing GROUP BY family) SELECT family, open_remote_us_listings, SUM(open_remote_us_listings) OVER (ORDER BY open_remote_us_listings DESC) AS running_total FROM RankedFamilies ORDER BY open_remote_us_listings DESC\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 2525,
+ "output_tokens": 120,
+ "thinking_tokens": 0,
+ "latency_ms": 777.3927910020575,
+ "parse_error": null
+}

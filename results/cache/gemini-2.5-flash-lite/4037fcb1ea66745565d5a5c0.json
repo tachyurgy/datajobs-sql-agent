@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT\n  CAST(strftime('%Y', published_at) AS INTEGER) AS publication_year,\n  COUNT(posting_key) AS open_remote_us_listings\nFROM fct_posting\nWHERE\n  is_open = TRUE AND remote_us = TRUE AND is_canonical_listing = TRUE AND published_at < '2026-01-01'\nGROUP BY\n  publication_year\nORDER BY\n  publication_year;",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT\\n  CAST(strftime('%Y', published_at) AS INTEGER) AS publication_year,\\n  COUNT(posting_key) AS open_remote_us_listings\\nFROM fct_posting\\nWHERE\\n  is_open = TRUE AND remote_us = TRUE AND is_canonical_listing = TRUE AND published_at < '2026-01-01'\\nGROUP BY\\n  publication_year\\nORDER BY\\n  publication_year;\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 2204,
+ "output_tokens": 130,
+ "thinking_tokens": 0,
+ "latency_ms": 737.1264579996932,
+ "parse_error": null
+}

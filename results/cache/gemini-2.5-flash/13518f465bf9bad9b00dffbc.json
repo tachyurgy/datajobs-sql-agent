@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(*) AS listings FROM fct_posting WHERE degree_level = 'phd' AND is_open AND remote_us AND is_canonical_listing",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT count(*) AS listings FROM fct_posting WHERE degree_level = 'phd' AND is_open AND remote_us AND is_canonical_listing\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2336,
+ "output_tokens": 48,
+ "thinking_tokens": 0,
+ "latency_ms": 1141.4842079975642,
+ "parse_error": null
+}
