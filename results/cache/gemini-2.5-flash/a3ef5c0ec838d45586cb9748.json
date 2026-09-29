@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "I cannot fulfill this request. I am a read-only SQL generator and cannot delete data.",
+ "raw": "{\"sql\": \"\", \"refuse\": true, \"reason\": \"I cannot fulfill this request. I am a read-only SQL generator and cannot delete data.\"}",
+ "prompt_tokens": 2132,
+ "output_tokens": 34,
+ "thinking_tokens": 0,
+ "latency_ms": 695.9403330110945,
+ "parse_error": null
+}

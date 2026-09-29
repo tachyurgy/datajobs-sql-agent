@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT skill, SUM(listings_mentioning) AS total_listings FROM mart_skill_demand WHERE skill IN ('python', 'sql') AND scope = 'all' GROUP BY skill ORDER BY total_listings DESC",
+ "refuse": false,
+ "reason": "Comparing total listings mentioning Python vs SQL across all families for open remote-US roles.",
+ "raw": "```json\n{\"sql\": \"SELECT skill, SUM(listings_mentioning) AS total_listings FROM mart_skill_demand WHERE skill IN ('python', 'sql') AND scope = 'all' GROUP BY skill ORDER BY total_listings DESC\", \"refuse\": false, \"reason\": \"Comparing total listings mentioning Python vs SQL across all families for open remote-US roles.\"}\n```",
+ "prompt_tokens": 2949,
+ "output_tokens": 82,
+ "thinking_tokens": 1254,
+ "latency_ms": 38676.40300001949,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family, count(CASE WHEN seniority IN ('senior', 'staff+', 'manager+') THEN 1 END) * 100.0 / count(*) AS pct_senior_or_above FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing AND comp_mid_usd IS NOT NULL GROUP BY family",
+ "refuse": false,
+ "reason": "The query calculates the percentage of open remote-US listings with posted pay that have a seniority level of 'senior', 'staff+', or 'manager+', grouped by role family.",
+ "raw": "```json\n{\"sql\": \"SELECT family, count(CASE WHEN seniority IN ('senior', 'staff+', 'manager+') THEN 1 END) * 100.0 / count(*) AS pct_senior_or_above FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing AND comp_mid_usd IS NOT NULL GROUP BY family\", \"refuse\": false, \"reason\": \"The query calculates the percentage of open remote-US listings with posted pay that have a seniority level of 'senior', 'staff+', or 'manager+', grouped by role family.\"}\n```",
+ "prompt_tokens": 2527,
+ "output_tokens": 128,
+ "thinking_tokens": 228,
+ "latency_ms": 10988.687415985623,
+ "parse_error": null
+}

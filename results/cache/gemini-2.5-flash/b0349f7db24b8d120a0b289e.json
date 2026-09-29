@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "I cannot answer this question. The available tables do not contain information about company headcount.",
+ "raw": "{\"sql\": \"\", \"refuse\": true, \"reason\": \"I cannot answer this question. The available tables do not contain information about company headcount.\"}",
+ "prompt_tokens": 2362,
+ "output_tokens": 32,
+ "thinking_tokens": 0,
+ "latency_ms": 979.6053750033025,
+ "parse_error": null
+}

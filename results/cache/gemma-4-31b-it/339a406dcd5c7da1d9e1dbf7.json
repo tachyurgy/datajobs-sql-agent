@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT dayname(published_at) AS day_of_week, count(*) AS num_listings FROM fct_posting WHERE is_open = true AND remote_us = true GROUP BY 1 ORDER BY num_listings DESC LIMIT 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT dayname(published_at) AS day_of_week, count(*) AS num_listings FROM fct_posting WHERE is_open = true AND remote_us = true GROUP BY 1 ORDER BY num_listings DESC LIMIT 1\", \"refuse\": false, \"reason\": \"\"}\n```",
+ "prompt_tokens": 1022,
+ "output_tokens": 71,
+ "thinking_tokens": 407,
+ "latency_ms": 14508.480874996167,
+ "parse_error": null
+}

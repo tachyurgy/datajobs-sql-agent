@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT d.company_name, count(*) AS listings_count FROM fct_posting f JOIN dim_company d USING (company_key) WHERE f.is_open AND f.remote_us AND f.is_canonical_listing GROUP BY d.company_name ORDER BY listings_count DESC LIMIT 3",
+ "refuse": false,
+ "reason": "The request can be answered by joining fct_posting and dim_company and applying the standard filters for open remote-US listings.",
+ "raw": "```json\n{\"sql\": \"SELECT d.company_name, count(*) AS listings_count FROM fct_posting f JOIN dim_company d USING (company_key) WHERE f.is_open AND f.remote_us AND f.is_canonical_listing GROUP BY d.company_name ORDER BY listings_count DESC LIMIT 3\", \"refuse\": false, \"reason\": \"The request can be answered by joining fct_posting and dim_company and applying the standard filters for open remote-US listings.\"}\n```",
+ "prompt_tokens": 2584,
+ "output_tokens": 114,
+ "thinking_tokens": 292,
+ "latency_ms": 12057.501333008986,
+ "parse_error": null
+}

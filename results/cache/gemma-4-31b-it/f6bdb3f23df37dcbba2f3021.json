@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT c.company_name, COUNT(p.posting_key) AS posting_count FROM fct_posting p JOIN dim_company c ON p.company_key = c.company_key WHERE p.remote_us = true AND p.family_label LIKE '%Data%' GROUP BY c.company_name ORDER BY posting_count DESC LIMIT 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT c.company_name, COUNT(p.posting_key) AS posting_count FROM fct_posting p JOIN dim_company c ON p.company_key = c.company_key WHERE p.remote_us = true AND p.family_label LIKE '%Data%' GROUP BY c.company_name ORDER BY posting_count DESC LIMIT 1\", \"refuse\": false, \"reason\": \"\"}\n```",
+ "prompt_tokens": 1015,
+ "output_tokens": 96,
+ "thinking_tokens": 1043,
+ "latency_ms": 32842.517625016626,
+ "parse_error": null
+}

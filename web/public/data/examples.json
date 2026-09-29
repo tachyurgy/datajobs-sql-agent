@@ -1,12 +1,12 @@
 [
  {
   "question": "What do AI engineers make?",
-  "sql": "SELECT p10, p25, p50, p75, p90 FROM mart_comp_by_family WHERE family = 'ai_engineer' AND seniority IS NULL",
-  "answer": "AI engineers make between $148,000 and $275,000 annually. The median salary for AI engineers is $200,000.",
-  "model": "gemini-2.5-flash-lite",
+  "sql": "SELECT p50 AS median_pay_midpoint_usd FROM mart_comp_by_family WHERE family = 'ai_engineer' AND seniority IS NULL",
+  "answer": "AI engineers make a median annual pay of $200,000.",
+  "model": "gemini-2.5-flash, ablation d",
   "attempts": [
    {
-    "sql": "SELECT p10, p25, p50, p75, p90 FROM mart_comp_by_family WHERE family = 'ai_engineer' AND seniority IS NULL",
+    "sql": "SELECT p50 AS median_pay_midpoint_usd FROM mart_comp_by_family WHERE family = 'ai_engineer' AND seniority IS NULL",
     "error": null
    }
   ]
@@ -15,7 +15,7 @@
   "question": "What is the median pay for senior data engineers?",
   "sql": "SELECT p50 FROM mart_comp_by_family WHERE family = 'data_engineer' AND seniority = 'senior'",
   "answer": "The median pay for senior data engineers is 168967.5 USD.",
-  "model": "gemini-2.5-flash-lite",
+  "model": "gemini-2.5-flash, ablation d",
   "attempts": [
    {
     "sql": "SELECT p50 FROM mart_comp_by_family WHERE family = 'data_engineer' AND seniority = 'senior'",
@@ -26,8 +26,8 @@
  {
   "question": "Which companies have the most open remote-US ML engineer listings?",
   "sql": "SELECT d.company_name, count(*) AS listings FROM fct_posting f JOIN dim_company d USING (company_key) WHERE f.family = 'ml_engineer' AND f.is_open AND f.remote_us AND f.is_canonical_listing GROUP BY d.company_name ORDER BY listings DESC",
-  "answer": "Reddit has the most open remote-US ML engineer listings with 15. Torc Robotics is second with 12, followed by Airbnb with 10.",
-  "model": "gemini-2.5-flash-lite",
+  "answer": "Reddit has the most open remote-US ML engineer listings with 15. Torc Robotics follows with 12, and Airbnb has 10.",
+  "model": "gemini-2.5-flash, ablation d",
   "attempts": [
    {
     "sql": "SELECT d.company_name, count(*) AS listings FROM fct_posting f JOIN dim_company d USING (company_key) WHERE f.family = 'ml_engineer' AND f.is_open AND f.remote_us AND f.is_canonical_listing GROUP BY d.company_name ORDER BY listings DESC",
@@ -36,37 +36,25 @@
   ]
  },
  {
-  "question": "How many doorway roles are open for data analysts?",
-  "sql": "SELECT count(*) FROM mart_doorway_roles WHERE family = 'data_analyst'",
-  "answer": "There are 26 doorway roles open for data analysts.",
-  "model": "gemini-2.5-flash-lite",
-  "attempts": [
-   {
-    "sql": "SELECT count(*) FROM mart_doorway_roles WHERE family = 'data_analyst'",
-    "error": null
-   }
-  ]
- },
- {
   "question": "How many open remote-US listings mention both dbt and Snowflake?",
-  "sql": "SELECT count(DISTINCT s.posting_key) FROM posting_skills s JOIN fct_posting f ON s.posting_key = f.posting_key WHERE s.skill = 'dbt' AND f.is_open AND f.remote_us AND f.is_canonical_listing AND f.posting_key IN (SELECT posting_key FROM posting_skills WHERE skill = 'snowflake')",
+  "sql": "SELECT count(DISTINCT f.posting_key) AS listings FROM fct_posting f JOIN posting_skills s1 ON f.posting_key = s1.posting_key JOIN posting_skills s2 ON f.posting_key = s2.posting_key WHERE s1.skill = 'dbt' AND s2.skill = 'snowflake' AND f.is_open AND f.remote_us AND f.is_canonical_listing",
   "answer": "There are 108 open remote-US listings that mention both dbt and Snowflake.",
-  "model": "gemini-2.5-flash-lite",
+  "model": "gemini-2.5-flash, ablation d",
   "attempts": [
    {
-    "sql": "SELECT count(DISTINCT s.posting_key) FROM posting_skills s JOIN fct_posting f ON s.posting_key = f.posting_key WHERE s.skill = 'dbt' AND f.is_open AND f.remote_us AND f.is_canonical_listing AND f.posting_key IN (SELECT posting_key FROM posting_skills WHERE skill = 'snowflake')",
+    "sql": "SELECT count(DISTINCT f.posting_key) AS listings FROM fct_posting f JOIN posting_skills s1 ON f.posting_key = s1.posting_key JOIN posting_skills s2 ON f.posting_key = s2.posting_key WHERE s1.skill = 'dbt' AND s2.skill = 'snowflake' AND f.is_open AND f.remote_us AND f.is_canonical_listing",
     "error": null
    }
   ]
  },
  {
   "question": "Which ATS platform hosts the most remote data listings?",
-  "sql": "SELECT platform, count(*) AS num_remote_listings FROM fct_posting WHERE remote_us AND is_open AND is_canonical_listing GROUP BY platform ORDER BY num_remote_listings DESC LIMIT 1",
+  "sql": "SELECT platform, count(*) AS remote_data_listings FROM fct_posting WHERE remote_us AND is_canonical_listing GROUP BY platform ORDER BY remote_data_listings DESC LIMIT 1",
   "answer": "Greenhouse hosts the most remote data listings with 554.0.",
-  "model": "gemini-2.5-flash-lite",
+  "model": "gemini-2.5-flash, ablation d",
   "attempts": [
    {
-    "sql": "SELECT platform, count(*) AS num_remote_listings FROM fct_posting WHERE remote_us AND is_open AND is_canonical_listing GROUP BY platform ORDER BY num_remote_listings DESC LIMIT 1",
+    "sql": "SELECT platform, count(*) AS remote_data_listings FROM fct_posting WHERE remote_us AND is_canonical_listing GROUP BY platform ORDER BY remote_data_listings DESC LIMIT 1",
     "error": null
    }
   ]
@@ -74,14 +62,14 @@
  {
   "question": "How many applicants does the average posting get?",
   "sql": "",
-  "answer": "I can't answer that from this warehouse. The database does not contain information about job applicants.",
-  "model": "gemini-2.5-flash-lite",
+  "answer": "I can't answer that from this warehouse. The available tables do not contain information about the number of applicants per posting.",
+  "model": "gemini-2.5-flash, ablation d",
   "attempts": [
    {
     "sql": "",
     "error": null,
     "refused": true,
-    "reason": "The database does not contain information about job applicants."
+    "reason": "The available tables do not contain information about the number of applicants per posting."
    }
   ]
  }

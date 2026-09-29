@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The dataset contains information about job postings, not data on individuals hired or their gender.",
+ "raw": "```json\n{\"sql\": \"\", \"refuse\": true, \"reason\": \"The dataset contains information about job postings, not data on individuals hired or their gender.\"}\n```",
+ "prompt_tokens": 2464,
+ "output_tokens": 37,
+ "thinking_tokens": 324,
+ "latency_ms": 11086.374333011918,
+ "parse_error": null
+}

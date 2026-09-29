@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT date_trunc('month', crawl_date)::DATE AS month, open_listings FROM mart_daily_market WHERE family = 'ai_engineer' AND remote_us IS TRUE AND crawl_date >= '2026-06-01' ORDER BY month",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT date_trunc('month', crawl_date)::DATE AS month, open_listings FROM mart_daily_market WHERE family = 'ai_engineer' AND remote_us IS TRUE AND crawl_date >= '2026-06-01' ORDER BY month\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2455,
+ "output_tokens": 74,
+ "thinking_tokens": 0,
+ "latency_ms": 798.0342500086408,
+ "parse_error": null
+}

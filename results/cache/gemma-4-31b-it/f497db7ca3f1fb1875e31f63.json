@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT year(published_at) AS publication_year, count(DISTINCT listing_key) AS open_listings_count FROM fct_posting WHERE is_open = true AND remote_us = true AND published_at < '2026-01-01' GROUP BY 1",
+ "refuse": false,
+ "reason": "The query filters for open, remote-US listings published before 2026 and groups the count of unique listings by the year of publication.",
+ "raw": "```json\n{\"sql\": \"SELECT year(published_at) AS publication_year, count(DISTINCT listing_key) AS open_listings_count FROM fct_posting WHERE is_open = true AND remote_us = true AND published_at < '2026-01-01' GROUP BY 1\", \"refuse\": false, \"reason\": \"The query filters for open, remote-US listings published before 2026 and groups the count of unique listings by the year of publication.\"}\n```",
+ "prompt_tokens": 1030,
+ "output_tokens": 115,
+ "thinking_tokens": 1136,
+ "latency_ms": 36604.10516601405,
+ "parse_error": null
+}

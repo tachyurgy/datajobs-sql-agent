@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The provided schema does not contain any information regarding visa sponsorship.",
+ "raw": "```json\n{\"sql\": \"\", \"refuse\": true, \"reason\": \"The provided schema does not contain any information regarding visa sponsorship.\"}\n```",
+ "prompt_tokens": 1014,
+ "output_tokens": 32,
+ "thinking_tokens": 217,
+ "latency_ms": 7747.137875005137,
+ "parse_error": null
+}

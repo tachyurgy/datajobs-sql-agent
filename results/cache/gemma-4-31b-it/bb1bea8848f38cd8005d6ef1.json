@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(*) AS listings_count FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing AND comp_currency_original != 'USD'",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT count(*) AS listings_count FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing AND comp_currency_original != 'USD'\", \"refuse\": false, \"reason\": null}\n```",
+ "prompt_tokens": 2574,
+ "output_tokens": 56,
+ "thinking_tokens": 586,
+ "latency_ms": 18552.883334021317,
+ "parse_error": null
+}

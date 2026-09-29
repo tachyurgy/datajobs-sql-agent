@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(DISTINCT s.posting_key) AS num_jobs FROM posting_skills s JOIN fct_posting f USING (posting_key) WHERE s.skill = 'dbt' AND f.is_open AND f.remote_us AND f.is_canonical_listing",
+ "refuse": false,
+ "reason": "The query counts unique canonical postings that are open and remote-US and mention the skill 'dbt', following the default market filters provided in the notes.",
+ "raw": "```json\n{\"sql\": \"SELECT count(DISTINCT s.posting_key) AS num_jobs FROM posting_skills s JOIN fct_posting f USING (posting_key) WHERE s.skill = 'dbt' AND f.is_open AND f.remote_us AND f.is_canonical_listing\", \"refuse\": false, \"reason\": \"The query counts unique canonical postings that are open and remote-US and mention the skill 'dbt', following the default market filters provided in the notes.\"}\n```",
+ "prompt_tokens": 2967,
+ "output_tokens": 113,
+ "thinking_tokens": 1674,
+ "latency_ms": 53241.09695901279,
+ "parse_error": null
+}

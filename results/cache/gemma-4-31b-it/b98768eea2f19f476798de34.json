@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT d.company_name FROM fct_posting f JOIN dim_company d USING (company_key) WHERE d.platform = 'ashby' AND f.is_open AND f.remote_us AND f.is_canonical_listing GROUP BY d.company_name HAVING count(*) > 5",
+ "refuse": false,
+ "reason": "The query filters for Ashby platform, open remote-US canonical listings, and groups by company to find those with more than 5 listings.",
+ "raw": "```json\n{\"sql\": \"SELECT d.company_name FROM fct_posting f JOIN dim_company d USING (company_key) WHERE d.platform = 'ashby' AND f.is_open AND f.remote_us AND f.is_canonical_listing GROUP BY d.company_name HAVING count(*) > 5\", \"refuse\": false, \"reason\": \"The query filters for Ashby platform, open remote-US canonical listings, and groups by company to find those with more than 5 listings.\"}\n```",
+ "prompt_tokens": 2494,
+ "output_tokens": 114,
+ "thinking_tokens": 330,
+ "latency_ms": 13568.371000001207,
+ "parse_error": null
+}

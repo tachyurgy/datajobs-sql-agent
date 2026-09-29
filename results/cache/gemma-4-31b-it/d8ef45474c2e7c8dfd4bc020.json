@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The warehouse does not record applicants, interviews, hires, or any data related to people applying to postings.",
+ "raw": "```json\n{\"sql\": \"\", \"refuse\": true, \"reason\": \"The warehouse does not record applicants, interviews, hires, or any data related to people applying to postings.\"}\n```",
+ "prompt_tokens": 2222,
+ "output_tokens": 41,
+ "thinking_tokens": 281,
+ "latency_ms": 9964.993458008394,
+ "parse_error": null
+}

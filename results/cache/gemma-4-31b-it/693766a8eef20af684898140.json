@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT date_trunc('month', published_at) AS publish_month, COUNT(*) AS listing_count FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND is_canonical_listing = TRUE AND year(published_at) = 2026 GROUP BY 1 ORDER BY 1",
+ "refuse": false,
+ "reason": "The query filters for open, remote-US, canonical listings published in 2026 and groups them by month.",
+ "raw": "```json\n{\"sql\": \"SELECT date_trunc('month', published_at) AS publish_month, COUNT(*) AS listing_count FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND is_canonical_listing = TRUE AND year(published_at) = 2026 GROUP BY 1 ORDER BY 1\", \"refuse\": false, \"reason\": \"The query filters for open, remote-US, canonical listings published in 2026 and groups them by month.\"}\n```",
+ "prompt_tokens": 2168,
+ "output_tokens": 114,
+ "thinking_tokens": 614,
+ "latency_ms": 21460.010791022796,
+ "parse_error": null
+}

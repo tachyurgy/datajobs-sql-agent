@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(DISTINCT listing_key) AS num_listings FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND days_seen > 365",
+ "refuse": false,
+ "reason": "The query counts unique listings from the fct_posting table that are currently open, marked as remote-US, and have been seen for more than 365 days.",
+ "raw": "```json\n{\"sql\": \"SELECT count(DISTINCT listing_key) AS num_listings FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND days_seen > 365\", \"refuse\": false, \"reason\": \"The query counts unique listings from the fct_posting table that are currently open, marked as remote-US, and have been seen for more than 365 days.\"}\n```",
+ "prompt_tokens": 1022,
+ "output_tokens": 96,
+ "thinking_tokens": 1284,
+ "latency_ms": 40264.304834010545,
+ "parse_error": null
+}

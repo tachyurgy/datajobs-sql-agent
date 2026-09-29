@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT skill, count(*) AS demand FROM posting_skills WHERE skill IN ('Python', 'SQL') GROUP BY skill ORDER BY demand DESC",
+ "refuse": false,
+ "reason": "The demand for skills can be determined by counting the number of postings that mention each skill in the posting_skills table.",
+ "raw": "```json\n{\"sql\": \"SELECT skill, count(*) AS demand FROM posting_skills WHERE skill IN ('Python', 'SQL') GROUP BY skill ORDER BY demand DESC\", \"refuse\": false, \"reason\": \"The demand for skills can be determined by counting the number of postings that mention each skill in the posting_skills table.\"}\n```",
+ "prompt_tokens": 1014,
+ "output_tokens": 72,
+ "thinking_tokens": 1099,
+ "latency_ms": 34198.41908302624,
+ "parse_error": null
+}

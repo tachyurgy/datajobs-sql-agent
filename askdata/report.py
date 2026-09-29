@@ -44,11 +44,14 @@ def load_results() -> dict:
     return merged
 
 
-def live_model() -> str:
+def live_config() -> dict:
+    """The [vars] the Pages Function runs with (MODEL, ABLATION, FALLBACK_MODEL, FALLBACK_ABLATION)."""
+    out = {}
     for line in LIVE_MODEL_FILE.read_text().splitlines():
-        if line.strip().startswith("MODEL"):
-            return line.split("=", 1)[1].strip().strip('"')
-    return "gemini-2.5-flash-lite"
+        if "=" in line and line.strip()[:1].isupper():
+            k, v = line.split("=", 1)
+            out[k.strip()] = v.strip().strip('"')
+    return out
 
 
 def chart_svg(res: dict) -> str:
@@ -87,13 +90,15 @@ def short_label(a: str) -> str:
 
 
 ABL = ["a", "b", "c", "d", "e"]
-LIVE_ABLATION = "e"
+LIVE_ABLATION = live_config().get("ABLATION", "d")
 
 
 def build() -> dict:
     res = load_results()
     gold = {g.id: g for g in load()}
-    live = live_model()
+    cfg = live_config()
+    live = cfg.get("MODEL", "gemini-2.5-flash")
+    fb, fb_ab = cfg.get("FALLBACK_MODEL"), cfg.get("FALLBACK_ABLATION")
     models = list(res["models"])
     ab_labels = res["ablations"]
     head = res["models"].get(live) or res["models"][models[0]]
@@ -174,6 +179,11 @@ def build() -> dict:
         q_rows.append(f"<tr><td>{e(gid)}</td><td style='white-space:normal;min-width:260px'>{e(g.question)}</td><td>{e(g.category)}</td>{cells}</tr>")
     q_head = "".join(f"<th class=num>{e(MODEL_LABEL.get(m, m).split(' (')[0])} {a}</th>" for m in models for a in ABL)
 
+    fallback_note = ""
+    if fb and fb in res["models"] and fb_ab:
+        fs = res["models"][fb]["summary"][fb_ab]
+        fallback_note = (f", falling back to {e(MODEL_LABEL.get(fb, fb))} at ablation {fb_ab} "
+                         f"({pct(fs['overall_accuracy'])} overall, 95% CI {ci(fs['overall_accuracy_ci95'])}) when its free quota runs out")
     g_summary = json.loads((RESULTS / "gold_results.json").read_text())
     statuses = "; ".join(f"{MODEL_LABEL.get(m, m)}: {res['models'][m]['status']} ({res['models'][m]['n_questions']} questions)" for m in models)
 
@@ -195,7 +205,7 @@ def build() -> dict:
 <h1>How accurate is this?</h1>
 <p class="lede">askdata is scored on a gold set of {g_summary['n_items']} questions ({g_summary['n_answerable']} answerable, {g_summary['n_items'] - g_summary['n_answerable']} that should be refused)
 with hand-written, cross-checked gold SQL. A question counts as correct when the generated query's result matches the gold result, or when an unanswerable question is refused.
-The live site runs <strong>{e(MODEL_LABEL.get(live, live))}</strong> with the full pipeline (ablation {LIVE_ABLATION}).</p>
+The live site runs <strong>{e(MODEL_LABEL.get(live, live))}</strong> at ablation {LIVE_ABLATION}{fallback_note}.</p>
 
 <div class="kpis">
  <div class="card kpi"><div class="v">{pct(hs['overall_accuracy'])}</div><div class="l">overall accuracy, live configuration<br>95% CI {ci(hs['overall_accuracy_ci95'])}</div></div>

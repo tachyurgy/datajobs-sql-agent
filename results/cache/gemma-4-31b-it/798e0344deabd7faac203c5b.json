@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT date_trunc('month', published_at) AS month, count(DISTINCT listing_key) AS open_remote_us_listings FROM fct_posting WHERE is_open = true AND remote_us = true AND year(published_at) = 2026 GROUP BY 1 ORDER BY 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT date_trunc('month', published_at) AS month, count(DISTINCT listing_key) AS open_remote_us_listings FROM fct_posting WHERE is_open = true AND remote_us = true AND year(published_at) = 2026 GROUP BY 1 ORDER BY 1\", \"refuse\": false, \"reason\": \"\"}\n```",
+ "prompt_tokens": 1025,
+ "output_tokens": 88,
+ "thinking_tokens": 1298,
+ "latency_ms": 39215.21249998477,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(*) AS open_entry_level_jobs FROM fct_posting WHERE seniority = 'entry' AND is_open = true AND is_canonical_listing = true AND remote_us = true",
+ "refuse": false,
+ "reason": "The query counts open, canonical, remote-US listings with 'entry' seniority as per the default market question filters.",
+ "raw": "```json\n{\"sql\": \"SELECT count(*) AS open_entry_level_jobs FROM fct_posting WHERE seniority = 'entry' AND is_open = true AND is_canonical_listing = true AND remote_us = true\", \"refuse\": false, \"reason\": \"The query counts open, canonical, remote-US listings with 'entry' seniority as per the default market question filters.\"}\n```",
+ "prompt_tokens": 2216,
+ "output_tokens": 87,
+ "thinking_tokens": 786,
+ "latency_ms": 25751.288833009312,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The warehouse does not record visa sponsorship information or the posting description text.",
+ "raw": "```json\n{\"sql\": \"\", \"refuse\": true, \"reason\": \"The warehouse does not record visa sponsorship information or the posting description text.\"}\n```",
+ "prompt_tokens": 2450,
+ "output_tokens": 34,
+ "thinking_tokens": 340,
+ "latency_ms": 11582.431290997192,
+ "parse_error": null
+}

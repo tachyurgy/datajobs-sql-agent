@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(*) AS job_count FROM fct_posting f JOIN posting_skills ps ON f.posting_key = ps.posting_key WHERE ps.skill = 'dbt' AND f.is_open = true AND f.remote_us = true AND f.is_canonical_listing = true",
+ "refuse": false,
+ "reason": "The query counts unique open remote-US listings that mention the skill 'dbt' by joining the postings fact table with the skills bridge table and applying the default market filters.",
+ "raw": "```json\n{\"sql\": \"SELECT count(*) AS job_count FROM fct_posting f JOIN posting_skills ps ON f.posting_key = ps.posting_key WHERE ps.skill = 'dbt' AND f.is_open = true AND f.remote_us = true AND f.is_canonical_listing = true\", \"refuse\": false, \"reason\": \"The query counts unique open remote-US listings that mention the skill 'dbt' by joining the postings fact table with the skills bridge table and applying the default market filters.\"}\n```",
+ "prompt_tokens": 2832,
+ "output_tokens": 121,
+ "thinking_tokens": 984,
+ "latency_ms": 32347.739499993622,
+ "parse_error": null
+}

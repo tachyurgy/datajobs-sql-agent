@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The warehouse does not contain information about company headcount.",
+ "raw": "{\"sql\": \"\", \"refuse\": true, \"reason\": \"The warehouse does not contain information about company headcount.\"}",
+ "prompt_tokens": 2524,
+ "output_tokens": 25,
+ "thinking_tokens": 0,
+ "latency_ms": 604.2677079967689,
+ "parse_error": null
+}

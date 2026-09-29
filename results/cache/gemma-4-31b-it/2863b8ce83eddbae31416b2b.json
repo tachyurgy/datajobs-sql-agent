@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The provided schema does not contain any information regarding the number of applicants or applications for the postings.",
+ "raw": "```json\n{\"sql\": \"\", \"refuse\": true, \"reason\": \"The provided schema does not contain any information regarding the number of applicants or applications for the postings.\"}\n```",
+ "prompt_tokens": 2060,
+ "output_tokens": 39,
+ "thinking_tokens": 504,
+ "latency_ms": 16139.996916987002,
+ "parse_error": null
+}

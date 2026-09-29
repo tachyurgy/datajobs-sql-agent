@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT dayname(published_at) AS day_of_week FROM fct_posting WHERE is_open = true AND remote_us = true AND is_canonical_listing = true GROUP BY 1 ORDER BY count(*) DESC LIMIT 1",
+ "refuse": false,
+ "reason": "The query filters for open, remote-US, canonical listings and groups them by the day of the week extracted from the publication timestamp to find the most frequent day.",
+ "raw": "```json\n{\"sql\": \"SELECT dayname(published_at) AS day_of_week FROM fct_posting WHERE is_open = true AND remote_us = true AND is_canonical_listing = true GROUP BY 1 ORDER BY count(*) DESC LIMIT 1\", \"refuse\": false, \"reason\": \"The query filters for open, remote-US, canonical listings and groups them by the day of the week extracted from the publication timestamp to find the most frequent day.\"}\n```",
+ "prompt_tokens": 2088,
+ "output_tokens": 105,
+ "thinking_tokens": 517,
+ "latency_ms": 18302.522500016494,
+ "parse_error": null
+}

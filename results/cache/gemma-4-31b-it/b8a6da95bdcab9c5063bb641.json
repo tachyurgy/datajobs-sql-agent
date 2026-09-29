@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The warehouse only contains a snapshot from 2026-09-29 and has no multi-day history, making it impossible to calculate month-over-month changes for previous months.",
+ "raw": "```json\n{\"sql\": \"\", \"refuse\": true, \"reason\": \"The warehouse only contains a snapshot from 2026-09-29 and has no multi-day history, making it impossible to calculate month-over-month changes for previous months.\"}\n```",
+ "prompt_tokens": 2618,
+ "output_tokens": 61,
+ "thinking_tokens": 1587,
+ "latency_ms": 47242.127750010695,
+ "parse_error": null
+}

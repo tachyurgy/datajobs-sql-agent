@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(*) AS ai_job_count FROM fct_posting WHERE family = 'ai_engineer' AND is_open = true AND remote_us = true AND is_canonical_listing = true",
+ "refuse": false,
+ "reason": "The query counts the number of open, remote-US, canonical listings within the 'ai_engineer' family, following the default market question filters.",
+ "raw": "```json\n{\"sql\": \"SELECT count(*) AS ai_job_count FROM fct_posting WHERE family = 'ai_engineer' AND is_open = true AND remote_us = true AND is_canonical_listing = true\", \"refuse\": false, \"reason\": \"The query counts the number of open, remote-US, canonical listings within the 'ai_engineer' family, following the default market question filters.\"}\n```",
+ "prompt_tokens": 2386,
+ "output_tokens": 93,
+ "thinking_tokens": 1565,
+ "latency_ms": 47955.47075002105,
+ "parse_error": null
+}

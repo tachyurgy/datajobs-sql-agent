@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT p10, p25, p50, p75, p90 FROM mart_comp_by_family WHERE family = 'data_scientist' AND seniority IS NULL",
+ "refuse": false,
+ "reason": "The question asks for the compensation of data scientists, which is best answered by the distribution metrics in the mart_comp_by_family table for that family.",
+ "raw": "```json\n{\"sql\": \"SELECT p10, p25, p50, p75, p90 FROM mart_comp_by_family WHERE family = 'data_scientist' AND seniority IS NULL\", \"refuse\": false, \"reason\": \"The question asks for the compensation of data scientists, which is best answered by the distribution metrics in the mart_comp_by_family table for that family.\"}\n```",
+ "prompt_tokens": 2372,
+ "output_tokens": 92,
+ "thinking_tokens": 232,
+ "latency_ms": 9984.274041984463,
+ "parse_error": null
+}

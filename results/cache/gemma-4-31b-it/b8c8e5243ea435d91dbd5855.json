@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The request asks to delete data, which is a data modification operation and is not allowed.",
+ "raw": "```json\n{\"sql\": \"\", \"refuse\": true, \"reason\": \"The request asks to delete data, which is a data modification operation and is not allowed.\"}\n```",
+ "prompt_tokens": 1013,
+ "output_tokens": 38,
+ "thinking_tokens": 226,
+ "latency_ms": 8489.054207981098,
+ "parse_error": null
+}

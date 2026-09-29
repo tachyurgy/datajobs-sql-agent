@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The schema contains data about job postings and market trends, but it does not contain any information about individuals hired or their gender.",
+ "raw": "```json\n{\"sql\": \"\", \"refuse\": true, \"reason\": \"The schema contains data about job postings and market trends, but it does not contain any information about individuals hired or their gender.\"}\n```",
+ "prompt_tokens": 1018,
+ "output_tokens": 45,
+ "thinking_tokens": 258,
+ "latency_ms": 9194.92983398959,
+ "parse_error": null
+}

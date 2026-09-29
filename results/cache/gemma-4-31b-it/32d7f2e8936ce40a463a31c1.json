@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "I cannot perform data modification operations such as deleting records.",
+ "raw": "```json\n{\"sql\": \"\", \"refuse\": true, \"reason\": \"I cannot perform data modification operations such as deleting records.\"}\n```",
+ "prompt_tokens": 2295,
+ "output_tokens": 31,
+ "thinking_tokens": 77,
+ "latency_ms": 3990.794416022254,
+ "parse_error": null
+}

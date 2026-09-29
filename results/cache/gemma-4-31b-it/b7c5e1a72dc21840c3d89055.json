@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT p10, p25, p50, p75, p90 FROM mart_comp_by_family WHERE family = 'data_scientist' AND seniority IS NULL",
+ "refuse": false,
+ "reason": "The question asks for the compensation of data scientists, which is stored as percentiles in the mart_comp_by_family table.",
+ "raw": "```json\n{\"sql\": \"SELECT p10, p25, p50, p75, p90 FROM mart_comp_by_family WHERE family = 'data_scientist' AND seniority IS NULL\", \"refuse\": false, \"reason\": \"The question asks for the compensation of data scientists, which is stored as percentiles in the mart_comp_by_family table.\"}\n```",
+ "prompt_tokens": 2534,
+ "output_tokens": 88,
+ "thinking_tokens": 462,
+ "latency_ms": 16920.08262500167,
+ "parse_error": null
+}

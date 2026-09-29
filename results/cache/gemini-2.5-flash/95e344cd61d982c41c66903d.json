@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT open_doorway_listings FROM mart_daily_market WHERE family = 'data_analyst' AND crawl_date = '2026-09-29'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT open_doorway_listings FROM mart_daily_market WHERE family = 'data_analyst' AND crawl_date = '2026-09-29'\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2282,
+ "output_tokens": 53,
+ "thinking_tokens": 0,
+ "latency_ms": 826.1192499776371,
+ "parse_error": null
+}

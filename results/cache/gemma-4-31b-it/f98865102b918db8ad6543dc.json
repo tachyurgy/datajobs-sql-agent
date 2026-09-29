@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(*) AS open_entry_level_jobs FROM fct_posting WHERE seniority = 'entry' AND is_",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT count(*) AS open_entry_level_jobs FROM fct_posting WHERE seniority = 'entry' AND is_",
+ "prompt_tokens": 2603,
+ "output_tokens": 32,
+ "thinking_tokens": 2012,
+ "latency_ms": 60805.70224998519,
+ "parse_error": "no JSON object in reply"
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT p50 AS median_pay FROM mart_comp_by_family WHERE family = 'data_scientist' AND seniority IS NULL",
+ "refuse": false,
+ "reason": "The mart_comp_by_family table provides pre-calculated pay distributions by family; filtering for 'data_scientist' and seniority IS NULL gives the overall median pay for that role.",
+ "raw": "```json\n{\"sql\": \"SELECT p50 AS median_pay FROM mart_comp_by_family WHERE family = 'data_scientist' AND seniority IS NULL\", \"refuse\": false, \"reason\": \"The mart_comp_by_family table provides pre-calculated pay distributions by family; filtering for 'data_scientist' and seniority IS NULL gives the overall median pay for that role.\"}\n```",
+ "prompt_tokens": 2159,
+ "output_tokens": 87,
+ "thinking_tokens": 314,
+ "latency_ms": 12494.540583982598,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT skill, SUM(listings_mentioning) AS total_listings FROM mart_skill_demand WHERE skill IN ('python', 'sql') AND scope = 'all' GROUP BY skill ORDER BY total_listings DESC",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT skill, SUM(listings_mentioning) AS total_listings FROM mart_skill_demand WHERE skill IN ('python', 'sql') AND scope = 'all' GROUP BY skill ORDER BY total_listings DESC\", \"refuse\": false, \"reason\": \"\"}\n```",
+ "prompt_tokens": 2787,
+ "output_tokens": 64,
+ "thinking_tokens": 1344,
+ "latency_ms": 40519.32391599985,
+ "parse_error": null
+}

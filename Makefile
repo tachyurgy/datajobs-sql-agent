@@ -1,5 +1,5 @@
 PY ?= .venv/bin/python
-MODELS ?= gemini-2.5-flash-lite gemma-4-31b-it
+MODELS ?= gemini-2.5-flash-lite gemini-2.5-flash gemma-4-31b-it
 export PYTHONPATH := .
 
 .PHONY: setup test gold-check dictionary web-assets eval eval-offline report examples deploy all
@@ -24,7 +24,7 @@ eval: gold-check  ## run the eval (free-tier Gemini; cached replies are reused)
 	$(PY) -m askdata.report
 
 eval-offline:     ## CI: re-score from the committed reply cache, fail on any cache miss
-	$(PY) -m askdata.evaluate --models $(MODELS) --offline --out /tmp/askdata-eval-offline.json
+	$(PY) -m askdata.evaluate --models $(MODELS) --offline --workers 4 --out /tmp/askdata-eval-offline.json
 
 report:           ## render web/public/accuracy.html and results/RESULTS.md
 	$(PY) -m askdata.report

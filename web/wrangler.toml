@@ -2,8 +2,13 @@ name = "askdata"
 pages_build_output_dir = "public"
 compatibility_date = "2026-05-14"
 
+# The configuration the site runs. report.py reads these to label /accuracy; both configurations are measured there.
 [vars]
-MODEL = "gemini-2.5-flash-lite"
+MODEL = "gemini-2.5-flash"
+ABLATION = "d"
+FALLBACK_MODEL = "gemini-2.5-flash-lite"
+FALLBACK_ABLATION = "e"
+ANSWER_MODEL = "gemini-2.5-flash-lite"
 
 [[kv_namespaces]]
 binding = "RL"

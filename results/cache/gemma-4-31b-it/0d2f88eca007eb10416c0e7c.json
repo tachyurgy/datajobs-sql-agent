@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The data warehouse currently contains only a single day's snapshot (2026-09-29), as noted in the schema documentation, making it impossible to calculate month-over-month changes in open listings.",
+ "raw": "```json\n{\"sql\": \"\", \"refuse\": true, \"reason\": \"The data warehouse currently contains only a single day's snapshot (2026-09-29), as noted in the schema documentation, making it impossible to calculate month-over-month changes in open listings.\"}\n```",
+ "prompt_tokens": 2210,
+ "output_tokens": 66,
+ "thinking_tokens": 1428,
+ "latency_ms": 43700.337500020396,
+ "parse_error": null
+}

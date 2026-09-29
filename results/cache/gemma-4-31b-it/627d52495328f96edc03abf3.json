@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The warehouse does not record company size or headcount data.",
+ "raw": "```json\n{\"sql\": \"\", \"refuse\": true, \"reason\": \"The warehouse does not record company size or headcount data.\"}\n```",
+ "prompt_tokens": 2525,
+ "output_tokens": 30,
+ "thinking_tokens": 383,
+ "latency_ms": 12550.290792016312,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The warehouse does not record company benefits, equity, or stock options, nor does it store the posting description text.",
+ "raw": "```json\n{\"sql\": \"\", \"refuse\": true, \"reason\": \"The warehouse does not record company benefits, equity, or stock options, nor does it store the posting description text.\"}\n```",
+ "prompt_tokens": 2591,
+ "output_tokens": 43,
+ "thinking_tokens": 487,
+ "latency_ms": 15764.335582993226,
+ "parse_error": null
+}

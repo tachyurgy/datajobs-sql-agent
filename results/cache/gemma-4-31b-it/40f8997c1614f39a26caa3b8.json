@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The provided schema does not contain job descriptions or any columns indicating equity or stock options.",
+ "raw": "```json\n{\"sql\": \"\", \"refuse\": true, \"reason\": \"The provided schema does not contain job descriptions or any columns indicating equity or stock options.\"}\n```",
+ "prompt_tokens": 2210,
+ "output_tokens": 37,
+ "thinking_tokens": 684,
+ "latency_ms": 21359.742083994206,
+ "parse_error": null
+}

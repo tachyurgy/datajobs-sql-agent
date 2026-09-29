@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The schema does not contain information about company headcount or size.",
+ "raw": "```json\n{\"sql\": \"\", \"refuse\": true, \"reason\": \"The schema does not contain information about company headcount or size.\"}\n```",
+ "prompt_tokens": 1018,
+ "output_tokens": 32,
+ "thinking_tokens": 318,
+ "latency_ms": 10933.096875000047,
+ "parse_error": null
+}

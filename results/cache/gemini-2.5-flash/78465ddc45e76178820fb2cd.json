@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The available tables do not contain information about the number of applicants per posting.",
+ "raw": "{\"sql\": \"\", \"refuse\": true, \"reason\": \"The available tables do not contain information about the number of applicants per posting.\"}",
+ "prompt_tokens": 2190,
+ "output_tokens": 30,
+ "thinking_tokens": 0,
+ "latency_ms": 779.2397500015795,
+ "parse_error": null
+}

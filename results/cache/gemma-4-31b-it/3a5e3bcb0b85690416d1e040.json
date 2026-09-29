@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT year(published_at) AS publication_year, count(*) AS listings_count FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing AND year(published_at) < 2026 GROUP BY publication_year",
+ "refuse": false,
+ "reason": "The request can be answered using the fct_posting table by filtering for open, remote-US, canonical listings published before 2026 and grouping by the year of publication.",
+ "raw": "```json\n{\"sql\": \"SELECT year(published_at) AS publication_year, count(*) AS listings_count FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing AND year(published_at) < 2026 GROUP BY publication_year\", \"refuse\": false, \"reason\": \"The request can be answered using the fct_posting table by filtering for open, remote-US, canonical listings published before 2026 and grouping by the year of publication.\"}\n```",
+ "prompt_tokens": 2557,
+ "output_tokens": 114,
+ "thinking_tokens": 307,
+ "latency_ms": 12738.53508400498,
+ "parse_error": null
+}

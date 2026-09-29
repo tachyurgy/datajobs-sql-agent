@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT EXTRACT(YEAR FROM published_at) AS publication_year, COUNT(*) AS listing_count FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND is_canonical_listing = TRUE AND published_at < '2026-01-01' GROUP BY 1 ORDER BY 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT EXTRACT(YEAR FROM published_at) AS publication_year, COUNT(*) AS listing_count FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND is_canonical_listing = TRUE AND published_at < '2026-01-01' GROUP BY 1 ORDER BY 1\", \"refuse\": false, \"reason\": \"\"}\n```",
+ "prompt_tokens": 2205,
+ "output_tokens": 91,
+ "thinking_tokens": 853,
+ "latency_ms": 28042.39620899898,
+ "parse_error": null
+}

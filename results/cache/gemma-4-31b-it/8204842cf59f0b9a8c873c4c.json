@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT company_name, remote_us_postings_open AS open_remote_postings FROM dim_company ORDER BY open_remote_postings DESC LIMIT 1",
+ "refuse": false,
+ "reason": "The dim_company table contains a pre-aggregated count of open remote-US postings per company.",
+ "raw": "```json\n{\"sql\": \"SELECT company_name, remote_us_postings_open AS open_remote_postings FROM dim_company ORDER BY open_remote_postings DESC LIMIT 1\", \"refuse\": false, \"reason\": \"The dim_company table contains a pre-aggregated count of open remote-US postings per company.\"}\n```",
+ "prompt_tokens": 2028,
+ "output_tokens": 77,
+ "thinking_tokens": 1001,
+ "latency_ms": 31576.306290982757,
+ "parse_error": null
+}

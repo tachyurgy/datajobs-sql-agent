@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(*) AS open_remote_us_listings_q3_2026 FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND is_canonical_listing = TRUE AND published_at >= '2026-07-01' AND published_at < '2026-10-01'",
+ "refuse": false,
+ "reason": "The query filters for open, remote-US, canonical listings published between July 1st and September 30th, 2026.",
+ "raw": "```json\n{\"sql\": \"SELECT count(*) AS open_remote_us_listings_q3_2026 FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND is_canonical_listing = TRUE AND published_at >= '2026-07-01' AND published_at < '2026-10-01'\", \"refuse\": false, \"reason\": \"The query filters for open, remote-US, canonical listings published between July 1st and September 30th, 2026.\"}\n```",
+ "prompt_tokens": 2158,
+ "output_tokens": 129,
+ "thinking_tokens": 481,
+ "latency_ms": 18706.046250008512,
+ "parse_error": null
+}

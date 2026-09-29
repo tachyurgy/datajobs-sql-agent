@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(*) AS remote_job_count FROM fct_posting WHERE is_open = true AND remote_us = true AND is_canonical_listing = true",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT count(*) AS remote_job_count FROM fct_posting WHERE is_open = true AND remote_us = true AND is_canonical_listing = true\", \"refuse\": false, \"reason\": \"\"}\n```",
+ "prompt_tokens": 2408,
+ "output_tokens": 54,
+ "thinking_tokens": 1590,
+ "latency_ms": 48340.49587498885,
+ "parse_error": null
+}

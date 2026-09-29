@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family_label, median(age_days_at_last_seen) AS median_age_days FROM fct_posting WHERE is_open = true AND remote_us = true GROUP BY family_label",
+ "refuse": false,
+ "reason": "The query calculates the median age in days for open remote-US listings grouped by role family using the fct_posting table.",
+ "raw": "```json\n{\"sql\": \"SELECT family_label, median(age_days_at_last_seen) AS median_age_days FROM fct_posting WHERE is_open = true AND remote_us = true GROUP BY family_label\", \"refuse\": false, \"reason\": \"The query calculates the median age in days for open remote-US listings grouped by role family using the fct_posting table.\"}\n```",
+ "prompt_tokens": 1024,
+ "output_tokens": 92,
+ "thinking_tokens": 279,
+ "latency_ms": 11212.94774999842,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The warehouse does not record information about hires, people, or demographics such as gender.",
+ "raw": "```json\n{\"sql\": \"\", \"refuse\": true, \"reason\": \"The warehouse does not record information about hires, people, or demographics such as gender.\"}\n```",
+ "prompt_tokens": 2626,
+ "output_tokens": 37,
+ "thinking_tokens": 315,
+ "latency_ms": 10748.83383300039,
+ "parse_error": null
+}

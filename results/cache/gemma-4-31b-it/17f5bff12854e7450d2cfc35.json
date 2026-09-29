@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT f.title, c.company_name, f.published_at FROM fct_posting f JOIN dim_company c ON f.company_key = c.company_key WHERE f.is_open = true AND f.remote_us = true ORDER BY f.published_at ASC LIMIT 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT f.title, c.company_name, f.published_at FROM fct_posting f JOIN dim_company c ON f.company_key = c.company_key WHERE f.is_open = true AND f.remote_us = true ORDER BY f.published_at ASC LIMIT 1\", \"refuse\": false, \"reason\": \"\"}\n```",
+ "prompt_tokens": 1028,
+ "output_tokens": 86,
+ "thinking_tokens": 276,
+ "latency_ms": 11088.052457984304,
+ "parse_error": null
+}

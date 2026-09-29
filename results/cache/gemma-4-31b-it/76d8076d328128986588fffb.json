@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT company_name FROM dim_company WHERE platform = 'ashby' AND remote_us_postings_open > 5",
+ "refuse": false,
+ "reason": "The query filters dim_company for the 'ashby' platform and companies with more than 5 open remote-US data listings.",
+ "raw": "```json\n{\"sql\": \"SELECT company_name FROM dim_company WHERE platform = 'ashby' AND remote_us_postings_open > 5\", \"refuse\": false, \"reason\": \"The query filters dim_company for the 'ashby' platform and companies with more than 5 open remote-US data listings.\"}\n```",
+ "prompt_tokens": 2071,
+ "output_tokens": 75,
+ "thinking_tokens": 124,
+ "latency_ms": 6572.824458009563,
+ "parse_error": null
+}

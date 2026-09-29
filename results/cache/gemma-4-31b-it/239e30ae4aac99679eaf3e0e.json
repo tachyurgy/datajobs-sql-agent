@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(*) AS listing_count FROM fct_posting f JOIN mart_comp_by_family m ON f.family = m.family WHERE f.is_open AND f.remote_us AND f.is_canonical_listing AND m.seniority IS NULL AND f.comp_mid_usd > 1.5 * m.p50",
+ "refuse": false,
+ "reason": "The query joins the postings fact table with the compensation mart table on the role family, filtering for the family-level median (where seniority is null) and applying the required market filters and pay threshold.",
+ "raw": "```json\n{\"sql\": \"SELECT count(*) AS listing_count FROM fct_posting f JOIN mart_comp_by_family m ON f.family = m.family WHERE f.is_open AND f.remote_us AND f.is_canonical_listing AND m.seniority IS NULL AND f.comp_mid_usd > 1.5 * m.p50\", \"refuse\": false, \"reason\": \"The query joins the postings fact table with the compensation mart table on the role family, filtering for the family-level median (where seniority is null) and applying the required market filters and pay threshold.\"}\n```",
+ "prompt_tokens": 2460,
+ "output_tokens": 137,
+ "thinking_tokens": 1894,
+ "latency_ms": 58375.19237498054,
+ "parse_error": null
+}

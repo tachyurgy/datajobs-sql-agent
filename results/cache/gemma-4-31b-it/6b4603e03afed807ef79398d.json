@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The provided schema does not contain job descriptions or a column for benefits, so it is impossible to determine which companies offer equity or stock options.",
+ "raw": "```json\n{\"sql\": \"\", \"refuse\": true, \"reason\": \"The provided schema does not contain job descriptions or a column for benefits, so it is impossible to determine which companies offer equity or stock options.\"}\n```",
+ "prompt_tokens": 1018,
+ "output_tokens": 48,
+ "thinking_tokens": 904,
+ "latency_ms": 27675.0586249982,
+ "parse_error": null
+}

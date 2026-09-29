@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT\n    strftime(crawl_date, '%Y-%m') AS month,\n    SUM(open_listings) AS open_ai_engineer_listings\nFROM mart_daily_market\nWHERE\n    family = 'ai_engineer'\n    AND crawl_date >= '2026-06-01'\nGROUP BY\n    month\nORDER BY\n    month;",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT\\n    strftime(crawl_date, '%Y-%m') AS month,\\n    SUM(open_listings) AS open_ai_engineer_listings\\nFROM mart_daily_market\\nWHERE\\n    family = 'ai_engineer'\\n    AND crawl_date >= '2026-06-01'\\nGROUP BY\\n    month\\nORDER BY\\n    month;\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2209,
+ "output_tokens": 104,
+ "thinking_tokens": 0,
+ "latency_ms": 1229.6304999908898,
+ "parse_error": null
+}

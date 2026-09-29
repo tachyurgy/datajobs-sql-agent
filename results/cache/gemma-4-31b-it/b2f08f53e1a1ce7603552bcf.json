@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(*) AS listing_count FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND is_canonical_listing = TRUE AND first_seen < DATE '2025-09-29'",
+ "refuse": false,
+ "reason": "The query filters for open, remote-US, canonical listings that were first seen more than one year before the snapshot date of 2026-09-29.",
+ "raw": "```json\n{\"sql\": \"SELECT count(*) AS listing_count FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND is_canonical_listing = TRUE AND first_seen < DATE '2025-09-29'\", \"refuse\": false, \"reason\": \"The query filters for open, remote-US, canonical listings that were first seen more than one year before the snapshot date of 2026-09-29.\"}\n```",
+ "prompt_tokens": 2165,
+ "output_tokens": 107,
+ "thinking_tokens": 1347,
+ "latency_ms": 43149.280959012685,
+ "parse_error": null
+}

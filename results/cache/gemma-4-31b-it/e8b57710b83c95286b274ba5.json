@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family, median(comp_mid_usd) AS median_pay FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing GROUP BY family ORDER BY median_pay DESC LIMIT 1",
+ "refuse": false,
+ "reason": "The query calculates the median of the pay midpoint for open, remote-US, canonical listings, grouped by role family, and returns the one with the highest value.",
+ "raw": "```json\n{\"sql\": \"SELECT family, median(comp_mid_usd) AS median_pay FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing GROUP BY family ORDER BY median_pay DESC LIMIT 1\", \"refuse\": false, \"reason\": \"The query calculates the median of the pay midpoint for open, remote-US, canonical listings, grouped by role family, and returns the one with the highest value.\"}\n```",
+ "prompt_tokens": 2461,
+ "output_tokens": 100,
+ "thinking_tokens": 1060,
+ "latency_ms": 33034.25583400531,
+ "parse_error": null
+}

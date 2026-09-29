@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The warehouse does not contain information about visa sponsorship.",
+ "raw": "{\"sql\": \"\", \"refuse\": true, \"reason\": \"The warehouse does not contain information about visa sponsorship.\"}",
+ "prompt_tokens": 2449,
+ "output_tokens": 25,
+ "thinking_tokens": 0,
+ "latency_ms": 890.3403749864083,
+ "parse_error": null
+}

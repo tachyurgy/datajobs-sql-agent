@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The request asks to delete data, but the system is restricted to read-only SELECT queries.",
+ "raw": "```json\n{\"sql\": \"\", \"refuse\": true, \"reason\": \"The request asks to delete data, but the system is restricted to read-only SELECT queries.\"}\n```",
+ "prompt_tokens": 2094,
+ "output_tokens": 39,
+ "thinking_tokens": 115,
+ "latency_ms": 5356.577208003728,
+ "parse_error": null
+}

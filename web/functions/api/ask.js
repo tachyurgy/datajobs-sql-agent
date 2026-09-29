@@ -9,7 +9,9 @@
 import A from "../../shared/assets.json";
 import { buildPrompt, parseReply, systemPrompt } from "../../public/js/core.mjs";
 
-const ABLATION = "e"; // the full pipeline measured on /accuracy
+// Primary and fallback configurations, both measured on /accuracy (see wrangler.toml [vars]).
+const primary = (env) => ({ model: env.MODEL || "gemini-2.5-flash", ablation: env.ABLATION || "d" });
+const fallback = (env) => ({ model: env.FALLBACK_MODEL || "gemini-2.5-flash-lite", ablation: env.FALLBACK_ABLATION || "e" });
 
 const PER_IP_DAILY = 40;
 const GLOBAL_DAILY = 300;
@@ -56,8 +58,14 @@ async function spend(env, ip) {
   return null;
 }
 
-async function gemini(env, body) {
-  const model = env.MODEL || "gemini-2.5-flash-lite";
+function requestFor(model, systemText, userText, gen) {
+  if (model.startsWith("gemma")) { // no system instruction and no JSON mode for Gemma on this API
+    return { contents: [{ role: "user", parts: [{ text: systemText + "\n\n" + userText }] }], generationConfig: { temperature: 0, maxOutputTokens: gen.maxOutputTokens } };
+  }
+  return { systemInstruction: { parts: [{ text: systemText }] }, contents: [{ role: "user", parts: [{ text: userText }] }], generationConfig: gen };
+}
+
+async function gemini(env, model, body) {
   const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${env.GEMINI_API_KEY}`, {
     method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body),
   });
@@ -80,7 +88,6 @@ export async function onRequestPost({ request, env }) {
   const ip = request.headers.get("CF-Connecting-IP") || "unknown";
   const why = await spend(env, ip);
   if (why) return limited(why);
-  const model = env.MODEL || "gemini-2.5-flash-lite";
   const t0 = Date.now();
 
   if (b.mode === "answer") {
@@ -90,9 +97,10 @@ export async function onRequestPost({ request, env }) {
     const prompt = `Question: ${question}\nSQL: ${String(b.sql || "").slice(0, 3000)}\nResult (${(b.rows || []).length} rows shown of ${Number(b.total) || (b.rows || []).length}):\n${table}\n\n` +
       "Answer the question in one or two plain sentences using only numbers and names from the result. " +
       "Pay values are annual USD. If the result is a long list, summarise the top of it. Do not mention SQL.";
+    const model = env.ANSWER_MODEL || "gemini-2.5-flash-lite";
     const gen = { temperature: 0, maxOutputTokens: 200 };
     if (thinkingOff(model)) gen.thinkingConfig = { thinkingBudget: 0 };
-    const g = await gemini(env, { contents: [{ role: "user", parts: [{ text: prompt }] }], generationConfig: gen });
+    const g = await gemini(env, model, { contents: [{ role: "user", parts: [{ text: prompt }] }], generationConfig: gen });
     if (g.limited) return limited("The model's free quota is used up for now.");
     if (g.error) return json({ error: g.error }, 502);
     return json({ answer: g.text.trim(), latency_ms: Date.now() - t0 });
@@ -100,18 +108,19 @@ export async function onRequestPost({ request, env }) {
 
   const attempts = (Array.isArray(b.attempts) ? b.attempts : []).slice(0, 2)
     .map((a) => ({ sql: String(a.sql || "(none)").slice(0, 4000), error: String(a.error || "").slice(0, 600) }));
-  const gen = { temperature: 0, maxOutputTokens: 2048, responseMimeType: "application/json", responseSchema: RESPONSE_SCHEMA };
-  if (thinkingOff(model)) gen.thinkingConfig = { thinkingBudget: 0 };
-  const g = await gemini(env, {
-    systemInstruction: { parts: [{ text: systemPrompt(ABLATION, A) }] },
-    contents: [{ role: "user", parts: [{ text: buildPrompt(question, ABLATION, attempts, A) }] }],
-    generationConfig: gen,
-  });
+  let cfg = primary(env), g;
+  for (const c of [primary(env), fallback(env)]) {
+    cfg = c;
+    const gen = { temperature: 0, maxOutputTokens: 2048, responseMimeType: "application/json", responseSchema: RESPONSE_SCHEMA };
+    if (thinkingOff(c.model)) gen.thinkingConfig = { thinkingBudget: 0 };
+    g = await gemini(env, c.model, requestFor(c.model, systemPrompt(c.ablation, A), buildPrompt(question, c.ablation, attempts, A), gen));
+    if (!g.limited) break;
+  }
   if (g.limited) return limited("The model's free quota is used up for now.");
   if (g.error) return json({ error: g.error }, 502);
   const p = parseReply(g.text);
   return json({
-    sql: p.sql, refuse: p.refuse && !p.sql, reason: p.reason, parse_error: p.parseError, model: g.model,
+    sql: p.sql, refuse: p.refuse && !p.sql, reason: p.reason, parse_error: p.parseError, model: g.model, ablation: cfg.ablation,
     tokens: { prompt: g.usage.promptTokenCount || 0, output: g.usage.candidatesTokenCount || 0 }, latency_ms: Date.now() - t0,
   });
 }

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT f.title, c.company_name, f.published_at FROM fct_posting f JOIN dim_company c ON f.company_key = c.company_key WHERE f.is_open = TRUE AND f.remote_us = TRUE AND f.is_canonical_listing = TRUE ORDER BY f.published_at ASC LIMIT 1",
+ "refuse": false,
+ "reason": "The query filters for open, remote-US, canonical listings and sorts by the publish date in ascending order to find the oldest one.",
+ "raw": "```json\n{\"sql\": \"SELECT f.title, c.company_name, f.published_at FROM fct_posting f JOIN dim_company c ON f.company_key = c.company_key WHERE f.is_open = TRUE AND f.remote_us = TRUE AND f.is_canonical_listing = TRUE ORDER BY f.published_at ASC LIMIT 1\", \"refuse\": false, \"reason\": \"The query filters for open, remote-US, canonical listings and sorts by the publish date in ascending order to find the oldest one.\"}\n```",
+ "prompt_tokens": 2194,
+ "output_tokens": 124,
+ "thinking_tokens": 303,
+ "latency_ms": 12910.417250008322,
+ "parse_error": null
+}

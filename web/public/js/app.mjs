@@ -154,16 +154,17 @@ async function runCached(ex) {
 async function askLive(question) {
   $("limited").hidden = true;
   const attempts = [];
-  let result = null, total = 0;
+  let result = null, total = 0, cfg = "";
   for (let n = 0; n <= MAX_RETRIES; n++) {
     status(n ? `Self-correcting (retry ${n} of ${MAX_RETRIES})...` : "Writing SQL...", "busy");
     const r = await api({ question, attempts: attempts.filter((a) => a.error).map((a) => ({ sql: a.sql || "(none)", error: a.error })) });
     if (r.limited) return limitedMode(r.message, question);
     if (r.error) { status(`Error: ${r.error}`, ""); return; }
     total += r.latency_ms || 0;
+    cfg = `${r.model}, ablation ${r.ablation}`;
     if (r.refuse) {
       attempts.push({ refused: true, reason: r.reason, ms: r.latency_ms });
-      show({ answer: `I can't answer that from this warehouse. ${r.reason || ""}`.trim(), meta: `${r.model}, ${Math.round(total)} ms`, attempts, result: null });
+      show({ answer: `I can't answer that from this warehouse. ${r.reason || ""}`.trim(), meta: `${cfg} · ${Math.round(total)} ms`, attempts, result: null });
       status("Ready.");
       return;
     }
@@ -180,7 +181,7 @@ async function askLive(question) {
     const last = attempts.at(-1);
     const a = await api({ mode: "answer", question, sql: last.sql, columns: result.columns, rows: result.rows.slice(0, 20), total: result.total });
     answer = a.answer || (a.limited ? "(Summary skipped: the model quota is used up. The result table below is complete.)" : "");
-    meta = `${attempts.length} attempt${attempts.length > 1 ? "s" : ""} · ${Math.round(total + (a.latency_ms || 0))} ms of model time`;
+    meta = `${cfg} · ${attempts.length} attempt${attempts.length > 1 ? "s" : ""} · ${Math.round(total + (a.latency_ms || 0))} ms of model time`;
   } else {
     answer = "No answer: every attempt failed. The attempts below show the SQL and the errors.";
   }

@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "I cannot fulfill this request because it asks to delete data. I am only able to write read-only queries.",
+ "raw": "{\"sql\": \"\", \"refuse\": true, \"reason\": \"I cannot fulfill this request because it asks to delete data. I am only able to write read-only queries.\"}",
+ "prompt_tokens": 2093,
+ "output_tokens": 38,
+ "thinking_tokens": 0,
+ "latency_ms": 1105.6982090231031,
+ "parse_error": null
+}
