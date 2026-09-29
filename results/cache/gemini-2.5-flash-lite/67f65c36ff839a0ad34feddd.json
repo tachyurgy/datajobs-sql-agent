@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family, COUNT(DISTINCT posting_key) AS open_remote_us_listings FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND is_canonical_listing = TRUE GROUP BY family",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT family, COUNT(DISTINCT posting_key) AS open_remote_us_listings FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND is_canonical_listing = TRUE GROUP BY family\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 2070,
+ "output_tokens": 71,
+ "thinking_tokens": 0,
+ "latency_ms": 672.2471250104718,
+ "parse_error": null
+}

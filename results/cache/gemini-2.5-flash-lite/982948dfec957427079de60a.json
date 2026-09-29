@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT SUM(open_listings) FROM mart_daily_market WHERE remote_us = TRUE AND family = 'data'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT SUM(open_listings) FROM mart_daily_market WHERE remote_us = TRUE AND family = 'data'\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 1018,
+ "output_tokens": 48,
+ "thinking_tokens": 0,
+ "latency_ms": 597.6867920253426,
+ "parse_error": null
+}

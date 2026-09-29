@@ -194,8 +194,8 @@
      156.0
     ],
     [
-     "product_analyst",
-     19.0
+     "data_analyst",
+     73.0
     ],
     [
      "ml_engineer",
@@ -210,13 +210,13 @@
      39.0
     ],
     [
-     "data_analyst",
-     73.0
+     "product_analyst",
+     19.0
     ]
    ],
    "checks": [
     "check_sql:agree",
-    "alt_sql:differs (accepted alternative) [('data_engineer', 158.0), ('data_analyst', 76.0), ('ml_engineer', 264.0)]",
+    "alt_sql:differs (accepted alternative) [('data_analyst', 76.0), ('ai_engineer', 283.0), ('data_engineer', 158.0)]",
     "expect_rows=7:ok"
    ]
   },
@@ -367,6 +367,10 @@
      11.0
     ],
     [
+     "entry",
+     1.0
+    ],
+    [
      "senior",
      63.0
     ],
@@ -385,10 +389,6 @@
     [
      "unlabeled",
      38.0
-    ],
-    [
-     "entry",
-     1.0
     ]
    ],
    "checks": [
@@ -497,6 +497,15 @@
    "n_rows": 8,
    "preview": [
     [
+     "socure"
+    ],
+    [
+     "deepgram"
+    ],
+    [
+     "hims-and-hers"
+    ],
+    [
      "trm-labs"
     ],
     [
@@ -509,16 +518,7 @@
      "cohere"
     ],
     [
-     "deepgram"
-    ],
-    [
-     "socure"
-    ],
-    [
      "meridianlink"
-    ],
-    [
-     "hims-and-hers"
     ]
    ],
    "checks": [
@@ -534,12 +534,12 @@
    "n_rows": 2,
    "preview": [
     [
-     0.0,
-     194670.0
-    ],
-    [
      1.0,
      194660.0
+    ],
+    [
+     0.0,
+     194670.0
     ]
    ],
    "checks": [
@@ -564,6 +564,14 @@
      513.0
     ],
     [
+     "general software engineering",
+     363.0
+    ],
+    [
+     "big data (spark, databricks, streaming)",
+     262.0
+    ],
+    [
      "pipelines / modern data stack (dbt, orchestration, elt)",
      457.0
     ],
@@ -584,16 +592,8 @@
      806.0
     ],
     [
-     "general software engineering",
-     363.0
-    ],
-    [
-     "big data (spark, databricks, streaming)",
-     262.0
-    ],
-    [
-     "product analytics (metrics, funnels, event tools)",
-     256.0
+     "experimentation + statistics",
+     483.0
     ],
     [
      "sql + warehouse modeling",
@@ -648,10 +648,6 @@
    "n_rows": 4,
    "preview": [
     [
-     "equipmentshare",
-     0.0
-    ],
-    [
      "anduril industries",
      1.0
     ],
@@ -661,6 +657,10 @@
     ],
     [
      "spacex",
+     0.0
+    ],
+    [
+     "equipmentshare",
      0.0
     ]
    ],
@@ -693,9 +693,24 @@
    "n_rows": 8,
    "preview": [
     [
+     "ml_engineer",
+     "anthropic",
+     675000.0
+    ],
+    [
+     "data_analyst",
+     "runpod",
+     240000.0
+    ],
+    [
      "product_analyst",
      "ethos life",
      254000.0
+    ],
+    [
+     "data_engineer",
+     "anthropic",
+     445000.0
     ],
     [
      "ai_engineer",
@@ -716,21 +731,6 @@
      "data_scientist",
      "openai",
      389000.0
-    ],
-    [
-     "data_engineer",
-     "anthropic",
-     445000.0
-    ],
-    [
-     "ml_engineer",
-     "anthropic",
-     675000.0
-    ],
-    [
-     "data_analyst",
-     "runpod",
-     240000.0
     ]
    ],
    "checks": [
@@ -794,21 +794,6 @@
    "n_rows": 21,
    "preview": [
     [
-     "ml_engineer",
-     "machine learning",
-     0.9802
-    ],
-    [
-     "ml_engineer",
-     "stakeholder communication",
-     0.7352
-    ],
-    [
-     "ml_engineer",
-     "python",
-     0.6522
-    ],
-    [
      "analytics_engineer",
      "sql",
      1.0
@@ -837,6 +822,21 @@
      "data_scientist",
      "statistics",
      0.7278
+    ],
+    [
+     "ml_engineer",
+     "machine learning",
+     0.9802
+    ],
+    [
+     "ml_engineer",
+     "stakeholder communication",
+     0.7352
+    ],
+    [
+     "ml_engineer",
+     "python",
+     0.6522
     ],
     [
      "ai_engineer",
@@ -979,12 +979,16 @@
    "n_rows": 7,
    "preview": [
     [
+     "data_analyst",
+     67.27272727272727
+    ],
+    [
      "ai_engineer",
      67.74193548387096
     ],
     [
-     "data_analyst",
-     67.27272727272727
+     "product_analyst",
+     80.0
     ],
     [
      "data_engineer",
@@ -1001,10 +1005,6 @@
     [
      "analytics_engineer",
      75.75757575757575
-    ],
-    [
-     "product_analyst",
-     80.0
     ]
    ],
    "checks": [

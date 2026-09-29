@@ -1,0 +1,64 @@
+import datetime as dt
+from decimal import Decimal
+
+from askdata.compare import results_match
+
+
+def m(gc, gr, pc, pr, key=None):
+    return results_match(gc, gr, pc, pr, key)[0]
+
+
+def test_order_insensitive_by_default():
+    assert m(["f", "n"], [("a", 1), ("b", 2)], ["x", "y"], [("b", 2), ("a", 1)])
+
+
+def test_column_order_and_names_ignored():
+    assert m(["f", "n"], [("a", 1)], ["n", "f"], [(1, "a")])
+
+
+def test_extra_prediction_columns_allowed_missing_not():
+    assert m(["n"], [(5,)], ["label", "n"], [("x", 5)])
+    assert not m(["f", "n"], [("a", 5)], ["n"], [(5,)])
+
+
+def test_row_count_must_match():
+    assert not m(["n"], [(1,), (2,)], ["n"], [(1,)])
+    assert not m(["n"], [(1,)], ["n"], [(1,), (1,)])
+
+
+def test_numeric_tolerance_and_rounding():
+    assert m(["v"], [(0.268317,)], ["v"], [(0.2683,)])          # rounded to 4 dp
+    assert m(["v"], [(194670.4,)], ["v"], [(194670,)])           # within 1e-3 relative
+    assert m(["v"], [(5.845588,)], ["v"], [(5.85,)])             # prediction rounded to 2 dp
+    assert not m(["v"], [(0.2683,)], ["v"], [(0.28,)])
+    assert m(["v"], [(Decimal("969"),)], ["v"], [(969.0,)])
+
+
+def test_percent_vs_fraction():
+    assert m(["share"], [(0.2755,)], ["pct"], [(27.55,)])
+    assert m(["pct"], [(27.554,)], ["share"], [(0.27554,)])
+
+
+def test_order_key_enforced_but_ties_free():
+    gold = [("reddit", 25), ("airbnb", 16), ("pinterest", 16)]
+    assert m(["c", "n"], gold, ["c", "n"], [("reddit", 25), ("pinterest", 16), ("airbnb", 16)], "n")
+    assert not m(["c", "n"], gold, ["c", "n"], [("airbnb", 16), ("reddit", 25), ("pinterest", 16)], "n")
+
+
+def test_dates_and_timestamps_normalise():
+    assert m(["d"], [(dt.date(2026, 9, 1),)], ["d"], [(dt.datetime(2026, 9, 1, 0, 0),)])
+    assert m(["d"], [(dt.date(2026, 9, 1),)], ["d"], [("2026-09-01 00:00:00",)])
+
+
+def test_strings_case_and_space_insensitive():
+    assert m(["c"], [("Reddit",)], ["c"], [(" reddit ",)])
+
+
+def test_nulls():
+    assert m(["v"], [(None,), (1.0,)], ["v"], [(1,), (None,)])
+    assert not m(["v"], [(None,)], ["v"], [(0,)])
+
+
+def test_empty_results():
+    assert m(["v"], [], ["v"], [])
+    assert not m(["v"], [(1,)], ["v"], [])

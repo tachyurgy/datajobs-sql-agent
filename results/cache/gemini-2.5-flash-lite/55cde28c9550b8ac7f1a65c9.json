@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT SUM(successful_crawls) FROM dim_company",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT SUM(successful_crawls) FROM dim_company\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 1015,
+ "output_tokens": 28,
+ "thinking_tokens": 0,
+ "latency_ms": 563.617791980505,
+ "parse_error": null
+}

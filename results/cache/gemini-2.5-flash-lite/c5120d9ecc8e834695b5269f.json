@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT p50 FROM mart_comp_by_family WHERE family = 'ml_engineer'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT p50 FROM mart_comp_by_family WHERE family = 'ml_engineer'\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 2174,
+ "output_tokens": 43,
+ "thinking_tokens": 0,
+ "latency_ms": 550.512166984845,
+ "parse_error": null
+}

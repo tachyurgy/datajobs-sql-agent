@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT SUM(CASE WHEN comp_min_usd IS NOT NULL AND comp_max_usd IS NOT NULL THEN 1 ELSE 0 END) AS listings_with_pay, COUNT(*) AS total_listings FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND is_canonical_listing = TRUE",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT SUM(CASE WHEN comp_min_usd IS NOT NULL AND comp_max_usd IS NOT NULL THEN 1 ELSE 0 END) AS listings_with_pay, COUNT(*) AS total_listings FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND is_canonical_listing = TRUE\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2149,
+ "output_tokens": 83,
+ "thinking_tokens": 0,
+ "latency_ms": 737.3557499959134,
+ "parse_error": null
+}

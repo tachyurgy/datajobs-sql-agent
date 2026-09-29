@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family_label, COUNT(*) AS open_remote_us_listings FROM fct_posting WHERE remote_us = TRUE AND is_open = TRUE GROUP BY family_label",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT family_label, COUNT(*) AS open_remote_us_listings FROM fct_posting WHERE remote_us = TRUE AND is_open = TRUE GROUP BY family_label\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 1016,
+ "output_tokens": 61,
+ "thinking_tokens": 0,
+ "latency_ms": 591.7623750283383,
+ "parse_error": null
+}

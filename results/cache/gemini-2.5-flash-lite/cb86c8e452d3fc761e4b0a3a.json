@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT\n  COUNT(T1.posting_key)\nFROM\n  fct_posting AS T1\nINNER JOIN\n  dim_company AS T2\nON\n  T1.company_key = T2.company_key\nWHERE\n  T1.family = 'data' AND T2.platform = 'Lever'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n\"sql\": \"SELECT\\n  COUNT(T1.posting_key)\\nFROM\\n  fct_posting AS T1\\nINNER JOIN\\n  dim_company AS T2\\nON\\n  T1.company_key = T2.company_key\\nWHERE\\n  T1.family = 'data' AND T2.platform = 'Lever'\",\n\"refuse\": false,\n\"reason\": \"\"\n}",
+ "prompt_tokens": 1018,
+ "output_tokens": 100,
+ "thinking_tokens": 0,
+ "latency_ms": 748.1792909966316,
+ "parse_error": null
+}

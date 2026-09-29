@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT cluster_label FROM dim_skill WHERE skill = 'dbt'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT cluster_label FROM dim_skill WHERE skill = 'dbt'\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 2710,
+ "output_tokens": 38,
+ "thinking_tokens": 0,
+ "latency_ms": 560.1871249964461,
+ "parse_error": null
+}

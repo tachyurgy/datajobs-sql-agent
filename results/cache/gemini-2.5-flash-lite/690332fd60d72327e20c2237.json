@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT board_url FROM dim_company WHERE company_name = 'Reddit'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT board_url FROM dim_company WHERE company_name = 'Reddit'\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 1016,
+ "output_tokens": 39,
+ "thinking_tokens": 0,
+ "latency_ms": 493.0400839948561,
+ "parse_error": null
+}

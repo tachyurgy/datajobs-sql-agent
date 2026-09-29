@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT\n  t2.share\nFROM dim_skill AS t1\nINNER JOIN mart_skill_demand AS t2\n  ON t1.skill = t2.skill\nWHERE\n  t1.skill = 'SQL'\n  AND t2.family = 'data_analyst'\n  AND t2.scope = 'all'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT\\n  t2.share\\nFROM dim_skill AS t1\\nINNER JOIN mart_skill_demand AS t2\\n  ON t1.skill = t2.skill\\nWHERE\\n  t1.skill = 'SQL'\\n  AND t2.family = 'data_analyst'\\n  AND t2.scope = 'all'\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 2188,
+ "output_tokens": 104,
+ "thinking_tokens": 0,
+ "latency_ms": 701.6954169957899,
+ "parse_error": null
+}

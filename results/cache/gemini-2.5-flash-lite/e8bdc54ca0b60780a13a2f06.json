@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT SUM(CASE WHEN comp_mid_usd IS NOT NULL THEN 1 ELSE 0 END) * 1.0 / COUNT(*) FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT SUM(CASE WHEN comp_mid_usd IS NOT NULL THEN 1 ELSE 0 END) * 1.0 / COUNT(*) FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2373,
+ "output_tokens": 63,
+ "thinking_tokens": 0,
+ "latency_ms": 1002.0006659906358,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT postings_scanned FROM mart_crawl_coverage ORDER BY crawl_date DESC LIMIT 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT postings_scanned FROM mart_crawl_coverage ORDER BY crawl_date DESC LIMIT 1\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 1019,
+ "output_tokens": 44,
+ "thinking_tokens": 0,
+ "latency_ms": 644.2495830124244,
+ "parse_error": null
+}

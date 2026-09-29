@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT\n  CAST(SUM(CASE WHEN T2.skill = 'SQL' THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(T1.posting_key)\nFROM\n  fct_posting AS T1\nINNER JOIN\n  posting_skills AS T2\nON\n  T1.posting_key = T2.posting_key\nWHERE\n  T1.family = 'Data Analyst' AND T1.remote_us = TRUE AND T1.is_open = TRUE",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT\\n  CAST(SUM(CASE WHEN T2.skill = 'SQL' THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(T1.posting_key)\\nFROM\\n  fct_posting AS T1\\nINNER JOIN\\n  posting_skills AS T2\\nON\\n  T1.posting_key = T2.posting_key\\nWHERE\\n  T1.family = 'Data Analyst' AND T1.remote_us = TRUE AND T1.is_open = TRUE\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 1018,
+ "output_tokens": 145,
+ "thinking_tokens": 0,
+ "latency_ms": 823.8696670159698,
+ "parse_error": null
+}

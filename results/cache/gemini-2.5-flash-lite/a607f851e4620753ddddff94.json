@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT boards_failed FROM mart_crawl_coverage WHERE crawl_date = (SELECT MAX(crawl_date) FROM mart_crawl_coverage)",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT boards_failed FROM mart_crawl_coverage WHERE crawl_date = (SELECT MAX(crawl_date) FROM mart_crawl_coverage)\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2196,
+ "output_tokens": 44,
+ "thinking_tokens": 0,
+ "latency_ms": 705.1034580217674,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT match_pattern FROM dim_skill WHERE skill = 'rag'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT match_pattern FROM dim_skill WHERE skill = 'rag'\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 1020,
+ "output_tokens": 37,
+ "thinking_tokens": 0,
+ "latency_ms": 496.3501660095062,
+ "parse_error": null
+}
