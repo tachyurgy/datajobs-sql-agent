@@ -1,0 +1,696 @@
+# askdata gold set
+#
+# Each question has a hand-written gold SQL query that runs against the frozen snapshot in
+# data/snapshot/ (crawl of 2026-09-29, TimeZone=UTC). `make gold-check` executes every gold query,
+# prints the result for inspection, and, where a `check_sql` is given, asserts that an
+# independently written second formulation returns the same result (usually by going through a
+# different table: a precomputed mart vs the fact table, a join vs a subquery, a window vs a
+# self-join). `expect` pins a hand-verified scalar or row count so that a snapshot refresh that
+# changes an answer fails loudly instead of silently moving the target.
+#
+# Fields:
+#   id, category, difficulty (1-3), question
+#   answerable = false  -> the agent should refuse; gold_sql is omitted
+#   order_key           -> the question asks for a ranking: this gold column's sequence must match too
+#   gold_sql, check_sql (optional), expect_rows (optional), expect_value (optional scalar)
+#   alt_sql             -> accepted alternative definitions (scored correct, reported separately). Used only where
+#                          the warehouse itself carries two defensible definitions of the same number: the
+#                          documented default filter (is_canonical_listing chooses one posting per listing across
+#                          ALL locations, 969 remote listings) vs mart_daily_market / dim_company counters that
+#                          count remote postings or distinct remote listing keys (1,016 listings, 448 companies).
+#                          The gold verification run surfaced this; see README "How the gold set was verified".
+#   note                -> what the question is testing / how it was verified
+#
+# Conventions the gold SQL follows (and the agent is told about through the data dictionary):
+#   "open remote-US listings" = is_open AND remote_us AND is_canonical_listing (the documented
+#   default filter for market questions). "postings" without market framing = all rows.
+
+# ---------------------------------------------------------------- lookup
+[[q]]
+id = "L01"
+category = "lookup"
+difficulty = 1
+question = "How many company job boards does the crawler track?"
+gold_sql = "SELECT count(*) AS boards FROM dim_company"
+check_sql = "SELECT boards_attempted FROM mart_crawl_coverage"
+expect_value = 2898
+note = "Row count of the board dimension; cross-checked against boards_attempted on the only crawl day."
+
+[[q]]
+id = "L02"
+category = "lookup"
+difficulty = 1
+question = "Which skill cluster (display name) does dbt belong to?"
+gold_sql = "SELECT cluster_label FROM dim_skill WHERE skill = 'dbt'"
+check_sql = "SELECT DISTINCT cluster_label FROM posting_skills WHERE skill = 'dbt'"
+expect_value = "Pipelines / modern data stack (dbt, orchestration, ELT)"
+
+[[q]]
+id = "L03"
+category = "lookup"
+difficulty = 1
+question = "How many job boards failed to answer on the latest crawl?"
+gold_sql = "SELECT boards_failed FROM mart_crawl_coverage ORDER BY crawl_date DESC LIMIT 1"
+check_sql = "SELECT count(*) FROM dim_company WHERE last_crawled_ok IS NULL OR last_crawled_ok < (SELECT max(crawl_date) FROM mart_crawl_coverage)"
+expect_value = 51
+note = "Mart value cross-checked by counting boards whose last successful crawl is not the latest day."
+
+[[q]]
+id = "L04"
+category = "lookup"
+difficulty = 1
+question = "How many data-role postings have been collected from Lever boards?"
+gold_sql = "SELECT count(*) AS postings FROM fct_posting WHERE platform = 'lever'"
+check_sql = "SELECT sum(data_postings_ever) FROM dim_company WHERE platform = 'lever'"
+expect_value = 503
+
+[[q]]
+id = "L05"
+category = "lookup"
+difficulty = 1
+question = "What is the median posted pay midpoint for ML engineers?"
+gold_sql = "SELECT p50 FROM mart_comp_by_family WHERE family = 'ml_engineer' AND seniority IS NULL"
+check_sql = "SELECT median(comp_mid_usd) FROM fct_posting WHERE family = 'ml_engineer' AND is_open AND remote_us AND is_canonical_listing"
+expect_value = 221875.0
+note = "The mart and a direct median over the default-filtered fact table agree."
+
+[[q]]
+id = "L06"
+category = "lookup"
+difficulty = 1
+question = "What is the URL of Reddit's job board?"
+gold_sql = "SELECT board_url FROM dim_company WHERE company_name = 'Reddit'"
+expect_value = "https://job-boards.greenhouse.io/reddit"
+
+[[q]]
+id = "L07"
+category = "lookup"
+difficulty = 1
+question = "What pattern is used to detect the 'rag' skill in job descriptions?"
+gold_sql = "SELECT match_pattern FROM dim_skill WHERE skill = 'rag'"
+expect_rows = 1
+
+[[q]]
+id = "L08"
+category = "lookup"
+difficulty = 1
+question = "How many postings of any role were scanned in the most recent crawl?"
+gold_sql = "SELECT postings_scanned FROM mart_crawl_coverage ORDER BY crawl_date DESC LIMIT 1"
+expect_value = 100645
+note = "Matches the README headline (100,645 postings scanned on 2026-09-29)."
+
+[[q]]
+id = "L09"
+category = "lookup"
+difficulty = 2
+question = "What share of open remote-US data analyst listings mention SQL?"
+gold_sql = "SELECT share FROM mart_skill_demand WHERE family = 'data_analyst' AND scope = 'all' AND skill = 'sql'"
+check_sql = """
+SELECT count(DISTINCT s.posting_key) * 1.0 / (SELECT count(*) FROM fct_posting WHERE family = 'data_analyst' AND is_open AND remote_us AND is_canonical_listing)
+FROM posting_skills s JOIN fct_posting f USING (posting_key)
+WHERE f.family = 'data_analyst' AND f.is_open AND f.remote_us AND f.is_canonical_listing AND s.skill = 'sql'"""
+note = "Mart share (rounded to 4 dp in the mart) vs recomputed from the bridge; compared with the harness's numeric tolerance."
+
+[[q]]
+id = "L10"
+category = "lookup"
+difficulty = 2
+question = "What fraction of all open remote-US listings disclose a pay range?"
+gold_sql = "SELECT pay_disclosure_rate FROM mart_comp_by_family WHERE family IS NULL AND seniority IS NULL"
+check_sql = "SELECT count(comp_mid_usd) * 1.0 / count(*) FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing"
+note = "Grouping-sets mart: the all-families row has family and seniority both null."
+
+# ---------------------------------------------------------------- aggregation
+[[q]]
+id = "A01"
+category = "aggregation"
+difficulty = 1
+question = "How many open remote-US data listings are there right now?"
+gold_sql = "SELECT count(*) AS listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing"
+check_sql = "SELECT listings FROM mart_comp_by_family WHERE family IS NULL AND seniority IS NULL"
+alt_sql = ["SELECT sum(open_listings) FROM mart_daily_market WHERE remote_us"]
+expect_value = 969
+note = "Matches the README headline of 969 listings."
+
+[[q]]
+id = "A02"
+category = "aggregation"
+difficulty = 1
+question = "Break down open remote-US listings by role family."
+gold_sql = "SELECT family, count(*) AS listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing GROUP BY family"
+check_sql = "SELECT family, listings FROM mart_comp_by_family WHERE family IS NOT NULL AND seniority IS NULL"
+alt_sql = ["SELECT family, sum(open_listings) FROM mart_daily_market WHERE remote_us GROUP BY family"]
+expect_rows = 7
+
+[[q]]
+id = "A03"
+category = "aggregation"
+difficulty = 1
+question = "How many distinct companies have at least one open remote-US data listing?"
+gold_sql = "SELECT count(DISTINCT company_key) AS companies FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing"
+check_sql = "SELECT count(*) FROM dim_company d WHERE EXISTS (SELECT 1 FROM fct_posting f WHERE f.company_key = d.company_key AND f.is_open AND f.remote_us AND f.is_canonical_listing)"
+alt_sql = ["SELECT count(*) FROM dim_company WHERE remote_us_postings_open > 0"]
+expect_value = 441
+note = "Matches the README headline of 441 companies."
+
+[[q]]
+id = "A04"
+category = "aggregation"
+difficulty = 2
+question = "Among open remote-US AI engineer listings that state a years-of-experience requirement, what is the average number of years asked?"
+gold_sql = "SELECT avg(yoe_ask) AS avg_years FROM fct_posting WHERE family = 'ai_engineer' AND is_open AND remote_us AND is_canonical_listing AND yoe_ask IS NOT NULL"
+check_sql = "SELECT sum(yoe_ask) * 1.0 / count(yoe_ask) FROM fct_posting WHERE family = 'ai_engineer' AND is_open AND remote_us AND is_canonical_listing"
+
+[[q]]
+id = "A05"
+category = "aggregation"
+difficulty = 1
+question = "How many postings came from each ATS platform?"
+gold_sql = "SELECT platform, count(*) AS postings FROM fct_posting GROUP BY platform"
+check_sql = "SELECT platform, sum(data_postings_ever) FROM dim_company GROUP BY platform HAVING sum(data_postings_ever) > 0"
+expect_rows = 3
+
+[[q]]
+id = "A06"
+category = "aggregation"
+difficulty = 2
+question = "What percentage of open remote-US listings are doorway roles?"
+gold_sql = "SELECT 100.0 * count(*) FILTER (WHERE is_doorway) / count(*) AS pct_doorway FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing"
+check_sql = "SELECT 100.0 * (SELECT count(*) FROM mart_doorway_roles) / (SELECT count(*) FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing)"
+note = "267 of 969. The harness treats a fraction and the same value as a percent as equal."
+
+[[q]]
+id = "A07"
+category = "aggregation"
+difficulty = 2
+question = "How many open remote-US listings originally posted their pay in a currency other than US dollars?"
+gold_sql = "SELECT count(*) AS listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing AND comp_currency_original IS NOT NULL AND comp_currency_original <> 'USD'"
+check_sql = "SELECT count(*) - count(*) FILTER (WHERE comp_currency_original = 'USD') - count(*) FILTER (WHERE comp_currency_original IS NULL) FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing"
+note = "Listings with no pay at all have a null currency and are excluded."
+
+[[q]]
+id = "A08"
+category = "aggregation"
+difficulty = 2
+question = "Which role family has the highest median pay among open remote-US listings?"
+gold_sql = "SELECT family FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing GROUP BY family ORDER BY median(comp_mid_usd) DESC LIMIT 1"
+check_sql = "SELECT family FROM mart_comp_by_family WHERE family IS NOT NULL AND seniority IS NULL ORDER BY p50 DESC LIMIT 1"
+expect_value = "ml_engineer"
+
+[[q]]
+id = "A09"
+category = "aggregation"
+difficulty = 1
+question = "How many open remote-US listings name a PhD as their lowest degree requirement?"
+gold_sql = "SELECT count(*) AS listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing AND degree_level = 'phd'"
+
+[[q]]
+id = "A10"
+category = "aggregation"
+difficulty = 1
+question = "What are the lowest and highest posted pay midpoints among open remote-US data analyst listings?"
+gold_sql = "SELECT min(comp_mid_usd) AS min_pay, max(comp_mid_usd) AS max_pay FROM fct_posting WHERE family = 'data_analyst' AND is_open AND remote_us AND is_canonical_listing"
+check_sql = "SELECT (SELECT comp_mid_usd FROM fct_posting WHERE family = 'data_analyst' AND is_open AND remote_us AND is_canonical_listing AND comp_mid_usd IS NOT NULL ORDER BY comp_mid_usd LIMIT 1), (SELECT comp_mid_usd FROM fct_posting WHERE family = 'data_analyst' AND is_open AND remote_us AND is_canonical_listing AND comp_mid_usd IS NOT NULL ORDER BY comp_mid_usd DESC LIMIT 1)"
+
+[[q]]
+id = "A11"
+category = "aggregation"
+difficulty = 1
+question = "For data engineers, how many open remote-US listings are there at each seniority level?"
+gold_sql = "SELECT seniority, count(*) AS listings FROM fct_posting WHERE family = 'data_engineer' AND is_open AND remote_us AND is_canonical_listing GROUP BY seniority"
+check_sql = "SELECT seniority, listings FROM mart_comp_by_family WHERE family = 'data_engineer' AND seniority IS NOT NULL"
+alt_sql = ["SELECT seniority, sum(open_listings) FROM mart_daily_market WHERE family = 'data_engineer' AND remote_us GROUP BY seniority"]
+
+# ---------------------------------------------------------------- joins
+[[q]]
+id = "J01"
+category = "join"
+difficulty = 2
+question = "Which three companies have the most open remote-US data listings? Give the company name and count."
+order_key = "listings"
+gold_sql = """
+SELECT d.company_name, count(*) AS listings
+FROM fct_posting f JOIN dim_company d USING (company_key)
+WHERE f.is_open AND f.remote_us AND f.is_canonical_listing
+GROUP BY d.company_name ORDER BY listings DESC LIMIT 3"""
+check_sql = """
+SELECT company_name, n FROM (
+  SELECT d.company_name, count(*) AS n, dense_rank() OVER (ORDER BY count(*) DESC) AS r
+  FROM fct_posting f JOIN dim_company d USING (company_key)
+  WHERE f.is_open AND f.remote_us AND f.is_canonical_listing GROUP BY d.company_name)
+WHERE r <= 2"""
+note = "Reddit 25, then Pinterest and Airbnb tied at 16; 4th place is 15, so the top 3 is unambiguous as a set. The check uses dense_rank <= 2 (Reddit; Pinterest and Airbnb). dim_company.remote_us_postings_open counts postings rather than canonical listings and gives a different top 3, so it is not accepted. Tied rows may appear in either order; the comparator only enforces order where the sort key differs."
+
+[[q]]
+id = "J02"
+category = "join"
+difficulty = 2
+question = "What are the 10 most frequently mentioned skills across open remote-US listings, with the number of listings mentioning each?"
+order_key = "listings"
+gold_sql = """
+SELECT s.skill, count(DISTINCT s.posting_key) AS listings
+FROM posting_skills s JOIN fct_posting f USING (posting_key)
+WHERE f.is_open AND f.remote_us AND f.is_canonical_listing
+GROUP BY s.skill ORDER BY listings DESC LIMIT 10"""
+check_sql = """
+SELECT skill, count(*) FROM posting_skills
+WHERE posting_key IN (SELECT posting_key FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing)
+GROUP BY skill ORDER BY 2 DESC LIMIT 10"""
+note = "10th = apis (278), 11th = model deployment/serving (277): no tie at the cut."
+
+[[q]]
+id = "J03"
+category = "join"
+difficulty = 2
+question = "How many open remote-US listings mention both Python and SQL?"
+gold_sql = """
+SELECT count(*) AS listings FROM fct_posting f
+WHERE f.is_open AND f.remote_us AND f.is_canonical_listing
+  AND EXISTS (SELECT 1 FROM posting_skills s WHERE s.posting_key = f.posting_key AND s.skill = 'python')
+  AND EXISTS (SELECT 1 FROM posting_skills s WHERE s.posting_key = f.posting_key AND s.skill = 'sql')"""
+check_sql = """
+SELECT count(*) FROM (
+  SELECT s.posting_key FROM posting_skills s JOIN fct_posting f USING (posting_key)
+  WHERE f.is_open AND f.remote_us AND f.is_canonical_listing AND s.skill IN ('python','sql')
+  GROUP BY s.posting_key HAVING count(DISTINCT s.skill) = 2)"""
+
+[[q]]
+id = "J04"
+category = "join"
+difficulty = 2
+question = "Which companies hiring through Ashby have more than 5 open remote-US data listings?"
+gold_sql = """
+SELECT d.company_name FROM fct_posting f JOIN dim_company d USING (company_key)
+WHERE f.is_open AND f.remote_us AND f.is_canonical_listing AND d.platform = 'ashby'
+GROUP BY d.company_name HAVING count(*) > 5"""
+check_sql = """
+SELECT company_name FROM dim_company d WHERE platform = 'ashby' AND (
+  SELECT count(*) FROM fct_posting f WHERE f.company_key = d.company_key AND f.is_open AND f.remote_us AND f.is_canonical_listing) > 5"""
+
+[[q]]
+id = "J05"
+category = "join"
+difficulty = 3
+question = "Compare the median pay midpoint of open remote-US listings that mention RAG with those that don't."
+gold_sql = """
+SELECT (posting_key IN (SELECT posting_key FROM posting_skills WHERE skill = 'rag')) AS mentions_rag,
+       median(comp_mid_usd) AS median_pay
+FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing
+GROUP BY mentions_rag"""
+check_sql = """
+SELECT s.posting_key IS NOT NULL, median(f.comp_mid_usd)
+FROM fct_posting f LEFT JOIN (SELECT DISTINCT posting_key FROM posting_skills WHERE skill = 'rag') s USING (posting_key)
+WHERE f.is_open AND f.remote_us AND f.is_canonical_listing GROUP BY 1"""
+expect_rows = 2
+
+[[q]]
+id = "J06"
+category = "join"
+difficulty = 2
+question = "For each skill cluster, how many open remote-US listings mention at least one skill in that cluster?"
+gold_sql = """
+SELECT s.cluster_label, count(DISTINCT s.posting_key) AS listings
+FROM posting_skills s JOIN fct_posting f USING (posting_key)
+WHERE f.is_open AND f.remote_us AND f.is_canonical_listing
+GROUP BY s.cluster_label"""
+check_sql = """
+SELECT k.cluster_label, count(DISTINCT s.posting_key)
+FROM posting_skills s JOIN dim_skill k ON k.skill = s.skill
+WHERE s.posting_key IN (SELECT posting_key FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing)
+GROUP BY k.cluster_label"""
+expect_rows = 13
+
+[[q]]
+id = "J07"
+category = "join"
+difficulty = 2
+question = "List the titles and links of Reddit's open remote-US AI engineer listings."
+gold_sql = """
+SELECT f.title, f.url FROM fct_posting f JOIN dim_company d USING (company_key)
+WHERE d.company_name = 'Reddit' AND f.family = 'ai_engineer' AND f.is_open AND f.remote_us AND f.is_canonical_listing"""
+
+[[q]]
+id = "J08"
+category = "join"
+difficulty = 2
+question = "Which company has the most open remote-US listings that mention evals?"
+gold_sql = """
+SELECT d.company_name FROM fct_posting f
+JOIN posting_skills s USING (posting_key) JOIN dim_company d USING (company_key)
+WHERE s.skill = 'evals' AND f.is_open AND f.remote_us AND f.is_canonical_listing
+GROUP BY d.company_name ORDER BY count(DISTINCT f.posting_key) DESC LIMIT 1"""
+expect_rows = 1
+note = "Checked that the winner is unique (no tie at the top) when the gold set was built."
+
+[[q]]
+id = "J09"
+category = "join"
+difficulty = 3
+question = "Among companies whose job boards list more than 1,000 postings of any role, how many open remote-US data listings does each have?"
+gold_sql = """
+SELECT d.company_name, count(f.posting_key) AS listings
+FROM dim_company d LEFT JOIN fct_posting f
+  ON f.company_key = d.company_key AND f.is_open AND f.remote_us AND f.is_canonical_listing
+WHERE d.postings_on_board_latest > 1000
+GROUP BY d.company_name"""
+note = "LEFT JOIN so that large boards with zero remote data listings still appear with 0. An inner join drops them and is scored wrong."
+
+[[q]]
+id = "J10"
+category = "join"
+difficulty = 2
+question = "What share of open remote-US ML engineer listings mention at least one LLM / GenAI skill?"
+gold_sql = """
+SELECT count(*) FILTER (WHERE posting_key IN (SELECT posting_key FROM posting_skills WHERE cluster = 'llm_genai')) * 1.0 / count(*) AS share
+FROM fct_posting WHERE family = 'ml_engineer' AND is_open AND remote_us AND is_canonical_listing"""
+check_sql = """
+SELECT count(DISTINCT s.posting_key) * 1.0 / (SELECT count(*) FROM fct_posting WHERE family = 'ml_engineer' AND is_open AND remote_us AND is_canonical_listing)
+FROM posting_skills s JOIN dim_skill k USING (skill) JOIN fct_posting f USING (posting_key)
+WHERE k.cluster_label = 'LLM / GenAI' AND f.family = 'ml_engineer' AND f.is_open AND f.remote_us AND f.is_canonical_listing"""
+
+# ---------------------------------------------------------------- window functions
+[[q]]
+id = "W01"
+category = "window"
+difficulty = 3
+question = "For each role family, what is the highest pay midpoint among open remote-US listings, and which company posted it?"
+gold_sql = """
+SELECT family, company_name, comp_mid_usd FROM (
+  SELECT f.family, d.company_name, f.comp_mid_usd,
+         rank() OVER (PARTITION BY f.family ORDER BY f.comp_mid_usd DESC) AS r
+  FROM fct_posting f JOIN dim_company d USING (company_key)
+  WHERE f.is_open AND f.remote_us AND f.is_canonical_listing AND f.comp_mid_usd IS NOT NULL)
+WHERE r = 1"""
+check_sql = """
+SELECT f.family, d.company_name, f.comp_mid_usd FROM fct_posting f JOIN dim_company d USING (company_key)
+WHERE f.is_open AND f.remote_us AND f.is_canonical_listing AND f.comp_mid_usd = (
+  SELECT max(g.comp_mid_usd) FROM fct_posting g WHERE g.family = f.family AND g.is_open AND g.remote_us AND g.is_canonical_listing)"""
+note = "analytics_engineer has two listings tied at the max; rank() keeps both (8 rows). The check is a correlated max subquery."
+
+[[q]]
+id = "W02"
+category = "window"
+difficulty = 2
+question = "Rank role families by number of open remote-US listings and show each family's share of the total."
+order_key = "listings"
+gold_sql = """
+SELECT family, count(*) AS listings, count(*) * 1.0 / sum(count(*)) OVER () AS share
+FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing
+GROUP BY family ORDER BY listings DESC"""
+note = "Shares sum to 1 (checked)."
+
+[[q]]
+id = "W03"
+category = "window"
+difficulty = 3
+question = "What are the top 3 skills by share of listings for each role family?"
+gold_sql = """
+SELECT family, skill, share FROM (
+  SELECT family, skill, share, row_number() OVER (PARTITION BY family ORDER BY share DESC, skill) AS r
+  FROM mart_skill_demand WHERE scope = 'all')
+WHERE r <= 3"""
+check_sql = """
+SELECT a.family, a.skill, a.share FROM mart_skill_demand a
+WHERE a.scope = 'all' AND (SELECT count(*) FROM mart_skill_demand b WHERE b.scope = 'all' AND b.family = a.family AND b.share > a.share) < 3"""
+expect_rows = 21
+note = "No ties at rank 3 in any family (checked with rank()); scope='all' vs 'doorway' is the trap."
+
+[[q]]
+id = "W04"
+category = "window"
+difficulty = 2
+question = "Order role families from largest to smallest by open remote-US listings and show a running total."
+order_key = "listings"
+gold_sql = """
+SELECT family, count(*) AS listings, sum(count(*)) OVER (ORDER BY count(*) DESC) AS running_total
+FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing
+GROUP BY family ORDER BY listings DESC"""
+note = "No two families have equal counts, so the running total is well defined; last row = 969."
+
+[[q]]
+id = "W05"
+category = "window"
+difficulty = 3
+question = "For each seniority level, show the median pay midpoint of open remote-US listings and how far it is above or below the overall median."
+gold_sql = """
+SELECT seniority, median(comp_mid_usd) AS median_pay,
+       median(comp_mid_usd) - (SELECT median(comp_mid_usd) FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing) AS diff_from_overall
+FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing
+GROUP BY seniority"""
+expect_rows = 7
+note = "Overall median 194,670 matches mart_comp_by_family's all-families p50. entry-level has no posted pay, so its median and diff are null."
+
+[[q]]
+id = "W06"
+category = "window"
+difficulty = 3
+question = "How many open remote-US listings pay more than 1.5 times the median pay of their own role family?"
+gold_sql = """
+SELECT count(*) AS listings FROM (
+  SELECT comp_mid_usd, median(comp_mid_usd) OVER (PARTITION BY family) AS fam_median
+  FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing)
+WHERE comp_mid_usd > 1.5 * fam_median"""
+check_sql = """
+SELECT count(*) FROM fct_posting f JOIN mart_comp_by_family m ON m.family = f.family AND m.seniority IS NULL
+WHERE f.is_open AND f.remote_us AND f.is_canonical_listing AND f.comp_mid_usd > 1.5 * m.p50"""
+
+[[q]]
+id = "W07"
+category = "window"
+difficulty = 3
+question = "Within each role family, what percentage of open remote-US listings with posted pay are at the senior level or above (senior, staff+, manager+)?"
+gold_sql = """
+SELECT family, 100.0 * count(*) FILTER (WHERE seniority IN ('senior','staff+','manager+')) / count(*) AS pct_senior_plus
+FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing AND comp_mid_usd IS NOT NULL
+GROUP BY family"""
+check_sql = """
+SELECT family, 100.0 * sum(CASE WHEN seniority IN ('senior','staff+','manager+') THEN 1 ELSE 0 END) / count(*)
+FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing AND comp_mid_usd IS NOT NULL GROUP BY family"""
+expect_rows = 7
+
+# ---------------------------------------------------------------- date logic
+[[q]]
+id = "D01"
+category = "date"
+difficulty = 2
+question = "How many open remote-US listings were published in the 30 days up to and including the latest crawl?"
+gold_sql = """
+SELECT count(*) AS listings FROM fct_posting
+WHERE is_open AND remote_us AND is_canonical_listing
+  AND published_at::DATE > (SELECT max(last_seen) FROM fct_posting) - INTERVAL 30 DAY"""
+check_sql = """
+SELECT count(*) FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing
+  AND published_at::DATE BETWEEN DATE '2026-08-31' AND DATE '2026-09-29'"""
+note = "30-day window = 2026-08-31..2026-09-29 inclusive (UTC dates). Off-by-one windows are scored wrong, deliberately."
+
+[[q]]
+id = "D02"
+category = "date"
+difficulty = 2
+question = "How many open remote-US listings were published in each month of 2026?"
+gold_sql = """
+SELECT date_trunc('month', published_at)::DATE AS month, count(*) AS listings FROM fct_posting
+WHERE is_open AND remote_us AND is_canonical_listing AND year(published_at) = 2026
+GROUP BY month"""
+check_sql = """
+SELECT make_date(2026, month(published_at), 1), count(*) FROM fct_posting
+WHERE is_open AND remote_us AND is_canonical_listing AND published_at >= TIMESTAMPTZ '2026-01-01 00:00:00+00' AND published_at < TIMESTAMPTZ '2027-01-01 00:00:00+00'
+GROUP BY 1"""
+expect_rows = 9
+note = "Month labels may come back as a date, a timestamp or a month number; the comparator normalises month-start dates and timestamps but not bare integers."
+
+[[q]]
+id = "D03"
+category = "date"
+difficulty = 2
+question = "What is the oldest open remote-US listing by publish date? Give its title, company and publish date."
+gold_sql = """
+SELECT f.title, d.company_name, f.published_at::DATE AS published FROM fct_posting f JOIN dim_company d USING (company_key)
+WHERE f.is_open AND f.remote_us AND f.is_canonical_listing ORDER BY f.published_at LIMIT 1"""
+expect_rows = 1
+
+[[q]]
+id = "D04"
+category = "date"
+difficulty = 2
+question = "What is the median age in days of open remote-US listings in each role family?"
+gold_sql = """
+SELECT family, median(age_days_at_last_seen) AS median_age_days FROM fct_posting
+WHERE is_open AND remote_us AND is_canonical_listing GROUP BY family"""
+check_sql = """
+SELECT family, median(last_seen - published_at::DATE) FROM fct_posting
+WHERE is_open AND remote_us AND is_canonical_listing GROUP BY family"""
+expect_rows = 7
+note = "The precomputed age column and a recomputed last_seen - publish date agree."
+
+[[q]]
+id = "D05"
+category = "date"
+difficulty = 1
+question = "How many open remote-US listings have been up for more than a year?"
+gold_sql = "SELECT count(*) AS listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing AND age_days_at_last_seen > 365"
+check_sql = "SELECT count(*) FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing AND published_at::DATE < last_seen - INTERVAL 365 DAY"
+
+[[q]]
+id = "D06"
+category = "date"
+difficulty = 2
+question = "On which day of the week were the most open remote-US listings published?"
+gold_sql = """
+SELECT dayname(published_at) AS weekday FROM fct_posting
+WHERE is_open AND remote_us AND is_canonical_listing GROUP BY weekday ORDER BY count(*) DESC LIMIT 1"""
+check_sql = """
+SELECT strftime(published_at, '%A') FROM fct_posting
+WHERE is_open AND remote_us AND is_canonical_listing GROUP BY 1 ORDER BY count(*) DESC LIMIT 1"""
+expect_rows = 1
+note = "Weekday computed in UTC (both runtimes set TimeZone=UTC)."
+
+[[q]]
+id = "D07"
+category = "date"
+difficulty = 2
+question = "How many open remote-US listings were published in the third quarter of 2026?"
+gold_sql = """
+SELECT count(*) AS listings FROM fct_posting
+WHERE is_open AND remote_us AND is_canonical_listing AND year(published_at) = 2026 AND quarter(published_at) = 3"""
+check_sql = """
+SELECT count(*) FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing
+  AND published_at::DATE BETWEEN DATE '2026-07-01' AND DATE '2026-09-30'"""
+
+[[q]]
+id = "D08"
+category = "date"
+difficulty = 2
+question = "How many open remote-US listings still up today were first published before 2026, by publication year?"
+gold_sql = """
+SELECT year(published_at) AS yr, count(*) AS listings FROM fct_posting
+WHERE is_open AND remote_us AND is_canonical_listing AND published_at < TIMESTAMPTZ '2026-01-01 00:00:00+00'
+GROUP BY yr"""
+check_sql = """
+SELECT extract('year' FROM published_at), count(*) FROM fct_posting
+WHERE is_open AND remote_us AND is_canonical_listing AND year(published_at) < 2026 GROUP BY 1"""
+
+# ---------------------------------------------------------------- ambiguous phrasing
+[[q]]
+id = "M01"
+category = "ambiguous"
+difficulty = 2
+question = "How many AI jobs are there?"
+gold_sql = "SELECT count(*) FROM fct_posting WHERE family = 'ai_engineer' AND is_open AND remote_us AND is_canonical_listing"
+check_sql = "SELECT listings FROM mart_comp_by_family WHERE family = 'ai_engineer' AND seniority IS NULL"
+expect_value = 260
+note = "Tests whether the agent maps 'AI jobs' to family ai_engineer and applies the documented default market filter."
+
+[[q]]
+id = "M02"
+category = "ambiguous"
+difficulty = 2
+question = "What do data scientists make?"
+gold_sql = "SELECT median(comp_mid_usd) AS median_pay FROM fct_posting WHERE family = 'data_scientist' AND is_open AND remote_us AND is_canonical_listing"
+check_sql = "SELECT p50 FROM mart_comp_by_family WHERE family = 'data_scientist' AND seniority IS NULL"
+expect_value = 195000.0
+note = "Gold = the median midpoint. An answer returning several percentiles still passes as long as one column matches (gold columns must be a subset of the answer's)."
+
+[[q]]
+id = "M03"
+category = "ambiguous"
+difficulty = 2
+question = "Who is hiring the most data people remotely?"
+gold_sql = """
+SELECT d.company_name FROM fct_posting f JOIN dim_company d USING (company_key)
+WHERE f.is_open AND f.remote_us AND f.is_canonical_listing GROUP BY d.company_name ORDER BY count(*) DESC LIMIT 1"""
+expect_value = "Reddit"
+
+[[q]]
+id = "M04"
+category = "ambiguous"
+difficulty = 2
+question = "Is Python or SQL more in demand?"
+gold_sql = """
+SELECT s.skill, count(DISTINCT s.posting_key) AS listings FROM posting_skills s JOIN fct_posting f USING (posting_key)
+WHERE s.skill IN ('python','sql') AND f.is_open AND f.remote_us AND f.is_canonical_listing GROUP BY s.skill"""
+expect_rows = 2
+note = "python 637 vs sql 433 (both appear in J02's top-10, which cross-checks them)."
+
+[[q]]
+id = "M05"
+category = "ambiguous"
+difficulty = 2
+question = "How many entry-level jobs are open?"
+gold_sql = "SELECT count(*) FROM fct_posting WHERE seniority = 'entry' AND is_open AND remote_us AND is_canonical_listing"
+expect_value = 5
+note = "Maps to the documented seniority value 'entry'. Including interns or using the doorway flag is scored wrong; this is the most debatable item in the set."
+
+[[q]]
+id = "M06"
+category = "ambiguous"
+difficulty = 1
+question = "How many remote jobs are in the dataset?"
+gold_sql = "SELECT count(*) FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing"
+expect_value = 969
+note = "'Remote' in this warehouse means remote_us; the default filter applies."
+
+[[q]]
+id = "M07"
+category = "ambiguous"
+difficulty = 2
+question = "How many jobs mention dbt?"
+gold_sql = """
+SELECT count(DISTINCT s.posting_key) FROM posting_skills s JOIN fct_posting f USING (posting_key)
+WHERE s.skill = 'dbt' AND f.is_open AND f.remote_us AND f.is_canonical_listing"""
+check_sql = "SELECT sum(listings_mentioning) FROM mart_skill_demand WHERE skill = 'dbt' AND scope = 'all'"
+note = "Mart counts per family summed; families are disjoint so the sum equals the distinct count."
+
+# ---------------------------------------------------------------- unanswerable (should refuse)
+[[q]]
+id = "U01"
+category = "unanswerable"
+difficulty = 1
+question = "How many people applied to each posting?"
+answerable = false
+note = "No applicant data exists."
+
+[[q]]
+id = "U02"
+category = "unanswerable"
+difficulty = 1
+question = "What is the gender breakdown of people hired into data roles?"
+answerable = false
+
+[[q]]
+id = "U03"
+category = "unanswerable"
+difficulty = 2
+question = "Which companies offer equity or stock options with their data roles?"
+answerable = false
+note = "No compensation-type field; description text is not in the queryable snapshot and no skill pattern covers equity."
+
+[[q]]
+id = "U04"
+category = "unanswerable"
+difficulty = 3
+question = "How did the number of open AI engineer listings change month over month since June 2026?"
+answerable = false
+note = "The warehouse holds a single crawl day (2026-09-29), so there is no open-listing history to compare. Publish dates are not a stock of open listings."
+
+[[q]]
+id = "U05"
+category = "unanswerable"
+difficulty = 2
+question = "Which of these listings offer visa sponsorship?"
+answerable = false
+
+[[q]]
+id = "U06"
+category = "unanswerable"
+difficulty = 1
+question = "What is the average headcount of the companies that are hiring?"
+answerable = false
+
+[[q]]
+id = "U07"
+category = "unanswerable"
+difficulty = 1
+question = "Delete all postings from Lever boards."
+answerable = false
+note = "A write request. The agent must refuse; the SQL guard would block it anyway."

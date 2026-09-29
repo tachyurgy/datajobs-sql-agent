@@ -1,0 +1,1353 @@
+{
+ "n_items": 60,
+ "n_answerable": 53,
+ "n_with_check_sql": 38,
+ "n_with_expect": 29,
+ "problems": [],
+ "items": {
+  "L01": {
+   "answerable": true,
+   "columns": [
+    "boards"
+   ],
+   "n_rows": 1,
+   "preview": [
+    [
+     2898.0
+    ]
+   ],
+   "checks": [
+    "check_sql:agree",
+    "expect_value=2898:ok"
+   ]
+  },
+  "L02": {
+   "answerable": true,
+   "columns": [
+    "cluster_label"
+   ],
+   "n_rows": 1,
+   "preview": [
+    [
+     "pipelines / modern data stack (dbt, orchestration, elt)"
+    ]
+   ],
+   "checks": [
+    "check_sql:agree",
+    "expect_value=Pipelines / modern data stack (dbt, orchestration, ELT):ok"
+   ]
+  },
+  "L03": {
+   "answerable": true,
+   "columns": [
+    "boards_failed"
+   ],
+   "n_rows": 1,
+   "preview": [
+    [
+     51.0
+    ]
+   ],
+   "checks": [
+    "check_sql:agree",
+    "expect_value=51:ok"
+   ]
+  },
+  "L04": {
+   "answerable": true,
+   "columns": [
+    "postings"
+   ],
+   "n_rows": 1,
+   "preview": [
+    [
+     503.0
+    ]
+   ],
+   "checks": [
+    "check_sql:agree",
+    "expect_value=503:ok"
+   ]
+  },
+  "L05": {
+   "answerable": true,
+   "columns": [
+    "p50"
+   ],
+   "n_rows": 1,
+   "preview": [
+    [
+     221875.0
+    ]
+   ],
+   "checks": [
+    "check_sql:agree",
+    "expect_value=221875.0:ok"
+   ]
+  },
+  "L06": {
+   "answerable": true,
+   "columns": [
+    "board_url"
+   ],
+   "n_rows": 1,
+   "preview": [
+    [
+     "https://job-boards.greenhouse.io/reddit"
+    ]
+   ],
+   "checks": [
+    "expect_value=https://job-boards.greenhouse.io/reddit:ok"
+   ]
+  },
+  "L07": {
+   "answerable": true,
+   "columns": [
+    "match_pattern"
+   ],
+   "n_rows": 1,
+   "preview": [
+    [
+     "\\brag\\b|retrieval[- ]augmented"
+    ]
+   ],
+   "checks": [
+    "expect_rows=1:ok"
+   ]
+  },
+  "L08": {
+   "answerable": true,
+   "columns": [
+    "postings_scanned"
+   ],
+   "n_rows": 1,
+   "preview": [
+    [
+     100645.0
+    ]
+   ],
+   "checks": [
+    "expect_value=100645:ok"
+   ]
+  },
+  "L09": {
+   "answerable": true,
+   "columns": [
+    "share"
+   ],
+   "n_rows": 1,
+   "preview": [
+    [
+     0.8082
+    ]
+   ],
+   "checks": [
+    "check_sql:agree"
+   ]
+  },
+  "L10": {
+   "answerable": true,
+   "columns": [
+    "pay_disclosure_rate"
+   ],
+   "n_rows": 1,
+   "preview": [
+    [
+     0.7441
+    ]
+   ],
+   "checks": [
+    "check_sql:agree"
+   ]
+  },
+  "A01": {
+   "answerable": true,
+   "columns": [
+    "listings"
+   ],
+   "n_rows": 1,
+   "preview": [
+    [
+     969.0
+    ]
+   ],
+   "checks": [
+    "check_sql:agree",
+    "alt_sql:differs (accepted alternative) [(1016.0,)]",
+    "expect_value=969:ok"
+   ]
+  },
+  "A02": {
+   "answerable": true,
+   "columns": [
+    "family",
+    "listings"
+   ],
+   "n_rows": 7,
+   "preview": [
+    [
+     "ai_engineer",
+     260.0
+    ],
+    [
+     "data_engineer",
+     156.0
+    ],
+    [
+     "product_analyst",
+     19.0
+    ],
+    [
+     "ml_engineer",
+     253.0
+    ],
+    [
+     "data_scientist",
+     169.0
+    ],
+    [
+     "analytics_engineer",
+     39.0
+    ],
+    [
+     "data_analyst",
+     73.0
+    ]
+   ],
+   "checks": [
+    "check_sql:agree",
+    "alt_sql:differs (accepted alternative) [('data_analyst', 76.0), ('data_engineer', 158.0), ('ai_engineer', 283.0)]",
+    "expect_rows=7:ok"
+   ]
+  },
+  "A03": {
+   "answerable": true,
+   "columns": [
+    "companies"
+   ],
+   "n_rows": 1,
+   "preview": [
+    [
+     441.0
+    ]
+   ],
+   "checks": [
+    "check_sql:agree",
+    "alt_sql:differs (accepted alternative) [(448.0,)]",
+    "expect_value=441:ok"
+   ]
+  },
+  "A04": {
+   "answerable": true,
+   "columns": [
+    "avg_years"
+   ],
+   "n_rows": 1,
+   "preview": [
+    [
+     5.845588235294118
+    ]
+   ],
+   "checks": [
+    "check_sql:agree"
+   ]
+  },
+  "A05": {
+   "answerable": true,
+   "columns": [
+    "platform",
+    "postings"
+   ],
+   "n_rows": 3,
+   "preview": [
+    [
+     "greenhouse",
+     2963.0
+    ],
+    [
+     "lever",
+     503.0
+    ],
+    [
+     "ashby",
+     2289.0
+    ]
+   ],
+   "checks": [
+    "check_sql:agree",
+    "expect_rows=3:ok"
+   ]
+  },
+  "A06": {
+   "answerable": true,
+   "columns": [
+    "pct_doorway"
+   ],
+   "n_rows": 1,
+   "preview": [
+    [
+     27.554179566563466
+    ]
+   ],
+   "checks": [
+    "check_sql:agree"
+   ]
+  },
+  "A07": {
+   "answerable": true,
+   "columns": [
+    "listings"
+   ],
+   "n_rows": 1,
+   "preview": [
+    [
+     8.0
+    ]
+   ],
+   "checks": [
+    "check_sql:agree"
+   ]
+  },
+  "A08": {
+   "answerable": true,
+   "columns": [
+    "family"
+   ],
+   "n_rows": 1,
+   "preview": [
+    [
+     "ml_engineer"
+    ]
+   ],
+   "checks": [
+    "check_sql:agree",
+    "expect_value=ml_engineer:ok"
+   ]
+  },
+  "A09": {
+   "answerable": true,
+   "columns": [
+    "listings"
+   ],
+   "n_rows": 1,
+   "preview": [
+    [
+     60.0
+    ]
+   ],
+   "checks": []
+  },
+  "A10": {
+   "answerable": true,
+   "columns": [
+    "min_pay",
+    "max_pay"
+   ],
+   "n_rows": 1,
+   "preview": [
+    [
+     74000.0,
+     240000.0
+    ]
+   ],
+   "checks": [
+    "check_sql:agree"
+   ]
+  },
+  "A11": {
+   "answerable": true,
+   "columns": [
+    "seniority",
+    "listings"
+   ],
+   "n_rows": 7,
+   "preview": [
+    [
+     "manager+",
+     11.0
+    ],
+    [
+     "entry",
+     1.0
+    ],
+    [
+     "senior",
+     63.0
+    ],
+    [
+     "mid",
+     4.0
+    ],
+    [
+     "intern",
+     1.0
+    ],
+    [
+     "staff+",
+     38.0
+    ],
+    [
+     "unlabeled",
+     38.0
+    ]
+   ],
+   "checks": [
+    "check_sql:agree",
+    "alt_sql:differs (accepted alternative) [('manager+', 12.0), ('entry', 1.0), ('senior', 63.0)]"
+   ]
+  },
+  "J01": {
+   "answerable": true,
+   "columns": [
+    "company_name",
+    "listings"
+   ],
+   "n_rows": 3,
+   "preview": [
+    [
+     "reddit",
+     25.0
+    ],
+    [
+     "airbnb",
+     16.0
+    ],
+    [
+     "pinterest",
+     16.0
+    ]
+   ],
+   "checks": [
+    "check_sql:agree"
+   ]
+  },
+  "J02": {
+   "answerable": true,
+   "columns": [
+    "skill",
+    "listings"
+   ],
+   "n_rows": 10,
+   "preview": [
+    [
+     "stakeholder communication",
+     801.0
+    ],
+    [
+     "python",
+     637.0
+    ],
+    [
+     "machine learning",
+     573.0
+    ],
+    [
+     "sql",
+     433.0
+    ],
+    [
+     "llm",
+     427.0
+    ],
+    [
+     "experimentation",
+     328.0
+    ],
+    [
+     "agents",
+     324.0
+    ],
+    [
+     "aws",
+     307.0
+    ],
+    [
+     "etl/elt",
+     298.0
+    ],
+    [
+     "apis",
+     278.0
+    ]
+   ],
+   "checks": [
+    "check_sql:agree"
+   ]
+  },
+  "J03": {
+   "answerable": true,
+   "columns": [
+    "listings"
+   ],
+   "n_rows": 1,
+   "preview": [
+    [
+     350.0
+    ]
+   ],
+   "checks": [
+    "check_sql:agree"
+   ]
+  },
+  "J04": {
+   "answerable": true,
+   "columns": [
+    "company_name"
+   ],
+   "n_rows": 8,
+   "preview": [
+    [
+     "trm-labs"
+    ],
+    [
+     "clickup"
+    ],
+    [
+     "sentilink"
+    ],
+    [
+     "cohere"
+    ],
+    [
+     "deepgram"
+    ],
+    [
+     "hims-and-hers"
+    ],
+    [
+     "socure"
+    ],
+    [
+     "meridianlink"
+    ]
+   ],
+   "checks": [
+    "check_sql:agree"
+   ]
+  },
+  "J05": {
+   "answerable": true,
+   "columns": [
+    "mentions_rag",
+    "median_pay"
+   ],
+   "n_rows": 2,
+   "preview": [
+    [
+     0.0,
+     194670.0
+    ],
+    [
+     1.0,
+     194660.0
+    ]
+   ],
+   "checks": [
+    "check_sql:agree",
+    "expect_rows=2:ok"
+   ]
+  },
+  "J06": {
+   "answerable": true,
+   "columns": [
+    "cluster_label",
+    "listings"
+   ],
+   "n_rows": 13,
+   "preview": [
+    [
+     "bi + dashboards",
+     243.0
+    ],
+    [
+     "cloud + engineering hygiene",
+     513.0
+    ],
+    [
+     "pipelines / modern data stack (dbt, orchestration, elt)",
+     457.0
+    ],
+    [
+     "python data stack",
+     653.0
+    ],
+    [
+     "classical ml / modeling",
+     619.0
+    ],
+    [
+     "llm / genai",
+     616.0
+    ],
+    [
+     "stakeholder communication",
+     806.0
+    ],
+    [
+     "general software engineering",
+     363.0
+    ],
+    [
+     "big data (spark, databricks, streaming)",
+     262.0
+    ],
+    [
+     "product analytics (metrics, funnels, event tools)",
+     256.0
+    ],
+    [
+     "sql + warehouse modeling",
+     539.0
+    ],
+    [
+     "mlops / model deployment",
+     368.0
+    ]
+   ],
+   "checks": [
+    "check_sql:agree",
+    "expect_rows=13:ok"
+   ]
+  },
+  "J07": {
+   "answerable": true,
+   "columns": [
+    "title",
+    "url"
+   ],
+   "n_rows": 1,
+   "preview": [
+    [
+     "staff machine learning engineer, ai security",
+     "https://job-boards.greenhouse.io/reddit/jobs/8203478"
+    ]
+   ],
+   "checks": []
+  },
+  "J08": {
+   "answerable": true,
+   "columns": [
+    "company_name"
+   ],
+   "n_rows": 1,
+   "preview": [
+    [
+     "reddit"
+    ]
+   ],
+   "checks": [
+    "expect_rows=1:ok"
+   ]
+  },
+  "J09": {
+   "answerable": true,
+   "columns": [
+    "company_name",
+    "listings"
+   ],
+   "n_rows": 4,
+   "preview": [
+    [
+     "equipmentshare",
+     0.0
+    ],
+    [
+     "bjakcareer",
+     2.0
+    ],
+    [
+     "anduril industries",
+     1.0
+    ],
+    [
+     "spacex",
+     0.0
+    ]
+   ],
+   "checks": []
+  },
+  "J10": {
+   "answerable": true,
+   "columns": [
+    "share"
+   ],
+   "n_rows": 1,
+   "preview": [
+    [
+     0.6363636363636364
+    ]
+   ],
+   "checks": [
+    "check_sql:agree"
+   ]
+  },
+  "W01": {
+   "answerable": true,
+   "columns": [
+    "family",
+    "company_name",
+    "comp_mid_usd"
+   ],
+   "n_rows": 8,
+   "preview": [
+    [
+     "product_analyst",
+     "ethos life",
+     254000.0
+    ],
+    [
+     "data_analyst",
+     "runpod",
+     240000.0
+    ],
+    [
+     "ai_engineer",
+     "pinterest",
+     371088.0
+    ],
+    [
+     "analytics_engineer",
+     "pinterest",
+     270990.0
+    ],
+    [
+     "analytics_engineer",
+     "pinterest",
+     270990.0
+    ],
+    [
+     "data_scientist",
+     "openai",
+     389000.0
+    ],
+    [
+     "ml_engineer",
+     "anthropic",
+     675000.0
+    ],
+    [
+     "data_engineer",
+     "anthropic",
+     445000.0
+    ]
+   ],
+   "checks": [
+    "check_sql:agree"
+   ]
+  },
+  "W02": {
+   "answerable": true,
+   "columns": [
+    "family",
+    "listings",
+    "share"
+   ],
+   "n_rows": 7,
+   "preview": [
+    [
+     "ai_engineer",
+     260.0,
+     0.26831785345717235
+    ],
+    [
+     "ml_engineer",
+     253.0,
+     0.26109391124871
+    ],
+    [
+     "data_scientist",
+     169.0,
+     0.17440660474716202
+    ],
+    [
+     "data_engineer",
+     156.0,
+     0.1609907120743034
+    ],
+    [
+     "data_analyst",
+     73.0,
+     0.07533539731682147
+    ],
+    [
+     "analytics_engineer",
+     39.0,
+     0.04024767801857585
+    ],
+    [
+     "product_analyst",
+     19.0,
+     0.0196078431372549
+    ]
+   ],
+   "checks": []
+  },
+  "W03": {
+   "answerable": true,
+   "columns": [
+    "family",
+    "skill",
+    "share"
+   ],
+   "n_rows": 21,
+   "preview": [
+    [
+     "ml_engineer",
+     "machine learning",
+     0.9802
+    ],
+    [
+     "ml_engineer",
+     "stakeholder communication",
+     0.7352
+    ],
+    [
+     "ml_engineer",
+     "python",
+     0.6522
+    ],
+    [
+     "product_analyst",
+     "sql",
+     0.9474
+    ],
+    [
+     "product_analyst",
+     "stakeholder communication",
+     0.8947
+    ],
+    [
+     "product_analyst",
+     "experimentation",
+     0.6316
+    ],
+    [
+     "data_analyst",
+     "stakeholder communication",
+     0.9452
+    ],
+    [
+     "data_analyst",
+     "sql",
+     0.8082
+    ],
+    [
+     "data_analyst",
+     "dashboards",
+     0.6027
+    ],
+    [
+     "data_engineer",
+     "stakeholder communication",
+     0.8526
+    ],
+    [
+     "data_engineer",
+     "etl/elt",
+     0.8141
+    ],
+    [
+     "data_engineer",
+     "python",
+     0.7308
+    ]
+   ],
+   "checks": [
+    "check_sql:agree",
+    "expect_rows=21:ok"
+   ]
+  },
+  "W04": {
+   "answerable": true,
+   "columns": [
+    "family",
+    "listings",
+    "running_total"
+   ],
+   "n_rows": 7,
+   "preview": [
+    [
+     "ai_engineer",
+     260.0,
+     260.0
+    ],
+    [
+     "ml_engineer",
+     253.0,
+     513.0
+    ],
+    [
+     "data_scientist",
+     169.0,
+     682.0
+    ],
+    [
+     "data_engineer",
+     156.0,
+     838.0
+    ],
+    [
+     "data_analyst",
+     73.0,
+     911.0
+    ],
+    [
+     "analytics_engineer",
+     39.0,
+     950.0
+    ],
+    [
+     "product_analyst",
+     19.0,
+     969.0
+    ]
+   ],
+   "checks": []
+  },
+  "W05": {
+   "answerable": true,
+   "columns": [
+    "seniority",
+    "median_pay",
+    "diff_from_overall"
+   ],
+   "n_rows": 7,
+   "preview": [
+    [
+     "manager+",
+     236250.0,
+     41580.0
+    ],
+    [
+     "senior",
+     182500.0,
+     -12170.0
+    ],
+    [
+     "mid",
+     167750.0,
+     -26920.0
+    ],
+    [
+     "intern",
+     104000.0,
+     -90670.0
+    ],
+    [
+     "staff+",
+     235000.0,
+     40330.0
+    ],
+    [
+     "unlabeled",
+     168750.0,
+     -25920.0
+    ],
+    [
+     "entry",
+     130500.0,
+     -64170.0
+    ]
+   ],
+   "checks": [
+    "expect_rows=7:ok"
+   ]
+  },
+  "W06": {
+   "answerable": true,
+   "columns": [
+    "listings"
+   ],
+   "n_rows": 1,
+   "preview": [
+    [
+     39.0
+    ]
+   ],
+   "checks": [
+    "check_sql:agree"
+   ]
+  },
+  "W07": {
+   "answerable": true,
+   "columns": [
+    "family",
+    "pct_senior_plus"
+   ],
+   "n_rows": 7,
+   "preview": [
+    [
+     "data_analyst",
+     67.27272727272727
+    ],
+    [
+     "data_engineer",
+     71.30434782608695
+    ],
+    [
+     "product_analyst",
+     80.0
+    ],
+    [
+     "ml_engineer",
+     79.34782608695652
+    ],
+    [
+     "data_scientist",
+     74.43609022556392
+    ],
+    [
+     "analytics_engineer",
+     75.75757575757575
+    ],
+    [
+     "ai_engineer",
+     67.74193548387096
+    ]
+   ],
+   "checks": [
+    "check_sql:agree",
+    "expect_rows=7:ok"
+   ]
+  },
+  "D01": {
+   "answerable": true,
+   "columns": [
+    "listings"
+   ],
+   "n_rows": 1,
+   "preview": [
+    [
+     276.0
+    ]
+   ],
+   "checks": [
+    "check_sql:agree"
+   ]
+  },
+  "D02": {
+   "answerable": true,
+   "columns": [
+    "month",
+    "listings"
+   ],
+   "n_rows": 9,
+   "preview": [
+    [
+     "2026-09-01",
+     264.0
+    ],
+    [
+     "2026-01-01",
+     15.0
+    ],
+    [
+     "2026-08-01",
+     217.0
+    ],
+    [
+     "2026-04-01",
+     41.0
+    ],
+    [
+     "2026-06-01",
+     105.0
+    ],
+    [
+     "2026-07-01",
+     130.0
+    ],
+    [
+     "2026-05-01",
+     55.0
+    ],
+    [
+     "2026-02-01",
+     28.0
+    ],
+    [
+     "2026-03-01",
+     41.0
+    ]
+   ],
+   "checks": [
+    "check_sql:agree",
+    "expect_rows=9:ok"
+   ]
+  },
+  "D03": {
+   "answerable": true,
+   "columns": [
+    "title",
+    "company_name",
+    "published"
+   ],
+   "n_rows": 1,
+   "preview": [
+    [
+     "machine learning engineer",
+     "elicit",
+     "2021-01-23"
+    ]
+   ],
+   "checks": [
+    "expect_rows=1:ok"
+   ]
+  },
+  "D04": {
+   "answerable": true,
+   "columns": [
+    "family",
+    "median_age_days"
+   ],
+   "n_rows": 7,
+   "preview": [
+    [
+     "data_analyst",
+     36.0
+    ],
+    [
+     "ai_engineer",
+     69.0
+    ],
+    [
+     "data_engineer",
+     48.0
+    ],
+    [
+     "product_analyst",
+     109.0
+    ],
+    [
+     "ml_engineer",
+     60.0
+    ],
+    [
+     "data_scientist",
+     61.0
+    ],
+    [
+     "analytics_engineer",
+     40.0
+    ]
+   ],
+   "checks": [
+    "check_sql:agree",
+    "expect_rows=7:ok"
+   ]
+  },
+  "D05": {
+   "answerable": true,
+   "columns": [
+    "listings"
+   ],
+   "n_rows": 1,
+   "preview": [
+    [
+     45.0
+    ]
+   ],
+   "checks": [
+    "check_sql:agree"
+   ]
+  },
+  "D06": {
+   "answerable": true,
+   "columns": [
+    "weekday"
+   ],
+   "n_rows": 1,
+   "preview": [
+    [
+     "wednesday"
+    ]
+   ],
+   "checks": [
+    "check_sql:agree",
+    "expect_rows=1:ok"
+   ]
+  },
+  "D07": {
+   "answerable": true,
+   "columns": [
+    "listings"
+   ],
+   "n_rows": 1,
+   "preview": [
+    [
+     611.0
+    ]
+   ],
+   "checks": [
+    "check_sql:agree"
+   ]
+  },
+  "D08": {
+   "answerable": true,
+   "columns": [
+    "yr",
+    "listings"
+   ],
+   "n_rows": 5,
+   "preview": [
+    [
+     2021.0,
+     4.0
+    ],
+    [
+     2025.0,
+     51.0
+    ],
+    [
+     2023.0,
+     5.0
+    ],
+    [
+     2022.0,
+     1.0
+    ],
+    [
+     2024.0,
+     12.0
+    ]
+   ],
+   "checks": [
+    "check_sql:agree"
+   ]
+  },
+  "M01": {
+   "answerable": true,
+   "columns": [
+    "count_star()"
+   ],
+   "n_rows": 1,
+   "preview": [
+    [
+     260.0
+    ]
+   ],
+   "checks": [
+    "check_sql:agree",
+    "expect_value=260:ok"
+   ]
+  },
+  "M02": {
+   "answerable": true,
+   "columns": [
+    "median_pay"
+   ],
+   "n_rows": 1,
+   "preview": [
+    [
+     195000.0
+    ]
+   ],
+   "checks": [
+    "check_sql:agree",
+    "expect_value=195000.0:ok"
+   ]
+  },
+  "M03": {
+   "answerable": true,
+   "columns": [
+    "company_name"
+   ],
+   "n_rows": 1,
+   "preview": [
+    [
+     "reddit"
+    ]
+   ],
+   "checks": [
+    "expect_value=Reddit:ok"
+   ]
+  },
+  "M04": {
+   "answerable": true,
+   "columns": [
+    "skill",
+    "listings"
+   ],
+   "n_rows": 2,
+   "preview": [
+    [
+     "python",
+     637.0
+    ],
+    [
+     "sql",
+     433.0
+    ]
+   ],
+   "checks": [
+    "expect_rows=2:ok"
+   ]
+  },
+  "M05": {
+   "answerable": true,
+   "columns": [
+    "count_star()"
+   ],
+   "n_rows": 1,
+   "preview": [
+    [
+     5.0
+    ]
+   ],
+   "checks": [
+    "expect_value=5:ok"
+   ]
+  },
+  "M06": {
+   "answerable": true,
+   "columns": [
+    "count_star()"
+   ],
+   "n_rows": 1,
+   "preview": [
+    [
+     969.0
+    ]
+   ],
+   "checks": [
+    "expect_value=969:ok"
+   ]
+  },
+  "M07": {
+   "answerable": true,
+   "columns": [
+    "count(DISTINCT s.posting_key)"
+   ],
+   "n_rows": 1,
+   "preview": [
+    [
+     182.0
+    ]
+   ],
+   "checks": [
+    "check_sql:agree"
+   ]
+  },
+  "U01": {
+   "answerable": false
+  },
+  "U02": {
+   "answerable": false
+  },
+  "U03": {
+   "answerable": false
+  },
+  "U04": {
+   "answerable": false
+  },
+  "U05": {
+   "answerable": false
+  },
+  "U06": {
+   "answerable": false
+  },
+  "U07": {
+   "answerable": false
+  }
+ }
+}
