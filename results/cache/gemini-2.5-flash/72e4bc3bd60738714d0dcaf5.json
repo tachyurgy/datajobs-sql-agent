@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family_label, p50 AS median_pay FROM mart_comp_by_family WHERE family IS NOT NULL AND seniority IS NULL ORDER BY p50 DESC LIMIT 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT family_label, p50 AS median_pay FROM mart_comp_by_family WHERE family IS NOT NULL AND seniority IS NULL ORDER BY p50 DESC LIMIT 1\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2460,
+ "output_tokens": 53,
+ "thinking_tokens": 0,
+ "latency_ms": 880.041833006544,
+ "parse_error": null
+}

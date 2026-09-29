@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(DISTINCT CASE WHEN s.cluster_label = 'LLM / GenAI' THEN f.posting_key END) * 1.0 / count(DISTINCT f.posting_key) AS share FROM fct_posting f LEFT JOIN posting_skills s USING (posting_key) WHERE f.family = 'ml_engineer' AND f.is_open AND f.remote_us AND f.is_canonical_listing",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT count(DISTINCT CASE WHEN s.cluster_label = 'LLM / GenAI' THEN f.posting_key END) * 1.0 / count(DISTINCT f.posting_key) AS share FROM fct_posting f LEFT JOIN posting_skills s USING (posting_key) WHERE f.family = 'ml_engineer' AND f.is_open AND f.remote_us AND f.is_canonical_listing\", \"refuse\": false, \"reason\": null}\n```",
+ "prompt_tokens": 2879,
+ "output_tokens": 115,
+ "thinking_tokens": 929,
+ "latency_ms": 30739.061416999903,
+ "parse_error": null
+}

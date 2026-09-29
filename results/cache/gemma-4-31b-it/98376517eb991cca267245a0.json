@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT f.family, MAX(f.comp_mid_usd) AS max_pay, arg_max(c.company_name, f.comp_mid_usd) AS company FROM fct_posting f JOIN dim_company c ON f.company_key = c.company_key WHERE f.is_open AND f.remote_us AND f.is_canonical_listing GROUP BY f.family",
+ "refuse": false,
+ "reason": "The query joins fct_posting and dim_company to find the maximum pay midpoint and the corresponding company name for each role family, applying the required filters for open, remote-US, and canonical listings.",
+ "raw": "```json\n{\"sql\": \"SELECT f.family, MAX(f.comp_mid_usd) AS max_pay, arg_max(c.company_name, f.comp_mid_usd) AS company FROM fct_posting f JOIN dim_company c ON f.company_key = c.company_key WHERE f.is_open AND f.remote_us AND f.is_canonical_listing GROUP BY f.family\", \"refuse\": false, \"reason\": \"The query joins fct_posting and dim_company to find the maximum pay midpoint and the corresponding company name for each role family, applying the required filters for open, remote-US, and canonical listings.\"}\n```",
+ "prompt_tokens": 2283,
+ "output_tokens": 151,
+ "thinking_tokens": 619,
+ "latency_ms": 22856.22037498979,
+ "parse_error": null
+}

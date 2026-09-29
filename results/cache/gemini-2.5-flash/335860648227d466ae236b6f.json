@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(f.posting_key) AS listings_above_median FROM fct_posting AS f JOIN mart_comp_by_family AS m ON f.family = m.family WHERE f.is_open AND f.remote_us AND f.is_canonical_listing AND f.comp_mid_usd > (1.5 * m.p50)",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT count(f.posting_key) AS listings_above_median FROM fct_posting AS f JOIN mart_comp_by_family AS m ON f.family = m.family WHERE f.is_open AND f.remote_us AND f.is_canonical_listing AND f.comp_mid_usd > (1.5 * m.p50)\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2459,
+ "output_tokens": 94,
+ "thinking_tokens": 0,
+ "latency_ms": 980.995542020537,
+ "parse_error": null
+}

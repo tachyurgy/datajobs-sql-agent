@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT CAST(SUM(open_doorway_listings) AS DOUBLE) * 100 / SUM(open_listings) FROM mart_daily_market WHERE crawl_date = '2026-09-29' AND remote_us = TRUE",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT CAST(SUM(open_doorway_listings) AS DOUBLE) * 100 / SUM(open_listings) FROM mart_daily_market WHERE crawl_date = '2026-09-29' AND remote_us = TRUE\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2447,
+ "output_tokens": 71,
+ "thinking_tokens": 0,
+ "latency_ms": 795.1608340081293,
+ "parse_error": null
+}

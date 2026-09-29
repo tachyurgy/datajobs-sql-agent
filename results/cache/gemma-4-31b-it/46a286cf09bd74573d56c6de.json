@@ -1,0 +1,11 @@
+{
+ "sql": "WITH ranked_skills AS (SELECT family_label, skill, share, ROW_NUMBER() OVER (PARTITION BY family ORDER BY share DESC) as rank FROM mart_skill_demand) SELECT family_label, skill, share FROM ranked_skills WHERE rank <= 3",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"WITH ranked_skills AS (SELECT family_label, skill, share, ROW_NUMBER() OVER (PARTITION BY family ORDER BY share DESC) as rank FROM mart_skill_demand) SELECT family_label, skill, share FROM ranked_skills WHERE rank <= 3\", \"refuse\": false, \"reason\": \"\"}\n```",
+ "prompt_tokens": 1022,
+ "output_tokens": 76,
+ "thinking_tokens": 986,
+ "latency_ms": 30414.82316699694,
+ "parse_error": null
+}

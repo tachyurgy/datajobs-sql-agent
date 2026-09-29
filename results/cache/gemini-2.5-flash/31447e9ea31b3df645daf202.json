@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT title, company_name, published_at FROM fct_posting JOIN dim_company USING (company_key) WHERE is_open AND remote_us AND is_canonical_listing ORDER BY published_at ASC LIMIT 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT title, company_name, published_at FROM fct_posting JOIN dim_company USING (company_key) WHERE is_open AND remote_us AND is_canonical_listing ORDER BY published_at ASC LIMIT 1\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2580,
+ "output_tokens": 63,
+ "thinking_tokens": 0,
+ "latency_ms": 982.1660839952528,
+ "parse_error": null
+}

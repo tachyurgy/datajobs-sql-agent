@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT seniority, open_listings FROM mart_daily_market WHERE family = 'data_engineer' AND remote_us = TRUE AND crawl_date = '2026-09-29' ORDER BY open_listings DESC",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT seniority, open_listings FROM mart_daily_market WHERE family = 'data_engineer' AND remote_us = TRUE AND crawl_date = '2026-09-29' ORDER BY open_listings DESC\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2578,
+ "output_tokens": 64,
+ "thinking_tokens": 0,
+ "latency_ms": 803.955124982167,
+ "parse_error": null
+}

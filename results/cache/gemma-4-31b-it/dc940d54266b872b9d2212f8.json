@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family_label, count(*) AS listings, sum(count(*)) OVER (ORDER BY count(*) DESC) AS running_total FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing GROUP BY family_label ORDER BY listings DESC",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT family_label, count(*) AS listings, sum(count(*)) OVER (ORDER BY count(*) DESC) AS running_total FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing GROUP BY family_label ORDER BY listings DESC\", \"refuse\": false, \"reason\": \"\"}\n```",
+ "prompt_tokens": 2526,
+ "output_tokens": 75,
+ "thinking_tokens": 809,
+ "latency_ms": 26003.58012499055,
+ "parse_error": null
+}

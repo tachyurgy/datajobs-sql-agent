@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT DISTINCT ON (family) family, comp_mid_usd AS highest_pay_midpoint, company_name FROM fct_posting f JOIN dim_company c ON f.company_key = c.company_key WHERE f.is_open AND f.remote_us AND f.is_canonical_listing AND f.comp_mid_usd IS NOT NULL ORDER BY family, comp_mid_usd DESC",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT DISTINCT ON (family) family, comp_mid_usd AS highest_pay_midpoint, company_name FROM fct_posting f JOIN dim_company c ON f.company_key = c.company_key WHERE f.is_open AND f.remote_us AND f.is_canonical_listing AND f.comp_mid_usd IS NOT NULL ORDER BY family, comp_mid_usd DESC\", \"refuse\": false, \"reason\": \"\"}\n```",
+ "prompt_tokens": 2445,
+ "output_tokens": 108,
+ "thinking_tokens": 1043,
+ "latency_ms": 33677.205542015145,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT seniority, MEDIAN(comp_mid_usd) AS seniority_median, MEDIAN(comp_mid_usd) - (SELECT MEDIAN(comp_mid_usd) FROM fct_posting WHERE is_open = true AND remote_us = true) AS diff_from_overall FROM fct_posting WHERE is_open = true AND remote_us = true GROUP BY seniority",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT seniority, MEDIAN(comp_mid_usd) AS seniority_median, MEDIAN(comp_mid_usd) - (SELECT MEDIAN(comp_mid_usd) FROM fct_posting WHERE is_open = true AND remote_us = true) AS diff_from_overall FROM fct_posting WHERE is_open = true AND remote_us = true GROUP BY seniority\", \"refuse\": false, \"reason\": \"\"}\n```",
+ "prompt_tokens": 1034,
+ "output_tokens": 102,
+ "thinking_tokens": 1742,
+ "latency_ms": 54928.927834000206,
+ "parse_error": null
+}

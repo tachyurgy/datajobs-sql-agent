@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family_label, COUNT(DISTINCT listing_key) AS open_remote_listings, SUM(COUNT(DISTINCT listing_key)) OVER (ORDER BY COUNT(DISTINCT listing_key) DESC) AS running_total FROM fct_posting WHERE is_open = true AND remote_us = true GROUP BY family_label ORDER BY open_remote_listings DESC",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT family_label, COUNT(DISTINCT listing_key) AS open_remote_listings, SUM(COUNT(DISTINCT listing_key)) OVER (ORDER BY COUNT(DISTINCT listing_key) DESC) AS running_total FROM fct_posting WHERE is_open = true AND remote_us = true GROUP BY family_label ORDER BY open_remote_listings DESC\", \"refuse\": false, \"reason\": \"\"}\n```",
+ "prompt_tokens": 1025,
+ "output_tokens": 98,
+ "thinking_tokens": 1558,
+ "latency_ms": 47727.55495799356,
+ "parse_error": null
+}

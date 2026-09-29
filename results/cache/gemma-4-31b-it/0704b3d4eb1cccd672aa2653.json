@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT seniority, median(comp_mid_usd) AS median_pay, median(comp_mid_usd) - (SELECT median(comp_mid_usd) FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing) AS diff_from_overall FROM fct_",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT seniority, median(comp_mid_usd) AS median_pay, median(comp_mid_usd) - (SELECT median(comp_mid_usd) FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing) AS diff_from_overall FROM fct_",
+ "prompt_tokens": 2485,
+ "output_tokens": 72,
+ "thinking_tokens": 1972,
+ "latency_ms": 59939.088707993506,
+ "parse_error": "no JSON object in reply"
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "WITH family_listings AS (SELECT family, COUNT(*) AS listings_count FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing GROUP BY family), total_listings AS (SELECT SUM(listings_count) AS total FROM family_listings) SELECT fl.family, fl.listings_count, (fl.listings_count * 1.0 / tl.total) AS share_of_total FROM family_listings fl CROSS JOIN total_listings tl ORDER BY fl.listings_count DESC",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"WITH family_listings AS (SELECT family, COUNT(*) AS listings_count FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing GROUP BY family), total_listings AS (SELECT SUM(listings_count) AS total FROM family_listings) SELECT fl.family, fl.listings_count, (fl.listings_count * 1.0 / tl.total) AS share_of_total FROM family_listings fl CROSS JOIN total_listings tl ORDER BY fl.listings_count DESC\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2495,
+ "output_tokens": 124,
+ "thinking_tokens": 0,
+ "latency_ms": 1127.2539170167875,
+ "parse_error": null
+}

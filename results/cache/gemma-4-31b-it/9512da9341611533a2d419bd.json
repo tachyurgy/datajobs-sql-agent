@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(*) AS high_pay_listings FROM fct_posting f JOIN mart_comp_by_family m ON f.family = m.family WHERE f.is_open = TRUE AND f.remote_us = TRUE AND f.is_canonical_listing = TRUE AND m.seniority IS NULL AND f.comp_mid_usd > 1.5 * m.p50",
+ "refuse": false,
+ "reason": "The query joins the postings fact table with the compensation mart table on the role family, filtering for open remote-US canonical listings and comparing the posting's midpoint pay to 1.5 times the family's median (p50) where seniority is null to get the family-wide average.",
+ "raw": "```json\n{\"sql\": \"SELECT count(*) AS high_pay_listings FROM fct_posting f JOIN mart_comp_by_family m ON f.family = m.family WHERE f.is_open = TRUE AND f.remote_us = TRUE AND f.is_canonical_listing = TRUE AND m.seniority IS NULL AND f.comp_mid_usd > 1.5 * m.p50\", \"refuse\": false, \"reason\": \"The query joins the postings fact table with the compensation mart table on the role family, filtering for open remote-US canonical listings and comparing the posting's midpoint pay to 1.5 times the family's median (p50) where seniority is null to get the family-wide average.\"}\n```",
+ "prompt_tokens": 2075,
+ "output_tokens": 165,
+ "thinking_tokens": 996,
+ "latency_ms": 35184.52108299243,
+ "parse_error": null
+}

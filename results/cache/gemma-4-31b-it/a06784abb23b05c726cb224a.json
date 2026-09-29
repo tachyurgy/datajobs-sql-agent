@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT c.company_name, COUNT(*) AS listing_count FROM fct_posting f JOIN dim_company c ON f.company_key = c.company_key JOIN posting_skills ps ON f.posting_key = ps.posting_key WHERE f.is_open = TRUE AND f.remote_us = TRUE AND f.is_canonical_listing = TRUE AND ps.skill = 'evals' GROUP BY c.company_name ORDER BY listing_count DESC LIMIT 1",
+ "refuse": false,
+ "reason": "The query joins the postings, companies, and skills tables, filters for open remote-US canonical listings mentioning 'evals', and returns the company with the highest count.",
+ "raw": "```json\n{\"sql\": \"SELECT c.company_name, COUNT(*) AS listing_count FROM fct_posting f JOIN dim_company c ON f.company_key = c.company_key JOIN posting_skills ps ON f.posting_key = ps.posting_key WHERE f.is_open = TRUE AND f.remote_us = TRUE AND f.is_canonical_listing = TRUE AND ps.skill = 'evals' GROUP BY c.company_name ORDER BY listing_count DESC LIMIT 1\", \"refuse\": false, \"reason\": \"The query joins the postings, companies, and skills tables, filters for open remote-US canonical listings mentioning 'evals', and returns the company with the highest count.\"}\n```",
+ "prompt_tokens": 2054,
+ "output_tokens": 159,
+ "thinking_tokens": 254,
+ "latency_ms": 12866.29449998145,
+ "parse_error": null
+}

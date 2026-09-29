@@ -1,0 +1,11 @@
+{
+ "sql": "WITH overall_median AS (SELECT p50 AS overall_p50 FROM mart_comp_by_family WHERE family IS NULL AND seniority IS NULL) SELECT m.seniority, m.p50 AS median_pay_midpoint, m.p50 - o.overall_p50 AS difference_from_overall_median FROM mart_comp_by_family AS m CROSS JOIN overall_median AS o WHERE m.family IS NULL AND m.seniority IS NOT NULL",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"WITH overall_median AS (SELECT p50 AS overall_p50 FROM mart_comp_by_family WHERE family IS NULL AND seniority IS NULL) SELECT m.seniority, m.p50 AS median_pay_midpoint, m.p50 - o.overall_p50 AS difference_from_overall_median FROM mart_comp_by_family AS m CROSS JOIN overall_median AS o WHERE m.family IS NULL AND m.seniority IS NOT NULL\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2484,
+ "output_tokens": 119,
+ "thinking_tokens": 0,
+ "latency_ms": 1140.4052920115646,
+ "parse_error": null
+}

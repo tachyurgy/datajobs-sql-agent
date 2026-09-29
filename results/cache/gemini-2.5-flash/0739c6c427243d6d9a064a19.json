@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family_label, open_listings, sum(open_listings) OVER (ORDER BY open_listings DESC) AS running_total FROM mart_daily_market WHERE crawl_date = '2026-09-29' AND remote_us AND seniority IS NULL ORDER BY open_listings DESC",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT family_label, open_listings, sum(open_listings) OVER (ORDER BY open_listings DESC) AS running_total FROM mart_daily_market WHERE crawl_date = '2026-09-29' AND remote_us AND seniority IS NULL ORDER BY open_listings DESC\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2525,
+ "output_tokens": 80,
+ "thinking_tokens": 0,
+ "latency_ms": 1017.5749999762047,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": false,
+ "reason": "",
+ "raw": "",
+ "prompt_tokens": 1027,
+ "output_tokens": 0,
+ "thinking_tokens": 2045,
+ "latency_ms": 58482.877790986095,
+ "parse_error": "no JSON object in reply"
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family, company_name, comp_mid_usd FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing AND comp_mid_usd IS NOT NULL QUALIFY ROW_NUMBER() OVER (PARTITION BY family ORDER BY comp_mid_usd DESC) = 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT family, company_name, comp_mid_usd FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing AND comp_mid_usd IS NOT NULL QUALIFY ROW_NUMBER() OVER (PARTITION BY family ORDER BY comp_mid_usd DESC) = 1\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2444,
+ "output_tokens": 79,
+ "thinking_tokens": 0,
+ "latency_ms": 920.350333006354,
+ "parse_error": null
+}

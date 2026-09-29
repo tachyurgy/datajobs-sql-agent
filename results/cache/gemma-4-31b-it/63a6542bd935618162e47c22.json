@@ -1,0 +1,11 @@
+{
+ "sql": "WITH filtered AS (\n    SELECT seniority, comp_mid_usd\n    FROM fct_posting\n    WHERE is_open = TRUE \n      AND remote_us = TRUE \n      AND is_canonical_listing = TRUE\n      AND comp_mid_usd IS NOT NULL\n)\nSELECT \n    seniority, \n    median(comp_mid_usd) AS median_pay, \n    median(comp_mid_usd) - (SELECT median(comp_mid_usd) FROM filtered) AS diff_from_overall\nFROM filtered\nGROUP BY seniority",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"WITH filtered AS (\\n    SELECT seniority, comp_mid_usd\\n    FROM fct_posting\\n    WHERE is_open = TRUE \\n      AND remote_us = TRUE \\n      AND is_canonical_listing = TRUE\\n      AND comp_mid_usd IS NOT NULL\\n)\\nSELECT \\n    seniority, \\n    median(comp_mid_usd) AS median_pay, \\n    median(comp_mid_usd) - (SELECT median(comp_mid_usd) FROM filtered) AS diff_from_overall\\nFROM filtered\\nGROUP BY seniority\", \"refuse\": false, \"reason\": \"\"}\n```",
+ "prompt_tokens": 2141,
+ "output_tokens": 150,
+ "thinking_tokens": 1125,
+ "latency_ms": 38206.45329201943,
+ "parse_error": null
+}

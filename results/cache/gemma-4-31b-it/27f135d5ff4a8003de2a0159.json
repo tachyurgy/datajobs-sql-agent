@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family, count(*) AS listing_count, count(*) * 1.0 / sum(count(*)) OVER () AS share FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing GROUP BY family ORDER BY listing_count DESC",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT family, count(*) AS listing_count, count(*) * 1.0 / sum(count(*)) OVER () AS share FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing GROUP BY family ORDER BY listing_count DESC\", \"refuse\": false, \"reason\": \"\"}\n```",
+ "prompt_tokens": 2334,
+ "output_tokens": 75,
+ "thinking_tokens": 952,
+ "latency_ms": 29758.002582995687,
+ "parse_error": null
+}

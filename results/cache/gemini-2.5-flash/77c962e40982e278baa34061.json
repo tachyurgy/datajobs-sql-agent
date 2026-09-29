@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT d.company_name, d.remote_us_postings_open AS open_remote_us_data_listings FROM dim_company d ORDER BY open_remote_us_data_listings DESC LIMIT 3",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT d.company_name, d.remote_us_postings_open AS open_remote_us_data_listings FROM dim_company d ORDER BY open_remote_us_data_listings DESC LIMIT 3\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2583,
+ "output_tokens": 62,
+ "thinking_tokens": 0,
+ "latency_ms": 964.4062079896685,
+ "parse_error": null
+}

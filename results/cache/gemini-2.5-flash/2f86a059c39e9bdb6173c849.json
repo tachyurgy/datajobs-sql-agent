@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family_label, skill, share FROM mart_skill_demand WHERE scope = 'all' QUALIFY ROW_NUMBER() OVER (PARTITION BY family ORDER BY share DESC) <= 3 ORDER BY family_label, share DESC",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT family_label, skill, share FROM mart_skill_demand WHERE scope = 'all' QUALIFY ROW_NUMBER() OVER (PARTITION BY family ORDER BY share DESC) <= 3 ORDER BY family_label, share DESC\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2703,
+ "output_tokens": 63,
+ "thinking_tokens": 0,
+ "latency_ms": 999.0356250200421,
+ "parse_error": null
+}

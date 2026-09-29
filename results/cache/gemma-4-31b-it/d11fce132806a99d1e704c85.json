@@ -1,0 +1,11 @@
+{
+ "sql": "WITH ranked_pay AS (\n    SELECT \n        f.family_label,\n        f.comp_mid_usd,\n        c.company_name,\n        ROW_NUMBER() OVER (PARTITION BY f.family ORDER BY f.comp_mid_usd DESC) as rank\n    FROM fct_posting f\n    JOIN dim_company c ON f.company_key = c.company_key\n    WHERE f.is_open = TRUE \n      AND f.remote_us = TRUE \n      AND f.is_canonical_listing = TRUE\n      AND f.comp_mid_usd IS NOT NULL\n)\nSELECT family_label, comp_mid_usd, company_name\nFROM ranked_pay\nWHERE rank = 1",
+ "refuse": false,
+ "reason": "The query joins fct_posting and dim_company to find the maximum pay midpoint per family for open, remote-US, canonical listings using a window function.",
+ "raw": "```json\n{\"sql\": \"WITH ranked_pay AS (\\n    SELECT \\n        f.family_label,\\n        f.comp_mid_usd,\\n        c.company_name,\\n        ROW_NUMBER() OVER (PARTITION BY f.family ORDER BY f.comp_mid_usd DESC) as rank\\n    FROM fct_posting f\\n    JOIN dim_company c ON f.company_key = c.company_key\\n    WHERE f.is_open = TRUE \\n      AND f.remote_us = TRUE \\n      AND f.is_canonical_listing = TRUE\\n      AND f.comp_mid_usd IS NOT NULL\\n)\\nSELECT family_label, comp_mid_usd, company_name\\nFROM ranked_pay\\nWHERE rank = 1\", \"refuse\": false, \"reason\": \"The query joins fct_posting and dim_company to find the maximum pay midpoint per family for open, remote-US, canonical listings using a window function.\"}\n```",
+ "prompt_tokens": 2116,
+ "output_tokens": 226,
+ "thinking_tokens": 582,
+ "latency_ms": 23991.73375000828,
+ "parse_error": null
+}

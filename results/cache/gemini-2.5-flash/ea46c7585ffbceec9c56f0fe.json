@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The warehouse does not contain information about equity or stock options offered by companies.",
+ "raw": "{\"sql\": \"\", \"refuse\": true, \"reason\": \"The warehouse does not contain information about equity or stock options offered by companies.\"}",
+ "prompt_tokens": 2590,
+ "output_tokens": 30,
+ "thinking_tokens": 0,
+ "latency_ms": 823.0916660104413,
+ "parse_error": null
+}

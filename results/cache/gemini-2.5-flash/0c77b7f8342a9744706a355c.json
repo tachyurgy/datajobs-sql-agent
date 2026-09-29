@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The tables do not contain information about equity or stock options offered by companies.",
+ "raw": "{\"sql\": \"\", \"refuse\": true, \"reason\": \"The tables do not contain information about equity or stock options offered by companies.\"}",
+ "prompt_tokens": 2209,
+ "output_tokens": 30,
+ "thinking_tokens": 0,
+ "latency_ms": 1313.7208749831188,
+ "parse_error": null
+}

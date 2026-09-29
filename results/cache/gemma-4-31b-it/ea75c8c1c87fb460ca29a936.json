@@ -1,0 +1,11 @@
+{
+ "sql": "WITH family_counts AS (\n    SELECT \n        family_label, \n        COUNT(DISTINCT listing_key) AS open_remote_listings\n    FROM fct_posting\n    WHERE is_open = true AND remote_us = true\n    GROUP BY family_label\n)\nSELECT \n    family_label,\n    open_remote_listings,\n    CAST(open_remote_listings AS DOUBLE) / SUM(open_remote_listings) OVER () AS share\nFROM family_counts\nORDER BY open_remote_listings DESC",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"WITH family_counts AS (\\n    SELECT \\n        family_label, \\n        COUNT(DISTINCT listing_key) AS open_remote_listings\\n    FROM fct_posting\\n    WHERE is_open = true AND remote_us = true\\n    GROUP BY family_label\\n)\\nSELECT \\n    family_label,\\n    open_remote_listings,\\n    CAST(open_remote_listings AS DOUBLE) / SUM(open_remote_listings) OVER () AS share\\nFROM family_counts\\nORDER BY open_remote_listings DESC\", \"refuse\": false, \"reason\": \"\"}\n```",
+ "prompt_tokens": 1028,
+ "output_tokens": 145,
+ "thinking_tokens": 705,
+ "latency_ms": 25221.7722919886,
+ "parse_error": null
+}

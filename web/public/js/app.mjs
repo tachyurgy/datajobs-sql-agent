@@ -1,4 +1,4 @@
-import * as duckdb from "https://cdn.jsdelivr.net/npm/@duckdb/duckdb-wasm@1.32.0/+esm";
+import * as duckdb from "https://cdn.jsdelivr.net/npm/@duckdb/duckdb-wasm@1.33.1-dev57.0/+esm";
 import { checkSql } from "./core.mjs";
 
 const TABLES = ["fct_posting", "dim_company", "posting_skills", "dim_skill", "posting_versions_scd2", "mart_daily_market",
@@ -21,8 +21,12 @@ async function initDb() {
   await Promise.all(TABLES.map((t) => db.registerFileURL(`${t}.parquet`, new URL(`/data/${t}.parquet`, location.href).href,
     duckdb.DuckDBDataProtocol.HTTP, false)));
   for (const t of TABLES) await conn.query(`CREATE TABLE ${t} AS SELECT * FROM read_parquet('${t}.parquet')`);
-  // Same session settings as the Python eval: UTC for date logic, then no file/network access at all.
+  // Same session as the Python eval: ICU loaded (timestamptz functions such as strftime/dayname on
+  // timestamptz, time zones), UTC for date logic, and only then no file/network access at all. ICU has to be
+  // loaded before external access is disabled, or its lazy autoload fails later with a binder error.
+  try { await conn.query("LOAD icu"); } catch (e) { console.warn("icu", e); }
   try { await conn.query("SET TimeZone = 'UTC'"); } catch (e) { console.warn("TimeZone", e); }
+  window.__askdataSession = (await conn.query("SELECT current_setting('TimeZone') AS tz, (SELECT count(*) FROM duckdb_extensions() WHERE extension_name = 'icu' AND loaded) AS icu")).toArray()[0].toJSON();
   await conn.query("SET enable_external_access = false");
   try { await conn.query("SET lock_configuration = true"); } catch (e) { console.warn("lock", e); }
 }

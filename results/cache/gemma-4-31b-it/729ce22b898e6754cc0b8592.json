@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT f.title, f.url FROM fct_posting f JOIN dim_company d USING (company_key) WHERE d.company_name = 'Reddit' AND f.family = 'ai_engineer' AND f.is_open AND f.remote_us AND f.is_canonical_listing",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT f.title, f.url FROM fct_posting f JOIN dim_company d USING (company_key) WHERE d.company_name = 'Reddit' AND f.family = 'ai_engineer' AND f.is_open AND f.remote_us AND f.is_canonical_listing\", \"refuse\": false, \"reason\": \"\"}\n```",
+ "prompt_tokens": 2348,
+ "output_tokens": 85,
+ "thinking_tokens": 263,
+ "latency_ms": 10545.55804101983,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT company_name, remote_us_postings_open FROM dim_company WHERE postings_on_board_latest > 1000",
+ "refuse": false,
+ "reason": "The dim_company table contains both the total postings on the board (any role) and the count of open remote-US data-role postings.",
+ "raw": "```json\n{\"sql\": \"SELECT company_name, remote_us_postings_open FROM dim_company WHERE postings_on_board_latest > 1000\", \"refuse\": false, \"reason\": \"The dim_company table contains both the total postings on the board (any role) and the count of open remote-US data-role postings.\"}\n```",
+ "prompt_tokens": 2511,
+ "output_tokens": 82,
+ "thinking_tokens": 261,
+ "latency_ms": 10531.413832999533,
+ "parse_error": null
+}

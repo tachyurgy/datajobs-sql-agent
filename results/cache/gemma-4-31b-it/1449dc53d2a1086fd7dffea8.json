@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family_label, 100.0 * COUNT(CASE WHEN seniority IN ('senior', 'staff+', 'manager+') THEN 1 END) / COUNT(*) AS pct_senior_plus FROM fct_posting WHERE is_open = true AND remote_us = true AND comp_mid_usd IS NOT NULL GROUP BY family_label",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT family_label, 100.0 * COUNT(CASE WHEN seniority IN ('senior', 'staff+', 'manager+') THEN 1 END) / COUNT(*) AS pct_senior_plus FROM fct_posting WHERE is_open = true AND remote_us = true AND comp_mid_usd IS NOT NULL GROUP BY family_label\", \"refuse\": false, \"reason\": \"\"}\n```",
+ "prompt_tokens": 1037,
+ "output_tokens": 92,
+ "thinking_tokens": 911,
+ "latency_ms": 29373.919458012097,
+ "parse_error": null
+}

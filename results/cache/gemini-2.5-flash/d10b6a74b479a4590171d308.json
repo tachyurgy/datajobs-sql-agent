@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT dayname(published_at) AS day_of_week, count(*) AS listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing GROUP BY day_of_week ORDER BY listings DESC LIMIT 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT dayname(published_at) AS day_of_week, count(*) AS listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing GROUP BY day_of_week ORDER BY listings DESC LIMIT 1\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2501,
+ "output_tokens": 67,
+ "thinking_tokens": 0,
+ "latency_ms": 897.3938749986701,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(*) AS listings_non_usd_pay FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing AND comp_currency_original != 'USD'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT count(*) AS listings_non_usd_pay FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing AND comp_currency_original != 'USD'\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2573,
+ "output_tokens": 54,
+ "thinking_tokens": 0,
+ "latency_ms": 1393.9327920088544,
+ "parse_error": null
+}

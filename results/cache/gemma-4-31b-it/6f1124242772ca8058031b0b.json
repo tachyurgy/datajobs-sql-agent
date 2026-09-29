@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT company_name, remote_us_postings_open FROM dim_company WHERE postings_on_board_latest > 1000",
+ "refuse": false,
+ "reason": "The query filters companies with more than 1,000 total postings and returns their count of open remote-US data listings using the dim_company table.",
+ "raw": "```json\n{\"sql\": \"SELECT company_name, remote_us_postings_open FROM dim_company WHERE postings_on_board_latest > 1000\", \"refuse\": false, \"reason\": \"The query filters companies with more than 1,000 total postings and returns their count of open remote-US data listings using the dim_company table.\"}\n```",
+ "prompt_tokens": 2138,
+ "output_tokens": 85,
+ "thinking_tokens": 198,
+ "latency_ms": 9290.89445900172,
+ "parse_error": null
+}

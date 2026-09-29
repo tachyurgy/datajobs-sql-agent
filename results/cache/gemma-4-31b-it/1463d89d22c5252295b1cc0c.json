@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT COUNT(DISTINCT CASE WHEN s.cluster_label = 'LLM / GenAI' THEN f.posting_key END) * 1.0 / COUNT(DISTINCT f.posting_key) AS share FROM fct_posting f LEFT JOIN posting_skills s USING (posting_key) WHERE",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"SELECT COUNT(DISTINCT CASE WHEN s.cluster_label = 'LLM / GenAI' THEN f.posting_key END) * 1.0 / COUNT(DISTINCT f.posting_key) AS share FROM fct_posting f LEFT JOIN posting_skills s USING (posting_key) WHERE",
+ "prompt_tokens": 2778,
+ "output_tokens": 72,
+ "thinking_tokens": 1972,
+ "latency_ms": 58809.61825000122,
+ "parse_error": "no JSON object in reply"
+}

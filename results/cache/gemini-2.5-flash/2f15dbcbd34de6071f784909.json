@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT min(comp_mid_usd) AS lowest_pay_midpoint, max(comp_mid_usd) AS highest_pay_midpoint FROM fct_posting WHERE family = 'data_analyst' AND is_open AND remote_us AND is_canonical_listing",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT min(comp_mid_usd) AS lowest_pay_midpoint, max(comp_mid_usd) AS highest_pay_midpoint FROM fct_posting WHERE family = 'data_analyst' AND is_open AND remote_us AND is_canonical_listing\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2525,
+ "output_tokens": 75,
+ "thinking_tokens": 0,
+ "latency_ms": 861.5631660213694,
+ "parse_error": null
+}

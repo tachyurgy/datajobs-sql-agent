@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The table schema does not contain information about job applicants.",
+ "raw": "{\"sql\": \"\", \"refuse\": true, \"reason\": \"The table schema does not contain information about job applicants.\"}",
+ "prompt_tokens": 2059,
+ "output_tokens": 26,
+ "thinking_tokens": 0,
+ "latency_ms": 3674.004457978299,
+ "parse_error": null
+}

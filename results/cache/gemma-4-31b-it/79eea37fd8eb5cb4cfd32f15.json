@@ -1,0 +1,11 @@
+{
+ "sql": "WITH ranked_skills AS (\n  SELECT \n    family, \n    skill, \n    share, \n    ROW_NUMBER() OVER (PARTITION BY family ORDER BY share DESC) as rank\n  FROM mart_skill_demand\n  WHERE scope = 'all'\n)\nSELECT \n  family, \n  skill, \n  share\nFROM ranked_skills\nWHERE rank <= 3\nORDER BY family, share DESC",
+ "refuse": false,
+ "reason": "The request can be answered using the mart_skill_demand table by ranking skills by share within each family for the 'all' scope.",
+ "raw": "```json\n{\"sql\": \"WITH ranked_skills AS (\\n  SELECT \\n    family, \\n    skill, \\n    share, \\n    ROW_NUMBER() OVER (PARTITION BY family ORDER BY share DESC) as rank\\n  FROM mart_skill_demand\\n  WHERE scope = 'all'\\n)\\nSELECT \\n  family, \\n  skill, \\n  share\\nFROM ranked_skills\\nWHERE rank <= 3\\nORDER BY family, share DESC\", \"refuse\": false, \"reason\": \"The request can be answered using the mart_skill_demand table by ranking skills by share within each family for the 'all' scope.\"}\n```",
+ "prompt_tokens": 2704,
+ "output_tokens": 150,
+ "thinking_tokens": 860,
+ "latency_ms": 29919.989874993917,
+ "parse_error": null
+}

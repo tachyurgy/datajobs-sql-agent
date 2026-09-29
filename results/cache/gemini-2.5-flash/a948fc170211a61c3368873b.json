@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT skill, listings_mentioning FROM mart_skill_demand WHERE skill IN ('python', 'sql') AND scope = 'all' ORDER BY listings_mentioning DESC",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT skill, listings_mentioning FROM mart_skill_demand WHERE skill IN ('python', 'sql') AND scope = 'all' ORDER BY listings_mentioning DESC\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2948,
+ "output_tokens": 50,
+ "thinking_tokens": 0,
+ "latency_ms": 895.0186250149272,
+ "parse_error": null
+}

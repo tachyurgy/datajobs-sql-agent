@@ -1,0 +1,11 @@
+{
+ "sql": "WITH ranked_pay AS (SELECT f.family_label, f.comp_mid_usd, c.company_name, ROW_NUMBER() OVER (PARTITION BY f.family_label ORDER BY f.comp_mid_usd DESC) as rank FROM fct_posting f JOIN dim_company c ON f.company_key = c.company_key WHERE f.is_open = true AND f.remote_us = true AND f.comp_mid_usd IS NOT NULL) SELECT family_label, comp_mid_usd, company_name FROM ranked_pay WHERE rank = 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "```json\n{\"sql\": \"WITH ranked_pay AS (SELECT f.family_label, f.comp_mid_usd, c.company_name, ROW_NUMBER() OVER (PARTITION BY f.family_label ORDER BY f.comp_mid_usd DESC) as rank FROM fct_posting f JOIN dim_company c ON f.company_key = c.company_key WHERE f.is_open = true AND f.remote_us = true AND f.comp_mid_usd IS NOT NULL) SELECT family_label, comp_mid_usd, company_name FROM ranked_pay WHERE rank = 1\", \"refuse\": false, \"reason\": \"\"}\n```",
+ "prompt_tokens": 1030,
+ "output_tokens": 148,
+ "thinking_tokens": 1167,
+ "latency_ms": 37635.53579201107,
+ "parse_error": null
+}

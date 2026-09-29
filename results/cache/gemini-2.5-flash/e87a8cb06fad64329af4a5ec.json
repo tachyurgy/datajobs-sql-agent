@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The tables do not contain any information about gender or people hired into roles. They only contain information about job postings.",
+ "raw": "{\"sql\": \"\", \"refuse\": true, \"reason\": \"The tables do not contain any information about gender or people hired into roles. They only contain information about job postings.\"}",
+ "prompt_tokens": 2463,
+ "output_tokens": 38,
+ "thinking_tokens": 0,
+ "latency_ms": 811.9886660133488,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family_label, COUNT(*) AS open_listings, SUM(COUNT(*)) OVER (ORDER BY COUNT(*) DESC) AS running_total FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND is_canonical_listing = TRUE GROUP BY family_label ORDER BY open_listings DESC",
+ "refuse": false,
+ "reason": "The query counts open, remote-US, canonical listings per role family, calculates a running total using a window function, and orders the results from largest to smallest.",
+ "raw": "```json\n{\"sql\": \"SELECT family_label, COUNT(*) AS open_listings, SUM(COUNT(*)) OVER (ORDER BY COUNT(*) DESC) AS running_total FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND is_canonical_listing = TRUE GROUP BY family_label ORDER BY open_listings DESC\", \"refuse\": false, \"reason\": \"The query counts open, remote-US, canonical listings per role family, calculates a running total using a window function, and orders the results from largest to smallest.\"}\n```",
+ "prompt_tokens": 2139,
+ "output_tokens": 119,
+ "thinking_tokens": 1308,
+ "latency_ms": 41581.182416994125,
+ "parse_error": null
+}

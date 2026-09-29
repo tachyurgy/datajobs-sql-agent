@@ -1,0 +1,11 @@
+{
+ "sql": "",
+ "refuse": true,
+ "reason": "The warehouse does not contain information about applicants, hires, or demographics such as gender.",
+ "raw": "{\"sql\": \"\", \"refuse\": true, \"reason\": \"The warehouse does not contain information about applicants, hires, or demographics such as gender.\"}",
+ "prompt_tokens": 2625,
+ "output_tokens": 32,
+ "thinking_tokens": 0,
+ "latency_ms": 805.080917023588,
+ "parse_error": null
+}
