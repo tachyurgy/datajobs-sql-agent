@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(DISTINCT board_token) AS num_company_boards FROM dim_company",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT count(DISTINCT board_token) AS num_company_boards FROM dim_company\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 1015,
+ "output_tokens": 34,
+ "thinking_tokens": 0,
+ "latency_ms": 746.2177090055775,
+ "parse_error": null
+}

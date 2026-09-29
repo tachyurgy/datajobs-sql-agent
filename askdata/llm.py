@@ -121,3 +121,27 @@ def generate(model: str, user_text: str, *, key: str | None = None, max_wait_s: 
     sql, refuse, reason, perr = parse_reply(text)
     return LLMReply(sql, refuse, reason, text, u.get("promptTokenCount", 0), u.get("candidatesTokenCount", 0),
                     u.get("thoughtsTokenCount", 0), latency, perr)
+
+
+def answer_prompt(question: str, sql: str, columns: list, rows: list, total: int) -> str:
+    """Mirror of the `mode: "answer"` prompt in web/functions/api/ask.js."""
+    cols = [str(c) for c in columns[:12]]
+    body = [[str(v)[:80] for v in r[:12]] for r in rows[:20]]
+    table = "\n".join([" | ".join(cols)] + [" | ".join(r) for r in body])
+    return (f"Question: {question}\nSQL: {sql[:3000]}\nResult ({len(rows[:20])} rows shown of {total}):\n{table}\n\n"
+            "Answer the question in one or two plain sentences using only numbers and names from the result. "
+            "Pay values are annual USD. If the result is a long list, summarise the top of it. Do not mention SQL.")
+
+
+def generate_text(model: str, prompt: str, key: str | None = None) -> str:
+    key = key or os.environ["GEMINI_API_KEY"]
+    gen: dict = {"temperature": 0, "maxOutputTokens": 200}
+    if model_config(model)["thinking_off"]:
+        gen["thinkingConfig"] = {"thinkingBudget": 0}
+    body = {"contents": [{"role": "user", "parts": [{"text": prompt}]}], "generationConfig": gen}
+    req = urllib.request.Request(API.format(model=model) + "?key=" + key, data=json.dumps(body).encode(),
+                                 headers={"Content-Type": "application/json", "User-Agent": "askdata-eval/0.1"})
+    with urllib.request.urlopen(req, timeout=120) as r:
+        d = json.load(r)
+    parts = (d.get("candidates") or [{}])[0].get("content", {}).get("parts", [])
+    return "".join(p.get("text", "") for p in parts if not p.get("thought")).strip()

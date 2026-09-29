@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT\n  ps.cluster_label,\n  COUNT(DISTINCT ps.posting_key) AS num_listings\nFROM posting_skills AS ps\nJOIN fct_posting AS fp\n  ON ps.posting_key = fp.posting_key\nWHERE\n  fp.is_open AND fp.remote_us AND fp.is_canonical_listing\nGROUP BY\n  ps.cluster_label;",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT\\n  ps.cluster_label,\\n  COUNT(DISTINCT ps.posting_key) AS num_listings\\nFROM posting_skills AS ps\\nJOIN fct_posting AS fp\\n  ON ps.posting_key = fp.posting_key\\nWHERE\\n  fp.is_open AND fp.remote_us AND fp.is_canonical_listing\\nGROUP BY\\n  ps.cluster_label;\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2409,
+ "output_tokens": 110,
+ "thinking_tokens": 0,
+ "latency_ms": 649.6288749913219,
+ "parse_error": null
+}

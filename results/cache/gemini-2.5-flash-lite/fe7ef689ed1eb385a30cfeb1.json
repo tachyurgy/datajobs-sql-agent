@@ -1,0 +1,11 @@
+{
+ "sql": "WITH RAGListings AS (SELECT\n  CASE WHEN ps.skill = 'RAG' THEN 'RAG' ELSE 'No RAG' END AS rag_status,\n  AVG(f.comp_mid_usd) AS median_pay\nFROM\n  fct_posting AS f\nJOIN\n  posting_skills AS ps ON f.posting_key = ps.posting_key\nWHERE\n  f.is_open = TRUE AND f.remote_us = TRUE\nGROUP BY\n  rag_status\nUNION ALL\nSELECT\n  'No RAG' AS rag_status,\n  AVG(f.comp_mid_usd) AS median_pay\nFROM\n  fct_posting AS f\nWHERE\n  f.is_open = TRUE AND f.remote_us = TRUE AND f.posting_key NOT IN (SELECT posting_key FROM posting_skills WHERE skill = 'RAG')\nGROUP BY\n  rag_status\n)\nSELECT\n  rag_status,\n  median_pay\nFROM\n  RAGListings;",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"WITH RAGListings AS (SELECT\\n  CASE WHEN ps.skill = 'RAG' THEN 'RAG' ELSE 'No RAG' END AS rag_status,\\n  AVG(f.comp_mid_usd) AS median_pay\\nFROM\\n  fct_posting AS f\\nJOIN\\n  posting_skills AS ps ON f.posting_key = ps.posting_key\\nWHERE\\n  f.is_open = TRUE AND f.remote_us = TRUE\\nGROUP BY\\n  rag_status\\nUNION ALL\\nSELECT\\n  'No RAG' AS rag_status,\\n  AVG(f.comp_mid_usd) AS median_pay\\nFROM\\n  fct_posting AS f\\nWHERE\\n  f.is_open = TRUE AND f.remote_us = TRUE AND f.posting_key NOT IN (SELECT posting_key FROM posting_skills WHERE skill = 'RAG')\\nGROUP BY\\n  rag_status\\n)\\nSELECT\\n  rag_status,\\n  median_pay\\nFROM\\n  RAGListings;\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 1027,
+ "output_tokens": 274,
+ "thinking_tokens": 0,
+ "latency_ms": 1202.644875011174,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT SUM(T2.open_listings) FROM mart_daily_market AS T1 INNER JOIN dim_company AS T2 ON T1.family = T2.platform WHERE T1.remote_us = TRUE AND T1.crawl_date = (SELECT MAX(crawl_date) FROM mart_daily_market)",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT SUM(T2.open_listings) FROM mart_daily_market AS T1 INNER JOIN dim_company AS T2 ON T1.family = T2.platform WHERE T1.remote_us = TRUE AND T1.crawl_date = (SELECT MAX(crawl_date) FROM mart_daily_market)\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 1028,
+ "output_tokens": 92,
+ "thinking_tokens": 0,
+ "latency_ms": 732.7768329996616,
+ "parse_error": null
+}

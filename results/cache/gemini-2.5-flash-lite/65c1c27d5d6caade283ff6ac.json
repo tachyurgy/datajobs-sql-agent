@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT COUNT(DISTINCT T1.company_key) FROM dim_company AS T1 INNER JOIN fct_posting AS T2 ON T1.company_key = T2.company_key WHERE T2.remote_us = TRUE AND T1.data_postings_open > 0",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT COUNT(DISTINCT T1.company_key) FROM dim_company AS T1 INNER JOIN fct_posting AS T2 ON T1.company_key = T2.company_key WHERE T2.remote_us = TRUE AND T1.data_postings_open > 0\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 1020,
+ "output_tokens": 88,
+ "thinking_tokens": 0,
+ "latency_ms": 697.2247919766232,
+ "parse_error": null
+}

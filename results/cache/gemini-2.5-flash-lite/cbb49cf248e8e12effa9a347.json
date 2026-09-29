@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family_label FROM mart_daily_market WHERE remote_us = true GROUP BY family_label ORDER BY SUM(open_listings) DESC LIMIT 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT family_label FROM mart_daily_market WHERE remote_us = true GROUP BY family_label ORDER BY SUM(open_listings) DESC LIMIT 1\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 1020,
+ "output_tokens": 57,
+ "thinking_tokens": 0,
+ "latency_ms": 579.5672909880523,
+ "parse_error": null
+}

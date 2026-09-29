@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family_label, AVG(age_days_at_last_seen) AS median_age_days FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE GROUP BY family_label",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT family_label, AVG(age_days_at_last_seen) AS median_age_days FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE GROUP BY family_label\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 1023,
+ "output_tokens": 69,
+ "thinking_tokens": 0,
+ "latency_ms": 574.9447499983944,
+ "parse_error": null
+}

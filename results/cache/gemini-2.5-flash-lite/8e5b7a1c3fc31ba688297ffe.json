@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT\n  family,\n  PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY age_days_at_last_seen) AS median_age_days\nFROM fct_posting\nWHERE\n  is_open AND remote_us AND is_canonical_listing\nGROUP BY\n  family",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT\\n  family,\\n  PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY age_days_at_last_seen) AS median_age_days\\nFROM fct_posting\\nWHERE\\n  is_open AND remote_us AND is_canonical_listing\\nGROUP BY\\n  family\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 2091,
+ "output_tokens": 96,
+ "thinking_tokens": 0,
+ "latency_ms": 738.928417005809,
+ "parse_error": null
+}

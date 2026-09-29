@@ -1,0 +1,11 @@
+{
+ "sql": "WITH RankedPay AS (SELECT f.family, f.family_label, f.comp_mid_usd, d.company_name, ROW_NUMBER() OVER (PARTITION BY f.family ORDER BY f.comp_mid_usd DESC) as rn FROM fct_posting f INNER JOIN dim_company d ON f.company_key = d.company_key WHERE f.is_open = TRUE AND f.remote_us = TRUE AND f.comp_mid_usd IS NOT NULL) SELECT family, family_label, comp_mid_usd, company_name FROM RankedPay WHERE rn = 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"WITH RankedPay AS (SELECT f.family, f.family_label, f.comp_mid_usd, d.company_name, ROW_NUMBER() OVER (PARTITION BY f.family ORDER BY f.comp_mid_usd DESC) as rn FROM fct_posting f INNER JOIN dim_company d ON f.company_key = d.company_key WHERE f.is_open = TRUE AND f.remote_us = TRUE AND f.comp_mid_usd IS NOT NULL) SELECT family, family_label, comp_mid_usd, company_name FROM RankedPay WHERE rn = 1\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 2115,
+ "output_tokens": 155,
+ "thinking_tokens": 0,
+ "latency_ms": 868.8462910067756,
+ "parse_error": null
+}

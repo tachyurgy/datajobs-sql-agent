@@ -1,0 +1,10 @@
+name = "askdata"
+pages_build_output_dir = "public"
+compatibility_date = "2026-05-14"
+
+[vars]
+MODEL = "gemini-2.5-flash-lite"
+
+[[kv_namespaces]]
+binding = "RL"
+id = "e003910bc658481989522b5cd2daf695"

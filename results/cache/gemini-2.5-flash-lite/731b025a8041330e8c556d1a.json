@@ -1,0 +1,11 @@
+{
+ "sql": "WITH RemoteListings AS (SELECT family, SUM(CASE WHEN remote_us = TRUE THEN 1 ELSE 0 END) AS open_remote_us_listings FROM mart_daily_market GROUP BY family) SELECT family, open_remote_us_listings, SUM(open_remote_us_listings) OVER (ORDER BY open_remote_us_listings DESC) AS running_total FROM RemoteListings ORDER BY open_remote_us_listings DESC",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"WITH RemoteListings AS (SELECT family, SUM(CASE WHEN remote_us = TRUE THEN 1 ELSE 0 END) AS open_remote_us_listings FROM mart_daily_market GROUP BY family) SELECT family, open_remote_us_listings, SUM(open_remote_us_listings) OVER (ORDER BY open_remote_us_listings DESC) AS running_total FROM RemoteListings ORDER BY open_remote_us_listings DESC\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 1024,
+ "output_tokens": 120,
+ "thinking_tokens": 0,
+ "latency_ms": 829.250583978137,
+ "parse_error": null
+}

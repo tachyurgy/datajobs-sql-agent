@@ -1,0 +1,11 @@
+{
+ "sql": "WITH RankedFamilies AS (SELECT family, SUM(open_listings) AS total_open_listings FROM mart_daily_market WHERE remote_us = TRUE GROUP BY family) SELECT family, total_open_listings, SUM(total_open_listings) OVER (ORDER BY total_open_listings DESC) AS running_total FROM RankedFamilies ORDER BY total_open_listings DESC",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"WITH RankedFamilies AS (SELECT family, SUM(open_listings) AS total_open_listings FROM mart_daily_market WHERE remote_us = TRUE GROUP BY family) SELECT family, total_open_listings, SUM(total_open_listings) OVER (ORDER BY total_open_listings DESC) AS running_total FROM RankedFamilies ORDER BY total_open_listings DESC\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 2138,
+ "output_tokens": 103,
+ "thinking_tokens": 0,
+ "latency_ms": 708.867499983171,
+ "parse_error": null
+}

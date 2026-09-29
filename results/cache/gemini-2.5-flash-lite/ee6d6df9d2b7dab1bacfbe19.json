@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT\n  ps.skill,\n  COUNT(DISTINCT ps.posting_key) AS mention_count\nFROM posting_skills AS ps\nJOIN fct_posting AS fp\n  ON ps.posting_key = fp.posting_key\nWHERE\n  fp.is_open IS TRUE AND fp.remote_us IS TRUE AND fp.is_canonical_listing IS TRUE\nGROUP BY\n  ps.skill\nORDER BY\n  mention_count DESC\nLIMIT 10",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT\\n  ps.skill,\\n  COUNT(DISTINCT ps.posting_key) AS mention_count\\nFROM posting_skills AS ps\\nJOIN fct_posting AS fp\\n  ON ps.posting_key = fp.posting_key\\nWHERE\\n  fp.is_open IS TRUE AND fp.remote_us IS TRUE AND fp.is_canonical_listing IS TRUE\\nGROUP BY\\n  ps.skill\\nORDER BY\\n  mention_count DESC\\nLIMIT 10\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 2158,
+ "output_tokens": 138,
+ "thinking_tokens": 0,
+ "latency_ms": 851.6303329961374,
+ "parse_error": null
+}

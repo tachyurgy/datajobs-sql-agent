@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT CAST(SUM(CASE WHEN ps.skill = 'sql' THEN 1 ELSE 0 END) AS DOUBLE) / COUNT(DISTINCT fp.posting_key) AS share_of_listings_mentioning_sql FROM fct_posting AS fp JOIN posting_skills AS ps ON fp.posting_key = ps.posting_key WHERE fp.is_open = TRUE AND fp.remote_us = TRUE AND fp.family = 'data_analyst'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT CAST(SUM(CASE WHEN ps.skill = 'sql' THEN 1 ELSE 0 END) AS DOUBLE) / COUNT(DISTINCT fp.posting_key) AS share_of_listings_mentioning_sql FROM fct_posting AS fp JOIN posting_skills AS ps ON fp.posting_key = ps.posting_key WHERE fp.is_open = TRUE AND fp.remote_us = TRUE AND fp.family = 'data_analyst'\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 1018,
+ "output_tokens": 113,
+ "thinking_tokens": 0,
+ "latency_ms": 1124.4483749906067,
+ "parse_error": null
+}

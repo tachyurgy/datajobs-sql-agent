@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT avg(yoe_ask) FROM fct_posting WHERE family = 'ai_engineer' AND is_open AND remote_us AND is_canonical_listing AND yoe_ask IS NOT NULL",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT avg(yoe_ask) FROM fct_posting WHERE family = 'ai_engineer' AND is_open AND remote_us AND is_canonical_listing AND yoe_ask IS NOT NULL\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2378,
+ "output_tokens": 58,
+ "thinking_tokens": 0,
+ "latency_ms": 597.8763749881182,
+ "parse_error": null
+}

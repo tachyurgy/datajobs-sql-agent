@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT\n              t1.title,\n              t1.url\n            FROM\n              fct_posting AS t1\n            INNER JOIN\n              dim_company AS t2\n            ON\n              t1.company_key = t2.company_key\n            WHERE\n              t2.platform = 'Reddit'\n              AND t1.family = 'AI'\n              AND t1.remote_us = TRUE\n              AND t1.is_open = TRUE",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT\\n              t1.title,\\n              t1.url\\n            FROM\\n              fct_posting AS t1\\n            INNER JOIN\\n              dim_company AS t2\\n            ON\\n              t1.company_key = t2.company_key\\n            WHERE\\n              t2.platform = 'Reddit'\\n              AND t1.family = 'AI'\\n              AND t1.remote_us = TRUE\\n              AND t1.is_open = TRUE\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 1022,
+ "output_tokens": 136,
+ "thinking_tokens": 0,
+ "latency_ms": 663.1574170023669,
+ "parse_error": null
+}

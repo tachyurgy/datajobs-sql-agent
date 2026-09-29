@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family, pay_disclosure_rate FROM mart_comp_by_family",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT family, pay_disclosure_rate FROM mart_comp_by_family\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2351,
+ "output_tokens": 31,
+ "thinking_tokens": 0,
+ "latency_ms": 572.8636249841657,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT SUM(data_postings_ever) AS total_data_postings_ever FROM dim_company WHERE platform = 'lever'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT SUM(data_postings_ever) AS total_data_postings_ever FROM dim_company WHERE platform = 'lever'\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2307,
+ "output_tokens": 43,
+ "thinking_tokens": 0,
+ "latency_ms": 792.5348329881672,
+ "parse_error": null
+}

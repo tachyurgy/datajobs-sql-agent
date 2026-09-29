@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT DISTINCT cluster_label FROM dim_skill WHERE skill = 'dbt'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT DISTINCT cluster_label FROM dim_skill WHERE skill = 'dbt'\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2710,
+ "output_tokens": 30,
+ "thinking_tokens": 0,
+ "latency_ms": 763.8723330164794,
+ "parse_error": null
+}

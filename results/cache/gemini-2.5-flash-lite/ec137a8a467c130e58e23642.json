@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT cluster_label, SUM(listings_mentioning) AS total_listings_mentioning FROM mart_skill_demand WHERE family = 'ai_engineer' GROUP BY cluster_label ORDER BY total_listings_mentioning DESC",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT cluster_label, SUM(listings_mentioning) AS total_listings_mentioning FROM mart_skill_demand WHERE family = 'ai_engineer' GROUP BY cluster_label ORDER BY total_listings_mentioning DESC\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2516,
+ "output_tokens": 62,
+ "thinking_tokens": 0,
+ "latency_ms": 670.5936249927618,
+ "parse_error": null
+}

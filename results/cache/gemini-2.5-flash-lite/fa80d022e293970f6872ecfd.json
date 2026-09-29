@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT T2.title, T2.url FROM dim_company AS T1 INNER JOIN fct_posting AS T2 ON T1.company_key = T2.company_key WHERE T1.company_name = 'Reddit' AND T2.family = 'ai_engineer' AND T2.is_open AND T2.remote_us AND T2.is_canonical_listing",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT T2.title, T2.url FROM dim_company AS T1 INNER JOIN fct_posting AS T2 ON T1.company_key = T2.company_key WHERE T1.company_name = 'Reddit' AND T2.family = 'ai_engineer' AND T2.is_open AND T2.remote_us AND T2.is_canonical_listing\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2347,
+ "output_tokens": 100,
+ "thinking_tokens": 0,
+ "latency_ms": 722.9898749792483,
+ "parse_error": null
+}

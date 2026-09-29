@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT count(posting_key) FROM fct_posting WHERE remote_us = true AND is_open = true AND comp_currency_original != 'USD'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT count(posting_key) FROM fct_posting WHERE remote_us = true AND is_open = true AND comp_currency_original != 'USD'\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2187,
+ "output_tokens": 48,
+ "thinking_tokens": 0,
+ "latency_ms": 582.2130419837777,
+ "parse_error": null
+}

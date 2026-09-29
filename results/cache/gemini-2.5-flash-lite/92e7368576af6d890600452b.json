@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT\n  CASE WHEN ps.skill = 'RAG' THEN 'Mentions RAG' ELSE 'Does not mention RAG' END AS rag_mention,\n  AVG(mcf.p50) AS median_pay_midpoint\nFROM mart_comp_by_family AS mcf\nLEFT JOIN fct_posting AS fp ON mcf.family = fp.family AND mcf.seniority = fp.seniority\nLEFT JOIN posting_skills AS ps ON fp.posting_key = ps.posting_key AND ps.skill = 'RAG'\nWHERE\n  fp.is_open AND fp.remote_us AND fp.is_canonical_listing\nGROUP BY\n  rag_mention;",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT\\n  CASE WHEN ps.skill = 'RAG' THEN 'Mentions RAG' ELSE 'Does not mention RAG' END AS rag_mention,\\n  AVG(mcf.p50) AS median_pay_midpoint\\nFROM mart_comp_by_family AS mcf\\nLEFT JOIN fct_posting AS fp ON mcf.family = fp.family AND mcf.seniority = fp.seniority\\nLEFT JOIN posting_skills AS ps ON fp.posting_key = ps.posting_key AND ps.skill = 'RAG'\\nWHERE\\n  fp.is_open AND fp.remote_us AND fp.is_canonical_listing\\nGROUP BY\\n  rag_mention;\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 2111,
+ "output_tokens": 184,
+ "thinking_tokens": 0,
+ "latency_ms": 855.9360000072047,
+ "parse_error": null
+}

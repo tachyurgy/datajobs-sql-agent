@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT SUM(listings) FROM mart_degree_requirements WHERE family = 'phd'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT SUM(listings) FROM mart_degree_requirements WHERE family = 'phd'\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 2115,
+ "output_tokens": 41,
+ "thinking_tokens": 0,
+ "latency_ms": 609.1657090000808,
+ "parse_error": null
+}

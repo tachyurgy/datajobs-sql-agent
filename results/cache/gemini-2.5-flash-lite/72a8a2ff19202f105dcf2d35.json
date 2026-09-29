@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT\n  c.company_name,\n  COUNT(d.posting_key) AS open_remote_us_listings_count\nFROM dim_company AS c\nJOIN fct_posting AS d\n  ON c.company_key = d.company_key\nWHERE\n  d.remote_us = TRUE\nGROUP BY\n  c.company_name\nORDER BY\n  open_remote_us_listings_count DESC\nLIMIT 3",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT\\n  c.company_name,\\n  COUNT(d.posting_key) AS open_remote_us_listings_count\\nFROM dim_company AS c\\nJOIN fct_posting AS d\\n  ON c.company_key = d.company_key\\nWHERE\\n  d.remote_us = TRUE\\nGROUP BY\\n  c.company_name\\nORDER BY\\n  open_remote_us_listings_count DESC\\nLIMIT 3\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 1025,
+ "output_tokens": 133,
+ "thinking_tokens": 0,
+ "latency_ms": 768.3436670049559,
+ "parse_error": null
+}

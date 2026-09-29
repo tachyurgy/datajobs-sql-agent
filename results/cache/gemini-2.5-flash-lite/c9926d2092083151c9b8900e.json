@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family, p50 FROM mart_comp_by_family ORDER BY p50 DESC LIMIT 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT family, p50 FROM mart_comp_by_family ORDER BY p50 DESC LIMIT 1\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2298,
+ "output_tokens": 38,
+ "thinking_tokens": 0,
+ "latency_ms": 527.9025830095634,
+ "parse_error": null
+}

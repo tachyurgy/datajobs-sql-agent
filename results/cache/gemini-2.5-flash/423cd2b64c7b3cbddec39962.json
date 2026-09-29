@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT postings_scanned FROM mart_crawl_coverage WHERE crawl_date = '2026-09-29'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT postings_scanned FROM mart_crawl_coverage WHERE crawl_date = '2026-09-29'\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2104,
+ "output_tokens": 42,
+ "thinking_tokens": 0,
+ "latency_ms": 725.5354580120184,
+ "parse_error": null
+}

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>askdata</title>
+<meta name="description" content="Ask questions in plain English about the remote US data-jobs market. askdata writes the SQL, runs it in your browser on DuckDB-WASM, and publishes how accurate it is.">
+<link rel="canonical" href="https://askdata.levelbrook.com/">
+<meta property="og:title" content="askdata: text-to-SQL over the Data Jobs Observatory">
+<meta property="og:description" content="Plain-English questions, generated SQL you can read, results computed in your browser, and a published eval of how often it is right.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%231f5fbf'/%3E%3Cpath d='M6 16V9m4 7V6m4 10v-5m4 5V8' stroke='white' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="/"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="5" fill="var(--accent)"/><path d="M6 16V9m4 7V6m4 10v-5m4 5V8" stroke="var(--accent-ink)" stroke-width="2.2" stroke-linecap="round"/></svg>askdata</a>
+  <nav><a href="/" aria-current="page">Ask</a><a href="/accuracy">How accurate is this?</a><a href="https://github.com/tachyurgy/datajobs-sql-agent">Code</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Ask the data-jobs market a question.</h1>
+  <p class="lede">askdata turns a question into SQL over the <a href="https://datajobs.levelbrook.com">Data Jobs Observatory</a> warehouse
+    (969 open remote-US data listings at 441 companies, crawled 2026-09-29). The query runs in your browser on DuckDB-WASM,
+    and you see every step: the SQL, any retries, and the result.
+    <a href="/accuracy"><strong>Measured accuracy is published here.</strong></a></p>
+
+  <div class="card">
+    <form class="ask" id="ask">
+      <label for="q" class="sr" style="position:absolute;left:-9999px">Question</label>
+      <input id="q" name="q" maxlength="300" autocomplete="off" placeholder="e.g. Which skills show up most in AI engineer listings?" required>
+      <button id="go" type="submit" disabled>Ask</button>
+    </form>
+    <div class="chips" id="chips" aria-label="Example questions"></div>
+    <p class="status" id="status"><span class="dot busy"></span>Loading DuckDB-WASM and the warehouse snapshot...</p>
+  </div>
+
+  <div id="limited" class="notice" hidden></div>
+  <section id="out" hidden>
+    <div class="card" style="margin-top:16px">
+      <p class="section-label">Answer <span id="cachedTag" class="pill" hidden>cached example</span></p>
+      <p class="answer" id="answer"></p>
+      <p class="meta" id="meta"></p>
+    </div>
+    <div class="grid2">
+      <div class="card"><p class="section-label">Result <span id="rowcount"></span></p><div class="tablewrap" id="table"></div></div>
+      <div class="card"><p class="section-label">Chart</p><div class="chart" id="chart"></div></div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <p class="section-label">Generated SQL and attempts <button class="btn-ghost" id="copy" type="button">Copy SQL</button></p>
+      <ol class="attempts" id="attempts"></ol>
+    </div>
+  </section>
+
+  <h2>How it works</h2>
+  <div class="prose">
+    <ol>
+      <li>Your question is matched against a data dictionary (every column's description and sample values) with BM25; the best-matching column docs and the three most similar worked examples go into the prompt with the full schema.</li>
+      <li>Gemini writes one DuckDB query, or refuses when the data cannot answer the question.</li>
+      <li>A read-only guard checks it (single SELECT/WITH, known tables only, no file or network access), then your browser runs it with a 10-second timeout.</li>
+      <li>If it errors or returns nothing, the error goes back to the model for up to two corrections.</li>
+      <li>A second short call turns the result into a sentence. The same prompt code is used by the <a href="/accuracy">offline eval</a>.</li>
+    </ol>
+  </div>
+</main>
+<footer><div class="wrap">Data: <a href="https://datajobs.levelbrook.com">Data Jobs Observatory</a> snapshot of 2026-09-29 (public job-board APIs). Model: Gemini, free tier. Answers can be wrong; the SQL is shown so you can check. Built by <a href="https://levelbrook.com">Levelbrook</a>.</div></footer>
+<div class="tip" id="tip" role="tooltip"></div>
+<script type="module" src="/js/app.mjs"></script>
+<script src="/lb.js" defer></script>
+</body>
+</html>

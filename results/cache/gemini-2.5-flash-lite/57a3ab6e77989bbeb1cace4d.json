@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family_label, cluster_label, share FROM mart_skill_demand ORDER BY share DESC LIMIT 3",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT family_label, cluster_label, share FROM mart_skill_demand ORDER BY share DESC LIMIT 3\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 1021,
+ "output_tokens": 47,
+ "thinking_tokens": 0,
+ "latency_ms": 538.9671250013635,
+ "parse_error": null
+}

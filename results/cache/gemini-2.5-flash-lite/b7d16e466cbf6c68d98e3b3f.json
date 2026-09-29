@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT COUNT(DISTINCT posting_key) FROM fct_posting WHERE remote_us = TRUE AND degree_level = 'PhD' AND is_open = TRUE",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT COUNT(DISTINCT posting_key) FROM fct_posting WHERE remote_us = TRUE AND degree_level = 'PhD' AND is_open = TRUE\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 1021,
+ "output_tokens": 58,
+ "thinking_tokens": 0,
+ "latency_ms": 584.4796249875799,
+ "parse_error": null
+}

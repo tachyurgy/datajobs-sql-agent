@@ -1,0 +1,11 @@
+{
+ "sql": "WITH RemoteListings AS (SELECT family, COUNT(*) AS open_remote_listings FROM fct_posting WHERE remote_us = TRUE AND is_open = TRUE GROUP BY family), TotalListings AS (SELECT COUNT(*) AS total_open_listings FROM fct_posting WHERE is_open = TRUE) SELECT rl.family, rl.open_remote_listings, CAST(rl.open_remote_listings AS REAL) / tl.total_open_listings AS share FROM RemoteListings rl, TotalListings tl ORDER BY rl.open_remote_listings DESC",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"WITH RemoteListings AS (SELECT family, COUNT(*) AS open_remote_listings FROM fct_posting WHERE remote_us = TRUE AND is_open = TRUE GROUP BY family), TotalListings AS (SELECT COUNT(*) AS total_open_listings FROM fct_posting WHERE is_open = TRUE) SELECT rl.family, rl.open_remote_listings, CAST(rl.open_remote_listings AS REAL) / tl.total_open_listings AS share FROM RemoteListings rl, TotalListings tl ORDER BY rl.open_remote_listings DESC\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 1027,
+ "output_tokens": 143,
+ "thinking_tokens": 0,
+ "latency_ms": 955.6883329933044,
+ "parse_error": null
+}

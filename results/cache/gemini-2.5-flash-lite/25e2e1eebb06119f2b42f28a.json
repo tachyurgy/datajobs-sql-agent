@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT COUNT(DISTINCT T1.posting_key) FROM fct_posting AS T1 WHERE T1.remote_us = TRUE AND T1.comp_currency_original <> 'USD' AND T1.is_open = TRUE",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT COUNT(DISTINCT T1.posting_key) FROM fct_posting AS T1 WHERE T1.remote_us = TRUE AND T1.comp_currency_original <> 'USD' AND T1.is_open = TRUE\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 1024,
+ "output_tokens": 75,
+ "thinking_tokens": 0,
+ "latency_ms": 671.2042500148527,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT CAST(SUM(CASE WHEN fp.is_doorway = TRUE THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(fp.posting_key) FROM fct_posting fp WHERE fp.remote_us = TRUE AND fp.is_open = TRUE",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT CAST(SUM(CASE WHEN fp.is_doorway = TRUE THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(fp.posting_key) FROM fct_posting fp WHERE fp.remote_us = TRUE AND fp.is_open = TRUE\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 1017,
+ "output_tokens": 86,
+ "thinking_tokens": 0,
+ "latency_ms": 606.4068330160808,
+ "parse_error": null
+}

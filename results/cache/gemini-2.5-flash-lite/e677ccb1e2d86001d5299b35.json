@@ -1,0 +1,11 @@
+{
+ "sql": "WITH OverallMedian AS (SELECT p50 AS overall_median FROM mart_comp_by_family WHERE family IS NULL AND seniority IS NULL), SeniorityMedian AS (SELECT seniority, p50 AS seniority_median FROM mart_comp_by_family WHERE family IS NULL AND seniority IS NOT NULL) SELECT sm.seniority, sm.seniority_median, sm.seniority_median - om.overall_median AS difference_from_overall FROM SeniorityMedian sm, OverallMedian om ORDER BY sm.seniority;",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"WITH OverallMedian AS (SELECT p50 AS overall_median FROM mart_comp_by_family WHERE family IS NULL AND seniority IS NULL), SeniorityMedian AS (SELECT seniority, p50 AS seniority_median FROM mart_comp_by_family WHERE family IS NULL AND seniority IS NOT NULL) SELECT sm.seniority, sm.seniority_median, sm.seniority_median - om.overall_median AS difference_from_overall FROM SeniorityMedian sm, OverallMedian om ORDER BY sm.seniority;\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 2322,
+ "output_tokens": 133,
+ "thinking_tokens": 0,
+ "latency_ms": 744.1551249939948,
+ "parse_error": null
+}

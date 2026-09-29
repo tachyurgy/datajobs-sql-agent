@@ -1,0 +1,11 @@
+{
+ "sql": "WITH FamilyOpenListings AS (SELECT family, COUNT(posting_key) AS open_listings FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND is_canonical_listing = TRUE GROUP BY family), TotalOpenListings AS (SELECT COUNT(posting_key) AS total_listings FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND is_canonical_listing = TRUE) SELECT fol.family, fol.open_listings, CAST(fol.open_listings AS DOUBLE) / tol.total_listings AS share_of_total FROM FamilyOpenListings fol, TotalOpenListings tol ORDER BY fol.open_listings DESC",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"WITH FamilyOpenListings AS (SELECT family, COUNT(posting_key) AS open_listings FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND is_canonical_listing = TRUE GROUP BY family), TotalOpenListings AS (SELECT COUNT(posting_key) AS total_listings FROM fct_posting WHERE is_open = TRUE AND remote_us = TRUE AND is_canonical_listing = TRUE) SELECT fol.family, fol.open_listings, CAST(fol.open_listings AS DOUBLE) / tol.total_listings AS share_of_total FROM FamilyOpenListings fol, TotalOpenListings tol ORDER BY fol.open_listings DESC\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 2104,
+ "output_tokens": 169,
+ "thinking_tokens": 0,
+ "latency_ms": 1068.848416005494,
+ "parse_error": null
+}

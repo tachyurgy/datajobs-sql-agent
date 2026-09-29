@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT\n  family,\n  family_label,\n  SUM(CASE WHEN seniority IN ('senior', 'staff+', 'manager+') THEN listings_with_pay ELSE 0 END) AS senior_or_above_with_pay,\n  SUM(listings_with_pay) AS total_with_pay\nFROM mart_comp_by_family\nWHERE\n  seniority IS NULL AND listings_with_pay > 0\nGROUP BY\n  family,\n  family_label",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT\\n  family,\\n  family_label,\\n  SUM(CASE WHEN seniority IN ('senior', 'staff+', 'manager+') THEN listings_with_pay ELSE 0 END) AS senior_or_above_with_pay,\\n  SUM(listings_with_pay) AS total_with_pay\\nFROM mart_comp_by_family\\nWHERE\\n  seniority IS NULL AND listings_with_pay > 0\\nGROUP BY\\n  family,\\n  family_label\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 2170,
+ "output_tokens": 134,
+ "thinking_tokens": 0,
+ "latency_ms": 1034.3039169965778,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT T2.company_name FROM fct_posting AS T1 INNER JOIN dim_company AS T2 ON T1.company_key = T2.company_key WHERE T1.remote_us = TRUE AND T2.platform = 'ashby' AND T1.is_open = TRUE GROUP BY T2.company_name HAVING count(T1.posting_key) > 5",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT T2.company_name FROM fct_posting AS T1 INNER JOIN dim_company AS T2 ON T1.company_key = T2.company_key WHERE T1.remote_us = TRUE AND T2.platform = 'ashby' AND T1.is_open = TRUE GROUP BY T2.company_name HAVING count(T1.posting_key) > 5\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2070,
+ "output_tokens": 101,
+ "thinking_tokens": 0,
+ "latency_ms": 735.0103750068229,
+ "parse_error": null
+}

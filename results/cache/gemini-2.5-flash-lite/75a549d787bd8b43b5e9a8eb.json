@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT\n  strftime('%Y-%m', published_at) AS year_month,\n  COUNT(posting_key) AS open_remote_us_listings\nFROM\n  fct_posting\nWHERE\n  is_open = TRUE\n  AND remote_us = TRUE\n  AND is_canonical_listing = TRUE\n  AND published_at >= '2026-01-01'\n  AND published_at < '2027-01-01'\nGROUP BY\n  year_month\nORDER BY\n  year_month;",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT\\n  strftime('%Y-%m', published_at) AS year_month,\\n  COUNT(posting_key) AS open_remote_us_listings\\nFROM\\n  fct_posting\\nWHERE\\n  is_open = TRUE\\n  AND remote_us = TRUE\\n  AND is_canonical_listing = TRUE\\n  AND published_at >= '2026-01-01'\\n  AND published_at < '2027-01-01'\\nGROUP BY\\n  year_month\\nORDER BY\\n  year_month;\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 2167,
+ "output_tokens": 158,
+ "thinking_tokens": 0,
+ "latency_ms": 816.4352079911623,
+ "parse_error": null
+}

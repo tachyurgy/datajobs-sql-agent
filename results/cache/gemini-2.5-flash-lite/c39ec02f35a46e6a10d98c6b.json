@@ -1,0 +1,11 @@
+{
+ "sql": "WITH RankedSkills AS (SELECT family, cluster_label, share, ROW_NUMBER() OVER (PARTITION BY family ORDER BY share DESC) as rn FROM mart_skill_demand WHERE scope = 'all' AND family IS NOT NULL) SELECT family, cluster_label, share FROM RankedSkills WHERE rn <= 3 ORDER BY family, rn",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"WITH RankedSkills AS (SELECT family, cluster_label, share, ROW_NUMBER() OVER (PARTITION BY family ORDER BY share DESC) as rn FROM mart_skill_demand WHERE scope = 'all' AND family IS NOT NULL) SELECT family, cluster_label, share FROM RankedSkills WHERE rn <= 3 ORDER BY family, rn\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 2541,
+ "output_tokens": 94,
+ "thinking_tokens": 0,
+ "latency_ms": 827.0015000016429,
+ "parse_error": null
+}

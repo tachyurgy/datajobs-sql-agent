@@ -1,0 +1,16 @@
+name: ci
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - uses: actions/setup-node@v4
+        with: { node-version: "22" }
+      - run: pip install -r requirements.txt
+      - run: PYTHONPATH=. python -m pytest -q
+      - run: PYTHONPATH=. python -m askdata.gold > /dev/null
+      - name: Re-score the eval from the committed reply cache (no API calls)
+        run: PYTHONPATH=. python -m askdata.evaluate --offline --models gemini-2.5-flash-lite gemma-4-31b-it gemini-2.5-flash --out /tmp/eval.json

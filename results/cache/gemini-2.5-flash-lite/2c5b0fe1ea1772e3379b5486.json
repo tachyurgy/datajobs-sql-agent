@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT\n  fp.family,\n  MAX(fp.comp_mid_usd) AS highest_pay_midpoint,\n  dc.company_name\nFROM fct_posting AS fp\nJOIN dim_company AS dc\n  ON fp.company_key = dc.company_key\nWHERE\n  fp.is_open AND fp.remote_us AND fp.is_canonical_listing AND fp.comp_mid_usd IS NOT NULL\nGROUP BY\n  fp.family,\n  dc.company_name\nORDER BY\n  fp.family,\n  highest_pay_midpoint DESC",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT\\n  fp.family,\\n  MAX(fp.comp_mid_usd) AS highest_pay_midpoint,\\n  dc.company_name\\nFROM fct_posting AS fp\\nJOIN dim_company AS dc\\n  ON fp.company_key = dc.company_key\\nWHERE\\n  fp.is_open AND fp.remote_us AND fp.is_canonical_listing AND fp.comp_mid_usd IS NOT NULL\\nGROUP BY\\n  fp.family,\\n  dc.company_name\\nORDER BY\\n  fp.family,\\n  highest_pay_midpoint DESC\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 2282,
+ "output_tokens": 165,
+ "thinking_tokens": 0,
+ "latency_ms": 778.8533330021892,
+ "parse_error": null
+}

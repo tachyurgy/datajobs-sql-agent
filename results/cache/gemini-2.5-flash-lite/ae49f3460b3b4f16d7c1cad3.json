@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT T2.company_name, SUM(CASE WHEN T1.remote_us = TRUE THEN 1 ELSE 0 END) AS open_remote_us_data_listings FROM fct_posting AS T1 INNER JOIN dim_company AS T2 ON T1.company_key = T2.company_key WHERE T1.family = 'data' AND T1.is_open = TRUE GROUP BY T2.company_name HAVING SUM(T1.postings_on_board_latest) > 1000",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT T2.company_name, SUM(CASE WHEN T1.remote_us = TRUE THEN 1 ELSE 0 END) AS open_remote_us_data_listings FROM fct_posting AS T1 INNER JOIN dim_company AS T2 ON T1.company_key = T2.company_key WHERE T1.family = 'data' AND T1.is_open = TRUE GROUP BY T2.company_name HAVING SUM(T1.postings_on_board_latest) > 1000\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 1036,
+ "output_tokens": 139,
+ "thinking_tokens": 0,
+ "latency_ms": 780.0160410115495,
+ "parse_error": null
+}

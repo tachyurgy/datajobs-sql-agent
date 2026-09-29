@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT d.company_name, d.remote_us_postings_open FROM dim_company d WHERE d.postings_on_board_latest > 1000 ORDER BY d.remote_us_postings_open DESC",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT d.company_name, d.remote_us_postings_open FROM dim_company d WHERE d.postings_on_board_latest > 1000 ORDER BY d.remote_us_postings_open DESC\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2348,
+ "output_tokens": 67,
+ "thinking_tokens": 0,
+ "latency_ms": 603.2145830104128,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT T2.company_name FROM posting_skills AS T1 INNER JOIN mart_doorway_roles AS T2 ON T1.posting_key = T2.posting_key WHERE T1.skill = 'evals' GROUP BY T2.company_name ORDER BY count(*) DESC LIMIT 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT T2.company_name FROM posting_skills AS T1 INNER JOIN mart_doorway_roles AS T2 ON T1.posting_key = T2.posting_key WHERE T1.skill = 'evals' GROUP BY T2.company_name ORDER BY count(*) DESC LIMIT 1\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2053,
+ "output_tokens": 80,
+ "thinking_tokens": 0,
+ "latency_ms": 705.0043340132106,
+ "parse_error": null
+}

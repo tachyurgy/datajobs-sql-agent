@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT\n  d.company_name,\n  d.remote_us_postings_open\nFROM dim_company AS d\nWHERE\n  d.postings_on_board_latest > 1000",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT\\n  d.company_name,\\n  d.remote_us_postings_open\\nFROM dim_company AS d\\nWHERE\\n  d.postings_on_board_latest > 1000\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 2137,
+ "output_tokens": 76,
+ "thinking_tokens": 0,
+ "latency_ms": 601.3105420279317,
+ "parse_error": null
+}

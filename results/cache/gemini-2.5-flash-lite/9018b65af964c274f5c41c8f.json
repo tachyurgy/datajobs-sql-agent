@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT platform, count(*) AS remote_listings FROM fct_posting WHERE remote_us AND is_canonical_listing GROUP BY platform ORDER BY remote_listings DESC LIMIT 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT platform, count(*) AS remote_listings FROM fct_posting WHERE remote_us AND is_canonical_listing GROUP BY platform ORDER BY remote_listings DESC LIMIT 1\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 2278,
+ "output_tokens": 60,
+ "thinking_tokens": 0,
+ "latency_ms": 705.4036670015194,
+ "parse_error": null
+}

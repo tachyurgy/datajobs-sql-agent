@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT AVG(days_seen) FROM fct_posting",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT AVG(days_seen) FROM fct_posting\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2190,
+ "output_tokens": 27,
+ "thinking_tokens": 0,
+ "latency_ms": 609.1521670168731,
+ "parse_error": null
+}

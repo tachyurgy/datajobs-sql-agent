@@ -190,7 +190,8 @@ def summarise(rows: list[dict]) -> dict:
     }
 
 
-def run_eval(models: list[str], offline: bool = False, only: list[str] | None = None) -> dict:
+def run_eval(models: list[str], offline: bool = False, only: list[str] | None = None, out_path=None) -> dict:
+    out_path = out_path or RESULTS / "eval.json"
     con = connect()
     items = [i for i in load() if not only or i.id in only]
     gold_cache = {}
@@ -200,7 +201,7 @@ def run_eval(models: list[str], offline: bool = False, only: list[str] | None = 
             gold_cache[it.id] = (r.columns, r.rows)
     llm = CachedLLM(offline)
     out = {"snapshot_date": SNAPSHOT_DATE, "n_questions": len(items), "models": {}, "ablations": ABLATION_LABELS}
-    prior = RESULTS / "eval.json"
+    prior = out_path
     if prior.exists() and not only:
         out["models"] = json.loads(prior.read_text()).get("models", {})
     for model in models:
@@ -238,7 +239,7 @@ def run_eval(models: list[str], offline: bool = False, only: list[str] | None = 
         out["models"][model] = {"status": status, "n_questions": len(per_ab["a"]), "summary": summ, "rows": per_ab}
     if not only:
         RESULTS.mkdir(exist_ok=True)
-        (RESULTS / "eval.json").write_text(json.dumps(out, indent=1, default=str) + "\n")
+        out_path.write_text(json.dumps(out, indent=1, default=str) + "\n")
     print(f"LLM calls made: {llm.calls}, cache hits: {llm.hits}")
     return out
 
@@ -248,8 +249,27 @@ def main() -> None:
     ap.add_argument("--models", nargs="+", default=["gemini-2.5-flash-lite", "gemma-4-31b-it"])
     ap.add_argument("--offline", action="store_true")
     ap.add_argument("--only", nargs="*")
+    ap.add_argument("--out", help="results file (default results/eval.json); the report merges results/eval*.json")
     a = ap.parse_args()
-    out = run_eval(a.models, a.offline, a.only)
+    from pathlib import Path
+    out = run_eval(a.models, a.offline, a.only, Path(a.out) if a.out else None)
+    if a.offline:
+        committed = {}
+        for f in sorted(RESULTS.glob("eval*.json")):
+            committed.update(json.loads(f.read_text())["models"])
+        bad = []
+        for m in a.models:
+            got, want = out["models"].get(m), committed.get(m)
+            if want is None:
+                continue
+            for ab in ABLATIONS:
+                g = [(r["id"], r["correct"]) for r in got["rows"][ab]] if got else []
+                w = [(r["id"], r["correct"]) for r in want["rows"][ab]]
+                if g != w:
+                    bad.append(f"{m}/{ab}")
+        if bad:
+            raise SystemExit(f"offline re-score differs from committed results: {bad}")
+        print("offline re-score matches the committed results")
     for m, d in out["models"].items():
         print(f"\n{m} [{d['status']}] n={d['n_questions']}")
         for ab, s in d["summary"].items():

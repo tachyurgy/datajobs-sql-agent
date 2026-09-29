@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT\n  seniority,\n  SUM(open_listings)\nFROM mart_daily_market\nWHERE\n  family = 'Data Engineering' AND remote_us = TRUE\nGROUP BY\n  seniority;",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT\\n  seniority,\\n  SUM(open_listings)\\nFROM mart_daily_market\\nWHERE\\n  family = 'Data Engineering' AND remote_us = TRUE\\nGROUP BY\\n  seniority;\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 1023,
+ "output_tokens": 73,
+ "thinking_tokens": 0,
+ "latency_ms": 640.31358298962,
+ "parse_error": null
+}

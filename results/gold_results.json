@@ -190,12 +190,16 @@
      260.0
     ],
     [
+     "data_analyst",
+     73.0
+    ],
+    [
      "data_engineer",
      156.0
     ],
     [
-     "data_analyst",
-     73.0
+     "product_analyst",
+     19.0
     ],
     [
      "ml_engineer",
@@ -208,15 +212,11 @@
     [
      "analytics_engineer",
      39.0
-    ],
-    [
-     "product_analyst",
-     19.0
     ]
    ],
    "checks": [
     "check_sql:agree",
-    "alt_sql:differs (accepted alternative) [('data_analyst', 76.0), ('ai_engineer', 283.0), ('data_engineer', 158.0)]",
+    "alt_sql:differs (accepted alternative) [('data_analyst', 76.0), ('data_engineer', 158.0), ('product_analyst', 19.0)]",
     "expect_rows=7:ok"
    ]
   },
@@ -261,16 +261,16 @@
    "n_rows": 3,
    "preview": [
     [
-     "ashby",
-     2289.0
-    ],
-    [
      "greenhouse",
      2963.0
     ],
     [
      "lever",
      503.0
+    ],
+    [
+     "ashby",
+     2289.0
     ]
    ],
    "checks": [
@@ -363,10 +363,6 @@
    "n_rows": 7,
    "preview": [
     [
-     "manager+",
-     11.0
-    ],
-    [
      "entry",
      1.0
     ],
@@ -381,6 +377,10 @@
     [
      "intern",
      1.0
+    ],
+    [
+     "manager+",
+     11.0
     ],
     [
      "staff+",
@@ -409,11 +409,11 @@
      25.0
     ],
     [
-     "pinterest",
+     "airbnb",
      16.0
     ],
     [
-     "airbnb",
+     "pinterest",
      16.0
     ]
    ],
@@ -497,7 +497,16 @@
    "n_rows": 8,
    "preview": [
     [
-     "socure"
+     "clickup"
+    ],
+    [
+     "sentilink"
+    ],
+    [
+     "cohere"
+    ],
+    [
+     "trm-labs"
     ],
     [
      "deepgram"
@@ -506,16 +515,7 @@
      "hims-and-hers"
     ],
     [
-     "trm-labs"
-    ],
-    [
-     "clickup"
-    ],
-    [
-     "sentilink"
-    ],
-    [
-     "cohere"
+     "socure"
     ],
     [
      "meridianlink"
@@ -564,14 +564,6 @@
      513.0
     ],
     [
-     "general software engineering",
-     363.0
-    ],
-    [
-     "big data (spark, databricks, streaming)",
-     262.0
-    ],
-    [
      "pipelines / modern data stack (dbt, orchestration, elt)",
      457.0
     ],
@@ -592,8 +584,16 @@
      806.0
     ],
     [
-     "experimentation + statistics",
-     483.0
+     "general software engineering",
+     363.0
+    ],
+    [
+     "big data (spark, databricks, streaming)",
+     262.0
+    ],
+    [
+     "product analytics (metrics, funnels, event tools)",
+     256.0
     ],
     [
      "sql + warehouse modeling",
@@ -693,19 +693,9 @@
    "n_rows": 8,
    "preview": [
     [
-     "ml_engineer",
-     "anthropic",
-     675000.0
-    ],
-    [
      "data_analyst",
      "runpod",
      240000.0
-    ],
-    [
-     "product_analyst",
-     "ethos life",
-     254000.0
     ],
     [
      "data_engineer",
@@ -713,9 +703,14 @@
      445000.0
     ],
     [
-     "ai_engineer",
-     "pinterest",
-     371088.0
+     "ml_engineer",
+     "anthropic",
+     675000.0
+    ],
+    [
+     "product_analyst",
+     "ethos life",
+     254000.0
     ],
     [
      "analytics_engineer",
@@ -731,6 +726,11 @@
      "data_scientist",
      "openai",
      389000.0
+    ],
+    [
+     "ai_engineer",
+     "pinterest",
+     371088.0
     ]
    ],
    "checks": [
@@ -794,34 +794,34 @@
    "n_rows": 21,
    "preview": [
     [
-     "analytics_engineer",
-     "sql",
-     1.0
-    ],
-    [
-     "analytics_engineer",
+     "data_engineer",
      "stakeholder communication",
-     0.9487
+     0.8526
     ],
     [
-     "analytics_engineer",
-     "dbt",
-     0.8462
+     "data_engineer",
+     "etl/elt",
+     0.8141
     ],
     [
-     "data_scientist",
-     "stakeholder communication",
-     0.9053
-    ],
-    [
-     "data_scientist",
+     "data_engineer",
      "python",
-     0.7988
+     0.7308
     ],
     [
-     "data_scientist",
-     "statistics",
-     0.7278
+     "ai_engineer",
+     "stakeholder communication",
+     0.7923
+    ],
+    [
+     "ai_engineer",
+     "llm",
+     0.7885
+    ],
+    [
+     "ai_engineer",
+     "agents",
+     0.7077
     ],
     [
      "ml_engineer",
@@ -839,19 +839,19 @@
      0.6522
     ],
     [
-     "ai_engineer",
+     "analytics_engineer",
+     "sql",
+     1.0
+    ],
+    [
+     "analytics_engineer",
      "stakeholder communication",
-     0.7923
+     0.9487
     ],
     [
-     "ai_engineer",
-     "llm",
-     0.7885
-    ],
-    [
-     "ai_engineer",
-     "agents",
-     0.7077
+     "analytics_engineer",
+     "dbt",
+     0.8462
     ]
    ],
    "checks": [
@@ -916,14 +916,24 @@
    "n_rows": 7,
    "preview": [
     [
+     "manager+",
+     236250.0,
+     41580.0
+    ],
+    [
      "entry",
      130500.0,
      -64170.0
     ],
     [
-     "manager+",
-     236250.0,
-     41580.0
+     "staff+",
+     235000.0,
+     40330.0
+    ],
+    [
+     "unlabeled",
+     168750.0,
+     -25920.0
     ],
     [
      "senior",
@@ -939,16 +949,6 @@
      "intern",
      104000.0,
      -90670.0
-    ],
-    [
-     "staff+",
-     235000.0,
-     40330.0
-    ],
-    [
-     "unlabeled",
-     168750.0,
-     -25920.0
     ]
    ],
    "checks": [
@@ -983,14 +983,6 @@
      67.27272727272727
     ],
     [
-     "ai_engineer",
-     67.74193548387096
-    ],
-    [
-     "product_analyst",
-     80.0
-    ],
-    [
      "data_engineer",
      71.30434782608695
     ],
@@ -1005,6 +997,14 @@
     [
      "analytics_engineer",
      75.75757575757575
+    ],
+    [
+     "product_analyst",
+     80.0
+    ],
+    [
+     "ai_engineer",
+     67.74193548387096
     ]
    ],
    "checks": [
@@ -1044,14 +1044,6 @@
      15.0
     ],
     [
-     "2026-08-01",
-     217.0
-    ],
-    [
-     "2026-04-01",
-     41.0
-    ],
-    [
      "2026-07-01",
      130.0
     ],
@@ -1065,6 +1057,14 @@
     ],
     [
      "2026-03-01",
+     41.0
+    ],
+    [
+     "2026-08-01",
+     217.0
+    ],
+    [
+     "2026-04-01",
      41.0
     ],
     [
@@ -1113,10 +1113,6 @@
      69.0
     ],
     [
-     "data_engineer",
-     48.0
-    ],
-    [
      "product_analyst",
      109.0
     ],
@@ -1131,6 +1127,10 @@
     [
      "analytics_engineer",
      40.0
+    ],
+    [
+     "data_engineer",
+     48.0
     ]
    ],
    "checks": [
@@ -1205,12 +1205,12 @@
      5.0
     ],
     [
-     2024.0,
-     12.0
-    ],
-    [
      2022.0,
      1.0
+    ],
+    [
+     2024.0,
+     12.0
     ]
    ],
    "checks": [

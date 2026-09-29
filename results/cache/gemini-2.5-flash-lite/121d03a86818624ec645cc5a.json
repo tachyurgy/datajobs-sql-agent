@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT COUNT(DISTINCT f.posting_key) FROM fct_posting f JOIN mart_comp_by_family m ON f.family = m.family WHERE f.remote_us = TRUE AND f.is_open = TRUE AND f.comp_mid_usd > 1.5 * m.p50",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT COUNT(DISTINCT f.posting_key) FROM fct_posting f JOIN mart_comp_by_family m ON f.family = m.family WHERE f.remote_us = TRUE AND f.is_open = TRUE AND f.comp_mid_usd > 1.5 * m.p50\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 1029,
+ "output_tokens": 93,
+ "thinking_tokens": 0,
+ "latency_ms": 663.8479579996783,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT family, approx_percentile(age_days_at_last_seen, 0.5) AS median_age FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing GROUP BY family",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT family, approx_percentile(age_days_at_last_seen, 0.5) AS median_age FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing GROUP BY family\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2300,
+ "output_tokens": 64,
+ "thinking_tokens": 0,
+ "latency_ms": 959.766124986345,
+ "parse_error": null
+}

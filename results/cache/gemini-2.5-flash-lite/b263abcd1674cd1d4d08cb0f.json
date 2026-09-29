@@ -1,0 +1,11 @@
+{
+ "sql": "WITH SeniorityMedian AS (SELECT seniority, AVG(comp_mid_usd) AS median_pay FROM fct_posting WHERE is_open AND remote_us GROUP BY seniority), OverallMedian AS (SELECT AVG(comp_mid_usd) AS overall_median_pay FROM fct_posting WHERE is_open AND remote_us) SELECT sm.seniority, sm.median_pay, sm.median_pay - om.overall_median_pay AS difference_from_overall FROM SeniorityMedian sm, OverallMedian om",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"WITH SeniorityMedian AS (SELECT seniority, AVG(comp_mid_usd) AS median_pay FROM fct_posting WHERE is_open AND remote_us GROUP BY seniority), OverallMedian AS (SELECT AVG(comp_mid_usd) AS overall_median_pay FROM fct_posting WHERE is_open AND remote_us) SELECT sm.seniority, sm.median_pay, sm.median_pay - om.overall_median_pay AS difference_from_overall FROM SeniorityMedian sm, OverallMedian om\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 2140,
+ "output_tokens": 135,
+ "thinking_tokens": 0,
+ "latency_ms": 913.4275409742258,
+ "parse_error": null
+}

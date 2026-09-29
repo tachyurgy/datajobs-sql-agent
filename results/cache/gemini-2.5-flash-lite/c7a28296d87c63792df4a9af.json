@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT\n  COUNT(fp.posting_key)\nFROM fct_posting AS fp\nJOIN mart_comp_by_family AS mcb\n  ON fp.family = mcb.family\nWHERE\n  fp.is_open AND fp.remote_us AND fp.comp_mid_usd > mcb.p50 * 1.5",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT\\n  COUNT(fp.posting_key)\\nFROM fct_posting AS fp\\nJOIN mart_comp_by_family AS mcb\\n  ON fp.family = mcb.family\\nWHERE\\n  fp.is_open AND fp.remote_us AND fp.comp_mid_usd > mcb.p50 * 1.5\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 2074,
+ "output_tokens": 106,
+ "thinking_tokens": 0,
+ "latency_ms": 784.9512499815319,
+ "parse_error": null
+}

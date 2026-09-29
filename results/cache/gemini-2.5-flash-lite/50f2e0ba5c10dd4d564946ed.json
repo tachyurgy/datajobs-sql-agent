@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT\n  T1.title,\n  T1.url\nFROM fct_posting AS T1\nWHERE\n  T1.platform = 'reddit'\n  AND T1.family = 'ai_engineer'\n  AND T1.is_open = TRUE\n  AND T1.remote_us = TRUE",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT\\n  T1.title,\\n  T1.url\\nFROM fct_posting AS T1\\nWHERE\\n  T1.platform = 'reddit'\\n  AND T1.family = 'ai_engineer'\\n  AND T1.is_open = TRUE\\n  AND T1.remote_us = TRUE\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 2134,
+ "output_tokens": 99,
+ "thinking_tokens": 0,
+ "latency_ms": 775.4243749950547,
+ "parse_error": null
+}

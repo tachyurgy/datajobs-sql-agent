@@ -1,0 +1,11 @@
+{
+ "sql": "WITH SeniorityMedian AS (\n  SELECT\n    seniority,\n    PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY comp_mid_usd) AS median_comp_mid_usd\n  FROM fct_posting\n  WHERE remote_us = TRUE AND is_open = TRUE\n  GROUP BY\n    seniority\n),\nOverallMedian AS (\n  SELECT\n    PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY comp_mid_usd) AS overall_median_comp_mid_usd\n  FROM fct_posting\n  WHERE remote_us = TRUE AND is_open = TRUE\n)\nSELECT\n  sm.seniority,\n  sm.median_comp_mid_usd,\n  sm.median_comp_mid_usd - om.overall_median_comp_mid_usd AS difference_from_overall\nFROM SeniorityMedian sm\nCROSS JOIN OverallMedian om;",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"WITH SeniorityMedian AS (\\n  SELECT\\n    seniority,\\n    PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY comp_mid_usd) AS median_comp_mid_usd\\n  FROM fct_posting\\n  WHERE remote_us = TRUE AND is_open = TRUE\\n  GROUP BY\\n    seniority\\n),\\nOverallMedian AS (\\n  SELECT\\n    PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY comp_mid_usd) AS overall_median_comp_mid_usd\\n  FROM fct_posting\\n  WHERE remote_us = TRUE AND is_open = TRUE\\n)\\nSELECT\\n  sm.seniority,\\n  sm.median_comp_mid_usd,\\n  sm.median_comp_mid_usd - om.overall_median_comp_mid_usd AS difference_from_overall\\nFROM SeniorityMedian sm\\nCROSS JOIN OverallMedian om;\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 1033,
+ "output_tokens": 237,
+ "thinking_tokens": 0,
+ "latency_ms": 1040.7524580077734,
+ "parse_error": null
+}

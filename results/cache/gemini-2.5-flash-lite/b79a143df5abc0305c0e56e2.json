@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT AVG(yoe_ask) FROM fct_posting WHERE family = 'ai_engineer' AND remote_us = TRUE AND is_open = TRUE AND yoe_ask IS NOT NULL",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT AVG(yoe_ask) FROM fct_posting WHERE family = 'ai_engineer' AND remote_us = TRUE AND is_open = TRUE AND yoe_ask IS NOT NULL\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2169,
+ "output_tokens": 56,
+ "thinking_tokens": 0,
+ "latency_ms": 622.7879169746302,
+ "parse_error": null
+}

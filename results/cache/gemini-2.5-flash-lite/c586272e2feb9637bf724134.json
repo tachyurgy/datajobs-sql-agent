@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT\n              c.company_name\n            FROM\n              dim_company AS c\n            JOIN\n              fct_posting AS p\n            ON\n              c.company_key = p.company_key\n            WHERE\n              p.remote_us = TRUE\n            GROUP BY\n              c.company_name\n            ORDER BY\n              COUNT(p.posting_key) DESC\n            LIMIT 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT\\n              c.company_name\\n            FROM\\n              dim_company AS c\\n            JOIN\\n              fct_posting AS p\\n            ON\\n              c.company_key = p.company_key\\n            WHERE\\n              p.remote_us = TRUE\\n            GROUP BY\\n              c.company_name\\n            ORDER BY\\n              COUNT(p.posting_key) DESC\\n            LIMIT 1\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 1020,
+ "output_tokens": 126,
+ "thinking_tokens": 0,
+ "latency_ms": 768.8459169876296,
+ "parse_error": null
+}

@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT\n  SUM(CASE WHEN T1.cluster = 'llm_genai' THEN T1.listings_mentioning ELSE 0 END) * 1.0 / SUM(T1.listings_in_family)\nFROM mart_skill_demand AS T1\nWHERE\n  T1.family = 'ml_engineer' AND T1.scope = 'all'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT\\n  SUM(CASE WHEN T1.cluster = 'llm_genai' THEN T1.listings_mentioning ELSE 0 END) * 1.0 / SUM(T1.listings_in_family)\\nFROM mart_skill_demand AS T1\\nWHERE\\n  T1.family = 'ml_engineer' AND T1.scope = 'all'\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 2380,
+ "output_tokens": 108,
+ "thinking_tokens": 0,
+ "latency_ms": 783.2313749822788,
+ "parse_error": null
+}

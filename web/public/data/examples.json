@@ -1,0 +1,98 @@
+[
+ {
+  "question": "Which skills show up most in AI engineer listings?",
+  "sql": "SELECT cluster_label, SUM(listings_mentioning) AS total_listings_mentioning FROM mart_skill_demand WHERE family = 'ai_engineer' GROUP BY cluster_label ORDER BY total_listings_mentioning DESC",
+  "answer": "LLM / GenAI skills show up most in AI engineer listings with 1188 mentions, followed by Cloud + engineering hygiene with 602 mentions, and General software engineering with 402 mentions.",
+  "model": "gemini-2.5-flash-lite",
+  "attempts": [
+   {
+    "sql": "SELECT cluster_label, SUM(listings_mentioning) AS total_listings_mentioning FROM mart_skill_demand WHERE family = 'ai_engineer' GROUP BY cluster_label ORDER BY total_listings_mentioning DESC",
+    "error": null
+   }
+  ]
+ },
+ {
+  "question": "What is the median pay for senior data engineers?",
+  "sql": "SELECT p50 FROM mart_comp_by_family WHERE family = 'data_engineer' AND seniority = 'senior'",
+  "answer": "The median pay for senior data engineers is 168967.5 USD.",
+  "model": "gemini-2.5-flash-lite",
+  "attempts": [
+   {
+    "sql": "SELECT p50 FROM mart_comp_by_family WHERE family = 'data_engineer' AND seniority = 'senior'",
+    "error": null
+   }
+  ]
+ },
+ {
+  "question": "Which companies have the most open ML engineer roles?",
+  "sql": "SELECT d.company_name, count(*) AS open_ml_engineer_roles FROM fct_posting f JOIN dim_company d ON f.company_key = d.company_key WHERE f.family = 'ml_engineer' AND f.is_open GROUP BY d.company_name ORDER BY open_ml_engineer_roles DESC",
+  "answer": "Waymo has the most open ML engineer roles with 66.0, followed by bjakcareer with 60.0. DoorDash USA and Reddit are tied for third with 18.0 open roles each.",
+  "model": "gemini-2.5-flash-lite",
+  "attempts": [
+   {
+    "sql": "SELECT d.company_name, count(*) AS open_ml_engineer_roles FROM fct_posting f JOIN dim_company d ON f.company_key = d.company_key WHERE f.family = 'ml_engineer' AND f.is_open GROUP BY d.company_name ORDER BY open_ml_engineer_roles DESC",
+    "error": null
+   }
+  ]
+ },
+ {
+  "question": "How many doorway roles are open for data analysts?",
+  "sql": "SELECT count(*) FROM mart_doorway_roles WHERE family = 'data_analyst'",
+  "answer": "There are 26 doorway roles open for data analysts.",
+  "model": "gemini-2.5-flash-lite",
+  "attempts": [
+   {
+    "sql": "SELECT count(*) FROM mart_doorway_roles WHERE family = 'data_analyst'",
+    "error": null
+   }
+  ]
+ },
+ {
+  "question": "What share of listings disclose pay, by role family?",
+  "sql": "SELECT family, pay_disclosure_rate FROM mart_comp_by_family",
+  "answer": "The share of listings that disclose pay varies by role family. For example, analytics_engineer has a pay disclosure rate of 1.0, while data_analyst has a rate of 0.5.",
+  "model": "gemini-2.5-flash-lite",
+  "attempts": [
+   {
+    "sql": "SELECT family, pay_disclosure_rate FROM mart_comp_by_family",
+    "error": null
+   }
+  ]
+ },
+ {
+  "question": "How many listings mention both dbt and Snowflake?",
+  "sql": "SELECT count(DISTINCT s.posting_key) FROM posting_skills s JOIN fct_posting f ON s.posting_key = f.posting_key WHERE s.skill = 'dbt' AND f.is_canonical_listing AND f.is_open AND f.remote_us AND f.posting_key IN (SELECT posting_key FROM posting_skills WHERE skill = 'snowflake')",
+  "answer": "There are 108 listings that mention both dbt and Snowflake.",
+  "model": "gemini-2.5-flash-lite",
+  "attempts": [
+   {
+    "sql": "SELECT count(DISTINCT s.posting_key) FROM posting_skills s JOIN fct_posting f ON s.posting_key = f.posting_key WHERE s.skill = 'dbt' AND f.is_canonical_listing AND f.is_open AND f.remote_us AND f.posting_key IN (SELECT posting_key FROM posting_skills WHERE skill = 'snowflake')",
+    "error": null
+   }
+  ]
+ },
+ {
+  "question": "Which ATS platform hosts the most remote data listings?",
+  "sql": "SELECT platform, count(*) AS remote_listings FROM fct_posting WHERE remote_us AND is_canonical_listing GROUP BY platform ORDER BY remote_listings DESC LIMIT 1",
+  "answer": "Greenhouse hosts the most remote data listings with 554.",
+  "model": "gemini-2.5-flash-lite",
+  "attempts": [
+   {
+    "sql": "SELECT platform, count(*) AS remote_listings FROM fct_posting WHERE remote_us AND is_canonical_listing GROUP BY platform ORDER BY remote_listings DESC LIMIT 1",
+    "error": null
+   }
+  ]
+ },
+ {
+  "question": "How many applicants does the average posting get?",
+  "sql": "SELECT AVG(days_seen) FROM fct_posting",
+  "answer": "The average posting gets 1.0 days seen.",
+  "model": "gemini-2.5-flash-lite",
+  "attempts": [
+   {
+    "sql": "SELECT AVG(days_seen) FROM fct_posting",
+    "error": null
+   }
+  ]
+ }
+]

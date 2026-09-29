@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT CAST(SUM(CASE WHEN msd.skill IN ('LLM', 'GenAI') THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(msd.posting_key) FROM mart_skill_demand AS msd JOIN mart_daily_market AS mdm ON msd.family = mdm.family WHERE mdm.family_label = 'ML Engineer' AND mdm.remote_us = TRUE",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT CAST(SUM(CASE WHEN msd.skill IN ('LLM', 'GenAI') THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(msd.posting_key) FROM mart_skill_demand AS msd JOIN mart_daily_market AS mdm ON msd.family = mdm.family WHERE mdm.family_label = 'ML Engineer' AND mdm.remote_us = TRUE\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 1026,
+ "output_tokens": 119,
+ "thinking_tokens": 0,
+ "latency_ms": 917.7905829856172,
+ "parse_error": null
+}

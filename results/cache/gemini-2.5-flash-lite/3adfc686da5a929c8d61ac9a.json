@@ -1,0 +1,11 @@
+{
+ "sql": "WITH FamilyCounts AS (SELECT family, COUNT(*) AS num_listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing GROUP BY family), TotalCount AS (SELECT COUNT(*) AS total_listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing) SELECT fc.family, fc.num_listings, CAST(fc.num_listings AS DOUBLE) / tc.total_listings AS share FROM FamilyCounts fc, TotalCount tc ORDER BY fc.num_listings DESC",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"WITH FamilyCounts AS (SELECT family, COUNT(*) AS num_listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing GROUP BY family), TotalCount AS (SELECT COUNT(*) AS total_listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing) SELECT fc.family, fc.num_listings, CAST(fc.num_listings AS DOUBLE) / tc.total_listings AS share FROM FamilyCounts fc, TotalCount tc ORDER BY fc.num_listings DESC\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 2333,
+ "output_tokens": 137,
+ "thinking_tokens": 0,
+ "latency_ms": 924.3010830250569,
+ "parse_error": null
+}

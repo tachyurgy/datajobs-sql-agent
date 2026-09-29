@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT SUM(CASE WHEN degree_level = 'phd' THEN 1 ELSE 0 END) AS phd_listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT SUM(CASE WHEN degree_level = 'phd' THEN 1 ELSE 0 END) AS phd_listings FROM fct_posting WHERE is_open AND remote_us AND is_canonical_listing\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2336,
+ "output_tokens": 59,
+ "thinking_tokens": 0,
+ "latency_ms": 579.8128750175238,
+ "parse_error": null
+}

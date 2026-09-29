@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT COUNT(DISTINCT pf.posting_key) FROM fct_posting pf INNER JOIN posting_skills ps1 ON pf.posting_key = ps1.posting_key INNER JOIN posting_skills ps2 ON pf.posting_key = ps2.posting_key WHERE pf.remote_us = TRUE AND pf.is_open = TRUE AND ps1.skill = 'Python' AND ps2.skill = 'SQL'",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT COUNT(DISTINCT pf.posting_key) FROM fct_posting pf INNER JOIN posting_skills ps1 ON pf.posting_key = ps1.posting_key INNER JOIN posting_skills ps2 ON pf.posting_key = ps2.posting_key WHERE pf.remote_us = TRUE AND pf.is_open = TRUE AND ps1.skill = 'Python' AND ps2.skill = 'SQL'\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 1018,
+ "output_tokens": 114,
+ "thinking_tokens": 0,
+ "latency_ms": 776.7001670144964,
+ "parse_error": null
+}

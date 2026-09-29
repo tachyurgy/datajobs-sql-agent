@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT\n  f.title,\n  c.company_name,\n  f.published_at\nFROM fct_posting AS f\nJOIN dim_company AS c\n  ON f.company_key = c.company_key\nWHERE\n  f.is_open = TRUE AND f.remote_us = TRUE\nORDER BY\n  f.published_at ASC\nLIMIT 1",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\n  \"sql\": \"SELECT\\n  f.title,\\n  c.company_name,\\n  f.published_at\\nFROM fct_posting AS f\\nJOIN dim_company AS c\\n  ON f.company_key = c.company_key\\nWHERE\\n  f.is_open = TRUE AND f.remote_us = TRUE\\nORDER BY\\n  f.published_at ASC\\nLIMIT 1\",\n  \"refuse\": false,\n  \"reason\": \"\"\n}",
+ "prompt_tokens": 1027,
+ "output_tokens": 118,
+ "thinking_tokens": 0,
+ "latency_ms": 734.5732079993468,
+ "parse_error": null
+}

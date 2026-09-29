@@ -1,0 +1,11 @@
+{
+ "sql": "SELECT d.company_name, COUNT(f.posting_key) AS open_listings FROM fct_posting f JOIN dim_company d ON f.company_key = d.company_key WHERE f.is_open AND f.remote_us AND f.is_canonical_listing GROUP BY d.company_name ORDER BY open_listings DESC LIMIT 3",
+ "refuse": false,
+ "reason": "",
+ "raw": "{\"sql\": \"SELECT d.company_name, COUNT(f.posting_key) AS open_listings FROM fct_posting f JOIN dim_company d ON f.company_key = d.company_key WHERE f.is_open AND f.remote_us AND f.is_canonical_listing GROUP BY d.company_name ORDER BY open_listings DESC LIMIT 3\", \"refuse\": false, \"reason\": \"\"}",
+ "prompt_tokens": 2421,
+ "output_tokens": 93,
+ "thinking_tokens": 0,
+ "latency_ms": 656.933249993017,
+ "parse_error": null
+}
